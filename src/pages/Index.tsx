@@ -241,7 +241,7 @@ const Index = () => {
           </p>
           <div className="mt-8 pt-8 border-t border-ghost-accent/30">
             <p className="text-ghost-light/60 text-sm">
-              © 22 ДБЯ - 19 ДБЯ | Войны клонов | Gmod RP Server
+              © 22 ДБЯ - 19 ДБЯ | Войны клонов | Gmod RP Server Void
             </p>
           </div>
         </div>
