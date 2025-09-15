@@ -54,10 +54,10 @@ const Index = () => {
           </p>
           <div className="flex justify-center gap-4 text-sm font-orbitron">
             <Badge variant="outline" className="border-orange-400 text-orange-400">
-              501-й Легион
+              ЭРК Легион
             </Badge>
             <Badge variant="outline" className="border-orange-400 text-orange-400">
-              Специальные операции
+              БСО
             </Badge>
           </div>
         </div>
@@ -237,7 +237,7 @@ const Index = () => {
             ДЛЯ РЕСПУБЛИКИ. ДЛЯ ДЕМОКРАТИИ.
           </h3>
           <p className="text-orange-300">
-            Отряд "Призрак" - 501-й Легион, Великая Армия Республики
+            Отряд "Призрак" - ЭРК Легион, Великая Армия Республики
           </p>
           <div className="mt-8 pt-8 border-t border-orange-400/30">
             <p className="text-orange-400 text-sm">
