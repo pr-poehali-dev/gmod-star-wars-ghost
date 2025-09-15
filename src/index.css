@@ -98,7 +98,7 @@
   }
 
   body {
-    @apply bg-ghost-dark text-ghost-light font-inter;
+    @apply bg-black text-orange-200 font-inter;
   }
 
   html {

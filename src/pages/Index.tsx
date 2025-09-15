@@ -38,25 +38,25 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-ghost-dark text-ghost-light">
+    <div className="min-h-screen bg-black text-orange-200">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-ghost-primary to-ghost-dark">
+      <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-black to-gray-900">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23374151%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
         <div className="text-center z-10 animate-fade-in">
           <div className="mb-6">
-            <Icon name="Ghost" size={80} className="mx-auto text-ghost-accent mb-4" />
+            <Icon name="Ghost" size={80} className="mx-auto text-orange-400 mb-4" />
           </div>
-          <h1 className="text-6xl md:text-8xl font-orbitron font-black text-ghost-light mb-4 tracking-wider">
+          <h1 className="text-6xl md:text-8xl font-orbitron font-black text-orange-200 mb-4 tracking-wider">
             ПРИЗРАК
           </h1>
-          <p className="text-xl md:text-2xl text-ghost-accent font-medium mb-8">
+          <p className="text-xl md:text-2xl text-orange-400 font-medium mb-8">
             Элитный клон-отряд Республики
           </p>
           <div className="flex justify-center gap-4 text-sm font-orbitron">
-            <Badge variant="outline" className="border-ghost-accent text-ghost-accent">
+            <Badge variant="outline" className="border-orange-400 text-orange-400">
               501-й Легион
             </Badge>
-            <Badge variant="outline" className="border-ghost-accent text-ghost-accent">
+            <Badge variant="outline" className="border-orange-400 text-orange-400">
               Специальные операции
             </Badge>
           </div>
@@ -66,7 +66,7 @@ const Index = () => {
       {/* About Squad Section */}
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-ghost-accent mb-6">
+          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 mb-6">
             О ОТРЯДЕ ПРИЗРАК
           </h2>
           <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
@@ -83,33 +83,33 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <Card className="bg-ghost-secondary border-ghost-accent hover-scale">
+            <Card className="bg-gray-900 border-orange-400 hover-scale">
               <CardHeader className="text-center">
-                <Icon name="Target" size={48} className="mx-auto text-ghost-accent mb-2" />
-                <CardTitle className="text-ghost-light font-orbitron">Точность</CardTitle>
+                <Icon name="Target" size={48} className="mx-auto text-orange-400 mb-2" />
+                <CardTitle className="text-orange-200 font-orbitron">Точность</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-ghost-light/80">Безупречная меткость в любых условиях</p>
+                <p className="text-orange-300">Безупречная меткость в любых условиях</p>
               </CardContent>
             </Card>
             
-            <Card className="bg-ghost-secondary border-ghost-accent hover-scale">
+            <Card className="bg-gray-900 border-orange-400 hover-scale">
               <CardHeader className="text-center">
-                <Icon name="Eye" size={48} className="mx-auto text-ghost-accent mb-2" />
-                <CardTitle className="text-ghost-light font-orbitron">Скрытность</CardTitle>
+                <Icon name="Eye" size={48} className="mx-auto text-orange-400 mb-2" />
+                <CardTitle className="text-orange-200 font-orbitron">Скрытность</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-ghost-light/80">Невидимы для врага, смертельны в атаке</p>
+                <p className="text-orange-300">Невидимы для врага, смертельны в атаке</p>
               </CardContent>
             </Card>
             
-            <Card className="bg-ghost-secondary border-ghost-accent hover-scale">
+            <Card className="bg-gray-900 border-orange-400 hover-scale">
               <CardHeader className="text-center">
-                <Icon name="Users" size={48} className="mx-auto text-ghost-accent mb-2" />
-                <CardTitle className="text-ghost-light font-orbitron">Единство</CardTitle>
+                <Icon name="Users" size={48} className="mx-auto text-orange-400 mb-2" />
+                <CardTitle className="text-orange-200 font-orbitron">Единство</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-ghost-light/80">Братство, закаленное в боях</p>
+                <p className="text-orange-300">Братство, закаленное в боях</p>
               </CardContent>
             </Card>
           </div>
@@ -117,22 +117,22 @@ const Index = () => {
       </section>
 
       {/* Squad History */}
-      <section className="py-20 px-4 md:px-8 bg-ghost-secondary">
+      <section className="py-20 px-4 md:px-8 bg-gray-900">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-ghost-accent text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
             ИСТОРИЯ ОТРЯДА
           </h2>
           
           <div className="space-y-12">
             <div className="flex flex-col md:flex-row items-center gap-8 animate-fade-in">
               <div className="md:w-1/3">
-                <Badge className="bg-ghost-accent text-ghost-dark mb-4">22 ДБЯ</Badge>
-                <h3 className="text-2xl font-orbitron font-bold text-ghost-light mb-2">
+                <Badge className="bg-orange-400 text-black mb-4">22 ДБЯ</Badge>
+                <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-2">
                   Формирование отряда
                 </h3>
               </div>
               <div className="md:w-2/3">
-                <p className="text-ghost-light/90 text-lg">
+                <p className="text-orange-200 text-lg">
                   Отряд "Призрак" был сформирован на Камино под руководством джедая-генерала Кита Фисто. 
                   Первоначально состоял из 12 элитных клонов, прошедших специальную подготовку.
                 </p>
@@ -141,13 +141,13 @@ const Index = () => {
 
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 animate-fade-in">
               <div className="md:w-1/3">
-                <Badge className="bg-ghost-accent text-ghost-dark mb-4">21 ДБЯ</Badge>
-                <h3 className="text-2xl font-orbitron font-bold text-ghost-light mb-2">
+                <Badge className="bg-orange-400 text-black mb-4">21 ДБЯ</Badge>
+                <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-2">
                   Операция "Темная звезда"
                 </h3>
               </div>
               <div className="md:w-2/3">
-                <p className="text-ghost-light/90 text-lg">
+                <p className="text-orange-200 text-lg">
                   Первая крупная операция отряда по уничтожению секретной базы сепаратистов 
                   на Риши. Операция прошла без потерь и принесла отряду первое признание.
                 </p>
@@ -156,13 +156,13 @@ const Index = () => {
 
             <div className="flex flex-col md:flex-row items-center gap-8 animate-fade-in">
               <div className="md:w-1/3">
-                <Badge className="bg-ghost-accent text-ghost-dark mb-4">19 ДБЯ</Badge>
-                <h3 className="text-2xl font-orbitron font-bold text-ghost-light mb-2">
+                <Badge className="bg-orange-400 text-black mb-4">19 ДБЯ</Badge>
+                <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-2">
                   Битва за Кристофсис
                 </h3>
               </div>
               <div className="md:w-2/3">
-                <p className="text-ghost-light/90 text-lg">
+                <p className="text-orange-200 text-lg">
                   Отряд принял участие в освобождении Кристофсиса, действуя в качестве 
                   разведывательного подразделения. Их разведданные сыграли ключевую роль в победе.
                 </p>
@@ -174,13 +174,13 @@ const Index = () => {
 
       {/* Clone Roster */}
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-ghost-accent text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
           СПИСОК КЛОНОВ
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {clones.map((clone, index) => (
-            <Card key={clone.id} className={`bg-ghost-secondary border-ghost-accent hover-scale animate-scale-in`} 
+            <Card key={clone.id} className={`bg-gray-900 border-orange-400 hover-scale animate-scale-in`} 
                   style={{animationDelay: `${index * 0.1}s`}}>
               <CardHeader>
                 <div className="relative">
@@ -189,38 +189,38 @@ const Index = () => {
                     alt={clone.name}
                     className="w-full h-48 object-cover rounded-lg mb-4"
                   />
-                  <Badge className="absolute top-2 right-2 bg-ghost-accent text-ghost-dark">
+                  <Badge className="absolute top-2 right-2 bg-orange-400 text-black">
                     {clone.rank}
                   </Badge>
                 </div>
-                <CardTitle className="text-ghost-light font-orbitron text-xl">
+                <CardTitle className="text-orange-200 font-orbitron text-xl">
                   {clone.name}
                 </CardTitle>
-                <CardDescription className="text-ghost-accent font-mono">
+                <CardDescription className="text-orange-400 font-mono">
                   {clone.id}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-ghost-light/80 text-sm">
+                <p className="text-orange-300 text-sm">
                   {clone.description}
                 </p>
                 
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-ghost-light/60">Специализация:</span>
-                    <span className="text-ghost-accent">{clone.specialization}</span>
+                    <span className="text-orange-400">Специализация:</span>
+                    <span className="text-orange-400">{clone.specialization}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-ghost-light/60">Подтвержденные цели:</span>
-                    <span className="text-ghost-accent">{clone.kills}</span>
+                    <span className="text-orange-400">Подтвержденные цели:</span>
+                    <span className="text-orange-400">{clone.kills}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-ghost-light/60">Миссии:</span>
-                    <span className="text-ghost-accent">{clone.missions}</span>
+                    <span className="text-orange-400">Миссии:</span>
+                    <span className="text-orange-400">{clone.missions}</span>
                   </div>
                 </div>
                 
-                <Button className="w-full bg-ghost-accent text-ghost-dark hover:bg-ghost-accent/80 font-orbitron">
+                <Button className="w-full bg-orange-400 text-black hover:bg-orange-400/80 font-orbitron">
                   ДОСЬЕ
                 </Button>
               </CardContent>
@@ -230,17 +230,17 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-ghost-primary py-12 px-4 md:px-8 text-center">
+      <footer className="bg-black py-12 px-4 md:px-8 text-center">
         <div className="max-w-4xl mx-auto">
-          <Icon name="Ghost" size={48} className="mx-auto text-ghost-accent mb-4" />
-          <h3 className="text-2xl font-orbitron font-bold text-ghost-light mb-4">
+          <Icon name="Ghost" size={48} className="mx-auto text-orange-400 mb-4" />
+          <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4">
             ДЛЯ РЕСПУБЛИКИ. ДЛЯ ДЕМОКРАТИИ.
           </h3>
-          <p className="text-ghost-light/80">
+          <p className="text-orange-300">
             Отряд "Призрак" - 501-й Легион, Великая Армия Республики
           </p>
-          <div className="mt-8 pt-8 border-t border-ghost-accent/30">
-            <p className="text-ghost-light/60 text-sm">
+          <div className="mt-8 pt-8 border-t border-orange-400/30">
+            <p className="text-orange-400 text-sm">
               © 22 ДБЯ - 19 ДБЯ | Войны клонов | Gmod RP Server Void
             </p>
           </div>
