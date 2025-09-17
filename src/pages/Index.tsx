@@ -59,7 +59,7 @@ const Index = () => {
           </p>
           <div className="flex justify-center gap-4 text-sm font-orbitron">
             <Badge variant="outline" className="border-orange-400 text-orange-400">
-              ЭРК Легион
+              ЭРК
             </Badge>
             <Badge variant="outline" className="border-orange-400 text-orange-400">
               БСО
