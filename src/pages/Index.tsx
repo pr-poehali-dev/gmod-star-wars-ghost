@@ -48,7 +48,7 @@ const Index = () => {
             <img 
               src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
               alt="Эмблема Галактической Республики" 
-              className="w-32 h-32 mx-auto mb-4 brightness-0 invert"
+              className="w-40 h-40 mx-auto mb-4 brightness-0 invert"
             />
           </div>
           <h1 className="text-6xl md:text-8xl font-orbitron font-black text-orange-200 mb-4 tracking-wider">
