@@ -6,7 +6,7 @@ import Icon from "@/components/ui/icon";
 const Index = () => {
   const clones = [
     {
-      id: "CT-1914",
+      id: "CT-01-1044",
       name: "Лидер Jeing",
       rank: "Лидер",
       description: "Лидер отряда Призрак, ветеран войн клонов с множеством успешных операций.",
@@ -16,7 +16,7 @@ const Index = () => {
       missions: 89
     },
     {
-      id: "CT-7291", 
+      id: "CT-07-2114", 
       name: "Зам. лидера Nuar",
       rank: "Зам. лидера",
       description: "Элитный снайпер с безупречной точностью. Мастер скрытных операций.",
@@ -26,7 +26,7 @@ const Index = () => {
       missions: 76
     },
     {
-      id: "CT-5544",
+      id: "CT-04-5536",
       name: "Боец Rampa",
       rank: "Боец",
       description: "Боевой медик, спасший жизни десятков товарищей в самых опасных ситуациях.",
