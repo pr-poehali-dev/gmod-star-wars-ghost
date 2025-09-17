@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const clones = [
@@ -257,9 +258,11 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <Button className="w-full bg-orange-400 text-black hover:bg-orange-400/80 font-orbitron">
-                  ДОСЬЕ
-                </Button>
+                <Link to={`/clone/${clone.id}`}>
+                  <Button className="w-full bg-orange-400 text-black hover:bg-orange-400/80 font-orbitron">
+                    ДОСЬЕ
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
