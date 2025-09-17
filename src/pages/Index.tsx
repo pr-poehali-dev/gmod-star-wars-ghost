@@ -8,7 +8,7 @@ const Index = () => {
   const clones = [
     {
       id: "CT-01-1044",
-      name: "Лидер Jeing",
+      name: "Позывной: Jeing",
       rank: "Лидер",
       description: "Лидер отряда Призрак, ветеран войн клонов с множеством успешных операций.",
       image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
@@ -18,7 +18,7 @@ const Index = () => {
     },
     {
       id: "CT-07-2114", 
-      name: "Зам. лидера Nuar",
+      name: "Позывной: Nuar",
       rank: "Зам. лидера",
       description: "Элитный снайпер с безупречной точностью. Мастер скрытных операций.",
       image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
@@ -28,7 +28,7 @@ const Index = () => {
     },
     {
       id: "CT-04-5536",
-      name: "Боец Rampa",
+      name: "Позывной: Rampa",
       rank: "Боец",
       description: "Боевой медик, спасший жизни десятков товарищей в самых опасных ситуациях.",
       image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
