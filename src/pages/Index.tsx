@@ -218,72 +218,72 @@ const Index = () => {
           </h2>
           
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-3 text-center">
-              <div className="bg-green-900/30 border border-green-400 rounded-lg p-3">
-                <span className="text-green-400 font-semibold text-sm">СЕМЬЯ</span>
+            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-2 text-center">
+              <div className="bg-green-900/30 border border-green-400 rounded-lg p-2">
+                <span className="text-green-400 font-semibold text-xs">СЕМЬЯ</span>
               </div>
-              <div className="bg-pink-900/30 border border-pink-400 rounded-lg p-3">
-                <span className="text-pink-400 font-semibold text-sm">ЛЮБОВЬ</span>
+              <div className="bg-pink-900/30 border border-pink-400 rounded-lg p-2">
+                <span className="text-pink-400 font-semibold text-xs">ЛЮБОВЬ</span>
               </div>
-              <div className="bg-blue-900/30 border border-blue-400 rounded-lg p-3">
-                <span className="text-blue-400 font-semibold text-sm">ПРЕДАННОСТЬ</span>
+              <div className="bg-blue-900/30 border border-blue-400 rounded-lg p-2">
+                <span className="text-blue-400 font-semibold text-xs">ПРЕДАННОСТЬ</span>
               </div>
-              <div className="bg-purple-900/30 border border-purple-400 rounded-lg p-3">
-                <span className="text-purple-400 font-semibold text-sm">ВОСХИЩЕНИЕ</span>
+              <div className="bg-purple-900/30 border border-purple-400 rounded-lg p-2">
+                <span className="text-purple-400 font-semibold text-xs">ВОСХИЩЕНИЕ</span>
               </div>
-              <div className="bg-cyan-900/30 border border-cyan-400 rounded-lg p-3">
-                <span className="text-cyan-400 font-semibold text-sm">ЛУЧШИЕ ДРУЗЬЯ</span>
+              <div className="bg-cyan-900/30 border border-cyan-400 rounded-lg p-2">
+                <span className="text-cyan-400 font-semibold text-xs">ЛУЧШИЕ ДРУЗЬЯ</span>
               </div>
-              <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
-                <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
+              <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-2">
+                <span className="text-teal-400 font-semibold text-xs">ДРУЖБА</span>
               </div>
-              <div className="bg-emerald-900/30 border border-emerald-400 rounded-lg p-3">
-                <span className="text-emerald-400 font-semibold text-sm">БЛАГОДАРНОСТЬ</span>
+              <div className="bg-emerald-900/30 border border-emerald-400 rounded-lg p-2">
+                <span className="text-emerald-400 font-semibold text-xs">БЛАГОДАРНОСТЬ</span>
               </div>
-              <div className="bg-lime-900/30 border border-lime-400 rounded-lg p-3">
-                <span className="text-lime-400 font-semibold text-sm">УВАЖЕНИЕ</span>
+              <div className="bg-lime-900/30 border border-lime-400 rounded-lg p-2">
+                <span className="text-lime-400 font-semibold text-xs">УВАЖЕНИЕ</span>
               </div>
-              <div className="bg-yellow-900/30 border border-yellow-400 rounded-lg p-3">
-                <span className="text-yellow-400 font-semibold text-sm">СИМПАТИЯ</span>
+              <div className="bg-yellow-900/30 border border-yellow-400 rounded-lg p-2">
+                <span className="text-yellow-400 font-semibold text-xs">СИМПАТИЯ</span>
               </div>
-              <div className="bg-amber-900/30 border border-amber-400 rounded-lg p-3">
-                <span className="text-amber-400 font-semibold text-sm">ЕДИНОМЫШЛЕННИК</span>
+              <div className="bg-amber-900/30 border border-amber-400 rounded-lg p-2">
+                <span className="text-amber-400 font-semibold text-xs">ЕДИНОМЫШЛЕННИК</span>
               </div>
-              <div className="bg-orange-900/30 border border-orange-400 rounded-lg p-3">
-                <span className="text-orange-400 font-semibold text-sm">ИНТЕРЕС</span>
+              <div className="bg-orange-900/30 border border-orange-400 rounded-lg p-2">
+                <span className="text-orange-400 font-semibold text-xs">ИНТЕРЕС</span>
               </div>
-              <div className="bg-gray-700/30 border border-gray-400 rounded-lg p-3">
-                <span className="text-gray-400 font-semibold text-sm">НЕОПРЕДЕЛЕННОСТЬ</span>
+              <div className="bg-gray-700/30 border border-gray-400 rounded-lg p-2">
+                <span className="text-gray-400 font-semibold text-xs">НЕОПРЕДЕЛЕННОСТЬ</span>
               </div>
-              <div className="bg-slate-700/30 border border-slate-400 rounded-lg p-3">
-                <span className="text-slate-400 font-semibold text-sm">РАВНОДУШИЕ</span>
+              <div className="bg-slate-700/30 border border-slate-400 rounded-lg p-2">
+                <span className="text-slate-400 font-semibold text-xs">РАВНОДУШИЕ</span>
               </div>
-              <div className="bg-stone-700/30 border border-stone-400 rounded-lg p-3">
-                <span className="text-stone-400 font-semibold text-sm">НЕДОВЕРИЕ</span>
+              <div className="bg-stone-700/30 border border-stone-400 rounded-lg p-2">
+                <span className="text-stone-400 font-semibold text-xs">НЕДОВЕРИЕ</span>
               </div>
-              <div className="bg-zinc-700/30 border border-zinc-400 rounded-lg p-3">
-                <span className="text-zinc-400 font-semibold text-sm">РАЗОЧАРОВАНИЕ</span>
+              <div className="bg-zinc-700/30 border border-zinc-400 rounded-lg p-2">
+                <span className="text-zinc-400 font-semibold text-xs">РАЗОЧАРОВАНИЕ</span>
               </div>
-              <div className="bg-neutral-700/30 border border-neutral-400 rounded-lg p-3">
-                <span className="text-neutral-400 font-semibold text-sm">БОЯЗНЬ</span>
+              <div className="bg-neutral-700/30 border border-neutral-400 rounded-lg p-2">
+                <span className="text-neutral-400 font-semibold text-xs">БОЯЗНЬ</span>
               </div>
-              <div className="bg-red-900/30 border border-red-400 rounded-lg p-3">
-                <span className="text-red-400 font-semibold text-sm">ПРЕЗРЕНИЕ</span>
+              <div className="bg-red-900/30 border border-red-400 rounded-lg p-2">
+                <span className="text-red-400 font-semibold text-xs">ПРЕЗРЕНИЕ</span>
               </div>
-              <div className="bg-rose-900/30 border border-rose-400 rounded-lg p-3">
-                <span className="text-rose-400 font-semibold text-sm">ЗАВИСТЬ</span>
+              <div className="bg-rose-900/30 border border-rose-400 rounded-lg p-2">
+                <span className="text-rose-400 font-semibold text-xs">ЗАВИСТЬ</span>
               </div>
-              <div className="bg-red-800/30 border border-red-500 rounded-lg p-3">
-                <span className="text-red-500 font-semibold text-sm">ОБИДА</span>
+              <div className="bg-red-800/30 border border-red-500 rounded-lg p-2">
+                <span className="text-red-500 font-semibold text-xs">ОБИДА</span>
               </div>
-              <div className="bg-red-700/30 border border-red-600 rounded-lg p-3">
-                <span className="text-red-600 font-semibold text-sm">НЕПРИЯЗНЬ</span>
+              <div className="bg-red-700/30 border border-red-600 rounded-lg p-2">
+                <span className="text-red-600 font-semibold text-xs">НЕПРИЯЗНЬ</span>
               </div>
-              <div className="bg-red-600/30 border border-red-700 rounded-lg p-3">
-                <span className="text-red-700 font-semibold text-sm">НЕНАВИСТЬ</span>
+              <div className="bg-red-600/30 border border-red-700 rounded-lg p-2">
+                <span className="text-red-700 font-semibold text-xs">НЕНАВИСТЬ</span>
               </div>
-              <div className="bg-black border border-red-800 rounded-lg p-3">
-                <span className="text-red-800 font-semibold text-sm">ПОГИБ</span>
+              <div className="bg-black border border-red-800 rounded-lg p-2">
+                <span className="text-red-800 font-semibold text-xs">ПОГИБ</span>
               </div>
             </div>
             <div className="mt-8 text-center">
@@ -352,6 +352,37 @@ const Index = () => {
               </CardContent>
             </Card>
           ))}
+          
+          {/* Empty Cards */}
+          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
+            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
+              <div className="text-center space-y-4">
+                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
+                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
+                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
+            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
+              <div className="text-center space-y-4">
+                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
+                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
+                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
+            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
+              <div className="text-center space-y-4">
+                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
+                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
+                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
