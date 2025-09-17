@@ -11,7 +11,7 @@ const Index = () => {
       name: "Лидер Jeing",
       rank: "Лидер",
       description: "Лидер отряда Призрак, ветеран войн клонов с множеством успешных операций.",
-      image: "/img/893b0313-196b-48d4-a4ac-7b56f9fdfa3e.jpg",
+      image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
       specialization: "Командование",
       kills: 147,
       missions: 89
@@ -21,7 +21,7 @@ const Index = () => {
       name: "Зам. лидера Nuar",
       rank: "Зам. лидера",
       description: "Элитный снайпер с безупречной точностью. Мастер скрытных операций.",
-      image: "/img/92503c0a-8241-4a36-9211-fca1703eaf89.jpg",
+      image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
       specialization: "Пилот",
       kills: 203,
       missions: 76
@@ -31,7 +31,7 @@ const Index = () => {
       name: "Боец Rampa",
       rank: "Боец",
       description: "Боевой медик, спасший жизни десятков товарищей в самых опасных ситуациях.",
-      image: "/img/3cbe738d-56a0-498a-9594-55888d8c7d50.jpg",
+      image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
       specialization: "Отсутствует",
       kills: 58,
       missions: 92
