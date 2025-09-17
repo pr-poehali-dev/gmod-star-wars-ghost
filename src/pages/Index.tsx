@@ -218,7 +218,7 @@ const Index = () => {
           </h2>
           
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 text-center justify-items-center">
+            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-2 text-center">
               <div className="bg-green-900/30 border border-green-400 rounded-lg p-2">
                 <span className="text-green-400 font-semibold text-xs">СЕМЬЯ</span>
               </div>
