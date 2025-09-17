@@ -12,7 +12,7 @@ const CloneDossier = () => {
       id: "CT-01-1044",
       name: "Лидер Jeing",
       rank: "Лидер",
-      description: "Лидер отряда Призрак, ветеран войн клонов с множеством успешных операций.",
+      description: "Jeing (позывной G-01) – командир «Призрака». Один из первых клонов, прошедших мандалорскую подготовку. Его голос спокоен, лишён эмоций, но за этим спокойствием скрывается точный расчёт.",
       image: "/img/893b0313-196b-48d4-a4ac-7b56f9fdfa3e.jpg",
       specialization: "Командование",
       kills: 147,
@@ -20,8 +20,8 @@ const CloneDossier = () => {
       callSign: "G-01",
       birthPlace: "Камино",
       trainedBy: "Инструкторы ЭРК, Мандалорские воины",
-      equipment: ["DC-15A", "DC-17", "Вибромеч", "Взрывчатка"],
-      personality: "Хладнокровный тактик с развитой интуицией. Способен принимать сложные решения в критических ситуациях.",
+      equipment: ["DC-15A", "DC-17", "Вибромеч", "Термодетонаторы"],
+      personality: "Холодный, рассудительный, тактик. Умеет видеть поле боя словно шахматную доску, предугадывая действия врага на шаг вперёд. Не склонен к лишней жестокости, но для выполнения миссии готов жертвовать чем угодно – даже своими братьями, если того требует тактика. Предпочитает ближний бой с вибромечом, комбинируя удары с использованием термодетонаторов.",
       achievements: ["Операция 'Тень Кореллии'", "Битва за Анаксис", "Зачистка базы на Рилоте"]
     },
     {
@@ -164,14 +164,25 @@ const CloneDossier = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-orange-200 leading-relaxed">{clone.description}</p>
+                <div>
+                  <h4 className="text-orange-400 font-semibold mb-2">Роль:</h4>
+                  <p className="text-orange-200">Лидер отряда</p>
+                </div>
+                <div>
+                  <h4 className="text-orange-400 font-semibold mb-2">Характер:</h4>
+                  <p className="text-orange-200">Холодный, рассудительный, тактик</p>
+                </div>
+                <div>
+                  <h4 className="text-orange-400 font-semibold mb-2">Описание:</h4>
+                  <p className="text-orange-200 leading-relaxed">{clone.description}</p>
+                </div>
+                <div>
+                  <h4 className="text-orange-400 font-semibold mb-2">Особенность:</h4>
+                  <p className="text-orange-200">Предпочитает ближний бой с вибромечом, комбинируя удары с использованием термодетонаторов</p>
+                </div>
                 <div>
                   <h4 className="text-orange-400 font-semibold mb-2">Обучение:</h4>
                   <p className="text-orange-200">{clone.trainedBy}</p>
-                </div>
-                <div>
-                  <h4 className="text-orange-400 font-semibold mb-2">Личность:</h4>
-                  <p className="text-orange-200">{clone.personality}</p>
                 </div>
               </CardContent>
             </Card>
