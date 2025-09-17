@@ -120,7 +120,7 @@ const Index = () => {
       <section className="py-20 px-4 md:px-8 bg-gray-900">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
-            ИСТОРИЯ ОТРЯДА
+            ИСТОРИЯ ФОРМИРОВАНИЯ
           </h2>
           
           <div className="space-y-12">
