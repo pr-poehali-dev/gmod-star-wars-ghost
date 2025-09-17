@@ -186,6 +186,26 @@ const Index = () => {
               Они обучены сохранять абсолютное хладнокровие, даже в условиях безысходности. В отличие от других клонов, «Призраки» обладают определенной независимостью мышления, что делает их непредсказуемыми и более живыми.
             </p>
           </div>
+
+          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
+            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
+              <Icon name="Shield" size={24} className="mr-3 text-orange-400" />
+              Символика
+            </h3>
+            <p className="text-orange-300 text-lg leading-relaxed">
+              Эмблема отряда – череп с тенью мандалорского шлема, перечеркнутый двумя vibro-ножами. Позывной каждого бойца начинается с буквы «G» (от слова Ghost), например: G-01, G-09 и т.д.
+            </p>
+          </div>
+
+          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
+            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
+              <Icon name="Trophy" size={24} className="mr-3 text-orange-400" />
+              Репутация
+            </h3>
+            <p className="text-orange-300 text-lg leading-relaxed">
+              Отряд «Призрак» стал известен благодаря своей первой миссии на Кореллии, где они за ночь уничтожили целый склад сепаратистов, вырезав гарнизон без единого выстрела. С тех пор о них говорят шёпотом даже среди клонов – как о «живых тенях».
+            </p>
+          </div>
         </div>
       </section>
 
