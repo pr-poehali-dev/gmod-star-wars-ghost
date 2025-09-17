@@ -123,52 +123,14 @@ const Index = () => {
             ИСТОРИЯ ФОРМИРОВАНИЯ
           </h2>
           
-          <div className="space-y-12">
-            <div className="flex flex-col md:flex-row items-center gap-8 animate-fade-in">
-              <div className="md:w-1/3">
-                <Badge className="bg-orange-400 text-black mb-4">22 ДБЯ</Badge>
-                <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-2">
-                  Формирование отряда
-                </h3>
-              </div>
-              <div className="md:w-2/3">
-                <p className="text-orange-200 text-lg">
-                  После битвы за Анаксис и тяжелых потерь в рядах БСО, совет командования решил создать новое подразделение, способное выполнять задачи, где обычные клоны были бы бессильны. Так появился отряд «Призрак» – группа бойцов, прошедших не только переобучение, но и радикальную психологическую и тактическую подготовку.
-                </p>
-                <p className="text-orange-200 text-lg mt-4">
-                  Для их тренировки привлекли мандалорских инструкторов, которые привили им кодекс чести воинов Манд'алор, навыки ведения ближнего боя и умение действовать малыми группами. Дополнительно клоны проходили подготовку у инструкторов ЭРК (элитного республиканского корпуса), получив опыт ведения диверсионных и зачистных операций.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row-reverse items-center gap-8 animate-fade-in">
-              <div className="md:w-1/3">
-                <Badge className="bg-orange-400 text-black mb-4">21 ДБЯ</Badge>
-                <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-2">
-                  Операция "Темная звезда"
-                </h3>
-              </div>
-              <div className="md:w-2/3">
-                <p className="text-orange-200 text-lg">
-                  Первая крупная операция отряда по уничтожению секретной базы сепаратистов 
-                  на Риши. Операция прошла без потерь и принесла отряду первое признание.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center gap-8 animate-fade-in">
-              <div className="md:w-1/3">
-                <Badge className="bg-orange-400 text-black mb-4">19 ДБЯ</Badge>
-                <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-2">
-                  Битва за Кристофсис
-                </h3>
-              </div>
-              <div className="md:w-2/3">
-                <p className="text-orange-200 text-lg">
-                  Отряд принял участие в освобождении Кристофсиса, действуя в качестве 
-                  разведывательного подразделения. Их разведданные сыграли ключевую роль в победе.
-                </p>
-              </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-fade-in">
+              <p className="text-orange-200 text-lg leading-relaxed mb-6">
+                После битвы за Анаксис и тяжелых потерь в рядах БСО, совет командования решил создать новое подразделение, способное выполнять задачи, где обычные клоны были бы бессильны. Так появился отряд «Призрак» – группа бойцов, прошедших не только переобучение, но и радикальную психологическую и тактическую подготовку.
+              </p>
+              <p className="text-orange-200 text-lg leading-relaxed">
+                Для их тренировки привлекли мандалорских инструкторов, которые привили им кодекс чести воинов Манд'алор, навыки ведения ближнего боя и умение действовать малыми группами. Дополнительно клоны проходили подготовку у инструкторов ЭРК (элитного республиканского корпуса), получив опыт ведения диверсионных и зачистных операций.
+              </p>
             </div>
           </div>
         </div>
