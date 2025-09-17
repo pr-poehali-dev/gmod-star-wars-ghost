@@ -189,7 +189,7 @@ const Index = () => {
 
           <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
             <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
-              <Icon name="Shield" size={24} className="mr-3 text-orange-400" />
+              <Icon name="Flag" size={24} className="mr-3 text-orange-400" />
               Символика
             </h3>
             <p className="text-orange-300 text-lg leading-relaxed">
