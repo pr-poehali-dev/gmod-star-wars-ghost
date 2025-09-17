@@ -281,7 +281,7 @@ const Index = () => {
             ДЛЯ РЕСПУБЛИКИ. ДЛЯ ДЕМОКРАТИИ.
           </h3>
           <p className="text-orange-300">
-            Отряд "Призрак" - ЭРК Легион, Великая Армия Республики
+            Отряд "Призрак" - ЭРК В.А.Р.
           </p>
           <div className="mt-8 pt-8 border-t border-orange-400/30">
             <p className="text-orange-400 text-sm">
