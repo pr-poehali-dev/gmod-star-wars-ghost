@@ -21,7 +21,7 @@ const Index = () => {
       rank: "Зам. лидера",
       description: "Элитный снайпер с безупречной точностью. Мастер скрытных операций.",
       image: "/img/92503c0a-8241-4a36-9211-fca1703eaf89.jpg",
-      specialization: "Снайперское дело",
+      specialization: "Пилот",
       kills: 203,
       missions: 76
     },
