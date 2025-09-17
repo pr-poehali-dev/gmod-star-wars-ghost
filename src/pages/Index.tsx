@@ -136,6 +136,55 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Squad Features */}
+      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
+          ОСОБЕННОСТИ ОТРЯДА
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
+            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
+              <Icon name="Sword" size={24} className="mr-3 text-orange-400" />
+              Оружие
+            </h3>
+            <p className="text-orange-300 text-lg leading-relaxed">
+              Кроме стандартного вооружения клонов, они владеют мандалорскими вибромечами, ножами и короткими копьями.
+            </p>
+          </div>
+
+          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
+            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
+              <Icon name="Shield" size={24} className="mr-3 text-orange-400" />
+              Снаряжение
+            </h3>
+            <p className="text-orange-300 text-lg leading-relaxed">
+              Доспехи модифицированы, с усиленными сегментами из бескара (частично), матовыми покрытиями для скрытности. Каждый шлем оснащён усиленным фильтром и режимом подавления шума.
+            </p>
+          </div>
+
+          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
+            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
+              <Icon name="Target" size={24} className="mr-3 text-orange-400" />
+              Тактика
+            </h3>
+            <p className="text-orange-300 text-lg leading-relaxed">
+              Быстрые удары, диверсии, засадные операции. Их главная задача – не фронтовые сражения, а скрытые миссии: ликвидации, диверсии, подрывные действия.
+            </p>
+          </div>
+
+          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
+            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
+              <Icon name="Brain" size={24} className="mr-3 text-orange-400" />
+              Психология
+            </h3>
+            <p className="text-orange-300 text-lg leading-relaxed">
+              Они обучены сохранять абсолютное хладнокровие, даже в условиях безысходности. В отличие от других клонов, «Призраки» обладают определенной независимостью мышления, что делает их непредсказуемыми и более живыми.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Clone Roster */}
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
