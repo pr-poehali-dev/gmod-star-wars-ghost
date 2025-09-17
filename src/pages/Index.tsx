@@ -31,7 +31,7 @@ const Index = () => {
       rank: "Боец",
       description: "Боевой медик, спасший жизни десятков товарищей в самых опасных ситуациях.",
       image: "/img/3cbe738d-56a0-498a-9594-55888d8c7d50.jpg",
-      specialization: "Медицина",
+      specialization: "Отсутствует",
       kills: 58,
       missions: 92
     }
