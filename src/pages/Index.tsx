@@ -225,7 +225,7 @@ const Index = () => {
                   <img 
                     src={clone.image} 
                     alt={clone.name}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
+                    className="w-full h-40 object-cover rounded-lg mb-4"
                   />
                   <Badge className="absolute top-2 right-2 bg-orange-400 text-black">
                     {clone.rank}
