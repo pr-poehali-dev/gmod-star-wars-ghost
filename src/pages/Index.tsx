@@ -292,6 +292,39 @@ const Index = () => {
                 создавая сложную сеть взаимоотношений от братской преданности до боевого соперничества.
               </p>
             </div>
+            
+            {/* Empty Cards */}
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
+                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
+                  <div className="text-center space-y-4">
+                    <Icon name="Heart" size={32} className="mx-auto text-orange-400/50" />
+                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
+                    <p className="text-orange-300/50 text-xs">Ожидание связи</p>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
+                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
+                  <div className="text-center space-y-4">
+                    <Icon name="Users" size={32} className="mx-auto text-orange-400/50" />
+                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
+                    <p className="text-orange-300/50 text-xs">Ожидание связи</p>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
+                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
+                  <div className="text-center space-y-4">
+                    <Icon name="Link" size={32} className="mx-auto text-orange-400/50" />
+                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
+                    <p className="text-orange-300/50 text-xs">Ожидание связи</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
