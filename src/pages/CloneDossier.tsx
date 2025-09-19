@@ -416,7 +416,7 @@ const CloneDossier = () => {
               <CardHeader>
                 <CardTitle className="text-orange-400 text-2xl flex items-center">
                   <Icon name="Users" size={24} className="mr-3" />
-                  Отряд "Призрак"
+                  Отряд «Призрак»
                 </CardTitle>
               </CardHeader>
               <CardContent>
