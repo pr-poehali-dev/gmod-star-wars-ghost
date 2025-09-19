@@ -98,7 +98,7 @@ const Index = () => {
             <div className="relative inline-block">
               <div className="bg-gray-900/70 backdrop-blur-sm border border-orange-400/30 rounded-xl px-8 py-6">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-orbitron font-bold text-orange-300 mb-3 tracking-wide">
-                  ЭЛИТНЫЙ РАЗВЕДЫВАТЕЛЬНЫЙ КОРПУС
+                  ЭЛИТНЫЙ КЛОН-ОТРЯД РЕСПУБЛИКИ
                 </h2>
                 <p className="text-lg md:text-xl text-orange-400/80 font-medium">
                   Специальное подразделение клонов-штурмовиков Галактической Республики
