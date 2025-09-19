@@ -187,11 +187,11 @@ const CloneDossier = () => {
                       {/* Stats polygon */}
                       <polygon
                         points={`
-                          100,${100 - clone.stats.accuracy * 0.8}
-                          ${100 + clone.stats.stealth * 0.8 * Math.cos(-Math.PI / 2 + Math.PI * 2 / 5)},${100 + clone.stats.stealth * 0.8 * Math.sin(-Math.PI / 2 + Math.PI * 2 / 5)}
-                          ${100 + clone.stats.endurance * 0.8 * Math.cos(-Math.PI / 2 + Math.PI * 4 / 5)},${100 + clone.stats.endurance * 0.8 * Math.sin(-Math.PI / 2 + Math.PI * 4 / 5)}
-                          ${100 + clone.stats.tactics * 0.8 * Math.cos(-Math.PI / 2 + Math.PI * 6 / 5)},${100 + clone.stats.tactics * 0.8 * Math.sin(-Math.PI / 2 + Math.PI * 6 / 5)}
-                          ${100 + clone.stats.leadership * 0.8 * Math.cos(-Math.PI / 2 + Math.PI * 8 / 5)},${100 + clone.stats.leadership * 0.8 * Math.sin(-Math.PI / 2 + Math.PI * 8 / 5)}
+                          100,${100 - (clone.stats.accuracy / 100) * 80}
+                          ${100 + (clone.stats.stealth / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 2 / 5)},${100 + (clone.stats.stealth / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 2 / 5)}
+                          ${100 + (clone.stats.endurance / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 4 / 5)},${100 + (clone.stats.endurance / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 4 / 5)}
+                          ${100 + (clone.stats.tactics / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 6 / 5)},${100 + (clone.stats.tactics / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 6 / 5)}
+                          ${100 + (clone.stats.leadership / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 8 / 5)},${100 + (clone.stats.leadership / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 8 / 5)}
                         `}
                         fill="rgba(251, 146, 60, 0.2)"
                         stroke="#fb923c"
@@ -200,11 +200,11 @@ const CloneDossier = () => {
                       />
                       
                       {/* Stat points */}
-                      <circle cx="100" cy={100 - clone.stats.accuracy * 0.8} r="4" fill="#fb923c" className="drop-shadow-lg"/>
-                      <circle cx={100 + clone.stats.stealth * 0.8 * Math.cos(-Math.PI / 2 + Math.PI * 2 / 5)} cy={100 + clone.stats.stealth * 0.8 * Math.sin(-Math.PI / 2 + Math.PI * 2 / 5)} r="4" fill="#60a5fa" className="drop-shadow-lg"/>
-                      <circle cx={100 + clone.stats.endurance * 0.8 * Math.cos(-Math.PI / 2 + Math.PI * 4 / 5)} cy={100 + clone.stats.endurance * 0.8 * Math.sin(-Math.PI / 2 + Math.PI * 4 / 5)} r="4" fill="#4ade80" className="drop-shadow-lg"/>
-                      <circle cx={100 + clone.stats.tactics * 0.8 * Math.cos(-Math.PI / 2 + Math.PI * 6 / 5)} cy={100 + clone.stats.tactics * 0.8 * Math.sin(-Math.PI / 2 + Math.PI * 6 / 5)} r="4" fill="#a855f7" className="drop-shadow-lg"/>
-                      <circle cx={100 + clone.stats.leadership * 0.8 * Math.cos(-Math.PI / 2 + Math.PI * 8 / 5)} cy={100 + clone.stats.leadership * 0.8 * Math.sin(-Math.PI / 2 + Math.PI * 8 / 5)} r="4" fill="#facc15" className="drop-shadow-lg"/>
+                      <circle cx="100" cy={100 - (clone.stats.accuracy / 100) * 80} r="4" fill="#fb923c" className="drop-shadow-lg"/>
+                      <circle cx={100 + (clone.stats.stealth / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 2 / 5)} cy={100 + (clone.stats.stealth / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 2 / 5)} r="4" fill="#60a5fa" className="drop-shadow-lg"/>
+                      <circle cx={100 + (clone.stats.endurance / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 4 / 5)} cy={100 + (clone.stats.endurance / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 4 / 5)} r="4" fill="#4ade80" className="drop-shadow-lg"/>
+                      <circle cx={100 + (clone.stats.tactics / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 6 / 5)} cy={100 + (clone.stats.tactics / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 6 / 5)} r="4" fill="#a855f7" className="drop-shadow-lg"/>
+                      <circle cx={100 + (clone.stats.leadership / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 8 / 5)} cy={100 + (clone.stats.leadership / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 8 / 5)} r="4" fill="#facc15" className="drop-shadow-lg"/>
                     </svg>
                     
                     {/* Stat Labels */}
