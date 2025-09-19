@@ -68,10 +68,15 @@ const Index = () => {
 
         {/* Main Content */}
         <div className="text-center z-10 max-w-6xl mx-auto px-4 py-20">
-          {/* Simplified Logo */}
+          {/* Logo with Pulse Animation */}
           <div className="mb-12">
             <div className="relative inline-block">
-              <div className="relative w-48 h-48 md:w-64 md:h-64 bg-gray-900/50 rounded-full flex items-center justify-center backdrop-blur-sm border border-orange-400/30">
+              {/* Pulse rings */}
+              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 border-2 border-orange-400/30 rounded-full animate-ping"></div>
+              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 border border-orange-400/20 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+              
+              {/* Main logo container */}
+              <div className="relative w-48 h-48 md:w-64 md:h-64 bg-gray-900/50 rounded-full flex items-center justify-center backdrop-blur-sm border border-orange-400/30 animate-pulse">
                 <img 
                   src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
                   alt="Эмблема Галактической Республики" 
