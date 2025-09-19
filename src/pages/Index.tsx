@@ -3,8 +3,78 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
 
 const Index = () => {
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [attempts, setAttempts] = useState(0);
+  
+  const handlePasswordSubmit = () => {
+    if (password === "ShadowGhost") {
+      setIsUnlocked(true);
+      setIsPasswordVisible(false);
+      // Звук успешного доступа
+      playSuccessSound();
+    } else {
+      setAttempts(prev => prev + 1);
+      setPassword("");
+      // Звук отказа доступа
+      playDeniedSound();
+    }
+  };
+
+  const playSuccessSound = () => {
+    try {
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.3);
+      
+      gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.3);
+    } catch (error) {
+      console.log('Audio not available');
+    }
+  };
+
+  const playDeniedSound = () => {
+    try {
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      
+      [0, 0.15, 0.3].forEach((time, index) => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.type = 'square';
+        oscillator.frequency.setValueAtTime(1200 - (index * 200), audioContext.currentTime + time);
+        
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime + time);
+        gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + time + 0.02);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + time + 0.1);
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.start(audioContext.currentTime + time);
+        oscillator.stop(audioContext.currentTime + time + 0.1);
+      });
+    } catch (error) {
+      console.log('Audio not available');
+    }
+  };
+
   const clones = [
     {
       id: "CT-01-1044",
@@ -77,50 +147,177 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 mb-6">
             О ОТРЯДЕ ПРИЗРАК
           </h2>
-          <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
-            <p>
-              Отряд "Призрак" - элитное подразделение клонов-штурмовиков, специализирующееся на 
-              секретных операциях и разведке в тылу врага. Сформированный в начале Войн клонов, 
-              отряд быстро заслужил репутацию одного из самых эффективных спецподразделений Республики.
-            </p>
-            <p>
-              Бойцы отряда проходят особую подготовку по скрытным операциям, снайперскому делу и 
-              тактической медицине. Их основная задача - проведение операций глубоко в тылу противника, 
-              где обычные войска не могут действовать эффективно.
-            </p>
-          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <Card className="bg-gray-900 border-orange-400 hover-scale">
-              <CardHeader className="text-center">
-                <Icon name="Target" size={48} className="mx-auto text-orange-400 mb-2" />
-                <CardTitle className="text-orange-200 font-orbitron">Точность</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-orange-300">Безупречная меткость в любых условиях</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-gray-900 border-orange-400 hover-scale">
-              <CardHeader className="text-center">
-                <Icon name="Eye" size={48} className="mx-auto text-orange-400 mb-2" />
-                <CardTitle className="text-orange-200 font-orbitron">Скрытность</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-orange-300">Невидимы для врага, смертельны в атаке</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-gray-900 border-orange-400 hover-scale">
-              <CardHeader className="text-center">
-                <Icon name="Users" size={48} className="mx-auto text-orange-400 mb-2" />
-                <CardTitle className="text-orange-200 font-orbitron">Единство</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-orange-300">Братство, закаленное в боях</p>
-              </CardContent>
-            </Card>
-          </div>
+          {!isUnlocked ? (
+            // Security Access Panel
+            <div className="max-w-2xl mx-auto">
+              <div className="relative">
+                {/* Background Effects */}
+                <div className="absolute inset-0 bg-red-900/10 rounded-2xl blur-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-orange-500/5 to-yellow-500/5 rounded-2xl"></div>
+                
+                {/* Animated Scanning Lines */}
+                <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-red-400/60 to-transparent animate-pulse" 
+                       style={{top: '25%', animationDuration: '3s'}}></div>
+                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-orange-400/40 to-transparent animate-pulse" 
+                       style={{top: '75%', animationDuration: '4s', animationDelay: '1s'}}></div>
+                </div>
+                
+                {/* Main Security Panel */}
+                <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 border-2 border-red-500 rounded-2xl p-12 backdrop-blur-md">
+                  {/* Animated Border Glow */}
+                  <div className="absolute inset-0 rounded-2xl border border-red-400/30 animate-pulse"></div>
+                  
+                  {/* Warning Stripes */}
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent transform -skew-x-12 animate-pulse"></div>
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-yellow-500/5 to-transparent transform skew-x-12 animate-pulse" style={{animationDelay: '1s'}}></div>
+                  </div>
+                  
+                  <div className="relative z-10 space-y-8">
+                    {/* Security Icon */}
+                    <div className="flex justify-center">
+                      <div className="relative">
+                        <div className="absolute inset-0 w-24 h-24 border-2 border-red-500/30 rounded-full animate-ping"></div>
+                        <div className="absolute inset-0 w-24 h-24 border border-red-400/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                        <div className="relative w-24 h-24 bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-full flex items-center justify-center">
+                          <Icon name="ShieldAlert" size={42} className="text-red-400 animate-pulse" />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Access Denied Header */}
+                    <div className="space-y-4">
+                      <h3 className="text-3xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-red-400 tracking-wider">
+                        ДОСТУП ОГРАНИЧЕН
+                      </h3>
+                      <div className="bg-gray-800/80 border border-red-500/30 rounded-lg px-6 py-3">
+                        <p className="text-red-400/80 text-sm font-mono tracking-wide">
+                          УРОВЕНЬ СЕКРЕТНОСТИ: <span className="text-red-300 font-bold">МАКСИМАЛЬНЫЙ</span>
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Password Input */}
+                    <div className="space-y-6">
+                      <div className="text-orange-200">
+                        <p className="text-lg font-orbitron mb-2">ВВЕДИТЕ КОД ДОСТУПА:</p>
+                        <div className="flex gap-3">
+                          <div className="relative flex-1">
+                            <Input
+                              type={isPasswordVisible ? "text" : "password"}
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+                              placeholder="████████████"
+                              className="bg-gray-800/50 border-orange-400/50 text-orange-200 font-mono text-center text-lg tracking-widest placeholder:text-orange-600/30"
+                            />
+                            <Button
+                              type="button"
+                              onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                              className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 h-8 w-8 bg-transparent hover:bg-orange-400/20"
+                            >
+                              <Icon name={isPasswordVisible ? "EyeOff" : "Eye"} size={16} className="text-orange-400" />
+                            </Button>
+                          </div>
+                          <Button
+                            onClick={handlePasswordSubmit}
+                            className="bg-orange-400 text-black hover:bg-orange-500 font-orbitron font-bold px-8"
+                          >
+                            ВОЙТИ
+                          </Button>
+                        </div>
+                      </div>
+                      
+                      {attempts > 0 && (
+                        <div className="bg-red-900/30 border border-red-500/30 rounded-lg p-4">
+                          <p className="text-red-400 text-sm font-mono">
+                            ⚠️ НЕВЕРНЫЙ КОД ДОСТУПА ({attempts}/3)
+                          </p>
+                          {attempts >= 3 && (
+                            <p className="text-red-300 text-xs mt-2">
+                              СИСТЕМА БЕЗОПАСНОСТИ АКТИВИРОВАНА
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Info hint */}
+                    <div className="space-y-3">
+                      <div className="h-px bg-gradient-to-r from-transparent via-red-400/50 to-transparent"></div>
+                      <p className="text-orange-500/60 text-xs font-mono tracking-widest">
+                        ERROR_CODE: GHOST_401_UNAUTHORIZED
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Corner decorations */}
+                  <div className="absolute top-3 left-3 w-8 h-8 border-l-2 border-t-2 border-red-500/60 animate-pulse"></div>
+                  <div className="absolute top-3 right-3 w-8 h-8 border-r-2 border-t-2 border-red-500/60 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute bottom-3 left-3 w-8 h-8 border-l-2 border-b-2 border-red-500/60 animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute bottom-3 right-3 w-8 h-8 border-r-2 border-b-2 border-red-500/60 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            // Unlocked Content
+            <>
+              <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
+                <div className="bg-green-900/20 border border-green-400/30 rounded-lg p-6 mb-8">
+                  <p className="text-green-400 text-sm font-mono mb-2">✓ ДОСТУП РАЗРЕШЕН</p>
+                  <p className="text-green-300 text-xs">Добро пожаловать, агент. Данные рассекречены.</p>
+                </div>
+                <p>
+                  Отряд "Призрак" - сверхсекретное подразделение клонов-штурмовиков, созданное для выполнения 
+                  особо деликатных операций за линией фронта. Каждый боец прошел экспериментальную программу 
+                  психологического и физического усиления, получив способности, превышающие стандарты обычных клонов.
+                </p>
+                <p>
+                  Их истинная миссия - не только военные операции, но и устранение "проблемных" офицеров Республики, 
+                  ликвидация свидетелей секретных проектов и проведение операций под ложным флагом для 
+                  дискредитации Конфедерации независимых систем.
+                </p>
+                <p className="text-red-400 text-sm bg-red-900/20 border border-red-400/30 rounded p-4">
+                  ⚠️ ВНИМАНИЕ: Отряд имеет прямую связь с канцлером Палпатином и действует вне стандартной 
+                  командной структуры. Уровень автономности - МАКСИМАЛЬНЫЙ.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <Card className="bg-gray-900 border-green-400 hover-scale">
+                  <CardHeader className="text-center">
+                    <Icon name="Target" size={48} className="mx-auto text-green-400 mb-2" />
+                    <CardTitle className="text-green-200 font-orbitron">Элиминация</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-green-300">Точечное устранение целей любой сложности</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gray-900 border-green-400 hover-scale">
+                  <CardHeader className="text-center">
+                    <Icon name="Eye" size={48} className="mx-auto text-green-400 mb-2" />
+                    <CardTitle className="text-green-200 font-orbitron">Инфильтрация</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-green-300">Проникновение в любые структуры противника</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gray-900 border-green-400 hover-scale">
+                  <CardHeader className="text-center">
+                    <Icon name="Skull" size={48} className="mx-auto text-green-400 mb-2" />
+                    <CardTitle className="text-green-200 font-orbitron">Ликвидация</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-green-300">Бесследное устранение свидетелей</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
