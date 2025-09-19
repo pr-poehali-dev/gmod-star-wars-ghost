@@ -134,26 +134,67 @@ const MandoDossier = () => {
                   Клан Mhokar
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h4 className="text-green-400 font-semibold mb-2">Традиции:</h4>
-                  <p className="text-green-200">
-                    Клан Mhokar известен своими древними традициями кузнечного дела и создания 
-                    уникального оружия из бескара. Передают знания из поколения в поколение.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-green-400 font-semibold mb-2">Девиз:</h4>
-                  <p className="text-green-200 italic font-orbitron">
-                    "Beskar'gam, beskar'ad" - Броня бескара, дети бескара
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-green-400 font-semibold mb-2">Статус:</h4>
-                  <p className="text-green-200">
-                    Один из старейших кланов Мандалора, сохранивший независимость 
-                    во времена Войн Клонов.
-                  </p>
+              <CardContent className="flex items-center justify-center min-h-[200px]">
+                <div className="relative">
+                  {/* Background Effects */}
+                  <div className="absolute inset-0 bg-red-900/20 rounded-lg blur-sm"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-yellow-500/10 rounded-lg"></div>
+                  
+                  {/* Main Container */}
+                  <div className="relative bg-gray-900/90 border-2 border-red-500 rounded-lg p-8 backdrop-blur-sm">
+                    {/* Diagonal Warning Stripes */}
+                    <div className="absolute inset-0 rounded-lg overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent transform -skew-x-12"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/5 to-transparent transform skew-x-12"></div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="relative z-10 text-center space-y-4">
+                      {/* Warning Icon */}
+                      <div className="flex justify-center">
+                        <div className="relative">
+                          <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center animate-pulse">
+                            <Icon name="ShieldAlert" size={32} className="text-red-400" />
+                          </div>
+                          <div className="absolute inset-0 w-16 h-16 border-2 border-red-500/50 rounded-full animate-ping"></div>
+                        </div>
+                      </div>
+                      
+                      {/* Main Text */}
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-orbitron font-black text-red-400 tracking-wider">
+                          ЗАСЕКРЕЧЕНО
+                        </h3>
+                        <div className="flex items-center justify-center gap-2">
+                          <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                          <p className="text-red-300/80 text-sm font-mono tracking-widest">
+                            ДОСТУП ОГРАНИЧЕН
+                          </p>
+                          <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                        </div>
+                      </div>
+                      
+                      {/* Security Level */}
+                      <div className="bg-gray-800/80 border border-red-500/30 rounded px-4 py-2">
+                        <p className="text-red-400/70 text-xs font-mono">
+                          УРОВЕНЬ СЕКРЕТНОСТИ: <span className="text-red-300 font-bold">ВЫСШИЙ</span>
+                        </p>
+                      </div>
+                      
+                      {/* Glitch Effect Lines */}
+                      <div className="space-y-1">
+                        <div className="h-px bg-gradient-to-r from-transparent via-red-400/50 to-transparent"></div>
+                        <div className="h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent"></div>
+                        <div className="h-px bg-gradient-to-r from-transparent via-red-400/50 to-transparent"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Corner Decorations */}
+                    <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-red-500/50"></div>
+                    <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-red-500/50"></div>
+                    <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-red-500/50"></div>
+                    <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-red-500/50"></div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
