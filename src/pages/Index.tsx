@@ -32,7 +32,7 @@ const Index = () => {
       id: "CT-04-5536",
       name: "Позывной: Rampa",
       rank: "Боец",
-      description: "Боевой медик, спасший жизни десятков товарищей в самых опасных ситуациях.",
+      description: "Боевой танк, спасший жизни десятков товарищей в самых опасных ситуациях.",
       image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
       specialization: "Отсутствует",
       kills: 58,
