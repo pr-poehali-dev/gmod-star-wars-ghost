@@ -21,7 +21,7 @@ const Index = () => {
       id: "CT-07-2114", 
       name: "Позывной: Nuar",
       rank: "Зам. лидера",
-      description: "Элитный снайпер с безупречной точностью. Мастер скрытных операций.",
+      description: "Элитный пилот отряда. Мастер скрытных операций.",
       image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
       specialization: "Пилот",
       kills: 203,
