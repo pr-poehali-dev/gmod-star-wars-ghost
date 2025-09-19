@@ -429,7 +429,7 @@ const CloneDossier = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg"></div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h4 className="text-orange-300 font-orbitron font-bold text-lg mb-2">
-                      ЭРК "ПРИЗРАК"
+                      ЭРК «ПРИЗРАК»
                     </h4>
                     <div className="flex flex-wrap gap-2 text-xs">
                       <span className="bg-orange-400/20 border border-orange-400/50 rounded px-2 py-1 text-orange-300">
