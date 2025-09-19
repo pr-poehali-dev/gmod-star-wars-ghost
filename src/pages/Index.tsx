@@ -86,34 +86,11 @@ const Index = () => {
             </div>
           </div>
           
-          {/* Star Wars Style Title */}
-          <div className="mb-8 relative">
-            <div className="relative inline-block">
-              {/* Glow effect background */}
-              <div className="absolute inset-0 blur-xl">
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black text-orange-400 tracking-wider opacity-60">
-                  ПРИЗРАК
-                </h1>
-              </div>
-              
-              {/* Main title with hologram effect */}
-              <h1 className="relative text-6xl md:text-8xl lg:text-9xl font-orbitron font-black mb-6 tracking-wider
-                         text-transparent bg-gradient-to-b from-orange-200 via-orange-400 to-orange-600 bg-clip-text
-                         drop-shadow-[0_0_20px_rgba(251,146,60,0.8)]
-                         animate-pulse">
-                ПРИЗРАК
-              </h1>
-              
-              {/* Hologram scan lines */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-400/10 to-transparent 
-                            opacity-30 animate-pulse pointer-events-none"></div>
-              
-              {/* Side glow bars */}
-              <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-transparent via-orange-400 to-transparent 
-                            opacity-60 animate-pulse"></div>
-              <div className="absolute -right-4 top-0 w-1 h-full bg-gradient-to-b from-transparent via-orange-400 to-transparent 
-                            opacity-60 animate-pulse"></div>
-            </div>
+          {/* Simplified Title */}
+          <div className="mb-8">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black text-orange-400 mb-6 tracking-wider">
+              ПРИЗРАК
+            </h1>
           </div>
           
           {/* Simplified Subtitle */}
