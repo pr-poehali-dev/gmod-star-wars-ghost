@@ -172,17 +172,40 @@ const CloneDossier = () => {
                   <div className="relative w-64 h-64">
                     {/* Background Grid */}
                     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
-                      {/* Grid circles */}
-                      <circle cx="100" cy="100" r="80" fill="none" stroke="#374151" strokeWidth="1" opacity="0.3"/>
-                      <circle cx="100" cy="100" r="60" fill="none" stroke="#374151" strokeWidth="1" opacity="0.3"/>
-                      <circle cx="100" cy="100" r="40" fill="none" stroke="#374151" strokeWidth="1" opacity="0.3"/>
-                      <circle cx="100" cy="100" r="20" fill="none" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      {/* Gradient Definitions */}
+                      <defs>
+                        <radialGradient id="radarGradient" cx="50%" cy="50%" r="50%">
+                          <stop offset="0%" stopColor="#fb923c" stopOpacity="0.3"/>
+                          <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.2"/>
+                          <stop offset="100%" stopColor="#d97706" stopOpacity="0.1"/>
+                        </radialGradient>
+                        <linearGradient id="polygonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#fb923c" stopOpacity="0.4"/>
+                          <stop offset="25%" stopColor="#60a5fa" stopOpacity="0.3"/>
+                          <stop offset="50%" stopColor="#4ade80" stopOpacity="0.3"/>
+                          <stop offset="75%" stopColor="#a855f7" stopOpacity="0.3"/>
+                          <stop offset="100%" stopColor="#facc15" stopOpacity="0.4"/>
+                        </linearGradient>
+                        <filter id="glow">
+                          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                          <feMerge> 
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                          </feMerge>
+                        </filter>
+                      </defs>
                       
-                      {/* Grid lines */}
-                      <line x1="100" y1="20" x2="100" y2="180" stroke="#374151" strokeWidth="1" opacity="0.3"/>
-                      <line x1="20" y1="100" x2="180" y2="100" stroke="#374151" strokeWidth="1" opacity="0.3"/>
-                      <line x1="156.56" y1="43.44" x2="43.44" y2="156.56" stroke="#374151" strokeWidth="1" opacity="0.3"/>
-                      <line x1="156.56" y1="156.56" x2="43.44" y2="43.44" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      {/* Grid circles with gradient */}
+                      <circle cx="100" cy="100" r="80" fill="url(#radarGradient)" stroke="#fb923c" strokeWidth="1" opacity="0.4"/>
+                      <circle cx="100" cy="100" r="60" fill="none" stroke="#f59e0b" strokeWidth="1" opacity="0.3"/>
+                      <circle cx="100" cy="100" r="40" fill="none" stroke="#d97706" strokeWidth="1" opacity="0.3"/>
+                      <circle cx="100" cy="100" r="20" fill="none" stroke="#92400e" strokeWidth="1" opacity="0.3"/>
+                      
+                      {/* Grid lines with glow */}
+                      <line x1="100" y1="20" x2="100" y2="180" stroke="#fb923c" strokeWidth="1" opacity="0.4" filter="url(#glow)"/>
+                      <line x1="20" y1="100" x2="180" y2="100" stroke="#fb923c" strokeWidth="1" opacity="0.4" filter="url(#glow)"/>
+                      <line x1="156.56" y1="43.44" x2="43.44" y2="156.56" stroke="#fb923c" strokeWidth="1" opacity="0.3"/>
+                      <line x1="156.56" y1="156.56" x2="43.44" y2="43.44" stroke="#fb923c" strokeWidth="1" opacity="0.3"/>
                       
                       {/* Stats polygon */}
                       <polygon
@@ -193,18 +216,26 @@ const CloneDossier = () => {
                           ${100 + (clone.stats.tactics / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 6 / 5)},${100 + (clone.stats.tactics / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 6 / 5)}
                           ${100 + (clone.stats.leadership / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 8 / 5)},${100 + (clone.stats.leadership / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 8 / 5)}
                         `}
-                        fill="rgba(251, 146, 60, 0.2)"
+                        fill="url(#polygonGradient)"
                         stroke="#fb923c"
-                        strokeWidth="2"
+                        strokeWidth="3"
+                        filter="url(#glow)"
                         className="animate-pulse"
                       />
                       
-                      {/* Stat points */}
-                      <circle cx="100" cy={100 - (clone.stats.accuracy / 100) * 80} r="4" fill="#fb923c" className="drop-shadow-lg"/>
-                      <circle cx={100 + (clone.stats.stealth / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 2 / 5)} cy={100 + (clone.stats.stealth / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 2 / 5)} r="4" fill="#60a5fa" className="drop-shadow-lg"/>
-                      <circle cx={100 + (clone.stats.endurance / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 4 / 5)} cy={100 + (clone.stats.endurance / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 4 / 5)} r="4" fill="#4ade80" className="drop-shadow-lg"/>
-                      <circle cx={100 + (clone.stats.tactics / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 6 / 5)} cy={100 + (clone.stats.tactics / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 6 / 5)} r="4" fill="#a855f7" className="drop-shadow-lg"/>
-                      <circle cx={100 + (clone.stats.leadership / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 8 / 5)} cy={100 + (clone.stats.leadership / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 8 / 5)} r="4" fill="#facc15" className="drop-shadow-lg"/>
+                      {/* Stat points with enhanced glow */}
+                      <circle cx="100" cy={100 - (clone.stats.accuracy / 100) * 80} r="6" fill="#fb923c" filter="url(#glow)" className="drop-shadow-lg"/>
+                      <circle cx={100 + (clone.stats.stealth / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 2 / 5)} cy={100 + (clone.stats.stealth / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 2 / 5)} r="6" fill="#60a5fa" filter="url(#glow)" className="drop-shadow-lg"/>
+                      <circle cx={100 + (clone.stats.endurance / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 4 / 5)} cy={100 + (clone.stats.endurance / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 4 / 5)} r="6" fill="#4ade80" filter="url(#glow)" className="drop-shadow-lg"/>
+                      <circle cx={100 + (clone.stats.tactics / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 6 / 5)} cy={100 + (clone.stats.tactics / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 6 / 5)} r="6" fill="#a855f7" filter="url(#glow)" className="drop-shadow-lg"/>
+                      <circle cx={100 + (clone.stats.leadership / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 8 / 5)} cy={100 + (clone.stats.leadership / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 8 / 5)} r="6" fill="#facc15" filter="url(#glow)" className="drop-shadow-lg"/>
+                      
+                      {/* Inner highlight circles */}
+                      <circle cx="100" cy={100 - (clone.stats.accuracy / 100) * 80} r="3" fill="#fbbf24" opacity="0.8"/>
+                      <circle cx={100 + (clone.stats.stealth / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 2 / 5)} cy={100 + (clone.stats.stealth / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 2 / 5)} r="3" fill="#93c5fd" opacity="0.8"/>
+                      <circle cx={100 + (clone.stats.endurance / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 4 / 5)} cy={100 + (clone.stats.endurance / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 4 / 5)} r="3" fill="#86efac" opacity="0.8"/>
+                      <circle cx={100 + (clone.stats.tactics / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 6 / 5)} cy={100 + (clone.stats.tactics / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 6 / 5)} r="3" fill="#c4b5fd" opacity="0.8"/>
+                      <circle cx={100 + (clone.stats.leadership / 100) * 80 * Math.cos(-Math.PI / 2 + Math.PI * 8 / 5)} cy={100 + (clone.stats.leadership / 100) * 80 * Math.sin(-Math.PI / 2 + Math.PI * 8 / 5)} r="3" fill="#fde047" opacity="0.8"/>
                     </svg>
                     
                     {/* Stat Labels */}
