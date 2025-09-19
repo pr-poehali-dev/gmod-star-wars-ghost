@@ -48,7 +48,7 @@ const MandoDossier = () => {
                 </div>
                 <div>
                   <span className="text-green-400 font-semibold">Родной мир: </span>
-                  Чисс
+                  Мандалор
                 </div>
                 <div>
                   <span className="text-green-400 font-semibold">Роль: </span>
