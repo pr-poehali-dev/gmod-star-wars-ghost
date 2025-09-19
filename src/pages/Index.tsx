@@ -313,12 +313,13 @@ const Index = () => {
                     <div className="space-y-3">
                       <h4 className="text-orange-200 font-orbitron font-bold">Schnee Mhokar</h4>
                       <p className="text-green-400 text-sm">Мандалорец</p>
-                      <Button 
-                        className="w-full bg-green-400 text-black hover:bg-green-500 font-orbitron text-sm"
-                        onClick={() => window.open('https://void-wiki.org/wiki/Schnee_Mhokar', '_blank')}
-                      >
-                        ДОСЬЕ
-                      </Button>
+                      <Link to="/mando">
+                        <Button 
+                          className="w-full bg-green-400 text-black hover:bg-green-500 font-orbitron text-sm"
+                        >
+                          ДОСЬЕ
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </CardContent>
