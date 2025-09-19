@@ -460,109 +460,160 @@ const Index = () => {
               <div className="absolute top-40 left-60 w-1 h-1 bg-green-300 rounded-full animate-pulse" style={{animationDelay: '2.5s'}}></div>
             </div>
             
-            {/* Galaxy Grid */}
-            <div className="relative min-h-[600px] grid grid-cols-6 grid-rows-4 gap-4">
-              {/* Core Worlds */}
-              <div className="col-span-2 row-span-2 col-start-3 row-start-2 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-yellow-400/20 rounded-lg border border-orange-400/50"></div>
-                <div className="relative z-10 p-4 text-center">
-                  <h3 className="text-orange-300 font-orbitron font-bold mb-4">МИРЫ ЯДРА</h3>
-                  
-                  {/* Coruscant */}
-                  <div className="group relative mb-3 p-2 bg-orange-900/30 border border-orange-400 rounded-lg hover:bg-orange-900/50 transition-all cursor-pointer">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
-                      <span className="text-orange-200 text-sm font-semibold">Корусант</span>
+            {/* Galaxy Map - Planet System */}
+            <div className="relative min-h-[600px] overflow-hidden">
+              
+              {/* Central Core Region */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                {/* Core Worlds Orbit */}
+                <div className="w-48 h-48 border border-orange-400/20 rounded-full animate-spin" style={{animationDuration: '60s'}}></div>
+                
+                {/* Coruscant - Center */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+                  <div className="relative">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-yellow-300 rounded-full shadow-lg shadow-orange-400/50 animate-pulse"></div>
+                    <div className="absolute inset-0 w-8 h-8 border-2 border-orange-400/30 rounded-full animate-ping"></div>
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="bg-black/90 border border-orange-400 rounded px-2 py-1 text-xs text-orange-300 whitespace-nowrap">
+                        Корусант - Столица
+                      </div>
                     </div>
-                    <p className="text-orange-300/70 text-xs mt-1">Столица Республики</p>
                   </div>
-                  
-                  {/* Alderaan */}
-                  <div className="group relative mb-3 p-2 bg-blue-900/30 border border-blue-400 rounded-lg hover:bg-blue-900/50 transition-all cursor-pointer">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-                      <span className="text-blue-200 text-sm font-semibold">Альдераан</span>
+                </div>
+                
+                {/* Alderaan */}
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 group cursor-pointer">
+                  <div className="relative">
+                    <div className="w-5 h-5 bg-gradient-to-br from-blue-400 to-blue-200 rounded-full shadow-lg shadow-blue-400/50"></div>
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="bg-black/90 border border-blue-400 rounded px-2 py-1 text-xs text-blue-300 whitespace-nowrap">
+                        Альдераан - Мирный мир
+                      </div>
                     </div>
-                    <p className="text-blue-300/70 text-xs mt-1">Мирный мир</p>
                   </div>
-                  
-                  {/* Corellia */}
-                  <div className="group relative p-2 bg-green-900/30 border border-green-400 rounded-lg hover:bg-green-900/50 transition-all cursor-pointer">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="text-green-200 text-sm font-semibold">Кореллия</span>
+                </div>
+                
+                {/* Corellia */}
+                <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 group cursor-pointer">
+                  <div className="relative">
+                    <div className="w-5 h-5 bg-gradient-to-br from-green-400 to-emerald-300 rounded-full shadow-lg shadow-green-400/50"></div>
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="bg-black/90 border border-green-400 rounded px-2 py-1 text-xs text-green-300 whitespace-nowrap">
+                        Кореллия - Операция "Тень"
+                      </div>
                     </div>
-                    <p className="text-green-300/70 text-xs mt-1">Операция "Тень"</p>
                   </div>
                 </div>
               </div>
               
-              {/* Outer Rim */}
+              {/* Outer Rim Planets */}
+              
               {/* Tatooine */}
-              <div className="relative">
-                <div className="p-3 bg-yellow-900/30 border border-yellow-400 rounded-lg hover:bg-yellow-900/50 transition-all cursor-pointer h-full">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-                    <span className="text-yellow-200 text-sm font-semibold">Татуин</span>
+              <div className="absolute top-20 left-20 group cursor-pointer">
+                <div className="relative">
+                  <div className="w-12 h-12 border border-yellow-400/30 rounded-full animate-spin" style={{animationDuration: '40s'}}></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-300 rounded-full shadow-lg shadow-yellow-400/50"></div>
+                    <div className="absolute inset-0 w-6 h-6 border border-yellow-400/40 rounded-full animate-pulse"></div>
                   </div>
-                  <p className="text-yellow-300/70 text-xs">Пустынный мир</p>
+                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-black/90 border border-yellow-400 rounded px-2 py-1 text-xs text-yellow-300 whitespace-nowrap">
+                      Татуин - Пустынный мир
+                    </div>
+                  </div>
                 </div>
               </div>
               
               {/* Kamino */}
-              <div className="relative col-start-6 row-start-1">
-                <div className="p-3 bg-cyan-900/30 border border-cyan-400 rounded-lg hover:bg-cyan-900/50 transition-all cursor-pointer h-full">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                    <span className="text-cyan-200 text-sm font-semibold">Камино</span>
+              <div className="absolute top-16 right-16 group cursor-pointer">
+                <div className="relative">
+                  <div className="w-16 h-16 border border-cyan-400/30 rounded-full animate-spin" style={{animationDuration: '35s'}}></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-7 h-7 bg-gradient-to-br from-cyan-400 to-blue-300 rounded-full shadow-lg shadow-cyan-400/50 animate-pulse"></div>
+                    <div className="absolute inset-0 w-7 h-7 border border-cyan-400/40 rounded-full animate-ping"></div>
                   </div>
-                  <p className="text-cyan-300/70 text-xs">Мир клонов</p>
+                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-black/90 border border-cyan-400 rounded px-2 py-1 text-xs text-cyan-300 whitespace-nowrap">
+                      Камино - Мир клонов
+                    </div>
+                  </div>
                 </div>
               </div>
               
               {/* Geonosis */}
-              <div className="relative col-start-1 row-start-4">
-                <div className="p-3 bg-red-900/30 border border-red-400 rounded-lg hover:bg-red-900/50 transition-all cursor-pointer h-full">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
-                    <span className="text-red-200 text-sm font-semibold">Джеонозис</span>
+              <div className="absolute bottom-16 left-12 group cursor-pointer">
+                <div className="relative">
+                  <div className="w-14 h-14 border border-red-400/30 rounded-full animate-spin" style={{animationDuration: '45s'}}></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-6 h-6 bg-gradient-to-br from-red-400 to-orange-400 rounded-full shadow-lg shadow-red-400/50"></div>
+                    <div className="absolute inset-0 w-6 h-6 border border-red-400/40 rounded-full animate-pulse"></div>
                   </div>
-                  <p className="text-red-300/70 text-xs">Первая битва</p>
+                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-black/90 border border-red-400 rounded px-2 py-1 text-xs text-red-300 whitespace-nowrap">
+                      Джеонозис - Первая битва
+                    </div>
+                  </div>
                 </div>
               </div>
               
               {/* Ryloth */}
-              <div className="relative col-start-2 row-start-1">
-                <div className="p-3 bg-purple-900/30 border border-purple-400 rounded-lg hover:bg-purple-900/50 transition-all cursor-pointer h-full">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
-                    <span className="text-purple-200 text-sm font-semibold">Рилот</span>
+              <div className="absolute top-32 left-32 group cursor-pointer">
+                <div className="relative">
+                  <div className="w-10 h-10 border border-purple-400/30 rounded-full animate-spin" style={{animationDuration: '50s'}}></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-5 h-5 bg-gradient-to-br from-purple-400 to-pink-300 rounded-full shadow-lg shadow-purple-400/50"></div>
                   </div>
-                  <p className="text-purple-300/70 text-xs">Зачистка базы</p>
+                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-black/90 border border-purple-400 rounded px-2 py-1 text-xs text-purple-300 whitespace-nowrap">
+                      Рилот - Зачистка базы
+                    </div>
+                  </div>
                 </div>
               </div>
               
               {/* Naboo */}
-              <div className="relative col-start-5 row-start-4">
-                <div className="p-3 bg-emerald-900/30 border border-emerald-400 rounded-lg hover:bg-emerald-900/50 transition-all cursor-pointer h-full">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                    <span className="text-emerald-200 text-sm font-semibold">Набу</span>
+              <div className="absolute bottom-20 right-20 group cursor-pointer">
+                <div className="relative">
+                  <div className="w-12 h-12 border border-emerald-400/30 rounded-full animate-spin" style={{animationDuration: '42s'}}></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-6 h-6 bg-gradient-to-br from-emerald-400 to-green-300 rounded-full shadow-lg shadow-emerald-400/50"></div>
                   </div>
-                  <p className="text-emerald-300/70 text-xs">Королевский мир</p>
+                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-black/90 border border-emerald-400 rounded px-2 py-1 text-xs text-emerald-300 whitespace-nowrap">
+                      Набу - Королевский мир
+                    </div>
+                  </div>
                 </div>
               </div>
               
               {/* Anaxes */}
-              <div className="relative col-start-6 row-start-3">
-                <div className="p-3 bg-indigo-900/30 border border-indigo-400 rounded-lg hover:bg-indigo-900/50 transition-all cursor-pointer h-full">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <div className="w-3 h-3 bg-indigo-400 rounded-full animate-pulse"></div>
-                    <span className="text-indigo-200 text-sm font-semibold">Анаксис</span>
+              <div className="absolute top-40 right-32 group cursor-pointer">
+                <div className="relative">
+                  <div className="w-11 h-11 border border-indigo-400/30 rounded-full animate-spin" style={{animationDuration: '38s'}}></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-5 h-5 bg-gradient-to-br from-indigo-400 to-blue-400 rounded-full shadow-lg shadow-indigo-400/50"></div>
                   </div>
-                  <p className="text-indigo-300/70 text-xs">Битва за мир</p>
+                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-black/90 border border-indigo-400 rounded px-2 py-1 text-xs text-indigo-300 whitespace-nowrap">
+                      Анаксис - Битва за мир
+                    </div>
+                  </div>
                 </div>
               </div>
+              
+              {/* Additional smaller planets/systems */}
+              <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2">
+                <div className="w-3 h-3 bg-gray-400 rounded-full opacity-60 animate-pulse"></div>
+              </div>
+              
+              <div className="absolute top-1/2 left-16 transform -translate-y-1/2">
+                <div className="w-2 h-2 bg-white rounded-full opacity-50 animate-pulse" style={{animationDelay: '1s'}}></div>
+              </div>
+              
+              <div className="absolute top-1/3 right-1/4">
+                <div className="w-2 h-2 bg-blue-300 rounded-full opacity-40 animate-pulse" style={{animationDelay: '2s'}}></div>
+              </div>
+              
             </div>
             
             {/* Legend */}
