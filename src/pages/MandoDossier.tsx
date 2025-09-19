@@ -3,8 +3,84 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useEffect, useRef } from 'react';
 
 const MandoDossier = () => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    // Создаем звуковой эффект предупреждения
+    const createWarningSound = () => {
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const oscillator1 = audioContext.createOscillator();
+      const oscillator2 = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator1.type = 'square';
+      oscillator1.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator1.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.3);
+      
+      oscillator2.type = 'sawtooth';
+      oscillator2.frequency.setValueAtTime(200, audioContext.currentTime);
+      oscillator2.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.3);
+      
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+      
+      oscillator1.connect(gainNode);
+      oscillator2.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator1.start(audioContext.currentTime);
+      oscillator2.start(audioContext.currentTime);
+      oscillator1.stop(audioContext.currentTime + 0.3);
+      oscillator2.stop(audioContext.currentTime + 0.3);
+    };
+
+    // Воспроизводим звук при загрузке компонента
+    const timer = setTimeout(() => {
+      try {
+        createWarningSound();
+      } catch (error) {
+        console.log('Audio context not available');
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const playAccessDeniedSound = () => {
+    try {
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      
+      // Звук "Доступ запрещен"
+      const createBeepSequence = () => {
+        const times = [0, 0.15, 0.3];
+        times.forEach((time, index) => {
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          
+          oscillator.type = 'square';
+          oscillator.frequency.setValueAtTime(1200 - (index * 200), audioContext.currentTime + time);
+          
+          gainNode.gain.setValueAtTime(0, audioContext.currentTime + time);
+          gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + time + 0.02);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + time + 0.1);
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          oscillator.start(audioContext.currentTime + time);
+          oscillator.stop(audioContext.currentTime + time + 0.1);
+        });
+      };
+      
+      createBeepSequence();
+    } catch (error) {
+      console.log('Audio context not available');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black text-green-200">
       {/* Header */}
@@ -134,7 +210,11 @@ const MandoDossier = () => {
                   Клан Mhokar
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex items-center justify-center min-h-[280px] relative overflow-hidden">
+              <CardContent 
+                className="flex items-center justify-center min-h-[280px] relative overflow-hidden cursor-pointer"
+                onClick={playAccessDeniedSound}
+                onMouseEnter={playAccessDeniedSound}
+              >
                 {/* Animated Background Particles */}
                 <div className="absolute inset-0">
                   <div className="absolute top-4 left-8 w-1 h-1 bg-red-400/60 rounded-full animate-ping" style={{animationDelay: '0s'}}></div>
