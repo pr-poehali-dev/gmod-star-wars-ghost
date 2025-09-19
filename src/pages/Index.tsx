@@ -310,9 +310,15 @@ const Index = () => {
                     <div className="bg-green-900/30 border border-green-400 rounded-lg p-3">
                       <span className="text-green-400 font-semibold text-sm">СЕМЬЯ</span>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <h4 className="text-orange-200 font-orbitron font-bold">Schnee Mhokar</h4>
                       <p className="text-green-400 text-sm">Мандалорец</p>
+                      <Button 
+                        className="w-full bg-green-400 text-black hover:bg-green-500 font-orbitron text-sm"
+                        onClick={() => window.open('https://void-wiki.org/wiki/Schnee_Mhokar', '_blank')}
+                      >
+                        ДОСЬЕ
+                      </Button>
                     </div>
                   </div>
                 </CardContent>
