@@ -23,28 +23,36 @@ const MandoDossier = () => {
             <div className="flex-1">
               <div className="flex items-center gap-4 mb-4">
                 <h1 className="text-4xl md:text-5xl font-orbitron font-bold text-green-400">
-                  Schnee Mhokar
+                  Шнэ Мхокар
                 </h1>
                 <Badge className="bg-green-400 text-black text-lg px-4 py-2">
-                  Мандалорец
+                  Мандалорский наёмник
                 </Badge>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                 <div>
-                  <span className="text-green-400 font-semibold">Клан: </span>
-                  Mhokar
+                  <span className="text-green-400 font-semibold">Позывной: </span>
+                  «Красная Тень»
                 </div>
                 <div>
-                  <span className="text-green-400 font-semibold">Статус: </span>
-                  Активен
+                  <span className="text-green-400 font-semibold">Раса: </span>
+                  Чисс
                 </div>
                 <div>
-                  <span className="text-green-400 font-semibold">Планета: </span>
-                  Мандалор
+                  <span className="text-green-400 font-semibold">Пол: </span>
+                  Женский
                 </div>
                 <div>
-                  <span className="text-green-400 font-semibold">Связь: </span>
-                  Семейная
+                  <span className="text-green-400 font-semibold">Возраст: </span>
+                  21 год
+                </div>
+                <div>
+                  <span className="text-green-400 font-semibold">Родной мир: </span>
+                  Чисс
+                </div>
+                <div>
+                  <span className="text-green-400 font-semibold">Роль: </span>
+                  Наставник отряда «Призрак»
                 </div>
               </div>
             </div>
@@ -69,23 +77,25 @@ const MandoDossier = () => {
                 <div>
                   <h4 className="text-green-400 font-semibold mb-2">История:</h4>
                   <p className="text-green-200 leading-relaxed">
-                    Schnee Mhokar — мандалорский воин из древнего клана Mhokar, известного своими традициями 
-                    и мастерством в бою. Связан семейными узами с членами отряда «Призрак», что создаёт 
-                    уникальную связь между мандалорской культурой и армией клонов Республики.
+                    Шнэ Мхокар — молодая чисс, получившая позывной «Красная Тень» за свою способность 
+                    незаметно появляться и исчезать на поле боя. В 21 год она уже стала опытным 
+                    мандалорским наёмником, сочетающим природную хитрость чисс с мандалорскими традициями.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-green-400 font-semibold mb-2">Роль:</h4>
+                  <h4 className="text-green-400 font-semibold mb-2">Роль наставника:</h4>
                   <p className="text-green-200">
-                    Выступает в качестве связующего звена между мандалорскими традициями и современными 
-                    военными операциями. Обеспечивает поддержку и советы отряду «Призрак».
+                    Назначена наставником элитного отряда «Призрак». Обучает клонов тактикам скрытности, 
+                    выживания и нестандартным боевым приёмам. Её опыт наёмника помогает отряду в самых 
+                    сложных миссиях.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-green-400 font-semibold mb-2">Кодекс:</h4>
+                  <h4 className="text-green-400 font-semibold mb-2">Происхождение:</h4>
                   <p className="text-green-200">
-                    Следует древнему мандалорскому кодексу: честь, семья, сила. Верен традициям своего 
-                    народа, но адаптируется к требованиям современной войны.
+                    Родилась на родном мире чисс, но в раннем возрасте была принята в мандалорскую культуру. 
+                    Это уникальное сочетание дало ей преимущества обеих рас: аналитический ум чисс и 
+                    боевые традиции мандалорцев.
                   </p>
                 </div>
               </CardContent>
