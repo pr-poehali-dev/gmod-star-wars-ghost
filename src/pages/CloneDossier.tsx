@@ -472,6 +472,29 @@ const CloneDossier = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-black py-12 px-4 md:px-8 text-center">
+        <div className="max-w-4xl mx-auto">
+          <img 
+            src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
+            alt="Эмблема Галактической Республики" 
+            className="w-12 h-12 mx-auto mb-4 brightness-0 invert"
+          />
+          <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4">
+            ДЛЯ РЕСПУБЛИКИ. ДЛЯ ДЕМОКРАТИИ.
+          </h3>
+          <p className="text-orange-300">
+            Отряд "Призрак" - ЭРК В.А.Р.
+          </p>
+          <div className="mt-8 pt-8 border-t border-orange-400/30">
+            <p className="text-orange-400 text-sm">
+              © 22 ДБЯ - 19 ДБЯ | Войны клонов | Gmod RP Server Void<br />
+              Автор: Rampa
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
