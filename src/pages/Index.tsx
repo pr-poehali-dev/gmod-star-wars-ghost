@@ -100,17 +100,9 @@ const Index = () => {
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-orbitron font-bold text-orange-300 mb-3 tracking-wide">
                   ЭЛИТНЫЙ КЛОН-ОТРЯД РЕСПУБЛИКИ
                 </h2>
-
-              </div>
-              
-              {/* Small badges under the main plate */}
-              <div className="flex gap-4 justify-center mt-6">
-                <div className="bg-orange-400/20 border border-orange-400/40 rounded-full px-4 py-2">
-                  <span className="text-orange-300 font-orbitron font-bold text-sm tracking-wider">ЭРК</span>
-                </div>
-                <div className="bg-orange-400/20 border border-orange-400/40 rounded-full px-4 py-2">
-                  <span className="text-orange-300 font-orbitron font-bold text-sm tracking-wider">БСО</span>
-                </div>
+                <p className="text-lg md:text-xl text-orange-400/80 font-medium">
+                  Специальное подразделение клонов-штурмовиков Галактической Республики
+                </p>
               </div>
             </div>
           </div>
