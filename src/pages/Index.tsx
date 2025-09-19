@@ -3,8 +3,137 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Input } from "@/components/ui/input";
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [attempts, setAttempts] = useState(0);
+  const [showMatrix, setShowMatrix] = useState(false);
+
+  useEffect(() => {
+    // Убираем загрузку через 3 секунды
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    // Добавляем цифровой дождь через 4 секунды
+    const matrixTimer = setTimeout(() => {
+      setShowMatrix(true);
+    }, 4000);
+
+    return () => {
+      clearTimeout(loadingTimer);
+      clearTimeout(matrixTimer);
+    };
+  }, []);
+
+  const handlePasswordSubmit = () => {
+    if (password === "ShadowGhost") {
+      setIsUnlocked(true);
+      setIsPasswordVisible(false);
+      playSuccessSound();
+    } else {
+      setAttempts(prev => prev + 1);
+      setPassword("");
+      playDeniedSound();
+    }
+  };
+
+  const playSuccessSound = () => {
+    try {
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.3);
+      
+      gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.3);
+    } catch (error) {
+      console.log('Audio not available');
+    }
+  };
+
+  const playDeniedSound = () => {
+    try {
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      
+      [0, 0.15, 0.3].forEach((time, index) => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.type = 'square';
+        oscillator.frequency.setValueAtTime(1200 - (index * 200), audioContext.currentTime + time);
+        
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime + time);
+        gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + time + 0.02);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + time + 0.1);
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.start(audioContext.currentTime + time);
+        oscillator.stop(audioContext.currentTime + time + 0.1);
+      });
+    } catch (error) {
+      console.log('Audio not available');
+    }
+  };
+
+  // Компонент цифрового дождя
+  const DigitalRain = () => {
+    const [drops, setDrops] = useState<Array<{id: number, left: number, delay: number, duration: number}>>([]);
+
+    useEffect(() => {
+      const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+      const newDrops = [];
+      
+      for (let i = 0; i < 50; i++) {
+        newDrops.push({
+          id: i,
+          left: Math.random() * 100,
+          delay: Math.random() * 5,
+          duration: 3 + Math.random() * 4
+        });
+      }
+      setDrops(newDrops);
+    }, []);
+
+    return (
+      <div className="digital-rain">
+        {drops.map((drop) => (
+          <div
+            key={drop.id}
+            className="rain-drop"
+            style={{
+              left: `${drop.left}%`,
+              animationDelay: `${drop.delay}s`,
+              animationDuration: `${drop.duration}s`
+            }}
+          >
+            {Array.from({length: 20}, (_, i) => (
+              <div key={i} style={{marginBottom: '10px'}}>
+                {String.fromCharCode(Math.random() * (126 - 33) + 33)}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   const clones = [
     {
       id: "CT-01-1044",
@@ -42,412 +171,352 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-orange-200">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-black to-gray-900">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23374151%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-        <div className="text-center z-10 animate-fade-in">
-          <div className="mb-6">
-            <img 
-              src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
-              alt="Эмблема Галактической Республики" 
-              className="w-40 h-40 mx-auto mb-4 brightness-0 invert"
-            />
-          </div>
-          <h1 className="text-6xl md:text-8xl font-orbitron font-black text-orange-200 mb-4 tracking-wider">
-            ПРИЗРАК
-          </h1>
-          <p className="text-xl md:text-2xl text-orange-400 font-medium mb-8">
-            Элитный клон-отряд Республики
-          </p>
-          <div className="flex justify-center gap-4 text-sm font-orbitron">
-            <Badge variant="outline" className="border-orange-400 text-orange-400">
-              ЭРК
-            </Badge>
-            <Badge variant="outline" className="border-orange-400 text-orange-400">
-              БСО
-            </Badge>
+    <>
+      {/* Анимированная заставка */}
+      {isLoading && (
+        <div className="loader-overlay">
+          <div className="hologram-loader">
+            <div className="hologram-ring"></div>
+            <div className="hologram-ring"></div>
+            <div className="hologram-ring"></div>
+            <div className="loader-text">ИНИЦИАЛИЗАЦИЯ СИСТЕМЫ</div>
           </div>
         </div>
-      </section>
+      )}
 
-      {/* About Squad Section */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 mb-6">
-            О ОТРЯДЕ ПРИЗРАК
-          </h2>
-          <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
-            <p>
-              Отряд "Призрак" - элитное подразделение клонов-штурмовиков, специализирующееся на 
-              секретных операциях и разведке в тылу врага. Сформированный в начале Войн клонов, 
-              отряд быстро заслужил репутацию одного из самых эффективных спецподразделений Республики.
-            </p>
-            <p>
-              Бойцы отряда проходят особую подготовку по скрытным операциям, снайперскому делу и 
-              тактической медицине. Их основная задача - проведение операций глубоко в тылу противника, 
-              где обычные войска не могут действовать эффективно.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <Card className="bg-gray-900 border-orange-400 hover-scale">
-              <CardHeader className="text-center">
-                <Icon name="Target" size={48} className="mx-auto text-orange-400 mb-2" />
-                <CardTitle className="text-orange-200 font-orbitron">Точность</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-orange-300">Безупречная меткость в любых условиях</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-gray-900 border-orange-400 hover-scale">
-              <CardHeader className="text-center">
-                <Icon name="Eye" size={48} className="mx-auto text-orange-400 mb-2" />
-                <CardTitle className="text-orange-200 font-orbitron">Скрытность</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-orange-300">Невидимы для врага, смертельны в атаке</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-gray-900 border-orange-400 hover-scale">
-              <CardHeader className="text-center">
-                <Icon name="Users" size={48} className="mx-auto text-orange-400 mb-2" />
-                <CardTitle className="text-orange-200 font-orbitron">Единство</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-orange-300">Братство, закаленное в боях</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      {/* Цифровой дождь */}
+      {showMatrix && !isUnlocked && <DigitalRain />}
 
-      {/* Squad History */}
-      <section className="py-20 px-4 md:px-8 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
-            ИСТОРИЯ ФОРМИРОВАНИЯ
-          </h2>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="animate-fade-in">
-              <p className="text-orange-200 text-lg leading-relaxed mb-6 text-justify">
-                После битвы за Анаксис и тяжелых потерь в рядах БСО, совет командования решил создать новое подразделение, способное выполнять задачи, где обычные клоны были бы бессильны. Так появился отряд «Призрак» – группа бойцов, прошедших не только переобучение, но и радикальную психологическую и тактическую подготовку.
-              </p>
-              <p className="text-orange-200 text-lg leading-relaxed text-justify">
-                Для их тренировки привлекли мандалорских инструкторов, которые привили им кодекс чести воинов Манд'алор, навыки ведения ближнего боя и умение действовать малыми группами. Дополнительно клоны проходили подготовку у инструкторов ЭРК (элитного республиканского корпуса), получив опыт ведения диверсионных и зачистных операций.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Squad Features */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
-          ОСОБЕННОСТИ ОТРЯДА
-        </h2>
+      <div className={`min-h-screen bg-black text-orange-200 relative ${isUnlocked ? 'holographic' : ''}`}>
+        {/* Пульсирующий фон для разблокированного режима */}
+        {isUnlocked && <div className="pulse-background fixed inset-0 z-0"></div>}
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
-            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
-              <Icon name="Sword" size={24} className="mr-3 text-orange-400" />
-              Оружие
-            </h3>
-            <p className="text-orange-300 text-lg leading-relaxed">
-              Кроме стандартного вооружения клонов, они владеют мандалорскими вибромечами, ножами и короткими копьями.
-            </p>
+        {/* Hero Section */}
+        <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden">
+          {/* Анимированный звездный фон */}
+          <div className="absolute inset-0">
+            {Array.from({length: 100}, (_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animation: `twinkle ${2 + Math.random() * 3}s ease-in-out infinite`,
+                  animationDelay: `${Math.random() * 3}s`
+                }}
+              ></div>
+            ))}
           </div>
-
-          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
-            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
-              <Icon name="Shield" size={24} className="mr-3 text-orange-400" />
-              Снаряжение
-            </h3>
-            <p className="text-orange-300 text-lg leading-relaxed">
-              Доспехи модифицированы, с усиленными сегментами из бескара (частично), матовыми покрытиями для скрытности. Каждый шлем оснащён усиленным фильтром и режимом подавления шума.
-            </p>
-          </div>
-
-          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
-            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
-              <Icon name="Target" size={24} className="mr-3 text-orange-400" />
-              Тактика
-            </h3>
-            <p className="text-orange-300 text-lg leading-relaxed">
-              Быстрые удары, диверсии, засадные операции. Их главная задача – не фронтовые сражения, а скрытые миссии: ликвидации, диверсии, подрывные действия.
-            </p>
-          </div>
-
-          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
-            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
-              <Icon name="Brain" size={24} className="mr-3 text-orange-400" />
-              Психология
-            </h3>
-            <p className="text-orange-300 text-lg leading-relaxed">
-              Они обучены сохранять абсолютное хладнокровие, даже в условиях безысходности. В отличие от других клонов, «Призраки» обладают определенной независимостью мышления, что делает их непредсказуемыми и более живыми.
-            </p>
-          </div>
-
-          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
-            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
-              <Icon name="Flag" size={24} className="mr-3 text-orange-400" />
-              Символика
-            </h3>
-            <p className="text-orange-300 text-lg leading-relaxed">
-              Эмблема отряда – череп с тенью мандалорского шлема, перечеркнутый двумя vibro-ножами. Позывной каждого бойца начинается с буквы «G» (от слова Ghost), например: G-01, G-09 и т.д.
-            </p>
-          </div>
-
-          <div className="bg-gray-900 border border-orange-400 rounded-lg p-6 hover-scale">
-            <h3 className="text-2xl font-orbitron font-bold text-orange-200 mb-4 flex items-center">
-              <Icon name="Trophy" size={24} className="mr-3 text-orange-400" />
-              Репутация
-            </h3>
-            <p className="text-orange-300 text-lg leading-relaxed">
-              Отряд «Призрак» стал известен благодаря своей первой миссии на Кореллии, где они за ночь уничтожили целый склад сепаратистов, вырезав гарнизон без единого выстрела. С тех пор о них говорят шёпотом даже среди клонов – как о «живых тенях».
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Relationships Section */}
-      <section className="py-20 px-4 md:px-8 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
-            ВЗАИМООТНОШЕНИЯ
-          </h2>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-wrap justify-center gap-2">
-              <div className="bg-green-900/30 border border-green-400 rounded-lg p-4 ">
-                <span className="text-green-400 font-semibold text-sm">СЕМЬЯ</span>
+          {/* Сканирующие линии */}
+          <div className="absolute inset-0 scan-line"></div>
+          
+          <div className="text-center z-10 fade-in-up relative">
+            <div className="mb-6 fade-in-scale" style={{animationDelay: '0.5s'}}>
+              <div className="relative inline-block">
+                <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
+                <img 
+                  src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
+                  alt="Эмблема Галактической Республики" 
+                  className="relative w-40 h-40 mx-auto mb-4 brightness-0 invert holographic"
+                />
               </div>
-              <div className="bg-pink-900/30 border border-pink-400 rounded-lg p-4 ">
-                <span className="text-pink-400 font-semibold text-sm">ЛЮБОВЬ</span>
-              </div>
-              <div className="bg-blue-900/30 border border-blue-400 rounded-lg p-4 ">
-                <span className="text-blue-400 font-semibold text-sm">ПРЕДАННОСТЬ</span>
-              </div>
-              <div className="bg-purple-900/30 border border-purple-400 rounded-lg p-4 ">
-                <span className="text-purple-400 font-semibold text-sm">ВОСХИЩЕНИЕ</span>
-              </div>
-              <div className="bg-cyan-900/30 border border-cyan-400 rounded-lg p-4 ">
-                <span className="text-cyan-400 font-semibold text-sm">ЛУЧШИЕ ДРУЗЬЯ</span>
-              </div>
-              <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-4 ">
-                <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
-              </div>
-              <div className="bg-emerald-900/30 border border-emerald-400 rounded-lg p-4 ">
-                <span className="text-emerald-400 font-semibold text-sm">БЛАГОДАРНОСТЬ</span>
-              </div>
-              <div className="bg-lime-900/30 border border-lime-400 rounded-lg p-4 ">
-                <span className="text-lime-400 font-semibold text-sm">УВАЖЕНИЕ</span>
-              </div>
-              <div className="bg-yellow-900/30 border border-yellow-400 rounded-lg p-4 ">
-                <span className="text-yellow-400 font-semibold text-sm">СИМПАТИЯ</span>
-              </div>
-              <div className="bg-amber-900/30 border border-amber-400 rounded-lg p-4 ">
-                <span className="text-amber-400 font-semibold text-sm">ЕДИНОМЫШЛЕННИК</span>
-              </div>
-              <div className="bg-orange-900/30 border border-orange-400 rounded-lg p-4 ">
-                <span className="text-orange-400 font-semibold text-sm">ИНТЕРЕС</span>
-              </div>
-              <div className="bg-gray-700/30 border border-gray-400 rounded-lg p-4 ">
-                <span className="text-gray-400 font-semibold text-sm">НЕОПРЕДЕЛЕННОСТЬ</span>
-              </div>
-              <div className="bg-slate-700/30 border border-slate-400 rounded-lg p-4 ">
-                <span className="text-slate-400 font-semibold text-sm">РАВНОДУШИЕ</span>
-              </div>
-              <div className="bg-stone-700/30 border border-stone-400 rounded-lg p-4 ">
-                <span className="text-stone-400 font-semibold text-sm">НЕДОВЕРИЕ</span>
-              </div>
-              <div className="bg-zinc-700/30 border border-zinc-400 rounded-lg p-4 ">
-                <span className="text-zinc-400 font-semibold text-sm">РАЗОЧАРОВАНИЕ</span>
-              </div>
-              <div className="bg-neutral-700/30 border border-neutral-400 rounded-lg p-4 ">
-                <span className="text-neutral-400 font-semibold text-sm">БОЯЗНЬ</span>
-              </div>
-              <div className="bg-red-900/30 border border-red-400 rounded-lg p-4 ">
-                <span className="text-red-400 font-semibold text-sm">ПРЕЗРЕНИЕ</span>
-              </div>
-              <div className="bg-rose-900/30 border border-rose-400 rounded-lg p-4 ">
-                <span className="text-rose-400 font-semibold text-sm">ЗАВИСТЬ</span>
-              </div>
-              <div className="bg-red-800/30 border border-red-500 rounded-lg p-4 ">
-                <span className="text-red-500 font-semibold text-sm">ОБИДА</span>
-              </div>
-              <div className="bg-red-700/30 border border-red-600 rounded-lg p-4 ">
-                <span className="text-red-600 font-semibold text-sm">НЕПРИЯЗНЬ</span>
-              </div>
-              <div className="bg-red-600/30 border border-red-700 rounded-lg p-4 ">
-                <span className="text-red-700 font-semibold text-sm">НЕНАВИСТЬ</span>
-              </div>
-              <div className="bg-black border border-red-800 rounded-lg p-4 ">
-                <span className="text-red-800 font-semibold text-sm">ПОГИБ</span>
-              </div>
-            </div>
-            <div className="mt-8 text-center">
-              <p className="text-orange-300 text-lg">
-                Каждый клон отряда «Призрак» формирует уникальные связи с товарищами по оружию, 
-                создавая сложную сеть взаимоотношений от братской преданности до боевого соперничества.
-              </p>
             </div>
             
-            {/* Character Cards */}
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Mandalorian Card */}
-              <Card className="bg-gray-900 border-green-400 hover-scale">
-                <CardContent className="p-4">
-                  <div className="text-center space-y-4">
-                    <img 
-                      src="https://cdn.poehali.dev/files/b54488bd-b7d7-4ac6-a413-2a816e9dc8ef.PNG" 
-                      alt="Мандалорец" 
-                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-green-400"
-                    />
-                    <div className="bg-green-900/30 border border-green-400 rounded-lg p-3">
-                      <span className="text-green-400 font-semibold text-sm">СЕМЬЯ</span>
+            <h1 
+              className="text-6xl md:text-8xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-cyan-400 mb-4 tracking-wider glitch neon-glow" 
+              data-text="ПРИЗРАК"
+              style={{animationDelay: '1s'}}
+            >
+              ПРИЗРАК
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-orange-400 font-medium mb-8 flicker-text" style={{animationDelay: '1.5s'}}>
+              <span className="inline-block">Элитный</span>{' '}
+              <span className="inline-block text-cyan-400">клон-отряд</span>{' '}
+              <span className="inline-block">Республики</span>
+            </p>
+            
+            <div className="flex justify-center gap-4 text-sm font-orbitron fade-in-scale" style={{animationDelay: '2s'}}>
+              <Badge variant="outline" className="border-cyan-400 text-cyan-400 holographic future-hover">
+                ЭРК
+              </Badge>
+              <Badge variant="outline" className="border-orange-400 text-orange-400 holographic future-hover">
+                БСО
+              </Badge>
+            </div>
+            
+            {/* Дополнительные визуальные эффекты */}
+            <div className="mt-12 flex justify-center space-x-8 fade-in-up" style={{animationDelay: '2.5s'}}>
+              {Array.from({length: 3}, (_, i) => (
+                <div key={i} className="w-2 h-16 bg-gradient-to-t from-transparent via-cyan-400 to-transparent opacity-60">
+                  <div 
+                    className="w-full h-full bg-gradient-to-t from-cyan-400 to-transparent"
+                    style={{
+                      animation: `pulse-glow ${1.5 + i * 0.3}s ease-in-out infinite alternate`,
+                      animationDelay: `${i * 0.2}s`
+                    }}
+                  ></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+      {/* Protected Sections */}
+      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-16 fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-cyan-400 to-orange-400 mb-6 glitch neon-glow" data-text="ИНФОРМАЦИЯ О ОТРЯДЕ">
+            ИНФОРМАЦИЯ О ОТРЯДЕ
+          </h2>
+          
+          {!isUnlocked ? (
+            <div className="max-w-2xl mx-auto fade-in-scale">
+              <div className="relative">
+                {/* Background Effects */}
+                <div className="absolute inset-0 bg-red-900/10 rounded-2xl blur-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-orange-500/5 to-yellow-500/5 rounded-2xl"></div>
+                
+                {/* Animated Scanning Lines */}
+                <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-red-400/60 to-transparent animate-pulse" 
+                       style={{top: '25%', animationDuration: '3s'}}></div>
+                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-orange-400/40 to-transparent animate-pulse" 
+                       style={{top: '75%', animationDuration: '4s', animationDelay: '1s'}}></div>
+                </div>
+                
+                {/* Main Security Panel */}
+                <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 border-2 border-red-500 rounded-2xl p-12 backdrop-blur-md holographic">
+                  {/* Animated Border Glow */}
+                  <div className="absolute inset-0 rounded-2xl border border-red-400/30 animate-pulse"></div>
+                  
+                  {/* Warning Stripes */}
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent transform -skew-x-12 animate-pulse"></div>
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-yellow-500/5 to-transparent transform skew-x-12 animate-pulse" style={{animationDelay: '1s'}}></div>
+                  </div>
+                  
+                  <div className="relative z-10 space-y-8">
+                    {/* Security Icon */}
+                    <div className="flex justify-center">
+                      <div className="relative">
+                        <div className="absolute inset-0 w-24 h-24 border-2 border-red-500/30 rounded-full animate-ping"></div>
+                        <div className="absolute inset-0 w-24 h-24 border border-red-400/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                        <div className="relative w-24 h-24 bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-full flex items-center justify-center holographic">
+                          <Icon name="ShieldAlert" size={42} className="text-red-400 animate-pulse neon-glow" />
+                        </div>
+                      </div>
                     </div>
+                    
+                    {/* Access Denied Header */}
+                    <div className="space-y-4">
+                      <h3 className="text-3xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-red-400 tracking-wider glitch" data-text="ДОСТУП ОГРАНИЧЕН">
+                        ДОСТУП ОГРАНИЧЕН
+                      </h3>
+                      <div className="bg-gray-800/80 border border-red-500/30 rounded-lg px-6 py-3 holographic">
+                        <p className="text-red-400/80 text-sm font-mono tracking-wide flicker-text">
+                          УРОВЕНЬ СЕКРЕТНОСТИ: <span className="text-red-300 font-bold neon-glow">МАКСИМАЛЬНЫЙ</span>
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Password Input */}
+                    <div className="space-y-6">
+                      <div className="text-orange-200">
+                        <p className="text-lg font-orbitron mb-2 neon-glow">ВВЕДИТЕ КОД ДОСТУПА:</p>
+                        <div className="flex gap-3">
+                          <div className="relative flex-1">
+                            <Input
+                              type={isPasswordVisible ? "text" : "password"}
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+                              placeholder="████████████"
+                              className="bg-gray-800/50 border-orange-400/50 text-orange-200 font-mono text-center text-lg tracking-widest placeholder:text-orange-600/30 holographic"
+                            />
+                            <Button
+                              type="button"
+                              onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                              className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 h-8 w-8 bg-transparent hover:bg-orange-400/20 future-hover"
+                            >
+                              <Icon name={isPasswordVisible ? "EyeOff" : "Eye"} size={16} className="text-orange-400 neon-glow" />
+                            </Button>
+                          </div>
+                          <Button
+                            onClick={handlePasswordSubmit}
+                            className="bg-gradient-to-r from-orange-400 to-cyan-400 text-black hover:from-cyan-400 hover:to-orange-400 font-orbitron font-bold px-8 future-hover holographic"
+                          >
+                            ВОЙТИ
+                          </Button>
+                        </div>
+                      </div>
+                      
+                      {attempts > 0 && (
+                        <div className="bg-red-900/30 border border-red-500/30 rounded-lg p-4 holographic">
+                          <p className="text-red-400 text-sm font-mono glitch" data-text={`⚠️ НЕВЕРНЫЙ КОД ДОСТУПА (${attempts}/3)`}>
+                            ⚠️ НЕВЕРНЫЙ КОД ДОСТУПА ({attempts}/3)
+                          </p>
+                          {attempts >= 3 && (
+                            <p className="text-red-300 text-xs mt-2 flicker-text">
+                              СИСТЕМА БЕЗОПАСНОСТИ АКТИВИРОВАНА
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Info hint */}
                     <div className="space-y-3">
-                      <h4 className="text-orange-200 font-orbitron font-bold">Schnee Mhokar</h4>
-                      <p className="text-green-400 text-sm">Мандалорец</p>
-                      <Link to="/mando">
-                        <Button 
-                          className="w-full bg-green-400 text-black hover:bg-green-500 font-orbitron text-sm"
-                        >
-                          ДОСЬЕ
-                        </Button>
-                      </Link>
+                      <div className="h-px bg-gradient-to-r from-transparent via-red-400/50 to-transparent"></div>
+                      <p className="text-orange-500/60 text-xs font-mono tracking-widest flicker-text">
+                        ERROR_CODE: GHOST_401_UNAUTHORIZED
+                      </p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
-                  <div className="text-center space-y-4">
-                    <Icon name="Users" size={32} className="mx-auto text-orange-400/50" />
-                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
-                    <p className="text-orange-300/50 text-sm">Ожидание связи</p>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
-                  <div className="text-center space-y-4">
-                    <Icon name="Users" size={32} className="mx-auto text-orange-400/50" />
-                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
-                    <p className="text-orange-300/50 text-sm">Ожидание связи</p>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
-                  <div className="text-center space-y-4">
-                    <Icon name="Users" size={32} className="mx-auto text-orange-400/50" />
-                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
-                    <p className="text-orange-300/50 text-sm">Ожидание связи</p>
-                  </div>
-                </CardContent>
-              </Card>
+                  
+                  {/* Corner decorations */}
+                  <div className="absolute top-3 left-3 w-8 h-8 border-l-2 border-t-2 border-red-500/60 animate-pulse"></div>
+                  <div className="absolute top-3 right-3 w-8 h-8 border-r-2 border-t-2 border-red-500/60 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute bottom-3 left-3 w-8 h-8 border-l-2 border-b-2 border-red-500/60 animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute bottom-3 right-3 w-8 h-8 border-r-2 border-b-2 border-red-500/60 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="space-y-20 fade-in-up">
+              {/* About Squad Section */}
+              <div className="holographic">
+                <h3 className="text-3xl md:text-4xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-green-400 mb-12 glitch neon-glow" data-text="О ОТРЯДЕ ПРИЗРАК">
+                  О ОТРЯДЕ ПРИЗРАК
+                </h3>
+                <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
+                  <div className="bg-green-900/20 border border-green-400/30 rounded-lg p-6 mb-8 holographic">
+                    <p className="text-green-400 text-sm font-mono mb-2 neon-glow">✓ ДОСТУП РАЗРЕШЕН</p>
+                    <p className="text-green-300 text-xs flicker-text">Добро пожаловать, агент. Данные рассекречены.</p>
+                  </div>
+                  <p className="text-green-200">
+                    Отряд "Призрак" - сверхсекретное подразделение клонов-штурмовиков, созданное для выполнения 
+                    особо деликатных операций за линией фронта. Каждый боец прошел экспериментальную программу 
+                    психологического и физического усиления, получив способности, превышающие стандарты обычных клонов.
+                  </p>
+                  <p className="text-green-200">
+                    Их истинная миссия - не только военные операции, но и устранение "проблемных" офицеров Республики, 
+                    ликвидация свидетелей секретных проектов и проведение операций под ложным флагом для 
+                    дискредитации Конфедерации независимых систем.
+                  </p>
+                  <p className="text-red-400 text-sm bg-red-900/20 border border-red-400/30 rounded p-4 holographic">
+                    ⚠️ ВНИМАНИЕ: Отряд имеет прямую связь с канцлером Палпатином и действует вне стандартной 
+                    командной структуры. Уровень автономности - МАКСИМАЛЬНЫЙ.
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                  <Card className="bg-gray-900 border-green-400 future-hover holographic">
+                    <CardHeader className="text-center">
+                      <Icon name="Target" size={48} className="mx-auto text-green-400 mb-2 neon-glow" />
+                      <CardTitle className="text-green-200 font-orbitron glitch" data-text="Элиминация">Элиминация</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-green-300">Точечное устранение целей любой сложности</p>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gray-900 border-green-400 future-hover holographic">
+                    <CardHeader className="text-center">
+                      <Icon name="Eye" size={48} className="mx-auto text-green-400 mb-2 neon-glow" />
+                      <CardTitle className="text-green-200 font-orbitron glitch" data-text="Инфильтрация">Инфильтрация</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-green-300">Проникновение в любые структуры противника</p>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gray-900 border-green-400 future-hover holographic">
+                    <CardHeader className="text-center">
+                      <Icon name="Skull" size={48} className="mx-auto text-green-400 mb-2 neon-glow" />
+                      <CardTitle className="text-green-200 font-orbitron glitch" data-text="Ликвидация">Ликвидация</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-green-300">Бесследное устранение свидетелей</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Clone Roster */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
-          СПИСОК КЛОНОВ
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {clones.map((clone, index) => (
-            <Card key={clone.id} className={`bg-gray-900 border-orange-400 hover-scale animate-scale-in`} 
-                  style={{animationDelay: `${index * 0.1}s`}}>
-              <CardHeader>
-                <div className="relative">
-                  <img 
-                    src={clone.image} 
-                    alt={clone.name}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <Badge className="absolute top-4  right-2 bg-orange-400 text-black">
-                    {clone.rank}
-                  </Badge>
-                </div>
-                <CardTitle className="text-orange-200 font-orbitron text-xl">
-                  {clone.name}
-                </CardTitle>
-                <CardDescription className="text-orange-400 font-mono">
-                  {clone.id}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-orange-300 text-sm">
-                  {clone.description}
-                </p>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-orange-400">Специализация:</span>
-                    <span className="text-orange-400">{clone.specialization}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-orange-400">Подтвержденные цели:</span>
-                    <span className="text-orange-400">{clone.kills}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-orange-400">Миссии:</span>
-                    <span className="text-orange-400">{clone.missions}</span>
-                  </div>
-                </div>
-                
-                <Link to={`/clone/${clone.id}`}>
-                  <Button className="w-full bg-orange-400 text-black hover:bg-orange-400/80 font-orbitron">
-                    ДОСЬЕ
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
-          
-          {/* Empty Cards */}
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
+      {/* Footer */}
+      <footer className="relative bg-gradient-to-t from-gray-950 via-gray-900 to-black py-16 px-4 md:px-8 text-center overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23fb923c%22%20fill-opacity%3D%220.4%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221.5%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
         </div>
-      </section>
+        
+        <div className="max-w-6xl mx-auto relative z-10 holographic">
+          {/* Main Content */}
+          <div className="mb-12 fade-in-up">
+            <div className="relative inline-block mb-6">
+              <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-xl animate-pulse"></div>
+              <img 
+                src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
+                alt="Эмблема Галактической Республики" 
+                className="relative w-16 h-16 mx-auto brightness-0 invert drop-shadow-2xl future-hover"
+              />
+            </div>
+            
+            <h3 className="text-3xl md:text-4xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-cyan-400 to-orange-400 mb-6 tracking-wider glitch neon-glow" data-text="ДЛЯ РЕСПУБЛИКИ. ДЛЯ ДЕМОКРАТИИ.">
+              ДЛЯ РЕСПУБЛИКИ. ДЛЯ ДЕМОКРАТИИ.
+            </h3>
+            
+            <div className="inline-flex items-center gap-3 bg-gray-900/50 backdrop-blur-sm border border-orange-400/30 rounded-full px-6 py-3 mb-8 holographic future-hover">
+              <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse neon-glow"></div>
+              <span className="text-orange-300 font-orbitron font-semibold tracking-wide flicker-text">Отряд "Призрак" - ЭРК В.А.Р.</span>
+              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse neon-glow"></div>
+            </div>
+          </div>
+          
+          {/* Decorative Divider */}
+          <div className="flex items-center justify-center mb-8 fade-in-scale">
+            <div className="h-px bg-gradient-to-r from-transparent via-orange-400/50 to-transparent flex-1 max-w-xs"></div>
+            <div className="mx-4 w-3 h-3 border-2 border-orange-400/50 rotate-45 animate-pulse"></div>
+            <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent flex-1 max-w-xs"></div>
+          </div>
+          
+          {/* Copyright Info */}
+          <div className="space-y-3 fade-in-up" style={{animationDelay: '0.5s'}}>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
+              <div className="flex items-center gap-2 text-orange-400/80 future-hover">
+                <div className="w-1 h-1 bg-orange-400 rounded-full neon-glow"></div>
+                <span className="font-mono">© 22 ДБЯ - 19 ДБЯ</span>
+              </div>
+              <div className="hidden md:block w-1 h-1 bg-orange-400/50 rounded-full animate-pulse"></div>
+              <div className="flex items-center gap-2 text-cyan-400/80 future-hover">
+                <div className="w-1 h-1 bg-cyan-400 rounded-full neon-glow"></div>
+                <span className="font-mono">Войны клонов</span>
+              </div>
+              <div className="hidden md:block w-1 h-1 bg-cyan-400/50 rounded-full animate-pulse"></div>
+              <div className="flex items-center gap-2 text-orange-400/80 future-hover">
+                <div className="w-1 h-1 bg-orange-400 rounded-full neon-glow"></div>
+                <span className="font-mono">Gmod RP Server Void</span>
+              </div>
+            </div>
+            <div className="text-orange-500/60 text-xs font-orbitron tracking-widest flicker-text">
+              АВТОР: <span className="text-orange-400 font-bold neon-glow">RAMPA</span>
+            </div>
+          </div>
+        </div>
+        
+        {/* Enhanced Glow Effects */}
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-32 bg-gradient-to-t from-orange-400/10 via-cyan-400/5 to-transparent rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-400/5 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-orange-400/5 to-transparent rounded-full blur-2xl"></div>
+      </footer>
+    </div>
+    </>
+  );
 
       {/* Footer */}
       <footer className="relative bg-gradient-to-t from-gray-950 via-gray-900 to-black py-16 px-4 md:px-8 text-center overflow-hidden">
