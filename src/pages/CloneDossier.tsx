@@ -49,7 +49,7 @@ const CloneDossier = () => {
       description: "Rampa (позывной G-07) – «молот» отряда. Если Jeing думает как тактик, а Nuar давит своей жестокостью, то Rampa – это физическая мощь. Его главное качество – невероятная выносливость. Он способен идти вперёд под плотным огнём, закрывая собой братьев.",
       image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
       specialization: "Отсутствует",
-      kills: 58,
+      kills: 83,
       missions: 92,
       callSign: "G-07",
       birthPlace: "Камино",
