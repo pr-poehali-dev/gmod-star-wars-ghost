@@ -45,103 +45,59 @@ const Index = () => {
     <div className="min-h-screen bg-black text-orange-200">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black">
-          {/* Stars Background */}
-          <div className="stars-container absolute inset-0">
-            {Array.from({length: 100}, (_, i) => (
+        {/* Simplified Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+          {/* Minimal Stars */}
+          <div className="absolute inset-0">
+            {Array.from({length: 20}, (_, i) => (
               <div
                 key={i}
-                className="star"
+                className="absolute w-1 h-1 bg-orange-400 rounded-full opacity-60"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 2}s`
+                  animation: `twinkle ${2 + Math.random()}s ease-in-out infinite alternate`
                 }}
               />
             ))}
           </div>
           
-          {/* Scanning Lines */}
-          <div className="absolute inset-0">
-            <div className="scanning-line"></div>
-            <div className="scanning-line-2"></div>
-            <div className="scanning-line-3"></div>
-          </div>
-          
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-orange-400/5 via-transparent to-cyan-400/5"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-orange-500/3 to-transparent"></div>
+          {/* Single Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-orange-400/5 via-transparent to-transparent"></div>
         </div>
 
         {/* Main Content */}
         <div className="text-center z-10 max-w-6xl mx-auto px-4 py-20">
-          {/* Logo Container with Effects */}
-          <div className="mb-12 fade-in-scale">
+          {/* Simplified Logo */}
+          <div className="mb-12">
             <div className="relative inline-block">
-              {/* Glowing Rings */}
-              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 border-2 border-orange-400/20 rounded-full animate-ping"></div>
-              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 border border-cyan-400/20 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 border border-orange-400/10 rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
-              
-              {/* Main Logo */}
-              <div className="relative w-48 h-48 md:w-64 md:h-64 bg-gradient-to-br from-orange-400/10 to-cyan-400/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-orange-400/30 holographic">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-orange-400/10 to-transparent animate-pulse"></div>
+              <div className="relative w-48 h-48 md:w-64 md:h-64 bg-gray-900/50 rounded-full flex items-center justify-center backdrop-blur-sm border border-orange-400/30">
                 <img 
                   src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
                   alt="Эмблема Галактической Республики" 
-                  className="relative w-32 h-32 md:w-40 md:h-40 brightness-0 invert drop-shadow-2xl neon-glow future-hover"
+                  className="w-32 h-32 md:w-40 md:h-40 brightness-0 invert"
                 />
               </div>
-              
-              {/* Orbiting Elements */}
-              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64">
-                <div className="absolute w-3 h-3 bg-orange-400 rounded-full top-0 left-1/2 transform -translate-x-1/2 animate-pulse neon-glow"></div>
-                <div className="absolute w-2 h-2 bg-cyan-400 rounded-full bottom-0 right-1/4 animate-pulse neon-glow" style={{animationDelay: '0.5s'}}></div>
-                <div className="absolute w-2 h-2 bg-orange-400 rounded-full left-0 top-1/3 animate-pulse neon-glow" style={{animationDelay: '1s'}}></div>
-                <div className="absolute w-1 h-1 bg-cyan-400 rounded-full right-0 bottom-1/3 animate-pulse neon-glow" style={{animationDelay: '1.5s'}}></div>
-              </div>
             </div>
           </div>
           
-          {/* Main Title with Advanced Effects */}
-          <div className="mb-8 fade-in-up">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-cyan-400 to-orange-400 mb-6 tracking-wider glitch neon-glow" data-text="ПРИЗРАК">
+          {/* Simplified Title */}
+          <div className="mb-8">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black text-orange-400 mb-6 tracking-wider">
               ПРИЗРАК
             </h1>
-            
-            {/* Animated Underline */}
-            <div className="relative mx-auto w-80 md:w-96 h-1 mb-8">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-400 to-transparent h-full animate-pulse"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400 to-transparent h-full animate-pulse" style={{animationDelay: '1s'}}></div>
-            </div>
           </div>
           
-          {/* Subtitle with Holographic Effect */}
-          <div className="mb-12 fade-in-up" style={{animationDelay: '0.5s'}}>
+          {/* Simplified Subtitle */}
+          <div className="mb-12">
             <div className="relative inline-block">
-              <div className="absolute inset-0 bg-orange-400/10 rounded-2xl blur-xl animate-pulse"></div>
-              <div className="relative bg-gradient-to-r from-gray-900/80 via-gray-800/80 to-gray-900/80 backdrop-blur-md border border-orange-400/30 rounded-2xl px-8 py-6 holographic">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-cyan-300 to-orange-300 mb-3 tracking-wide neon-glow">
+              <div className="bg-gray-900/70 backdrop-blur-sm border border-orange-400/30 rounded-xl px-8 py-6">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-orbitron font-bold text-orange-300 mb-3 tracking-wide">
                   ЭЛИТНЫЙ РАЗВЕДЫВАТЕЛЬНЫЙ КОРПУС
                 </h2>
-                <p className="text-lg md:text-xl text-orange-400/90 font-medium tracking-wide flicker-text">
+                <p className="text-lg md:text-xl text-orange-400/80 font-medium">
                   Специальное подразделение клонов-штурмовиков Галактической Республики
                 </p>
-                
-                {/* Status Indicators */}
-                <div className="flex justify-center items-center gap-4 mt-6">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse neon-glow"></div>
-                    <span className="text-green-400 text-sm font-mono tracking-wider">АКТИВЕН</span>
-                  </div>
-                  <div className="w-px h-4 bg-orange-400/50"></div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse neon-glow"></div>
-                    <span className="text-orange-400 text-sm font-mono tracking-wider">ГОТОВ К БОЮ</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
