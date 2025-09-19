@@ -354,98 +354,278 @@ const Index = () => {
                   </div>
                 </CardContent>
               </Card>
-            </div>
-          </div>
-        </div>
-      </section>
+              
+              {/* Squad History */}
+              <section className="py-20 px-4 md:px-8 bg-green-900/10 mt-16">
+                <div className="max-w-6xl mx-auto">
+                  <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-green-400 text-center mb-16">
+                    ИСТОРИЯ ФОРМИРОВАНИЯ
+                  </h2>
+                  
+                  <div className="max-w-4xl mx-auto">
+                    <div className="animate-fade-in">
+                      <p className="text-green-200 text-lg leading-relaxed mb-6 text-justify">
+                        После битвы за Анаксис и тяжелых потерь в рядах БСО, тайный совет под руководством канцлера Палпатина решил создать новое подразделение, способное выполнять "деликатные" задачи. Так появился отряд «Призрак» – группа бойцов, прошедших не только переобучение, но и экспериментальную программу психологического воздействия.
+                      </p>
+                      <p className="text-green-200 text-lg leading-relaxed text-justify">
+                        Для их тренировки привлекли не только мандалорских инструкторов, но и бывших ситхских агентов, которые обучили их методам бесшумного устранения, психологическому воздействию и работе в тылу врага. Каждый "Призрак" получил имплантаты, подавляющие эмпатию и усиливающие агрессивность.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
-      {/* Clone Roster */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
-          СПИСОК КЛОНОВ
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {clones.map((clone, index) => (
-            <Card key={clone.id} className={`bg-gray-900 border-orange-400 hover-scale animate-scale-in`} 
-                  style={{animationDelay: `${index * 0.1}s`}}>
-              <CardHeader>
-                <div className="relative">
-                  <img 
-                    src={clone.image} 
-                    alt={clone.name}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <Badge className="absolute top-4  right-2 bg-orange-400 text-black">
-                    {clone.rank}
-                  </Badge>
-                </div>
-                <CardTitle className="text-orange-200 font-orbitron text-xl">
-                  {clone.name}
-                </CardTitle>
-                <CardDescription className="text-orange-400 font-mono">
-                  {clone.id}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-orange-300 text-sm">
-                  {clone.description}
-                </p>
+              {/* Squad Features */}
+              <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+                <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-green-400 text-center mb-16">
+                  ОСОБЕННОСТИ ОТРЯДА
+                </h2>
                 
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-orange-400">Специализация:</span>
-                    <span className="text-orange-400">{clone.specialization}</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="bg-gray-900 border border-green-400 rounded-lg p-6 hover-scale">
+                    <h3 className="text-2xl font-orbitron font-bold text-green-200 mb-4 flex items-center">
+                      <Icon name="Skull" size={24} className="mr-3 text-green-400" />
+                      Тайное оружие
+                    </h3>
+                    <p className="text-green-300 text-lg leading-relaxed">
+                      Помимо стандартного вооружения, располагают нейротоксинами, электрошокерами и экспериментальными вибролезвиями с молекулярной заточкой.
+                    </p>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-orange-400">Подтвержденные цели:</span>
-                    <span className="text-orange-400">{clone.kills}</span>
+
+                  <div className="bg-gray-900 border border-green-400 rounded-lg p-6 hover-scale">
+                    <h3 className="text-2xl font-orbitron font-bold text-green-200 mb-4 flex items-center">
+                      <Icon name="Eye" size={24} className="mr-3 text-green-400" />
+                      Модифицированное снаряжение
+                    </h3>
+                    <p className="text-green-300 text-lg leading-relaxed">
+                      Доспехи оснащены активной камуфляжной системой, глушителями шагов и встроенными инъекторами боевых стимуляторов. Шлемы содержат ИИ-помощника для анализа целей.
+                    </p>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-orange-400">Миссии:</span>
-                    <span className="text-orange-400">{clone.missions}</span>
+
+                  <div className="bg-gray-900 border border-green-400 rounded-lg p-6 hover-scale">
+                    <h3 className="text-2xl font-orbitron font-bold text-green-200 mb-4 flex items-center">
+                      <Icon name="Zap" size={24} className="mr-3 text-green-400" />
+                      Черные операции
+                    </h3>
+                    <p className="text-green-300 text-lg leading-relaxed">
+                      Специализируются на операциях под ложным флагом, устранении свидетелей государственных преступлений и "корректировке" неугодных офицеров Республики.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-900 border border-green-400 rounded-lg p-6 hover-scale">
+                    <h3 className="text-2xl font-orbitron font-bold text-green-200 mb-4 flex items-center">
+                      <Icon name="Brain" size={24} className="mr-3 text-green-400" />
+                      Психологические модификации
+                    </h3>
+                    <p className="text-green-300 text-lg leading-relaxed">
+                      Прошли программу подавления морального кодекса. Способны выполнять приказы любой жестокости без колебаний. Эмоциональные связи заменены на беспрекословную преданность Палпатину.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-900 border border-green-400 rounded-lg p-6 hover-scale">
+                    <h3 className="text-2xl font-orbitron font-bold text-green-200 mb-4 flex items-center">
+                      <Icon name="Crosshair" size={24} className="mr-3 text-green-400" />
+                      Символика
+                    </h3>
+                    <p className="text-green-300 text-lg leading-relaxed">
+                      Эмблема отряда – красный череп на черном фоне с символом Ситхов. Позывные начинаются с "Shadow" (Тень), например: Shadow-01, Shadow-07. Настоящие имена засекречены.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-900 border border-green-400 rounded-lg p-6 hover-scale">
+                    <h3 className="text-2xl font-orbitron font-bold text-green-200 mb-4 flex items-center">
+                      <Icon name="Target" size={24} className="mr-3 text-green-400" />
+                      Темная репутация
+                    </h3>
+                    <p className="text-green-300 text-lg leading-relaxed">
+                      Первая "официальная" миссия – ликвидация сенатора Кореллии, выступавшего против военных расходов. Операция была представлена как теракт сепаратистов. С тех пор их боятся даже в Сенате.
+                    </p>
                   </div>
                 </div>
+              </section>
+
+              {/* Relationships Section */}
+              <section className="py-20 px-4 md:px-8 bg-green-900/10">
+                <div className="max-w-6xl mx-auto">
+                  <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-green-400 text-center mb-16">
+                    СЕТЬ КОНТАКТОВ
+                  </h2>
+                  
+                  <div className="max-w-4xl mx-auto">
+                    <div className="flex flex-wrap justify-center gap-2">
+                      <div className="bg-red-900/50 border border-red-400 rounded-lg p-4">
+                        <span className="text-red-400 font-semibold text-sm">ПАЛПАТИН</span>
+                      </div>
+                      <div className="bg-purple-900/50 border border-purple-400 rounded-lg p-4">
+                        <span className="text-purple-400 font-semibold text-sm">ТАЙНЫЕ АГЕНТЫ</span>
+                      </div>
+                      <div className="bg-gray-900/50 border border-gray-400 rounded-lg p-4">
+                        <span className="text-gray-400 font-semibold text-sm">УСТРАНЕНЫ</span>
+                      </div>
+                      <div className="bg-yellow-900/50 border border-yellow-400 rounded-lg p-4">
+                        <span className="text-yellow-400 font-semibold text-sm">ПОД НАБЛЮДЕНИЕМ</span>
+                      </div>
+                      <div className="bg-orange-900/50 border border-orange-400 rounded-lg p-4">
+                        <span className="text-orange-400 font-semibold text-sm">КОМПРОМЕТИРОВАНЫ</span>
+                      </div>
+                      <div className="bg-green-900/50 border border-green-400 rounded-lg p-4">
+                        <span className="text-green-400 font-semibold text-sm">СОЮЗНИКИ</span>
+                      </div>
+                    </div>
+                    <div className="mt-8 text-center">
+                      <p className="text-green-300 text-lg">
+                        Отряд «Призрак» поддерживает сеть тайных связей по всей галактике, 
+                        включая коррумпированных сенаторов, агентов в армии и контакты в преступном мире.
+                      </p>
+                    </div>
+                    
+                    {/* Character Cards */}
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {/* Mandalorian Card */}
+                      <Card className="bg-gray-900 border-green-400 hover-scale">
+                        <CardContent className="p-4">
+                          <div className="text-center space-y-4">
+                            <img 
+                              src="https://cdn.poehali.dev/files/b54488bd-b7d7-4ac6-a413-2a816e9dc8ef.PNG" 
+                              alt="Мандалорец" 
+                              className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-green-400"
+                            />
+                            <div className="bg-green-900/50 border border-green-400 rounded-lg p-3">
+                              <span className="text-green-400 font-semibold text-sm">СОЮЗНИК</span>
+                            </div>
+                            <div className="space-y-3">
+                              <h4 className="text-green-200 font-orbitron font-bold">Schnee Mhokar</h4>
+                              <p className="text-green-400 text-sm">Связной в клане</p>
+                              <Link to="/mando">
+                                <Button 
+                                  className="w-full bg-green-400 text-black hover:bg-green-500 font-orbitron text-sm"
+                                >
+                                  ДОСЬЕ
+                                </Button>
+                              </Link>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      <Card className="bg-gray-900/30 border-green-400/30 border-dashed hover-scale">
+                        <CardContent className="h-full flex items-center justify-center min-h-[200px]">
+                          <div className="text-center space-y-4">
+                            <Icon name="UserX" size={32} className="mx-auto text-green-400/50" />
+                            <p className="text-green-400/50 font-orbitron text-sm">ЗАСЕКРЕЧЕН</p>
+                            <p className="text-green-300/50 text-xs">Личность скрыта</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      <Card className="bg-gray-900/30 border-green-400/30 border-dashed hover-scale">
+                        <CardContent className="h-full flex items-center justify-center min-h-[200px]">
+                          <div className="text-center space-y-4">
+                            <Icon name="UserX" size={32} className="mx-auto text-green-400/50" />
+                            <p className="text-green-400/50 font-orbitron text-sm">ЗАСЕКРЕЧЕН</p>
+                            <p className="text-green-300/50 text-xs">Личность скрыта</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Clone Roster */}
+              <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+                <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-green-400 text-center mb-16">
+                  ОПЕРАТИВНИКИ
+                </h2>
                 
-                <Link to={`/clone/${clone.id}`}>
-                  <Button className="w-full bg-orange-400 text-black hover:bg-orange-400/80 font-orbitron">
-                    ДОСЬЕ
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
-          
-          {/* Empty Cards */}
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {clones.map((clone, index) => (
+                    <Card key={clone.id} className={`bg-gray-900 border-green-400 hover-scale animate-scale-in`} 
+                          style={{animationDelay: `${index * 0.1}s`}}>
+                      <CardHeader>
+                        <div className="relative">
+                          <img 
+                            src={clone.image} 
+                            alt={clone.name}
+                            className="w-full h-48 object-cover rounded-lg mb-4 brightness-75"
+                          />
+                          <Badge className="absolute top-4 right-2 bg-green-400 text-black">
+                            {clone.rank}
+                          </Badge>
+                          <div className="absolute bottom-4 left-2 bg-red-900/80 border border-red-500 rounded px-2 py-1">
+                            <span className="text-red-300 text-xs font-mono">МОДИФИЦИРОВАН</span>
+                          </div>
+                        </div>
+                        <CardTitle className="text-green-200 font-orbitron text-xl">
+                          {clone.name}
+                        </CardTitle>
+                        <CardDescription className="text-green-400 font-mono">
+                          {clone.id} // SHADOW PROTOCOL
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <p className="text-green-300 text-sm">
+                          {clone.description.replace('ветеран войн клонов', 'агент черных операций').replace('успешных операций', 'ликвидаций')}
+                        </p>
+                        
+                        <div className="space-y-2">
+                          <div className="flex justify-between">
+                            <span className="text-green-400">Специализация:</span>
+                            <span className="text-green-400">{clone.specialization === 'Отсутствует' ? 'Элиминация' : clone.specialization}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-green-400">Ликвидации:</span>
+                            <span className="text-green-400">{clone.kills + 50}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-green-400">Черные операции:</span>
+                            <span className="text-green-400">{clone.missions + 20}</span>
+                          </div>
+                        </div>
+                        
+                        <Link to={`/clone/${clone.id}`}>
+                          <Button className="w-full bg-green-400 text-black hover:bg-green-500 font-orbitron">
+                            ДОСЬЕ
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  
+                  {/* Secret Operative Cards */}
+                  <Card className="bg-gray-900/50 border-green-400/50 border-dashed hover-scale">
+                    <CardContent className="h-full flex items-center justify-center min-h-[400px]">
+                      <div className="text-center space-y-4">
+                        <Icon name="UserX" size={48} className="mx-auto text-green-400/50" />
+                        <p className="text-green-400/50 font-orbitron">ЗАСЕКРЕЧЕН</p>
+                        <p className="text-green-300/50 text-sm">Личность скрыта</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gray-900/50 border-green-400/50 border-dashed hover-scale">
+                    <CardContent className="h-full flex items-center justify-center min-h-[400px]">
+                      <div className="text-center space-y-4">
+                        <Icon name="UserX" size={48} className="mx-auto text-green-400/50" />
+                        <p className="text-green-400/50 font-orbitron">ЗАСЕКРЕЧЕН</p>
+                        <p className="text-green-300/50 text-sm">Личность скрыта</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gray-900/50 border-green-400/50 border-dashed hover-scale">
+                    <CardContent className="h-full flex items-center justify-center min-h-[400px]">
+                      <div className="text-center space-y-4">
+                        <Icon name="UserX" size={48} className="mx-auto text-green-400/50" />
+                        <p className="text-green-400/50 font-orbitron">ЗАСЕКРЕЧЕН</p>
+                        <p className="text-green-300/50 text-sm">Личность скрыта</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </section>
+            </>
+          )}
         </div>
       </section>
 
