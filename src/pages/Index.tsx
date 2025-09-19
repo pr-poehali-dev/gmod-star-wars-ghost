@@ -146,54 +146,7 @@ const Index = () => {
             </div>
           </div>
           
-          {/* Enhanced Badges */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12 fade-in-up" style={{animationDelay: '1s'}}>
-            <div className="relative group">
-              <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
-              <Badge className="relative bg-gradient-to-r from-orange-400/20 to-orange-600/20 border-orange-400 text-orange-300 px-6 py-2 text-lg font-orbitron font-bold tracking-wider future-hover holographic">
-                <Icon name="Shield" size={16} className="mr-2 neon-glow" />
-                ЭРК
-              </Badge>
-            </div>
-            
-            <div className="relative group">
-              <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
-              <Badge className="relative bg-gradient-to-r from-cyan-400/20 to-cyan-600/20 border-cyan-400 text-cyan-300 px-6 py-2 text-lg font-orbitron font-bold tracking-wider future-hover holographic">
-                <Icon name="Target" size={16} className="mr-2 neon-glow" />
-                БСО
-              </Badge>
-            </div>
-            
-            <div className="relative group">
-              <div className="absolute inset-0 bg-purple-400/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
-              <Badge className="relative bg-gradient-to-r from-purple-400/20 to-purple-600/20 border-purple-400 text-purple-300 px-6 py-2 text-lg font-orbitron font-bold tracking-wider future-hover holographic">
-                <Icon name="Skull" size={16} className="mr-2 neon-glow" />
-                В.А.Р.
-              </Badge>
-            </div>
-          </div>
-          
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center fade-in-up" style={{animationDelay: '1.5s'}}>
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 to-cyan-400/30 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
-              <Button className="relative bg-gradient-to-r from-orange-400 to-cyan-400 text-black hover:from-cyan-400 hover:to-orange-400 font-orbitron font-bold px-8 py-4 text-lg tracking-wider future-hover holographic">
-                <Icon name="Users" size={24} className="mr-3" />
-                СОСТАВ ОТРЯДА
-              </Button>
-            </div>
-            
-            <div className="relative group">
-              <div className="absolute inset-0 bg-orange-400/30 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
-              <Button 
-                variant="outline" 
-                className="relative border-2 border-orange-400 text-orange-300 hover:bg-orange-400/10 hover:text-orange-200 font-orbitron font-bold px-8 py-4 text-lg tracking-wider future-hover holographic backdrop-blur-sm"
-              >
-                <Icon name="BookOpen" size={24} className="mr-3 neon-glow" />
-                ДОСЬЕ ОТРЯДА
-              </Button>
-            </div>
-          </div>
+
           
           {/* Decorative Elements */}
           <div className="mt-16 flex items-center justify-center fade-in-scale" style={{animationDelay: '2s'}}>
