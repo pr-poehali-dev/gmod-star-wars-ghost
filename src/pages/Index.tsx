@@ -100,9 +100,7 @@ const Index = () => {
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-orbitron font-bold text-orange-300 mb-3 tracking-wide">
                   ЭЛИТНЫЙ КЛОН-ОТРЯД РЕСПУБЛИКИ
                 </h2>
-                <p className="text-lg md:text-xl text-orange-400/80 font-medium">
-                  Специальное подразделение клонов-штурмовиков Галактической Республики
-                </p>
+
               </div>
             </div>
           </div>
