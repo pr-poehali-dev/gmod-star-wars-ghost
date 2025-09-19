@@ -167,41 +167,131 @@ const CloneDossier = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-orange-300 text-sm font-medium">Меткость</span>
-                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
-                      <div className="bg-orange-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.accuracy}%`}}></div>
+                {/* Radar Chart Style */}
+                <div className="relative flex items-center justify-center">
+                  <div className="relative w-64 h-64">
+                    {/* Background Grid */}
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
+                      {/* Grid circles */}
+                      <circle cx="100" cy="100" r="80" fill="none" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      <circle cx="100" cy="100" r="60" fill="none" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      <circle cx="100" cy="100" r="40" fill="none" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      <circle cx="100" cy="100" r="20" fill="none" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      
+                      {/* Grid lines */}
+                      <line x1="100" y1="20" x2="100" y2="180" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      <line x1="20" y1="100" x2="180" y2="100" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      <line x1="156.56" y1="43.44" x2="43.44" y2="156.56" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      <line x1="156.56" y1="156.56" x2="43.44" y2="43.44" stroke="#374151" strokeWidth="1" opacity="0.3"/>
+                      
+                      {/* Stats polygon */}
+                      <polygon
+                        points={`
+                          100,${20 + (100 - clone.stats.accuracy) * 0.8}
+                          ${100 + clone.stats.stealth * 0.8 * Math.cos(Math.PI * 2 / 5)},${100 + clone.stats.stealth * 0.8 * Math.sin(Math.PI * 2 / 5)}
+                          ${100 + clone.stats.endurance * 0.8 * Math.cos(Math.PI * 4 / 5)},${100 + clone.stats.endurance * 0.8 * Math.sin(Math.PI * 4 / 5)}
+                          ${100 + clone.stats.tactics * 0.8 * Math.cos(Math.PI * 6 / 5)},${100 + clone.stats.tactics * 0.8 * Math.sin(Math.PI * 6 / 5)}
+                          ${100 + clone.stats.leadership * 0.8 * Math.cos(Math.PI * 8 / 5)},${100 + clone.stats.leadership * 0.8 * Math.sin(Math.PI * 8 / 5)}
+                        `}
+                        fill="rgba(251, 146, 60, 0.2)"
+                        stroke="#fb923c"
+                        strokeWidth="2"
+                        className="animate-pulse"
+                      />
+                      
+                      {/* Stat points */}
+                      <circle cx="100" cy={20 + (100 - clone.stats.accuracy) * 0.8} r="4" fill="#fb923c" className="drop-shadow-lg"/>
+                      <circle cx={100 + clone.stats.stealth * 0.8 * Math.cos(Math.PI * 2 / 5)} cy={100 + clone.stats.stealth * 0.8 * Math.sin(Math.PI * 2 / 5)} r="4" fill="#60a5fa" className="drop-shadow-lg"/>
+                      <circle cx={100 + clone.stats.endurance * 0.8 * Math.cos(Math.PI * 4 / 5)} cy={100 + clone.stats.endurance * 0.8 * Math.sin(Math.PI * 4 / 5)} r="4" fill="#4ade80" className="drop-shadow-lg"/>
+                      <circle cx={100 + clone.stats.tactics * 0.8 * Math.cos(Math.PI * 6 / 5)} cy={100 + clone.stats.tactics * 0.8 * Math.sin(Math.PI * 6 / 5)} r="4" fill="#a855f7" className="drop-shadow-lg"/>
+                      <circle cx={100 + clone.stats.leadership * 0.8 * Math.cos(Math.PI * 8 / 5)} cy={100 + clone.stats.leadership * 0.8 * Math.sin(Math.PI * 8 / 5)} r="4" fill="#facc15" className="drop-shadow-lg"/>
+                    </svg>
+                    
+                    {/* Stat Labels */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4">
+                      <div className="text-center">
+                        <div className="text-orange-400 text-xs font-bold">{clone.stats.accuracy}</div>
+                        <div className="text-orange-300 text-xs">МЕТКОСТЬ</div>
+                      </div>
                     </div>
-                    <span className="text-orange-400 font-bold text-sm w-10">{clone.stats.accuracy}</span>
+                    <div className="absolute top-16 right-4">
+                      <div className="text-center">
+                        <div className="text-blue-400 text-xs font-bold">{clone.stats.stealth}</div>
+                        <div className="text-blue-300 text-xs">СКРЫТНОСТЬ</div>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-16 right-4">
+                      <div className="text-center">
+                        <div className="text-green-400 text-xs font-bold">{clone.stats.endurance}</div>
+                        <div className="text-green-300 text-xs">ВЫНОСЛИВОСТЬ</div>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-16 left-4">
+                      <div className="text-center">
+                        <div className="text-purple-400 text-xs font-bold">{clone.stats.tactics}</div>
+                        <div className="text-purple-300 text-xs">ТАКТИКА</div>
+                      </div>
+                    </div>
+                    <div className="absolute top-16 left-4">
+                      <div className="text-center">
+                        <div className="text-yellow-400 text-xs font-bold">{clone.stats.leadership}</div>
+                        <div className="text-yellow-300 text-xs">ЛИДЕРСТВО</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-orange-300 text-sm font-medium">Скрытность</span>
-                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
-                      <div className="bg-blue-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.stealth}%`}}></div>
+                </div>
+
+                {/* Gaming Style Stats List */}
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3 p-2 bg-gray-800/50 rounded-lg border border-orange-400/20">
+                    <div className="w-3 h-3 bg-orange-400 rounded-full shadow-lg shadow-orange-400/50"></div>
+                    <span className="text-orange-300 text-sm font-medium flex-1">Меткость</span>
+                    <div className="flex space-x-1">
+                      {Array.from({length: 10}, (_, i) => (
+                        <div key={i} className={`w-2 h-4 ${i < Math.floor(clone.stats.accuracy / 10) ? 'bg-orange-400' : 'bg-gray-600'} rounded-sm`}></div>
+                      ))}
                     </div>
-                    <span className="text-blue-400 font-bold text-sm w-10">{clone.stats.stealth}</span>
+                    <span className="text-orange-400 font-bold text-sm w-8">{clone.stats.accuracy}</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-orange-300 text-sm font-medium">Выносливость</span>
-                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
-                      <div className="bg-green-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.endurance}%`}}></div>
+                  <div className="flex items-center space-x-3 p-2 bg-gray-800/50 rounded-lg border border-blue-400/20">
+                    <div className="w-3 h-3 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
+                    <span className="text-blue-300 text-sm font-medium flex-1">Скрытность</span>
+                    <div className="flex space-x-1">
+                      {Array.from({length: 10}, (_, i) => (
+                        <div key={i} className={`w-2 h-4 ${i < Math.floor(clone.stats.stealth / 10) ? 'bg-blue-400' : 'bg-gray-600'} rounded-sm`}></div>
+                      ))}
                     </div>
-                    <span className="text-green-400 font-bold text-sm w-10">{clone.stats.endurance}</span>
+                    <span className="text-blue-400 font-bold text-sm w-8">{clone.stats.stealth}</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-orange-300 text-sm font-medium">Тактика</span>
-                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
-                      <div className="bg-purple-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.tactics}%`}}></div>
+                  <div className="flex items-center space-x-3 p-2 bg-gray-800/50 rounded-lg border border-green-400/20">
+                    <div className="w-3 h-3 bg-green-400 rounded-full shadow-lg shadow-green-400/50"></div>
+                    <span className="text-green-300 text-sm font-medium flex-1">Выносливость</span>
+                    <div className="flex space-x-1">
+                      {Array.from({length: 10}, (_, i) => (
+                        <div key={i} className={`w-2 h-4 ${i < Math.floor(clone.stats.endurance / 10) ? 'bg-green-400' : 'bg-gray-600'} rounded-sm`}></div>
+                      ))}
                     </div>
-                    <span className="text-purple-400 font-bold text-sm w-10">{clone.stats.tactics}</span>
+                    <span className="text-green-400 font-bold text-sm w-8">{clone.stats.endurance}</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-orange-300 text-sm font-medium">Лидерство</span>
-                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
-                      <div className="bg-yellow-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.leadership}%`}}></div>
+                  <div className="flex items-center space-x-3 p-2 bg-gray-800/50 rounded-lg border border-purple-400/20">
+                    <div className="w-3 h-3 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50"></div>
+                    <span className="text-purple-300 text-sm font-medium flex-1">Тактика</span>
+                    <div className="flex space-x-1">
+                      {Array.from({length: 10}, (_, i) => (
+                        <div key={i} className={`w-2 h-4 ${i < Math.floor(clone.stats.tactics / 10) ? 'bg-purple-400' : 'bg-gray-600'} rounded-sm`}></div>
+                      ))}
                     </div>
-                    <span className="text-yellow-400 font-bold text-sm w-10">{clone.stats.leadership}</span>
+                    <span className="text-purple-400 font-bold text-sm w-8">{clone.stats.tactics}</span>
+                  </div>
+                  <div className="flex items-center space-x-3 p-2 bg-gray-800/50 rounded-lg border border-yellow-400/20">
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full shadow-lg shadow-yellow-400/50"></div>
+                    <span className="text-yellow-300 text-sm font-medium flex-1">Лидерство</span>
+                    <div className="flex space-x-1">
+                      {Array.from({length: 10}, (_, i) => (
+                        <div key={i} className={`w-2 h-4 ${i < Math.floor(clone.stats.leadership / 10) ? 'bg-yellow-400' : 'bg-gray-600'} rounded-sm`}></div>
+                      ))}
+                    </div>
+                    <span className="text-yellow-400 font-bold text-sm w-8">{clone.stats.leadership}</span>
                   </div>
                 </div>
 
