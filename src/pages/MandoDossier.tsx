@@ -213,7 +213,6 @@ const MandoDossier = () => {
               <CardContent 
                 className="flex items-center justify-center min-h-[280px] relative overflow-hidden cursor-pointer"
                 onClick={playAccessDeniedSound}
-                onMouseEnter={playAccessDeniedSound}
               >
                 {/* Animated Background Particles */}
                 <div className="absolute inset-0">
