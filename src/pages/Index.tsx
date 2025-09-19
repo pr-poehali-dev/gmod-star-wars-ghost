@@ -442,6 +442,152 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Galaxy Map */}
+      <section className="py-20 px-4 md:px-8 bg-gradient-to-b from-gray-900 to-black">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
+            КАРТА ГАЛАКТИКИ
+          </h2>
+          
+          <div className="relative bg-gray-900 rounded-2xl border border-orange-400/30 p-8 overflow-hidden">
+            {/* Background Stars */}
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute top-10 left-20 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+              <div className="absolute top-32 left-40 w-1 h-1 bg-blue-300 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+              <div className="absolute top-16 right-32 w-1 h-1 bg-yellow-300 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute bottom-20 left-16 w-1 h-1 bg-red-300 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
+              <div className="absolute bottom-40 right-20 w-1 h-1 bg-purple-300 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
+              <div className="absolute top-40 left-60 w-1 h-1 bg-green-300 rounded-full animate-pulse" style={{animationDelay: '2.5s'}}></div>
+            </div>
+            
+            {/* Galaxy Grid */}
+            <div className="relative min-h-[600px] grid grid-cols-6 grid-rows-4 gap-4">
+              {/* Core Worlds */}
+              <div className="col-span-2 row-span-2 col-start-3 row-start-2 relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-yellow-400/20 rounded-lg border border-orange-400/50"></div>
+                <div className="relative z-10 p-4 text-center">
+                  <h3 className="text-orange-300 font-orbitron font-bold mb-4">МИРЫ ЯДРА</h3>
+                  
+                  {/* Coruscant */}
+                  <div className="group relative mb-3 p-2 bg-orange-900/30 border border-orange-400 rounded-lg hover:bg-orange-900/50 transition-all cursor-pointer">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
+                      <span className="text-orange-200 text-sm font-semibold">Корусант</span>
+                    </div>
+                    <p className="text-orange-300/70 text-xs mt-1">Столица Республики</p>
+                  </div>
+                  
+                  {/* Alderaan */}
+                  <div className="group relative mb-3 p-2 bg-blue-900/30 border border-blue-400 rounded-lg hover:bg-blue-900/50 transition-all cursor-pointer">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+                      <span className="text-blue-200 text-sm font-semibold">Альдераан</span>
+                    </div>
+                    <p className="text-blue-300/70 text-xs mt-1">Мирный мир</p>
+                  </div>
+                  
+                  {/* Corellia */}
+                  <div className="group relative p-2 bg-green-900/30 border border-green-400 rounded-lg hover:bg-green-900/50 transition-all cursor-pointer">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                      <span className="text-green-200 text-sm font-semibold">Кореллия</span>
+                    </div>
+                    <p className="text-green-300/70 text-xs mt-1">Операция "Тень"</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Outer Rim */}
+              {/* Tatooine */}
+              <div className="relative">
+                <div className="p-3 bg-yellow-900/30 border border-yellow-400 rounded-lg hover:bg-yellow-900/50 transition-all cursor-pointer h-full">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                    <span className="text-yellow-200 text-sm font-semibold">Татуин</span>
+                  </div>
+                  <p className="text-yellow-300/70 text-xs">Пустынный мир</p>
+                </div>
+              </div>
+              
+              {/* Kamino */}
+              <div className="relative col-start-6 row-start-1">
+                <div className="p-3 bg-cyan-900/30 border border-cyan-400 rounded-lg hover:bg-cyan-900/50 transition-all cursor-pointer h-full">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
+                    <span className="text-cyan-200 text-sm font-semibold">Камино</span>
+                  </div>
+                  <p className="text-cyan-300/70 text-xs">Мир клонов</p>
+                </div>
+              </div>
+              
+              {/* Geonosis */}
+              <div className="relative col-start-1 row-start-4">
+                <div className="p-3 bg-red-900/30 border border-red-400 rounded-lg hover:bg-red-900/50 transition-all cursor-pointer h-full">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
+                    <span className="text-red-200 text-sm font-semibold">Джеонозис</span>
+                  </div>
+                  <p className="text-red-300/70 text-xs">Первая битва</p>
+                </div>
+              </div>
+              
+              {/* Ryloth */}
+              <div className="relative col-start-2 row-start-1">
+                <div className="p-3 bg-purple-900/30 border border-purple-400 rounded-lg hover:bg-purple-900/50 transition-all cursor-pointer h-full">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                    <span className="text-purple-200 text-sm font-semibold">Рилот</span>
+                  </div>
+                  <p className="text-purple-300/70 text-xs">Зачистка базы</p>
+                </div>
+              </div>
+              
+              {/* Naboo */}
+              <div className="relative col-start-5 row-start-4">
+                <div className="p-3 bg-emerald-900/30 border border-emerald-400 rounded-lg hover:bg-emerald-900/50 transition-all cursor-pointer h-full">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span className="text-emerald-200 text-sm font-semibold">Набу</span>
+                  </div>
+                  <p className="text-emerald-300/70 text-xs">Королевский мир</p>
+                </div>
+              </div>
+              
+              {/* Anaxes */}
+              <div className="relative col-start-6 row-start-3">
+                <div className="p-3 bg-indigo-900/30 border border-indigo-400 rounded-lg hover:bg-indigo-900/50 transition-all cursor-pointer h-full">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-3 h-3 bg-indigo-400 rounded-full animate-pulse"></div>
+                    <span className="text-indigo-200 text-sm font-semibold">Анаксис</span>
+                  </div>
+                  <p className="text-indigo-300/70 text-xs">Битва за мир</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Legend */}
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
+                <span className="text-orange-300">Миры Ядра</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
+                <span className="text-cyan-300">Родной мир</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                <span className="text-red-300">Боевые миры</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
+                <span className="text-purple-300">Операции</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black py-12 px-4 md:px-8 text-center">
         <div className="max-w-4xl mx-auto">
