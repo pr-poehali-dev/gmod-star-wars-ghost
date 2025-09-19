@@ -134,66 +134,115 @@ const MandoDossier = () => {
                   Клан Mhokar
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex items-center justify-center min-h-[200px]">
-                <div className="relative">
-                  {/* Background Effects */}
-                  <div className="absolute inset-0 bg-red-900/20 rounded-lg blur-sm"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-yellow-500/10 rounded-lg"></div>
+              <CardContent className="flex items-center justify-center min-h-[280px] relative overflow-hidden">
+                {/* Animated Background Particles */}
+                <div className="absolute inset-0">
+                  <div className="absolute top-4 left-8 w-1 h-1 bg-red-400/60 rounded-full animate-ping" style={{animationDelay: '0s'}}></div>
+                  <div className="absolute top-12 right-12 w-1 h-1 bg-yellow-400/40 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute bottom-16 left-16 w-1 h-1 bg-red-400/50 rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
+                  <div className="absolute bottom-8 right-6 w-1 h-1 bg-orange-400/60 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute top-20 left-1/3 w-1 h-1 bg-red-400/30 rounded-full animate-ping" style={{animationDelay: '1.5s'}}></div>
+                </div>
+                
+                {/* Scanning Line Effect */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-red-400/80 to-transparent animate-pulse" 
+                       style={{top: '30%', animationDuration: '3s'}}></div>
+                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent animate-pulse" 
+                       style={{top: '70%', animationDuration: '4s', animationDelay: '1s'}}></div>
+                </div>
+                
+                <div className="relative w-full max-w-md">
+                  {/* Outer Glow Ring */}
+                  <div className="absolute inset-0 bg-red-500/10 rounded-2xl blur-xl animate-pulse"></div>
+                  <div className="absolute inset-2 bg-red-600/5 rounded-xl blur-lg animate-pulse" style={{animationDelay: '0.5s'}}></div>
                   
-                  {/* Main Container */}
-                  <div className="relative bg-gray-900/90 border-2 border-red-500 rounded-lg p-8 backdrop-blur-sm">
-                    {/* Diagonal Warning Stripes */}
-                    <div className="absolute inset-0 rounded-lg overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent transform -skew-x-12"></div>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/5 to-transparent transform skew-x-12"></div>
+                  {/* Main Container with Enhanced Border */}
+                  <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 border-2 border-red-500 rounded-xl p-8 backdrop-blur-md shadow-2xl">
+                    {/* Animated Border Glow */}
+                    <div className="absolute inset-0 rounded-xl border-2 border-red-400/30 animate-pulse"></div>
+                    <div className="absolute inset-1 rounded-lg border border-red-500/20 animate-pulse" style={{animationDelay: '1s'}}></div>
+                    
+                    {/* Dynamic Warning Stripes */}
+                    <div className="absolute inset-0 rounded-xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/15 to-transparent transform -skew-x-12 animate-pulse"></div>
+                      <div className="absolute inset-0 bg-gradient-to-l from-transparent via-yellow-500/8 to-transparent transform skew-x-12 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-600/10 to-transparent transform -skew-x-6 animate-pulse" style={{animationDelay: '2s'}}></div>
                     </div>
                     
                     {/* Content */}
-                    <div className="relative z-10 text-center space-y-4">
-                      {/* Warning Icon */}
+                    <div className="relative z-20 text-center space-y-6">
+                      {/* Enhanced Warning Icon */}
                       <div className="flex justify-center">
                         <div className="relative">
-                          <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center animate-pulse">
-                            <Icon name="ShieldAlert" size={32} className="text-red-400" />
+                          {/* Multiple Pulsing Rings */}
+                          <div className="absolute inset-0 w-20 h-20 border-2 border-red-500/30 rounded-full animate-ping"></div>
+                          <div className="absolute inset-0 w-20 h-20 border border-red-400/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                          <div className="absolute inset-0 w-20 h-20 border border-yellow-400/15 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+                          
+                          {/* Main Icon Container */}
+                          <div className="relative w-20 h-20 bg-gradient-to-br from-red-500/30 to-red-600/20 rounded-full flex items-center justify-center shadow-lg">
+                            <div className="absolute inset-0 bg-red-500/10 rounded-full animate-pulse"></div>
+                            <Icon name="ShieldAlert" size={36} className="text-red-400 relative z-10 drop-shadow-lg animate-pulse" />
                           </div>
-                          <div className="absolute inset-0 w-16 h-16 border-2 border-red-500/50 rounded-full animate-ping"></div>
                         </div>
                       </div>
                       
-                      {/* Main Text */}
-                      <div className="space-y-2">
-                        <h3 className="text-2xl font-orbitron font-black text-red-400 tracking-wider">
+                      {/* Enhanced Main Text */}
+                      <div className="space-y-3">
+                        <h3 className="text-3xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-red-400 tracking-wider drop-shadow-lg animate-pulse">
                           ЗАСЕКРЕЧЕНО
                         </h3>
-                        <div className="flex items-center justify-center gap-2">
-                          <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
-                          <p className="text-red-300/80 text-sm font-mono tracking-widest">
+                        <div className="flex items-center justify-center gap-3">
+                          <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse shadow-lg shadow-red-400/50"></div>
+                          <div className="w-1 h-1 bg-red-300/60 rounded-full animate-ping"></div>
+                          <p className="text-red-300/90 text-sm font-mono tracking-widest animate-pulse">
                             ДОСТУП ОГРАНИЧЕН
                           </p>
-                          <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                          <div className="w-1 h-1 bg-red-300/60 rounded-full animate-ping"></div>
+                          <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse shadow-lg shadow-red-400/50"></div>
                         </div>
                       </div>
                       
-                      {/* Security Level */}
-                      <div className="bg-gray-800/80 border border-red-500/30 rounded px-4 py-2">
-                        <p className="text-red-400/70 text-xs font-mono">
-                          УРОВЕНЬ СЕКРЕТНОСТИ: <span className="text-red-300 font-bold">ВЫСШИЙ</span>
-                        </p>
+                      {/* Enhanced Security Badge */}
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-red-500/20 rounded-lg blur-sm animate-pulse"></div>
+                        <div className="relative bg-gradient-to-r from-gray-800/90 to-gray-900/90 border-2 border-red-500/40 rounded-lg px-6 py-3 backdrop-blur-sm">
+                          <div className="flex items-center justify-center gap-2">
+                            <Icon name="Lock" size={14} className="text-red-400/80" />
+                            <p className="text-red-400/80 text-xs font-mono tracking-wide">
+                              УРОВЕНЬ СЕКРЕТНОСТИ: <span className="text-red-300 font-bold tracking-wider">ВЫСШИЙ</span>
+                            </p>
+                            <Icon name="Lock" size={14} className="text-red-400/80" />
+                          </div>
+                        </div>
                       </div>
                       
-                      {/* Glitch Effect Lines */}
-                      <div className="space-y-1">
-                        <div className="h-px bg-gradient-to-r from-transparent via-red-400/50 to-transparent"></div>
-                        <div className="h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent"></div>
-                        <div className="h-px bg-gradient-to-r from-transparent via-red-400/50 to-transparent"></div>
+                      {/* Enhanced Glitch Lines */}
+                      <div className="space-y-2">
+                        <div className="h-px bg-gradient-to-r from-transparent via-red-400/60 to-transparent animate-pulse"></div>
+                        <div className="h-px bg-gradient-to-r from-transparent via-red-300/40 to-transparent animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                        <div className="h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+                        <div className="h-px bg-gradient-to-r from-transparent via-red-400/60 to-transparent animate-pulse" style={{animationDelay: '1.5s'}}></div>
+                      </div>
+                      
+                      {/* Warning Code */}
+                      <div className="text-xs font-mono text-red-500/60 tracking-widest animate-pulse">
+                        ERROR_CODE: MND_CLAN_403
                       </div>
                     </div>
                     
-                    {/* Corner Decorations */}
-                    <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-red-500/50"></div>
-                    <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-red-500/50"></div>
-                    <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-red-500/50"></div>
-                    <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-red-500/50"></div>
+                    {/* Enhanced Corner Decorations */}
+                    <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-red-500/60 animate-pulse"></div>
+                    <div className="absolute top-3 right-3 w-6 h-6 border-r-2 border-t-2 border-red-500/60 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                    <div className="absolute bottom-3 left-3 w-6 h-6 border-l-2 border-b-2 border-red-500/60 animate-pulse" style={{animationDelay: '1s'}}></div>
+                    <div className="absolute bottom-3 right-3 w-6 h-6 border-r-2 border-b-2 border-red-500/60 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+                    
+                    {/* Additional Corner Details */}
+                    <div className="absolute top-1 left-1 w-2 h-2 bg-red-400/40 rounded-full animate-ping"></div>
+                    <div className="absolute top-1 right-1 w-2 h-2 bg-red-400/40 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+                    <div className="absolute bottom-1 left-1 w-2 h-2 bg-red-400/40 rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
+                    <div className="absolute bottom-1 right-1 w-2 h-2 bg-red-400/40 rounded-full animate-ping" style={{animationDelay: '3s'}}></div>
                   </div>
                 </div>
               </CardContent>
