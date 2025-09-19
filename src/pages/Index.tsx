@@ -296,8 +296,28 @@ const Index = () => {
               </p>
             </div>
             
-            {/* Empty Cards */}
+            {/* Character Cards */}
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Mandalorian Card */}
+              <Card className="bg-gray-900 border-green-400 hover-scale">
+                <CardContent className="p-4">
+                  <div className="text-center space-y-4">
+                    <img 
+                      src="https://cdn.poehali.dev/files/b54488bd-b7d7-4ac6-a413-2a816e9dc8ef.PNG" 
+                      alt="Мандалорец" 
+                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-green-400"
+                    />
+                    <div className="bg-green-900/30 border border-green-400 rounded-lg p-3">
+                      <span className="text-green-400 font-semibold text-sm">СЕМЬЯ</span>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-orange-200 font-orbitron font-bold">???</h4>
+                      <p className="text-green-400 text-sm">Мандалорец</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
               <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
                 <CardContent className="h-full flex items-center justify-center min-h-[200px]">
                   <div className="text-center space-y-4">
