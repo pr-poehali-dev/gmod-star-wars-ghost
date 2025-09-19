@@ -172,7 +172,7 @@ const MandoDossier = () => {
               <CardHeader>
                 <CardTitle className="text-green-400 text-2xl flex items-center">
                   <Icon name="Users" size={24} className="mr-3" />
-                  Связь с «Призраком»
+                  Связь с «Призраками»
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
