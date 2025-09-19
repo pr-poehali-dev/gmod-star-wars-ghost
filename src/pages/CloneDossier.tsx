@@ -22,7 +22,8 @@ const CloneDossier = () => {
       trainedBy: "Инструкторы ЭРК, Мандалорские воины",
       equipment: ["DC-15A", "DC-17", "Вибромеч", "Термодетонаторы"],
       personality: "Холодный, рассудительный, тактик. Умеет видеть поле боя словно шахматную доску, предугадывая действия врага на шаг вперёд. Не склонен к лишней жестокости, но для выполнения миссии готов жертвовать чем угодно – даже своими братьями, если того требует тактика. Предпочитает ближний бой с вибромечом, комбинируя удары с использованием термодетонаторов.",
-      achievements: ["Операция 'Тень Кореллии'", "Битва за Анаксис", "Зачистка базы на Рилоте"]
+      achievements: ["Операция 'Тень Кореллии'", "Битва за Анаксис", "Зачистка базы на Рилоте"],
+      stats: { accuracy: 85, stealth: 72, endurance: 88, tactics: 94, leadership: 91 }
     },
     {
       id: "CT-07-2114",
@@ -38,7 +39,8 @@ const CloneDossier = () => {
       trainedBy: "Пилоты-асы Республики, Мандалорские инструкторы",
       equipment: ["Тяжелое вооружение", "Jetpack", "Штурмовые машины", "Пилотское снаряжение"],
       personality: "Жестокий, но справедливый, любит пилотирование. Nuar – талантливый пилот; ему доверяют управление кораблями и штурмовыми машинами, и именно он вытаскивал «Призраков» из многих безвыходных ситуаций. Отлично владеет тяжелым вооружением и любит сочетать штурм с пилотированием: сначала пробивает оборону врага, затем садится за штурвал, чтобы увезти отряд.",
-      achievements: ["127 подтвержденных убийств снайпера", "Эвакуация с Джеонозиса", "Воздушный бой над Корусантом"]
+      achievements: ["127 подтвержденных убийств снайпера", "Эвакуация с Джеонозиса", "Воздушный бой над Корусантом"],
+      stats: { accuracy: 96, stealth: 89, endurance: 78, tactics: 82, leadership: 74 }
     },
     {
       id: "CT-04-5536",
@@ -54,7 +56,8 @@ const CloneDossier = () => {
       trainedBy: "Мандалорские бойцы, Штурмовые инструкторы",
       equipment: ["Vibro-топор", "Щит из бескара", "Штурмовая броня", "DC-15S"],
       personality: "Молчаливый, выносливый, прямолинейный, шутник. Не любит лишних разговоров, обычно ограничивается короткими фразами или жестами. Несмотря на внешнюю суровость, в бою он часто берёт на себя самые тяжёлые задачи, показывая братскую преданность.",
-      achievements: ["Спас 47 клонов", "Медаль за храбрость", "Операция 'Последний рубеж'"]
+      achievements: ["Спас 47 клонов", "Медаль за храбрость", "Операция 'Последний рубеж'"],
+      stats: { accuracy: 75, stealth: 68, endurance: 92, tactics: 76, leadership: 83 }
     }
   ];
 
@@ -155,6 +158,74 @@ const CloneDossier = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Characteristics Chart */}
+            <Card className="bg-gray-900 border-orange-400">
+              <CardHeader>
+                <CardTitle className="text-orange-400 text-2xl flex items-center">
+                  <Icon name="BarChart3" size={24} className="mr-3" />
+                  Характеристики
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-orange-300 text-sm font-medium">Меткость</span>
+                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
+                      <div className="bg-orange-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.accuracy}%`}}></div>
+                    </div>
+                    <span className="text-orange-400 font-bold text-sm w-10">{clone.stats.accuracy}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-orange-300 text-sm font-medium">Скрытность</span>
+                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
+                      <div className="bg-blue-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.stealth}%`}}></div>
+                    </div>
+                    <span className="text-blue-400 font-bold text-sm w-10">{clone.stats.stealth}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-orange-300 text-sm font-medium">Выносливость</span>
+                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
+                      <div className="bg-green-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.endurance}%`}}></div>
+                    </div>
+                    <span className="text-green-400 font-bold text-sm w-10">{clone.stats.endurance}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-orange-300 text-sm font-medium">Тактика</span>
+                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
+                      <div className="bg-purple-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.tactics}%`}}></div>
+                    </div>
+                    <span className="text-purple-400 font-bold text-sm w-10">{clone.stats.tactics}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-orange-300 text-sm font-medium">Лидерство</span>
+                    <div className="flex-1 mx-3 bg-gray-700 h-3 rounded">
+                      <div className="bg-yellow-400 h-3 rounded transition-all duration-500" style={{width: `${clone.stats.leadership}%`}}></div>
+                    </div>
+                    <span className="text-yellow-400 font-bold text-sm w-10">{clone.stats.leadership}</span>
+                  </div>
+                </div>
+
+                {/* Overall Rating */}
+                <div className="bg-gray-800/50 rounded-lg p-4 space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-orange-300 font-orbitron font-semibold">ОБЩИЙ РЕЙТИНГ</span>
+                    <span className="text-orange-400 font-bold text-2xl">
+                      {Math.round((clone.stats.accuracy + clone.stats.stealth + clone.stats.endurance + clone.stats.tactics + clone.stats.leadership) / 5)}
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-700 h-4 rounded">
+                    <div 
+                      className="bg-gradient-to-r from-orange-400 to-yellow-400 h-4 rounded transition-all duration-1000" 
+                      style={{width: `${Math.round((clone.stats.accuracy + clone.stats.stealth + clone.stats.endurance + clone.stats.tactics + clone.stats.leadership) / 5)}%`}}
+                    ></div>
+                  </div>
+                  <p className="text-orange-300/70 text-xs text-center">
+                    Боевой рейтинг основан на всех характеристиках
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Bio */}
             <Card className="bg-gray-900 border-orange-400">
               <CardHeader>

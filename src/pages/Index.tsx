@@ -365,64 +365,6 @@ const Index = () => {
                   {clone.description}
                 </p>
                 
-                {/* Characteristics Chart */}
-                <div className="space-y-3">
-                  <h4 className="text-orange-400 font-orbitron text-sm">ХАРАКТЕРИСТИКИ</h4>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-orange-300 text-xs">Меткость</span>
-                      <div className="flex-1 mx-2 bg-gray-700 h-2 rounded">
-                        <div className="bg-orange-400 h-2 rounded" style={{width: `${clone.stats.accuracy}%`}}></div>
-                      </div>
-                      <span className="text-orange-400 text-xs w-8">{clone.stats.accuracy}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-orange-300 text-xs">Скрытность</span>
-                      <div className="flex-1 mx-2 bg-gray-700 h-2 rounded">
-                        <div className="bg-blue-400 h-2 rounded" style={{width: `${clone.stats.stealth}%`}}></div>
-                      </div>
-                      <span className="text-blue-400 text-xs w-8">{clone.stats.stealth}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-orange-300 text-xs">Выносливость</span>
-                      <div className="flex-1 mx-2 bg-gray-700 h-2 rounded">
-                        <div className="bg-green-400 h-2 rounded" style={{width: `${clone.stats.endurance}%`}}></div>
-                      </div>
-                      <span className="text-green-400 text-xs w-8">{clone.stats.endurance}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-orange-300 text-xs">Тактика</span>
-                      <div className="flex-1 mx-2 bg-gray-700 h-2 rounded">
-                        <div className="bg-purple-400 h-2 rounded" style={{width: `${clone.stats.tactics}%`}}></div>
-                      </div>
-                      <span className="text-purple-400 text-xs w-8">{clone.stats.tactics}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-orange-300 text-xs">Лидерство</span>
-                      <div className="flex-1 mx-2 bg-gray-700 h-2 rounded">
-                        <div className="bg-yellow-400 h-2 rounded" style={{width: `${clone.stats.leadership}%`}}></div>
-                      </div>
-                      <span className="text-yellow-400 text-xs w-8">{clone.stats.leadership}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Overall Rating */}
-                <div className="bg-gray-800/50 rounded-lg p-3 space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-orange-300 font-orbitron text-sm">ОБЩИЙ РЕЙТИНГ</span>
-                    <span className="text-orange-400 font-bold text-lg">
-                      {Math.round((clone.stats.accuracy + clone.stats.stealth + clone.stats.endurance + clone.stats.tactics + clone.stats.leadership) / 5)}
-                    </span>
-                  </div>
-                  <div className="w-full bg-gray-700 h-3 rounded">
-                    <div 
-                      className="bg-gradient-to-r from-orange-400 to-yellow-400 h-3 rounded transition-all duration-500" 
-                      style={{width: `${Math.round((clone.stats.accuracy + clone.stats.stealth + clone.stats.endurance + clone.stats.tactics + clone.stats.leadership) / 5)}%`}}
-                    ></div>
-                  </div>
-                </div>
-
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span className="text-orange-400">Специализация:</span>
