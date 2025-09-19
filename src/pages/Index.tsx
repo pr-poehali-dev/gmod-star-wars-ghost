@@ -44,31 +44,173 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-black text-orange-200">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-black to-gray-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-400/5 via-transparent to-gray-600/5 opacity-20"></div>
-        <div className="text-center z-10 animate-fade-in">
-          <div className="mb-6">
-            <img 
-              src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
-              alt="Эмблема Галактической Республики" 
-              className="w-40 h-40 mx-auto mb-4 brightness-0 invert"
-            />
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black">
+          {/* Stars Background */}
+          <div className="stars-container absolute inset-0">
+            {Array.from({length: 100}, (_, i) => (
+              <div
+                key={i}
+                className="star"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 2}s`
+                }}
+              />
+            ))}
           </div>
-          <h1 className="text-6xl md:text-8xl font-orbitron font-black text-orange-200 mb-4 tracking-wider">
-            ПРИЗРАК
-          </h1>
-          <p className="text-xl md:text-2xl text-orange-400 font-medium mb-8">
-            Элитный клон-отряд Республики
-          </p>
-          <div className="flex justify-center gap-4 text-sm font-orbitron">
-            <Badge variant="outline" className="border-orange-400 text-orange-400">
-              ЭРК
-            </Badge>
-            <Badge variant="outline" className="border-orange-400 text-orange-400">
-              БСО
-            </Badge>
+          
+          {/* Scanning Lines */}
+          <div className="absolute inset-0">
+            <div className="scanning-line"></div>
+            <div className="scanning-line-2"></div>
+            <div className="scanning-line-3"></div>
+          </div>
+          
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-orange-400/5 via-transparent to-cyan-400/5"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-orange-500/3 to-transparent"></div>
+        </div>
+
+        {/* Main Content */}
+        <div className="text-center z-10 max-w-6xl mx-auto px-4 py-20">
+          {/* Logo Container with Effects */}
+          <div className="mb-12 fade-in-scale">
+            <div className="relative inline-block">
+              {/* Glowing Rings */}
+              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 border-2 border-orange-400/20 rounded-full animate-ping"></div>
+              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 border border-cyan-400/20 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64 border border-orange-400/10 rounded-full animate-ping" style={{animationDelay: '2s'}}></div>
+              
+              {/* Main Logo */}
+              <div className="relative w-48 h-48 md:w-64 md:h-64 bg-gradient-to-br from-orange-400/10 to-cyan-400/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-orange-400/30 holographic">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-orange-400/10 to-transparent animate-pulse"></div>
+                <img 
+                  src="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
+                  alt="Эмблема Галактической Республики" 
+                  className="relative w-32 h-32 md:w-40 md:h-40 brightness-0 invert drop-shadow-2xl neon-glow future-hover"
+                />
+              </div>
+              
+              {/* Orbiting Elements */}
+              <div className="absolute inset-0 w-48 h-48 md:w-64 md:h-64">
+                <div className="absolute w-3 h-3 bg-orange-400 rounded-full top-0 left-1/2 transform -translate-x-1/2 animate-pulse neon-glow"></div>
+                <div className="absolute w-2 h-2 bg-cyan-400 rounded-full bottom-0 right-1/4 animate-pulse neon-glow" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute w-2 h-2 bg-orange-400 rounded-full left-0 top-1/3 animate-pulse neon-glow" style={{animationDelay: '1s'}}></div>
+                <div className="absolute w-1 h-1 bg-cyan-400 rounded-full right-0 bottom-1/3 animate-pulse neon-glow" style={{animationDelay: '1.5s'}}></div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Main Title with Advanced Effects */}
+          <div className="mb-8 fade-in-up">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-cyan-400 to-orange-400 mb-6 tracking-wider glitch neon-glow" data-text="ПРИЗРАК">
+              ПРИЗРАК
+            </h1>
+            
+            {/* Animated Underline */}
+            <div className="relative mx-auto w-80 md:w-96 h-1 mb-8">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-400 to-transparent h-full animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400 to-transparent h-full animate-pulse" style={{animationDelay: '1s'}}></div>
+            </div>
+          </div>
+          
+          {/* Subtitle with Holographic Effect */}
+          <div className="mb-12 fade-in-up" style={{animationDelay: '0.5s'}}>
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-orange-400/10 rounded-2xl blur-xl animate-pulse"></div>
+              <div className="relative bg-gradient-to-r from-gray-900/80 via-gray-800/80 to-gray-900/80 backdrop-blur-md border border-orange-400/30 rounded-2xl px-8 py-6 holographic">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-cyan-300 to-orange-300 mb-3 tracking-wide neon-glow">
+                  ЭЛИТНЫЙ РАЗВЕДЫВАТЕЛЬНЫЙ КОРПУС
+                </h2>
+                <p className="text-lg md:text-xl text-orange-400/90 font-medium tracking-wide flicker-text">
+                  Специальное подразделение клонов-штурмовиков Галактической Республики
+                </p>
+                
+                {/* Status Indicators */}
+                <div className="flex justify-center items-center gap-4 mt-6">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse neon-glow"></div>
+                    <span className="text-green-400 text-sm font-mono tracking-wider">АКТИВЕН</span>
+                  </div>
+                  <div className="w-px h-4 bg-orange-400/50"></div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse neon-glow"></div>
+                    <span className="text-orange-400 text-sm font-mono tracking-wider">ГОТОВ К БОЮ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Enhanced Badges */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12 fade-in-up" style={{animationDelay: '1s'}}>
+            <div className="relative group">
+              <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
+              <Badge className="relative bg-gradient-to-r from-orange-400/20 to-orange-600/20 border-orange-400 text-orange-300 px-6 py-2 text-lg font-orbitron font-bold tracking-wider future-hover holographic">
+                <Icon name="Shield" size={16} className="mr-2 neon-glow" />
+                ЭРК
+              </Badge>
+            </div>
+            
+            <div className="relative group">
+              <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
+              <Badge className="relative bg-gradient-to-r from-cyan-400/20 to-cyan-600/20 border-cyan-400 text-cyan-300 px-6 py-2 text-lg font-orbitron font-bold tracking-wider future-hover holographic">
+                <Icon name="Target" size={16} className="mr-2 neon-glow" />
+                БСО
+              </Badge>
+            </div>
+            
+            <div className="relative group">
+              <div className="absolute inset-0 bg-purple-400/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
+              <Badge className="relative bg-gradient-to-r from-purple-400/20 to-purple-600/20 border-purple-400 text-purple-300 px-6 py-2 text-lg font-orbitron font-bold tracking-wider future-hover holographic">
+                <Icon name="Skull" size={16} className="mr-2 neon-glow" />
+                В.А.Р.
+              </Badge>
+            </div>
+          </div>
+          
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center fade-in-up" style={{animationDelay: '1.5s'}}>
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 to-cyan-400/30 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+              <Button className="relative bg-gradient-to-r from-orange-400 to-cyan-400 text-black hover:from-cyan-400 hover:to-orange-400 font-orbitron font-bold px-8 py-4 text-lg tracking-wider future-hover holographic">
+                <Icon name="Users" size={24} className="mr-3" />
+                СОСТАВ ОТРЯДА
+              </Button>
+            </div>
+            
+            <div className="relative group">
+              <div className="absolute inset-0 bg-orange-400/30 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+              <Button 
+                variant="outline" 
+                className="relative border-2 border-orange-400 text-orange-300 hover:bg-orange-400/10 hover:text-orange-200 font-orbitron font-bold px-8 py-4 text-lg tracking-wider future-hover holographic backdrop-blur-sm"
+              >
+                <Icon name="BookOpen" size={24} className="mr-3 neon-glow" />
+                ДОСЬЕ ОТРЯДА
+              </Button>
+            </div>
+          </div>
+          
+          {/* Decorative Elements */}
+          <div className="mt-16 flex items-center justify-center fade-in-scale" style={{animationDelay: '2s'}}>
+            <div className="h-px bg-gradient-to-r from-transparent via-orange-400/50 to-transparent flex-1 max-w-xs"></div>
+            <div className="mx-6 flex items-center gap-3">
+              <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse neon-glow"></div>
+              <div className="w-3 h-3 border-2 border-cyan-400/50 rotate-45 animate-pulse"></div>
+              <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse neon-glow"></div>
+            </div>
+            <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent flex-1 max-w-xs"></div>
           </div>
         </div>
+        
+        {/* Enhanced Glow Effects */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-orange-400/10 via-cyan-400/5 to-orange-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-400/5 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-orange-400/5 to-transparent rounded-full blur-2xl"></div>
       </section>
 
       {/* About Squad Section */}
