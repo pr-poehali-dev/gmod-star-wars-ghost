@@ -15,7 +15,7 @@ const CloneDossier = () => {
       description: "Jeing (позывной G-01) – командир «Призрака». Один из первых клонов, прошедших мандалорскую подготовку. Его голос спокоен, лишён эмоций, но за этим спокойствием скрывается точный расчёт.",
       image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
       specialization: "Командование",
-      kills: 147,
+      kills: 88,
       missions: 89,
       callSign: "G-01",
       birthPlace: "Камино",
