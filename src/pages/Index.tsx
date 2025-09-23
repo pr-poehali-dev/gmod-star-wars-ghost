@@ -174,10 +174,15 @@ const Index = () => {
             </Card>
           </div>
         </div>
+        
+        {/* Gradient transition to gray */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-900 via-gray-950 to-transparent z-10"></div>
       </section>
 
       {/* Squad History */}
-      <section className="py-20 px-4 md:px-8 bg-gray-900">
+      <section className="relative py-20 px-4 md:px-8 bg-gray-900">
+        {/* Gradient transition from gray to black */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black via-gray-950 to-transparent z-10"></div>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
             ИСТОРИЯ ФОРМИРОВАНИЯ
@@ -197,7 +202,7 @@ const Index = () => {
       </section>
 
       {/* Squad Features */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+      <section className="relative py-20 px-4 md:px-8 max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
           ОСОБЕННОСТИ ОТРЯДА
         </h2>
@@ -263,10 +268,15 @@ const Index = () => {
             </p>
           </div>
         </div>
+        
+        {/* Gradient transition to gray */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-900 via-gray-950 to-transparent z-10"></div>
       </section>
 
       {/* Relationships Section */}
-      <section className="py-20 px-4 md:px-8 bg-gray-900">
+      <section className="relative py-20 px-4 md:px-8 bg-gray-900">
+        {/* Gradient transition from gray to black */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black via-gray-950 to-transparent z-10"></div>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
             ВЗАИМООТНОШЕНИЯ
@@ -412,7 +422,9 @@ const Index = () => {
       </section>
 
       {/* Clone Roster */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+      <section className="relative py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        {/* Gradient transition to footer */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-950 via-gray-900 to-transparent z-10"></div>
         <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 text-center mb-16">
           СПИСОК КЛОНОВ
         </h2>
