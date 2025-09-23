@@ -182,11 +182,12 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
             {/* Imperial Symbol with orbital rings */}
             <div className="relative mb-6">
               <div className="absolute inset-0 blur-2xl bg-orange-400/40 rounded-full"></div>
-              <div className="relative bg-gradient-to-b from-orange-300 to-orange-600 rounded-full p-6 mx-auto w-28 h-28 flex items-center justify-center">
+              <div className="relative bg-gradient-to-b from-gray-800 to-black rounded-full p-6 mx-auto w-32 h-32 flex items-center justify-center border-2 border-orange-400/30">
                 <img 
                   src="https://cdn.poehali.dev/files/d15904df-e78a-40aa-ae8d-fe43a334cca5.png" 
                   alt="Эмблема Галактической Республики" 
-                  className="w-14 h-14 brightness-0 drop-shadow-xl"
+                  className="w-20 h-20 brightness-0 invert sepia saturate-[10] hue-rotate-[15deg] brightness-[1.2] drop-shadow-[0_0_10px_rgba(251,146,60,0.8)]"
+                  style={{filter: 'brightness(0) saturate(100%) invert(70%) sepia(87%) saturate(2476%) hue-rotate(4deg) brightness(102%) contrast(104%)'}}
                 />
               </div>
               
