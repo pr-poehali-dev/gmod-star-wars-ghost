@@ -77,7 +77,11 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
               <div className="relative mb-8">
                 <div className="absolute inset-0 blur-2xl bg-red-500/30 rounded-full"></div>
                 <div className="relative bg-gradient-to-b from-red-400 to-red-600 rounded-full p-4 mx-auto w-24 h-24 flex items-center justify-center">
-                  <Icon name="ShieldX" size={48} className="text-white drop-shadow-lg" />
+                  <img 
+                    src="https://cdn.poehali.dev/files/d15904df-e78a-40aa-ae8d-fe43a334cca5.png" 
+                    alt="Эмблема Галактической Республики" 
+                    className="w-12 h-12 brightness-0 invert drop-shadow-lg"
+                  />
                 </div>
                 
                 {/* Orbital rings */}
