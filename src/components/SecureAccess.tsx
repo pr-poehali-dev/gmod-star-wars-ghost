@@ -344,7 +344,8 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
                 </div>
                 <p className="text-orange-300/80 text-xs text-center leading-relaxed">
                   Данная информация содержит секретные сведения отряда "Призрак"<br />
-                  и доступна только авторизованному персоналу ЭРК<br />
+                  и доступна только авторизованному персоналу.<br />
+                  Для получения доступа отправьте запрос вышестоящему командованию.<br />
                   <span className="text-orange-400 font-mono">SECURITY_LEVEL: CLASSIFIED</span>
                 </p>
               </div>
