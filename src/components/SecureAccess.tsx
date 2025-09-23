@@ -76,11 +76,12 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
               {/* Warning Symbol with glow */}
               <div className="relative mb-8">
                 <div className="absolute inset-0 blur-2xl bg-red-500/30 rounded-full"></div>
-                <div className="relative bg-gradient-to-b from-red-400 to-red-600 rounded-full p-4 mx-auto w-24 h-24 flex items-center justify-center">
+                <div className="relative bg-gradient-to-b from-gray-900 to-black rounded-full p-6 mx-auto w-32 h-32 flex items-center justify-center border-2 border-red-500/40">
                   <img 
                     src="https://cdn.poehali.dev/files/d15904df-e78a-40aa-ae8d-fe43a334cca5.png" 
                     alt="Эмблема Галактической Республики" 
-                    className="w-12 h-12 brightness-0 invert drop-shadow-lg"
+                    className="w-20 h-20 drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]"
+                    style={{filter: 'brightness(0) saturate(100%) invert(13%) sepia(82%) saturate(6347%) hue-rotate(356deg) brightness(91%) contrast(114%)'}}
                   />
                 </div>
                 
