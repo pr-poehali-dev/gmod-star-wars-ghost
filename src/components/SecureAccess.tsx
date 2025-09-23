@@ -142,7 +142,7 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
                 </p>
                 <p className="text-red-400 text-sm">
                   Для восстановления доступа обратитесь к<br />
-                  офицеру службы безопасности ЭРК
+                  офицеру службы безопасности
                 </p>
               </div>
             </CardContent>
