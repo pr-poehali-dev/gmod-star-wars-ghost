@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface SecureAccessProps {
   children: React.ReactNode;
-  isUnlocked: boolean;
-  onUnlock: () => void;
 }
 
-export const SecureAccess: React.FC<SecureAccessProps> = ({ children, isUnlocked, onUnlock }) => {
+export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
+  const { isUnlocked, unlock } = useAuth();
   const [password, setPassword] = useState('');
   const [attempts, setAttempts] = useState(0);
   const [isBlocked, setIsBlocked] = useState(false);
@@ -25,7 +25,7 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children, isUnlocked
     if (isBlocked) return;
     
     if (password === correctPassword) {
-      onUnlock();
+      unlock();
       setPassword('');
       setAttempts(0);
       setShowError(false);

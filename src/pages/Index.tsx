@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -7,7 +6,6 @@ import { Link } from "react-router-dom";
 import { SecureAccess } from "@/components/SecureAccess";
 
 const Index = () => {
-  const [isUnlocked, setIsUnlocked] = useState(false);
   const clones = [
     {
       id: "CT-01-1044",
@@ -122,10 +120,7 @@ const Index = () => {
       </section>
 
       {/* About Squad Section */}
-      <SecureAccess 
-        isUnlocked={isUnlocked} 
-        onUnlock={() => setIsUnlocked(true)}
-      >
+      <SecureAccess>
         <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 mb-6">
