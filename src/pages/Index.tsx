@@ -107,7 +107,7 @@ const Index = () => {
               {/* Small badges under the main plate */}
               <div className="flex gap-4 justify-center mt-6">
                 <div className="bg-orange-400/20 border border-orange-400/40 rounded-full px-4 py-2">
-                  <span className="text-orange-300 font-orbitron font-bold text-sm tracking-wider">ЭРК</span>
+                  <span className="text-orange-300 font-orbitron font-bold text-sm tracking-wider">СПЕЦНАЗ</span>
                 </div>
                 <div className="bg-orange-400/20 border border-orange-400/40 rounded-full px-4 py-2">
                   <span className="text-orange-300 font-orbitron font-bold text-sm tracking-wider">БСО</span>
@@ -186,7 +186,7 @@ const Index = () => {
                 После битвы за Анаксис и тяжелых потерь в рядах БСО, совет командования решил создать новое подразделение, способное выполнять задачи, где обычные клоны были бы бессильны. Так появился отряд «Призрак» – группа бойцов, прошедших не только переобучение, но и радикальную психологическую и тактическую подготовку.
               </p>
               <p className="text-orange-200 text-lg leading-relaxed text-justify">
-                Для их тренировки привлекли мандалорских инструкторов, которые привили им кодекс чести воинов Манд'алор, навыки ведения ближнего боя и умение действовать малыми группами. Дополнительно клоны проходили подготовку у инструкторов ЭРК (элитного республиканского корпуса), получив опыт ведения диверсионных и зачистных операций.
+                Для их тренировки привлекли мандалорских инструкторов, которые привили им кодекс чести воинов Манд'алор, навыки ведения ближнего боя и умение действовать малыми группами. Дополнительно клоны проходили подготовку у инструкторов Спецназа, получив опыт ведения диверсионных и зачистных операций.
               </p>
             </div>
           </div>
@@ -524,7 +524,7 @@ const Index = () => {
             
             <div className="inline-flex items-center gap-3 bg-gray-900/50 backdrop-blur-sm border border-orange-400/30 rounded-full px-6 py-3 mb-8">
               <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-              <span className="text-orange-300 font-orbitron font-semibold tracking-wide">Отряд "Призрак" - ЭРК В.А.Р.</span>
+              <span className="text-orange-300 font-orbitron font-semibold tracking-wide">Отряд "Призрак" - Спецназ В.А.Р.</span>
               <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
             </div>
           </div>
