@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
+import { SecureAccess } from "@/components/SecureAccess";
 
 const Index = () => {
+  const [isUnlocked, setIsUnlocked] = useState(false);
   const clones = [
     {
       id: "CT-01-1044",
@@ -119,11 +122,15 @@ const Index = () => {
       </section>
 
       {/* About Squad Section */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 mb-6">
-            О ОТРЯДЕ ПРИЗРАК
-          </h2>
+      <SecureAccess 
+        isUnlocked={isUnlocked} 
+        onUnlock={() => setIsUnlocked(true)}
+      >
+        <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 mb-6">
+              О ОТРЯДЕ ПРИЗРАК
+            </h2>
           <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
             <p>
               Отряд "Призрак" - элитное подразделение клонов-штурмовиков, специализирующееся на 
@@ -495,6 +502,7 @@ const Index = () => {
           </Card>
         </div>
       </section>
+      </SecureAccess>
 
       {/* Footer */}
       <footer className="relative bg-gradient-to-t from-gray-950 via-gray-900 to-black py-16 px-4 md:px-8 text-center overflow-hidden">
