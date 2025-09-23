@@ -85,9 +85,10 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
                   />
                 </div>
                 
-                {/* Orbital rings */}
-                <div className="absolute inset-0 border-2 border-red-500/30 rounded-full animate-spin" style={{animationDuration: '8s'}}></div>
-                <div className="absolute inset-2 border border-red-400/20 rounded-full animate-spin" style={{animationDuration: '6s', animationDirection: 'reverse'}}></div>
+                {/* Rotating orbital rings */}
+                <div className="absolute inset-0 border-2 border-red-500/30 rounded-full animate-spin" style={{animationDuration: '10s'}}></div>
+                <div className="absolute inset-4 border border-red-400/20 rounded-full animate-spin" style={{animationDuration: '8s', animationDirection: 'reverse'}}></div>
+                <div className="absolute inset-8 border border-red-500/10 rounded-full animate-spin" style={{animationDuration: '6s'}}></div>
               </div>
               
               {/* Main Title with holographic effect */}
