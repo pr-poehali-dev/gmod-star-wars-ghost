@@ -51,7 +51,7 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children, isUnlocked
 
   if (showBlocked) {
     return (
-      <div className="py-20 px-4 md:px-8 max-w-5xl mx-auto">
+      <div className="py-16 px-4 md:px-8 max-w-4xl mx-auto">
         <div className="relative">
           {/* Holographic Grid Background */}
           <div className="absolute inset-0 opacity-20">
@@ -72,12 +72,12 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children, isUnlocked
             {/* Scan lines effect */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/5 to-transparent opacity-60 animate-pulse"></div>
             
-            <CardContent className="relative p-16 text-center space-y-8">
+            <CardContent className="relative p-12 text-center space-y-6">
               {/* Warning Symbol with glow */}
               <div className="relative mb-8">
                 <div className="absolute inset-0 blur-2xl bg-red-500/30 rounded-full"></div>
-                <div className="relative bg-gradient-to-b from-red-400 to-red-600 rounded-full p-6 mx-auto w-32 h-32 flex items-center justify-center">
-                  <Icon name="ShieldX" size={64} className="text-white drop-shadow-lg" />
+                <div className="relative bg-gradient-to-b from-red-400 to-red-600 rounded-full p-4 mx-auto w-24 h-24 flex items-center justify-center">
+                  <Icon name="ShieldX" size={48} className="text-white drop-shadow-lg" />
                 </div>
                 
                 {/* Orbital rings */}
@@ -153,7 +153,7 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children, isUnlocked
   }
 
   return (
-    <div className="py-20 px-4 md:px-8 max-w-5xl mx-auto">
+    <div className="py-16 px-4 md:px-8 max-w-4xl mx-auto">
       <div className="relative">
         {/* Holographic Grid Background */}
         <div className="absolute inset-0 opacity-10">
@@ -174,12 +174,12 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children, isUnlocked
           {/* Scan lines effect */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-400/5 to-transparent opacity-40 animate-pulse"></div>
           
-          <CardHeader className="relative text-center pb-8 pt-12">
+          <CardHeader className="relative text-center pb-6 pt-8">
             {/* Imperial Symbol with orbital rings */}
-            <div className="relative mb-8">
-              <div className="absolute inset-0 blur-3xl bg-orange-400/40 rounded-full"></div>
-              <div className="relative bg-gradient-to-b from-orange-300 to-orange-600 rounded-full p-8 mx-auto w-40 h-40 flex items-center justify-center">
-                <Icon name="Shield" size={80} className="text-black drop-shadow-xl" />
+            <div className="relative mb-6">
+              <div className="absolute inset-0 blur-2xl bg-orange-400/40 rounded-full"></div>
+              <div className="relative bg-gradient-to-b from-orange-300 to-orange-600 rounded-full p-6 mx-auto w-28 h-28 flex items-center justify-center">
+                <Icon name="Shield" size={56} className="text-black drop-shadow-xl" />
               </div>
               
               {/* Rotating orbital rings */}
@@ -189,17 +189,17 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children, isUnlocked
             </div>
             
             {/* Holographic Title */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div className="relative">
-                <CardTitle className="text-5xl font-orbitron font-black text-transparent bg-gradient-to-b from-orange-200 via-orange-400 to-orange-600 bg-clip-text tracking-wider drop-shadow-[0_0_30px_rgba(251,146,60,0.8)]">
+                <CardTitle className="text-3xl md:text-4xl font-orbitron font-black text-transparent bg-gradient-to-b from-orange-200 via-orange-400 to-orange-600 bg-clip-text tracking-wider drop-shadow-[0_0_30px_rgba(251,146,60,0.8)]">
                   CLASSIFIED ACCESS
                 </CardTitle>
-                <div className="absolute inset-0 text-5xl font-orbitron font-black text-orange-400/20 blur-sm">
+                <div className="absolute inset-0 text-3xl md:text-4xl font-orbitron font-black text-orange-400/20 blur-sm">
                   CLASSIFIED ACCESS
                 </div>
               </div>
               
-              <h3 className="text-2xl font-orbitron font-bold text-orange-300">
+              <h3 className="text-lg font-orbitron font-bold text-orange-300">
                 СЕКРЕТНАЯ ИНФОРМАЦИЯ ОТРЯДА
               </h3>
             </div>
@@ -220,9 +220,9 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children, isUnlocked
             </div>
           </CardHeader>
         
-        <CardContent className="relative space-y-8 p-12">
+        <CardContent className="relative space-y-6 p-8">
           {/* Access Terminal */}
-          <div className="bg-black/80 border-2 border-orange-400/50 rounded-lg p-8 relative overflow-hidden">
+          <div className="bg-black/80 border-2 border-orange-400/50 rounded-lg p-6 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent animate-pulse"></div>
             
             <div className="flex items-center space-x-3 mb-6">
