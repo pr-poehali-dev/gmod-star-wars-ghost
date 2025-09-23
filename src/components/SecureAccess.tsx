@@ -179,7 +179,11 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
             <div className="relative mb-6">
               <div className="absolute inset-0 blur-2xl bg-orange-400/40 rounded-full"></div>
               <div className="relative bg-gradient-to-b from-orange-300 to-orange-600 rounded-full p-6 mx-auto w-28 h-28 flex items-center justify-center">
-                <Icon name="Shield" size={56} className="text-black drop-shadow-xl" />
+                <img 
+                  src="https://cdn.poehali.dev/files/d15904df-e78a-40aa-ae8d-fe43a334cca5.png" 
+                  alt="Эмблема Галактической Республики" 
+                  className="w-14 h-14 brightness-0 drop-shadow-xl"
+                />
               </div>
               
               {/* Rotating orbital rings */}
