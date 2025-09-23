@@ -117,6 +117,9 @@ const Index = () => {
           </div>
           
         </div>
+        
+        {/* Gradient transition to black */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-gray-950/50 to-transparent z-20"></div>
       </section>
 
       {/* About Squad Section */}
