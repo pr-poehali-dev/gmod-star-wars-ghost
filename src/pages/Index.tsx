@@ -45,9 +45,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-orange-200">
-      {/* Curator */}
-      <Curator />
-      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Simplified Background */}
@@ -128,6 +125,9 @@ const Index = () => {
 
       {/* About Squad Section */}
       <SecureAccess>
+        {/* Curator */}
+        <Curator />
+        
         <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-orange-400 mb-6">
