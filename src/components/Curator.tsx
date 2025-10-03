@@ -151,7 +151,7 @@ export const Curator = () => {
               className="w-72 h-auto object-contain relative z-10"
               style={{
                 filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(-10deg) drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 80px rgba(0, 182, 212, 0.5))',
-                opacity: 0.95,
+                opacity: 0.75,
                 mixBlendMode: 'screen'
               }}
             />
