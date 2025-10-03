@@ -459,63 +459,28 @@ const CloneDossier = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="space-y-3">
                   {clone.achievements.map((achievement, index) => (
-                    <div key={index} className="relative p-4 bg-gray-800/50 rounded-lg border border-orange-400/30 hover:bg-gray-800 transition-all group">
-                      {/* Hexagonal Medal Badge */}
-                      <div className="relative mx-auto mb-3 w-20 h-20">
-                        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-2xl">
-                          <defs>
-                            <linearGradient id={`hex-gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#fb923c" stopOpacity="0.9" />
-                              <stop offset="100%" stopColor="#d97706" stopOpacity="0.9" />
-                            </linearGradient>
-                            <filter id={`shadow-${index}`}>
-                              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#fb923c" floodOpacity="0.5"/>
-                            </filter>
-                          </defs>
-                          
-                          {/* Outer Hexagon */}
-                          <polygon
-                            points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
-                            fill="#1f2937"
-                            stroke={`url(#hex-gradient-${index})`}
-                            strokeWidth="3"
-                            filter={`url(#shadow-${index})`}
-                          />
-                          
-                          {/* Inner Hexagon */}
-                          <polygon
-                            points="50,15 80,32.5 80,67.5 50,85 20,67.5 20,32.5"
-                            fill="none"
-                            stroke="#fb923c"
-                            strokeWidth="1.5"
-                            opacity="0.4"
-                          />
-                          
-                          {/* Center Star */}
-                          <path
-                            d="M 50 30 L 55 45 L 70 47 L 58 57 L 62 72 L 50 64 L 38 72 L 42 57 L 30 47 L 45 45 Z"
-                            fill="#fb923c"
-                            opacity="0.8"
-                            className="group-hover:opacity-100 transition-opacity"
-                          />
-                          
-                          {/* Republic Symbol Lines */}
-                          <circle cx="50" cy="50" r="12" fill="none" stroke="#fb923c" strokeWidth="1" opacity="0.3"/>
-                          <line x1="50" y1="38" x2="50" y2="62" stroke="#fb923c" strokeWidth="1" opacity="0.3"/>
-                          <line x1="38" y1="50" x2="62" y2="50" stroke="#fb923c" strokeWidth="1" opacity="0.3"/>
-                        </svg>
-                        
-                        {/* Glow */}
-                        <div className="absolute inset-0 bg-orange-400/10 blur-lg group-hover:bg-orange-400/20 transition-all"></div>
+                    <div key={index} className="relative flex items-center gap-4 p-4 bg-gradient-to-r from-gray-900 to-gray-800 rounded-lg border-l-4 border-orange-400 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-400/20 transition-all group">
+                      {/* Left Icon Badge */}
+                      <div className="flex-shrink-0 relative">
+                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-400/50">
+                          <Icon name="Award" size={28} className="text-black" />
+                        </div>
+                        {/* Pulse Ring */}
+                        <div className="absolute inset-0 rounded-full border-2 border-orange-400 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"></div>
                       </div>
                       
-                      {/* Achievement Title */}
-                      <p className="text-orange-200 font-semibold text-sm text-center leading-tight px-2">{achievement}</p>
+                      {/* Achievement Content */}
+                      <div className="flex-1">
+                        <p className="text-orange-200 font-semibold text-base leading-tight">{achievement}</p>
+                        <p className="text-orange-400/60 text-xs mt-1 font-mono">БОЕВАЯ ОПЕРАЦИЯ</p>
+                      </div>
                       
-                      {/* Bottom Accent Line */}
-                      <div className="mt-3 mx-auto w-12 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-50"></div>
+                      {/* Right Number Badge */}
+                      <div className="flex-shrink-0 w-8 h-8 rounded bg-orange-400/10 border border-orange-400/30 flex items-center justify-center">
+                        <span className="text-orange-400 font-bold text-sm">{index + 1}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
