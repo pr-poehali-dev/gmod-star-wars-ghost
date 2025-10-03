@@ -456,3 +456,99 @@
     transform: translateX(100%);
   }
 }
+
+/* Hologram Glitch Effect */
+.hologram-glitch {
+  position: relative;
+  animation: hologramFlicker 3s infinite;
+}
+
+.hologram-glitch::before,
+.hologram-glitch::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hologram-glitch::before {
+  background: rgba(0, 255, 255, 0.3);
+  animation: glitchShift1 2s infinite;
+}
+
+.hologram-glitch::after {
+  background: rgba(0, 100, 255, 0.2);
+  animation: glitchShift2 2.5s infinite;
+}
+
+@keyframes hologramFlicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  5%,
+  10% {
+    opacity: 0.85;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  20% {
+    opacity: 1;
+  }
+  45%,
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes glitchShift1 {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  10% {
+    opacity: 0.5;
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translate(1px, -1px);
+  }
+  60% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitchShift2 {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15% {
+    opacity: 0.4;
+    transform: translate(2px, -2px);
+  }
+  25% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  55% {
+    opacity: 0.2;
+    transform: translate(-1px, 1px);
+  }
+  65% {
+    opacity: 0;
+  }
+}

@@ -82,15 +82,16 @@ export const Curator = () => {
   };
 
   return (
-    <div className="fixed right-12 bottom-12 z-50 flex items-end gap-6">
+    <div className="fixed right-12 bottom-0 z-50 flex items-end gap-6 pb-8">
       {/* Messages and Questions Container */}
-      <div className="flex flex-col gap-4 max-w-md">
+      <div className="flex flex-col gap-4 max-w-md mb-20">
         {/* Speech Bubble */}
         <div className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl rounded-br-none px-5 py-4 shadow-2xl animate-fade-in">
           <p className="text-cyan-100 text-base font-medium leading-relaxed">
             {currentMessage}
           </p>
-          <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-cyan-900 border-r-2 border-b-2 border-cyan-400 rotate-45"></div>
+          <div className="absolute -bottom-0 -right-0 w-0 h-0 border-l-[20px] border-l-transparent border-t-[20px] border-t-cyan-900"></div>
+          <div className="absolute -bottom-0 -right-0 w-0 h-0 border-l-[22px] border-l-transparent border-t-[22px] border-t-cyan-400 -z-10"></div>
         </div>
 
         {/* Quick Questions */}
@@ -118,20 +119,27 @@ export const Curator = () => {
         )}
       </div>
 
-      {/* Clone Character */}
+      {/* Clone Character with Hologram Effect */}
       <button
         onClick={handleCharacterClick}
         className="relative group flex-shrink-0"
       >
-        <img
-          src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
-          alt="Куратор CT-7891"
-          className="w-64 h-64 object-cover drop-shadow-2xl hover:scale-105 transition-transform duration-300 filter brightness-105"
-        />
-        <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-gray-900 border-2 border-cyan-400 rounded-full px-4 py-1.5 shadow-xl">
+        <div className="relative hologram-glitch">
+          <img
+            src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
+            alt="Куратор CT-7891"
+            className="w-80 h-auto object-contain drop-shadow-[0_0_30px_rgba(6,182,212,0.6)] hover:scale-105 transition-transform duration-300"
+            style={{
+              filter: 'brightness(1.1) contrast(1.05) drop-shadow(0 0 15px rgba(0, 255, 255, 0.4))'
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-transparent to-cyan-500/5 pointer-events-none mix-blend-overlay"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(6,182,212,0.03)_50%)] bg-[length:100%_4px] pointer-events-none animate-pulse"></div>
+        </div>
+        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-900/90 border-2 border-cyan-400 rounded-full px-4 py-1.5 shadow-xl backdrop-blur-sm">
           <span className="text-cyan-400 font-orbitron font-bold text-sm whitespace-nowrap">CT-7891</span>
         </div>
-        <div className="absolute top-2 right-2 w-5 h-5 bg-green-400 rounded-full border-2 border-gray-900 animate-pulse shadow-lg"></div>
+        <div className="absolute top-8 right-12 w-5 h-5 bg-green-400 rounded-full border-2 border-gray-900 animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.8)]"></div>
       </button>
     </div>
   );
