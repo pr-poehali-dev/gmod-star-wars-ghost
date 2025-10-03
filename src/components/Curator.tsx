@@ -128,6 +128,7 @@ export const Curator = () => {
     setShowQuestions(false);
     setShowThankYou(false);
     setIsAnswering(true);
+    setShowMessage(true);
     setCurrentMessage(messages[0]);
     setMessageKey(prev => prev + 1);
 
