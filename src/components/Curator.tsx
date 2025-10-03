@@ -109,13 +109,14 @@ export const Curator = () => {
         setCurrentMessage(messages[messageIndex]);
         
         if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing' || questionId === 'game') && messageIndex === messages.length - 1) {
+          const finalDelay = questionId === 'game' ? 3000 : 2000;
           setTimeout(() => {
             setIsMinimized(true);
             setIsReawakened(false);
             setUsedQuestions([]);
             setShowThankYou(false);
             setIsAnswering(false);
-          }, 2000);
+          }, finalDelay);
         }
       } else {
         clearInterval(intervalId);
