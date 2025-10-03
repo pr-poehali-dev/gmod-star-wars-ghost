@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
 import { SecureAccess } from "@/components/SecureAccess";
+import { Curator } from "@/components/Curator";
 
 const Index = () => {
   const clones = [
@@ -44,6 +45,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-orange-200">
+      {/* Curator */}
+      <Curator />
+      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Simplified Background */}
