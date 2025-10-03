@@ -123,18 +123,14 @@ export const Curator = () => {
         onClick={handleCharacterClick}
         className="relative group flex-shrink-0"
       >
-        <div className="relative hologram-glitch">
-          <img
-            src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
-            alt="Куратор CT-7891"
-            className="w-80 h-auto object-contain drop-shadow-[0_0_30px_rgba(6,182,212,0.6)] hover:scale-105 transition-transform duration-300"
-            style={{
-              filter: 'brightness(1.1) contrast(1.05) drop-shadow(0 0 15px rgba(0, 255, 255, 0.4))'
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-transparent to-cyan-500/5 pointer-events-none mix-blend-overlay"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(6,182,212,0.03)_50%)] bg-[length:100%_4px] pointer-events-none animate-pulse"></div>
-        </div>
+        <img
+          src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
+          alt="Куратор CT-7891"
+          className="w-80 h-auto object-contain hologram-glitch hover:scale-105 transition-transform duration-300"
+          style={{
+            filter: 'brightness(1.1) contrast(1.05) drop-shadow(0 0 25px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 50px rgba(0, 182, 212, 0.3))'
+          }}
+        />
         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-900/90 border-2 border-cyan-400 rounded-full px-4 py-1.5 shadow-xl backdrop-blur-sm">
           <span className="text-cyan-400 font-orbitron font-bold text-sm whitespace-nowrap">CT-7891</span>
         </div>
