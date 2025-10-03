@@ -15,6 +15,14 @@ export const Curator = () => {
   const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
+    const wasMinimized = localStorage.getItem('curatorMinimized') === 'true';
+    
+    if (wasMinimized) {
+      setIsVisible(true);
+      setIsMinimized(true);
+      return;
+    }
+    
     const appearTimer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
