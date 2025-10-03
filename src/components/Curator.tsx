@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const Curator = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [showQuestions, setShowQuestions] = useState(true);
+  const [showQuestions, setShowQuestions] = useState(false);
   const [currentMessage, setCurrentMessage] = useState("Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.");
 
   const greetings = [
@@ -56,10 +56,8 @@ export const Curator = () => {
       const nextIndex = currentMessageIndex + 1;
       setCurrentMessageIndex(nextIndex);
       setCurrentMessage(greetings[nextIndex]);
-      
-      if (nextIndex === greetings.length - 1) {
-        setShowQuestions(true);
-      }
+    } else if (currentMessageIndex === greetings.length - 1 && !showQuestions) {
+      setShowQuestions(true);
     }
   };
 
@@ -86,12 +84,13 @@ export const Curator = () => {
       {/* Messages and Questions Container */}
       <div className="flex flex-col gap-4 max-w-md mb-20">
         {/* Speech Bubble */}
-        <div className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl rounded-br-none px-5 py-4 shadow-2xl animate-fade-in">
+        <div className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-fade-in">
           <p className="text-cyan-100 text-base font-medium leading-relaxed">
             {currentMessage}
           </p>
-          <div className="absolute -bottom-0 -right-0 w-0 h-0 border-l-[20px] border-l-transparent border-t-[20px] border-t-cyan-900"></div>
-          <div className="absolute -bottom-0 -right-0 w-0 h-0 border-l-[22px] border-l-transparent border-t-[22px] border-t-cyan-400 -z-10"></div>
+          {/* Triangle pointer to the right */}
+          <div className="absolute bottom-4 -right-3 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[12px] border-l-cyan-900"></div>
+          <div className="absolute bottom-4 -right-3.5 w-0 h-0 border-t-[13px] border-t-transparent border-b-[13px] border-b-transparent border-l-[13px] border-l-cyan-400"></div>
         </div>
 
         {/* Quick Questions */}
