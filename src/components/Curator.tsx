@@ -90,6 +90,7 @@ export const Curator = () => {
     let messageIndex = 0;
     
     setShowQuestions(false);
+    setShowThankYou(false);
     setCurrentMessage(messages[0]);
 
     const intervalId = setInterval(() => {
