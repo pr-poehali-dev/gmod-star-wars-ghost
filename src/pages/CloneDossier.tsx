@@ -564,41 +564,21 @@ const CloneDossier = () => {
                               </line>
                             ))}
                             
-                            {/* Republic Cog Symbol */}
-                            <circle 
-                              cx="0" 
-                              cy="0" 
-                              r="14" 
-                              fill="none"
-                              stroke="#1f2937"
-                              strokeWidth="2"
+                            {/* Republic Emblem Image */}
+                            <image 
+                              href="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
+                              x="-18" 
+                              y="-18" 
+                              width="36" 
+                              height="36"
+                              opacity="0.9"
+                              style={{filter: 'brightness(0) saturate(100%) invert(8%) sepia(12%) saturate(1476%) hue-rotate(181deg) brightness(95%) contrast(92%)'}}
                             />
                             
-                            {/* Cog Teeth */}
-                            {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-                              const rad = (angle * Math.PI) / 180;
-                              const x1 = Math.cos(rad) * 14;
-                              const y1 = Math.sin(rad) * 14;
-                              const x2 = Math.cos(rad) * 17;
-                              const y2 = Math.sin(rad) * 17;
-                              return (
-                                <line
-                                  key={i}
-                                  x1={x1}
-                                  y1={y1}
-                                  x2={x2}
-                                  y2={y2}
-                                  stroke="#1f2937"
-                                  strokeWidth="2.5"
-                                  strokeLinecap="square"
-                                />
-                              );
-                            })}
-                            
-                            {/* Center Circle */}
-                            <circle cx="0" cy="0" r="6" fill="#1f2937"/>
-                            <circle cx="0" cy="0" r="2.5" fill="#fb923c">
-                              <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            {/* Hologram glow around emblem */}
+                            <circle cx="0" cy="0" r="20" fill="none" stroke="#fb923c" strokeWidth="0.5" opacity="0.3">
+                              <animate attributeName="r" values="20;22;20" dur="2s" repeatCount="indefinite"/>
+                              <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
                             </circle>
                             
                             {/* Hologram Highlight */}
