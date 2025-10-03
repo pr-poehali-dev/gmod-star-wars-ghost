@@ -595,21 +595,10 @@ const CloneDossier = () => {
                         </svg>
                       </div>
                       
-                      {/* Achievement Name Badge - Holographic */}
-                      <div className="relative -mt-2">
-                        {/* Background glow */}
-                        <div className="absolute inset-0 bg-blue-400/20 rounded-md blur-md"></div>
-                        
-                        {/* Holographic badge */}
-                        <div className="relative bg-gradient-to-br from-blue-500/20 via-cyan-400/30 to-blue-600/20 backdrop-blur-sm border border-blue-400/50 rounded-md px-3 py-2">
-                          {/* Scan lines */}
-                          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent opacity-60 animate-pulse rounded-md"></div>
-                          
-                          {/* Animated shimmer */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-300/20 to-transparent -skew-x-12 animate-shimmer rounded-md"></div>
-                          
-                          {/* Text */}
-                          <p className="relative text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-cyan-300 to-blue-200 text-xs text-center leading-tight font-bold px-1 line-clamp-2 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] group-hover:from-cyan-200 group-hover:via-blue-200 group-hover:to-cyan-200 transition-all">
+                      {/* Achievement Name Badge */}
+                      <div className="relative -mt-6">
+                        <div className="bg-gradient-to-br from-blue-500/20 via-cyan-400/30 to-blue-600/20 backdrop-blur-sm border border-blue-400/50 rounded-md px-3 py-1.5">
+                          <p className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-cyan-300 to-blue-200 text-xs text-center leading-tight font-bold line-clamp-2">
                             {achievement}
                           </p>
                         </div>
