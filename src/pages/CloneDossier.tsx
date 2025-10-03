@@ -453,7 +453,7 @@ const CloneDossier = () => {
             {/* Achievements */}
             <Card className="bg-gray-900 border-orange-400 lg:col-span-2">
               <CardHeader>
-                <CardTitle className="text-orange-400 text-2xl flex items-center">
+                <CardTitle className="text-orange-400 text-2xl flex items-center justify-center">
                   <Icon name="Trophy" size={24} className="mr-3" />
                   Достижения
                 </CardTitle>
