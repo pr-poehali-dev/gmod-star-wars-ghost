@@ -5,7 +5,10 @@ export const Curator = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showQuestions, setShowQuestions] = useState(false);
   const [currentMessage, setCurrentMessage] = useState("Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.");
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(() => {
+    const saved = localStorage.getItem('curatorMinimized');
+    return saved === 'true';
+  });
   const [isReawakened, setIsReawakened] = useState(false);
   const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
   const [showThankYou, setShowThankYou] = useState(false);
@@ -15,6 +18,13 @@ export const Curator = () => {
   const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
+    const wasMinimized = localStorage.getItem('curatorMinimized') === 'true';
+    
+    if (wasMinimized) {
+      setIsVisible(true);
+      return;
+    }
+    
     const appearTimer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
@@ -133,6 +143,7 @@ export const Curator = () => {
           const finalDelay = questionId === 'game' ? 3000 : 2000;
           setTimeout(() => {
             setIsMinimized(true);
+            localStorage.setItem('curatorMinimized', 'true');
             setIsReawakened(false);
             setUsedQuestions([]);
             setShowThankYou(false);
