@@ -101,6 +101,8 @@ export const Curator = () => {
     setIsAnswering(true);
     setCurrentMessage(messages[0]);
 
+    const delay = questionId === 'game' ? 3500 : 2500;
+    
     const intervalId = setInterval(() => {
       messageIndex++;
       if (messageIndex < messages.length) {
@@ -124,7 +126,7 @@ export const Curator = () => {
           setTimeout(() => setShowQuestions(true), 1000);
         }
       }
-    }, 2500);
+    }, delay);
   };
 
   if (isMinimized) {
