@@ -14,11 +14,29 @@ export const Curator = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const appearTimer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
-    return () => clearTimeout(timer);
+    
+    return () => clearTimeout(appearTimer);
   }, []);
+
+  useEffect(() => {
+    if (!isVisible || isMinimized) return;
+    
+    const dialogTimer = setTimeout(() => {
+      if (currentMessageIndex < greetings.length - 1) {
+        const nextIndex = currentMessageIndex + 1;
+        setCurrentMessageIndex(nextIndex);
+        setCurrentMessage(greetings[nextIndex]);
+        setMessageKey(prev => prev + 1);
+      } else if (currentMessageIndex === greetings.length - 1 && !showQuestions) {
+        setShowQuestions(true);
+      }
+    }, currentMessageIndex === 0 ? 1500 : 2500);
+    
+    return () => clearTimeout(dialogTimer);
+  }, [isVisible, currentMessageIndex, isMinimized, showQuestions]);
 
   const greetings = [
     "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
