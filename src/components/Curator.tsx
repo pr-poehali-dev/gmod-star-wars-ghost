@@ -10,6 +10,7 @@ export const Curator = () => {
   const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
   const [showThankYou, setShowThankYou] = useState(false);
   const [isAnswering, setIsAnswering] = useState(false);
+  const [messageKey, setMessageKey] = useState(0);
 
   const greetings = [
     "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
@@ -84,6 +85,7 @@ export const Curator = () => {
       const nextIndex = currentMessageIndex + 1;
       setCurrentMessageIndex(nextIndex);
       setCurrentMessage(greetings[nextIndex]);
+      setMessageKey(prev => prev + 1);
     } else if (currentMessageIndex === greetings.length - 1 && !showQuestions) {
       setShowQuestions(true);
     }
@@ -100,6 +102,7 @@ export const Curator = () => {
     setShowThankYou(false);
     setIsAnswering(true);
     setCurrentMessage(messages[0]);
+    setMessageKey(prev => prev + 1);
 
     const delay = questionId === 'game' ? 3500 : 2500;
     
@@ -107,6 +110,7 @@ export const Curator = () => {
       messageIndex++;
       if (messageIndex < messages.length) {
         setCurrentMessage(messages[messageIndex]);
+        setMessageKey(prev => prev + 1);
         
         if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing' || questionId === 'game') && messageIndex === messages.length - 1) {
           const finalDelay = questionId === 'game' ? 3000 : 2000;
@@ -165,7 +169,7 @@ export const Curator = () => {
       {/* Messages and Questions Container */}
       <div className="flex flex-col gap-4 max-w-md mt-16">
         {/* Speech Bubble */}
-        <div className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-slide-from-right">
+        <div key={messageKey} className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-slide-from-right">
           <p className="text-cyan-100 text-base font-medium leading-relaxed">
             {currentMessage}
           </p>
