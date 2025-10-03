@@ -459,33 +459,114 @@ const CloneDossier = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                   {clone.achievements.map((achievement, index) => (
-                    <div key={index} className="group relative overflow-hidden">
-                      {/* Animated Background on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-orange-400/0 via-orange-400/10 to-orange-400/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                      
-                      <div className="relative flex items-center gap-3 p-3 bg-gray-800/30 hover:bg-gray-800/50 rounded border border-orange-400/20 group-hover:border-orange-400/40 transition-all">
-                        {/* Left Star */}
-                        <div className="flex-shrink-0">
-                          <svg width="24" height="24" viewBox="0 0 24 24" className="text-orange-400">
-                            <path
-                              fill="currentColor"
-                              d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"
-                            />
-                          </svg>
-                        </div>
-                        
-                        {/* Text Content */}
-                        <div className="flex-1 min-w-0">
-                          <p className="text-orange-200 font-orbitron font-medium truncate">{achievement}</p>
-                        </div>
-                        
-                        {/* Right Arrow */}
-                        <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Icon name="ChevronRight" size={20} className="text-orange-400" />
-                        </div>
+                    <div key={index} className="flex flex-col items-center group">
+                      {/* Medal with Ribbon */}
+                      <div className="relative mb-3">
+                        <svg width="80" height="110" viewBox="0 0 80 110" className="drop-shadow-xl">
+                          <defs>
+                            {/* Metallic Gradient for Medal */}
+                            <radialGradient id={`metalGrad${index}`} cx="50%" cy="40%">
+                              <stop offset="0%" stopColor="#fbbf24" />
+                              <stop offset="30%" stopColor="#f59e0b" />
+                              <stop offset="60%" stopColor="#d97706" />
+                              <stop offset="100%" stopColor="#b45309" />
+                            </radialGradient>
+                            
+                            {/* Ribbon Gradient */}
+                            <linearGradient id={`ribbonGrad${index}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                              <stop offset="0%" stopColor="#fb923c" />
+                              <stop offset="50%" stopColor="#f97316" />
+                              <stop offset="100%" stopColor="#ea580c" />
+                            </linearGradient>
+                            
+                            {/* Shadow Filter */}
+                            <filter id={`shadow${index}`} x="-50%" y="-50%" width="200%" height="200%">
+                              <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                              <feOffset dx="0" dy="3" result="offsetblur"/>
+                              <feComponentTransfer>
+                                <feFuncA type="linear" slope="0.3"/>
+                              </feComponentTransfer>
+                              <feMerge>
+                                <feMergeNode/>
+                                <feMergeNode in="SourceGraphic"/>
+                              </feMerge>
+                            </filter>
+                          </defs>
+                          
+                          {/* Left Ribbon */}
+                          <path 
+                            d="M 28 0 L 34 0 L 34 45 L 40 38 L 34 32 L 34 0" 
+                            fill={`url(#ribbonGrad${index})`}
+                            stroke="#92400e"
+                            strokeWidth="0.5"
+                            className="group-hover:opacity-90 transition-opacity"
+                          />
+                          
+                          {/* Right Ribbon */}
+                          <path 
+                            d="M 46 0 L 52 0 L 52 45 L 46 38 L 40 38 L 46 32 L 46 0" 
+                            fill={`url(#ribbonGrad${index})`}
+                            stroke="#92400e"
+                            strokeWidth="0.5"
+                            className="group-hover:opacity-90 transition-opacity"
+                          />
+                          
+                          {/* Medal Body - Outer Circle */}
+                          <circle 
+                            cx="40" 
+                            cy="70" 
+                            r="28" 
+                            fill={`url(#metalGrad${index})`}
+                            stroke="#92400e"
+                            strokeWidth="2"
+                            filter={`url(#shadow${index})`}
+                            className="group-hover:scale-105 transition-transform origin-center"
+                            style={{transformOrigin: '40px 70px'}}
+                          />
+                          
+                          {/* Inner Ring */}
+                          <circle 
+                            cx="40" 
+                            cy="70" 
+                            r="23" 
+                            fill="none"
+                            stroke="#fbbf24"
+                            strokeWidth="1.5"
+                            opacity="0.6"
+                          />
+                          
+                          {/* Star */}
+                          <path
+                            d="M 40 52 L 43 62 L 53 63 L 45 70 L 47 80 L 40 75 L 33 80 L 35 70 L 27 63 L 37 62 Z"
+                            fill="#78350f"
+                            stroke="#fbbf24"
+                            strokeWidth="1"
+                            opacity="0.8"
+                          />
+                          
+                          {/* Center Detail */}
+                          <circle cx="40" cy="70" r="8" fill="none" stroke="#78350f" strokeWidth="1.5"/>
+                          <circle cx="40" cy="70" r="4" fill="#78350f"/>
+                          
+                          {/* Shine Effect */}
+                          <ellipse
+                            cx="35"
+                            cy="62"
+                            rx="8"
+                            ry="12"
+                            fill="white"
+                            opacity="0.15"
+                            transform="rotate(-30 35 62)"
+                          />
+                        </svg>
                       </div>
+                      
+                      {/* Achievement Name */}
+                      <p className="text-orange-200 text-xs text-center leading-tight font-medium px-1 line-clamp-3">
+                        {achievement}
+                      </p>
                     </div>
                   ))}
                 </div>
