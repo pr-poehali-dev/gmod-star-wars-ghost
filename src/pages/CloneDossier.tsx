@@ -462,126 +462,156 @@ const CloneDossier = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                   {clone.achievements.map((achievement, index) => (
                     <div key={index} className="flex flex-col items-center group">
-                      {/* Hexagonal Medal Badge */}
+                      {/* Medal with Bar */}
                       <div className="relative mb-3">
                         {/* Hologram Glow */}
-                        <div className="absolute inset-0 bg-orange-400/20 blur-lg group-hover:bg-orange-400/40 transition-all animate-pulse"></div>
+                        <div className="absolute inset-0 bg-orange-400/20 blur-xl group-hover:bg-orange-400/40 transition-all"></div>
                         
-                        <svg width="90" height="100" viewBox="0 0 90 100" className="relative drop-shadow-2xl">
+                        <svg width="80" height="120" viewBox="0 0 80 120" className="relative drop-shadow-2xl">
                           <defs>
-                            {/* Holographic Orange Gradient */}
+                            {/* Holographic Gradient */}
                             <linearGradient id={`holoOrange${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
                               <stop offset="0%" stopColor="#fb923c">
-                                <animate attributeName="stop-color" values="#fb923c; #f59e0b; #fbbf24; #fb923c" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="stop-color" values="#fb923c; #fbbf24; #f59e0b; #fb923c" dur="3s" repeatCount="indefinite"/>
                               </stop>
                               <stop offset="50%" stopColor="#f59e0b">
-                                <animate attributeName="stop-color" values="#f59e0b; #fbbf24; #fb923c; #f59e0b" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="stop-color" values="#f59e0b; #fb923c; #fbbf24; #f59e0b" dur="3s" repeatCount="indefinite"/>
                               </stop>
                               <stop offset="100%" stopColor="#fbbf24">
-                                <animate attributeName="stop-color" values="#fbbf24; #fb923c; #f59e0b; #fbbf24" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="stop-color" values="#fbbf24; #f59e0b; #fb923c; #fbbf24" dur="3s" repeatCount="indefinite"/>
                               </stop>
                             </linearGradient>
                             
-                            {/* Gold Frame Gradient */}
-                            <radialGradient id={`goldFrame${index}`} cx="45%" cy="35%">
-                              <stop offset="0%" stopColor="#fef3c7" />
-                              <stop offset="30%" stopColor="#fbbf24" />
-                              <stop offset="60%" stopColor="#d97706" />
-                              <stop offset="100%" stopColor="#92400e" />
-                            </radialGradient>
+                            {/* Bar Gradient */}
+                            <linearGradient id={`barGrad${index}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                              <stop offset="0%" stopColor="#fb923c" />
+                              <stop offset="50%" stopColor="#f59e0b" />
+                              <stop offset="100%" stopColor="#ea580c" />
+                            </linearGradient>
                             
-                            {/* Shadow Filter */}
-                            <filter id={`hexShadow${index}`}>
-                              <feDropShadow dx="0" dy="3" stdDeviation="4" floodColor="#fb923c" floodOpacity="0.6"/>
-                            </filter>
+                            {/* Metal Gradient */}
+                            <radialGradient id={`metalGrad${index}`} cx="50%" cy="40%">
+                              <stop offset="0%" stopColor="#e2e8f0" />
+                              <stop offset="50%" stopColor="#94a3b8" />
+                              <stop offset="100%" stopColor="#475569" />
+                            </radialGradient>
                           </defs>
                           
-                          {/* Outer Hexagon Frame (Gold) */}
-                          <polygon
-                            points="45,8 75,25 75,60 45,77 15,60 15,25"
-                            fill="none"
-                            stroke={`url(#goldFrame${index})`}
-                            strokeWidth="4"
-                            filter={`url(#hexShadow${index})`}
+                          {/* Top Bar (Ribbon Bar) */}
+                          <rect 
+                            x="15" 
+                            y="5" 
+                            width="50" 
+                            height="12" 
+                            rx="1.5"
+                            fill={`url(#barGrad${index})`}
+                            stroke="#92400e"
+                            strokeWidth="1.5"
                           />
                           
-                          {/* Inner Hexagon (Holographic) */}
-                          <polygon
-                            points="45,15 70,30 70,55 45,70 20,55 20,30"
-                            fill={`url(#holoOrange${index})`}
-                            stroke="#fb923c"
-                            strokeWidth="2"
-                            opacity="0.9"
-                          />
-                          
-                          {/* Hologram Scan Lines */}
-                          {[28, 35, 42, 49, 56].map((y, i) => (
-                            <line 
-                              key={i} 
-                              x1="22" 
-                              y1={y} 
-                              x2="68" 
-                              y2={y} 
-                              stroke="#fbbf24" 
-                              strokeWidth="0.5" 
-                              opacity="0.4"
-                            >
-                              <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" begin={`${i * 0.3}s`} repeatCount="indefinite"/>
-                            </line>
-                          ))}
-                          
-                          {/* Republic Symbol - Cog */}
-                          <circle 
-                            cx="45" 
-                            cy="42.5" 
-                            r="16" 
-                            fill="none"
-                            stroke="#1f2937"
-                            strokeWidth="2.5"
-                          />
-                          
-                          {/* Cog Teeth */}
-                          {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-                            const rad = (angle * Math.PI) / 180;
-                            const innerR = 16;
-                            const outerR = 19;
-                            const x = 45;
-                            const y = 42.5;
-                            return (
-                              <rect
-                                key={i}
-                                x={x - 1.5}
-                                y={y - outerR}
-                                width="3"
-                                height={outerR - innerR}
-                                fill="#1f2937"
-                                transform={`rotate(${angle} ${x} ${y})`}
-                              />
-                            );
-                          })}
-                          
-                          {/* Center Circle */}
-                          <circle cx="45" cy="42.5" r="8" fill="#1f2937"/>
-                          <circle cx="45" cy="42.5" r="3" fill="#fb923c"/>
-                          
-                          {/* Hologram Highlight */}
-                          <ellipse
-                            cx="38"
-                            cy="35"
-                            rx="6"
-                            ry="10"
+                          {/* Bar Shine */}
+                          <rect 
+                            x="15" 
+                            y="5" 
+                            width="50" 
+                            height="5" 
+                            rx="1.5"
                             fill="white"
-                            opacity="0.3"
-                            transform="rotate(-30 38 35)"
+                            opacity="0.2"
                           />
                           
-                          {/* Corner Accents */}
-                          <line x1="45" y1="8" x2="45" y2="15" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
-                          <line x1="75" y1="25" x2="70" y2="30" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
-                          <line x1="75" y1="60" x2="70" y2="55" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
-                          <line x1="45" y1="77" x2="45" y2="70" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
-                          <line x1="15" y1="60" x2="20" y2="55" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
-                          <line x1="15" y1="25" x2="20" y2="30" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
+                          {/* Suspension Clip */}
+                          <path
+                            d="M 35 17 Q 35 20, 37 22 L 40 26 L 43 22 Q 45 20, 45 17"
+                            fill="none"
+                            stroke={`url(#metalGrad${index})`}
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                          />
+                          
+                          {/* Medal Body - Hexagon */}
+                          <g transform="translate(40, 75)">
+                            {/* Outer Hexagon Border (Metal) */}
+                            <polygon
+                              points="0,-32 28,-16 28,16 0,32 -28,16 -28,-16"
+                              fill="none"
+                              stroke={`url(#metalGrad${index})`}
+                              strokeWidth="3"
+                            />
+                            
+                            {/* Inner Hexagon (Holographic) */}
+                            <polygon
+                              points="0,-27 23,-13.5 23,13.5 0,27 -23,13.5 -23,-13.5"
+                              fill={`url(#holoOrange${index})`}
+                              stroke="#fb923c"
+                              strokeWidth="1.5"
+                              opacity="0.95"
+                            />
+                            
+                            {/* Hologram Scan Lines */}
+                            {[-15, -8, 0, 8, 15].map((y, i) => (
+                              <line 
+                                key={i} 
+                                x1="-20" 
+                                y1={y} 
+                                x2="20" 
+                                y2={y} 
+                                stroke="#fbbf24" 
+                                strokeWidth="0.5" 
+                                opacity="0.3"
+                              >
+                                <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" begin={`${i * 0.3}s`} repeatCount="indefinite"/>
+                              </line>
+                            ))}
+                            
+                            {/* Republic Cog Symbol */}
+                            <circle 
+                              cx="0" 
+                              cy="0" 
+                              r="14" 
+                              fill="none"
+                              stroke="#1f2937"
+                              strokeWidth="2"
+                            />
+                            
+                            {/* Cog Teeth */}
+                            {[0, 60, 120, 180, 240, 300].map((angle, i) => {
+                              const rad = (angle * Math.PI) / 180;
+                              const x1 = Math.cos(rad) * 14;
+                              const y1 = Math.sin(rad) * 14;
+                              const x2 = Math.cos(rad) * 17;
+                              const y2 = Math.sin(rad) * 17;
+                              return (
+                                <line
+                                  key={i}
+                                  x1={x1}
+                                  y1={y1}
+                                  x2={x2}
+                                  y2={y2}
+                                  stroke="#1f2937"
+                                  strokeWidth="2.5"
+                                  strokeLinecap="square"
+                                />
+                              );
+                            })}
+                            
+                            {/* Center Circle */}
+                            <circle cx="0" cy="0" r="6" fill="#1f2937"/>
+                            <circle cx="0" cy="0" r="2.5" fill="#fb923c">
+                              <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            {/* Hologram Highlight */}
+                            <ellipse
+                              cx="-8"
+                              cy="-8"
+                              rx="5"
+                              ry="9"
+                              fill="white"
+                              opacity="0.35"
+                              transform="rotate(-30 -8 -8)"
+                            />
+                          </g>
                         </svg>
                       </div>
                       
