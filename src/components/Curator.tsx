@@ -6,6 +6,7 @@ export const Curator = () => {
   const [showQuestions, setShowQuestions] = useState(false);
   const [currentMessage, setCurrentMessage] = useState("Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.");
   const [isMinimized, setIsMinimized] = useState(false);
+  const [isReawakened, setIsReawakened] = useState(false);
 
   const greetings = [
     "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
@@ -14,10 +15,18 @@ export const Curator = () => {
     "Выбери вопрос ниже, чтобы узнать больше."
   ];
 
-  const questions = [
+  const initialQuestions = [
     { id: 'guide', text: 'Что тут есть?', icon: 'Info' },
     { id: 'self', text: 'Сам разберусь', icon: 'X' }
   ];
+
+  const reawakeQuestions = [
+    { id: 'ghosts', text: 'Кто такие призраки?', icon: 'Users' },
+    { id: 'info', text: 'Что мне надо знать о них?', icon: 'BookOpen' },
+    { id: 'game', text: 'Поиграем?', icon: 'Gamepad2' }
+  ];
+
+  const questions = isReawakened ? reawakeQuestions : initialQuestions;
 
   const responses: Record<string, string[]> = {
     self: [
@@ -30,12 +39,30 @@ export const Curator = () => {
       'Jeing (лидер), Nuar (пилот), Rampa (штурмовик).',
       'Ещё ниже — кнопка к досье наставника Шнэ Мхокар.',
       'Используй «Получить доступ» вверху для входа.'
+    ],
+    ghosts: [
+      'Отряд «Призрак» — элитное подразделение клонов.',
+      'Специализация: скрытные операции в тылу врага.',
+      'Три бойца: Jeing, Nuar, Rampa.',
+      'Обучены мандалорским наставником Шнэ Мхокар.'
+    ],
+    info: [
+      'Прокрути вниз — увидишь полную информацию.',
+      'Кликай на карточки бойцов для досье.',
+      'Используй «Получить доступ» для входа.',
+      'Есть секретная кнопка к досье наставника.'
+    ],
+    game: [
+      'Пока недоступно, солдат.',
+      'Миссия в разработке.',
+      'Следи за обновлениями базы данных.'
     ]
   };
 
   const handleCharacterClick = () => {
     if (isMinimized) {
       setIsMinimized(false);
+      setIsReawakened(true);
       setCurrentMessage("Чем могу помочь?");
       setShowQuestions(true);
       return;
@@ -65,6 +92,7 @@ export const Curator = () => {
         if (questionId === 'self' && messageIndex === messages.length - 1) {
           setTimeout(() => {
             setIsMinimized(true);
+            setIsReawakened(false);
           }, 2000);
         }
       } else {
