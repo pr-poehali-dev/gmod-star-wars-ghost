@@ -56,9 +56,8 @@ export const Curator = () => {
       'Есть секретная кнопка к досье наставника.'
     ],
     game: [
-      'Пока недоступно, солдат.',
-      'Миссия в разработке.',
-      'Следи за обновлениями базы данных.'
+      'Боец, вы больны? Тут как бы не место для игрушек.',
+      'Советую проверится у медиков на всякий случай.'
     ],
     thankyou: [
       'Рад помочь, солдат.',
@@ -107,7 +106,7 @@ export const Curator = () => {
       if (messageIndex < messages.length) {
         setCurrentMessage(messages[messageIndex]);
         
-        if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing') && messageIndex === messages.length - 1) {
+        if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing' || questionId === 'game') && messageIndex === messages.length - 1) {
           setTimeout(() => {
             setIsMinimized(true);
             setIsReawakened(false);
@@ -121,7 +120,7 @@ export const Curator = () => {
         setIsAnswering(false);
         if (questionId === 'guide') {
           setTimeout(() => setShowThankYou(true), 1000);
-        } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing') {
+        } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing' && questionId !== 'game') {
           setTimeout(() => setShowQuestions(true), 1000);
         }
       }
