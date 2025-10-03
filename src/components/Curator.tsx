@@ -1,13 +1,9 @@
-import { useAuth } from "@/contexts/AuthContext";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 
 export const Curator = () => {
-  const { user } = useAuth();
   const [isMinimized, setIsMinimized] = useState(false);
-
-  if (!user) return null;
 
   return (
     <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
@@ -55,7 +51,7 @@ export const Curator = () => {
               {/* Greeting */}
               <div className="bg-cyan-900/30 border border-cyan-700/50 rounded-lg p-3">
                 <p className="text-cyan-200 text-sm leading-relaxed">
-                  <span className="font-semibold text-cyan-400">Приветствую, {user.username}!</span>
+                  <span className="font-semibold text-cyan-400">Приветствую, солдат!</span>
                   <br />
                   Я помогу вам ориентироваться в системе.
                 </p>
