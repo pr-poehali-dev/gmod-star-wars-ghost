@@ -7,6 +7,7 @@ export const Curator = () => {
   const [currentMessage, setCurrentMessage] = useState("Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.");
   const [isMinimized, setIsMinimized] = useState(false);
   const [isReawakened, setIsReawakened] = useState(false);
+  const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
 
   const greetings = [
     "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
@@ -77,7 +78,10 @@ export const Curator = () => {
   };
 
   const handleQuestionClick = (questionId: string) => {
+    if (usedQuestions.includes(questionId)) return;
+    
     const messages = responses[questionId];
+    setUsedQuestions([...usedQuestions, questionId]);
     let messageIndex = 0;
     
     setShowQuestions(false);
@@ -92,6 +96,7 @@ export const Curator = () => {
           setTimeout(() => {
             setIsMinimized(true);
             setIsReawakened(false);
+            setUsedQuestions([]);
           }, 2000);
         }
       } else {
@@ -156,16 +161,24 @@ export const Curator = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              {questions.map((q) => (
-                <button
-                  key={q.id}
-                  onClick={() => handleQuestionClick(q.id)}
-                  className="flex items-center gap-2 bg-gray-800/90 backdrop-blur-sm border-2 border-cyan-700/50 rounded-lg px-3 py-2.5 text-sm text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500 transition-all shadow-lg"
-                >
-                  <Icon name={q.icon as any} size={16} />
-                  <span>{q.text}</span>
-                </button>
-              ))}
+              {questions.map((q) => {
+                const isUsed = usedQuestions.includes(q.id);
+                return (
+                  <button
+                    key={q.id}
+                    onClick={() => handleQuestionClick(q.id)}
+                    disabled={isUsed}
+                    className={`flex items-center gap-2 backdrop-blur-sm border-2 rounded-lg px-3 py-2.5 text-sm transition-all shadow-lg ${
+                      isUsed 
+                        ? 'bg-gray-800/40 border-gray-700/30 text-gray-500 cursor-not-allowed opacity-50'
+                        : 'bg-gray-800/90 border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500'
+                    }`}
+                  >
+                    <Icon name={q.icon as any} size={16} />
+                    <span>{q.text}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}
