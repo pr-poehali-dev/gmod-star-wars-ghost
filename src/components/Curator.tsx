@@ -8,6 +8,7 @@ export const Curator = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [isReawakened, setIsReawakened] = useState(false);
   const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const greetings = [
     "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
@@ -56,6 +57,10 @@ export const Curator = () => {
       'Пока недоступно, солдат.',
       'Миссия в разработке.',
       'Следи за обновлениями базы данных.'
+    ],
+    thankyou: [
+      'Рад помочь, солдат.',
+      'Если что — я буду рядом.'
     ]
   };
 
@@ -92,16 +97,19 @@ export const Curator = () => {
       if (messageIndex < messages.length) {
         setCurrentMessage(messages[messageIndex]);
         
-        if (questionId === 'self' && messageIndex === messages.length - 1) {
+        if ((questionId === 'self' || questionId === 'thankyou') && messageIndex === messages.length - 1) {
           setTimeout(() => {
             setIsMinimized(true);
             setIsReawakened(false);
             setUsedQuestions([]);
+            setShowThankYou(false);
           }, 2000);
         }
       } else {
         clearInterval(intervalId);
-        if (questionId !== 'self') {
+        if (questionId === 'guide') {
+          setTimeout(() => setShowThankYou(true), 1000);
+        } else if (questionId !== 'self') {
           setTimeout(() => setShowQuestions(true), 1000);
         }
       }
@@ -180,6 +188,19 @@ export const Curator = () => {
                 );
               })}
             </div>
+          </div>
+        )}
+
+        {/* Thank You Button */}
+        {showThankYou && (
+          <div className="flex flex-col gap-3 animate-fade-in">
+            <button
+              onClick={() => handleQuestionClick('thankyou')}
+              className="flex items-center justify-center gap-2 bg-gray-800/90 backdrop-blur-sm border-2 border-cyan-700/50 rounded-lg px-4 py-3 text-sm text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500 transition-all shadow-lg"
+            >
+              <Icon name="ThumbsUp" size={16} />
+              <span>Спасибо, дальше я сам</span>
+            </button>
           </div>
         )}
       </div>
