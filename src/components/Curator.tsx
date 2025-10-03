@@ -24,8 +24,9 @@ export const Curator = () => {
 
   const reawakeQuestions = [
     { id: 'ghosts', text: 'Кто такие призраки?', icon: 'Users' },
-    { id: 'info', text: 'Что мне надо знать о них?', icon: 'BookOpen' },
-    { id: 'game', text: 'Поиграем?', icon: 'Gamepad2' }
+    { id: 'info', text: 'Что мне надо знать о призраках?', icon: 'BookOpen' },
+    { id: 'game', text: 'Поиграем?', icon: 'Gamepad2' },
+    { id: 'nothing', text: 'Спасибо, ничем', icon: 'ThumbsUp' }
   ];
 
   const questions = isReawakened ? reawakeQuestions : initialQuestions;
@@ -61,6 +62,10 @@ export const Curator = () => {
     thankyou: [
       'Рад помочь, солдат.',
       'Если что — я буду рядом.'
+    ],
+    nothing: [
+      'Понял, солдат.',
+      'Буду на связи.'
     ]
   };
 
@@ -98,7 +103,7 @@ export const Curator = () => {
       if (messageIndex < messages.length) {
         setCurrentMessage(messages[messageIndex]);
         
-        if ((questionId === 'self' || questionId === 'thankyou') && messageIndex === messages.length - 1) {
+        if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing') && messageIndex === messages.length - 1) {
           setTimeout(() => {
             setIsMinimized(true);
             setIsReawakened(false);
