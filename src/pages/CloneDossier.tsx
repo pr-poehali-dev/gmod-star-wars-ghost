@@ -461,163 +461,132 @@ const CloneDossier = () => {
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                   {clone.achievements.map((achievement, index) => (
-                    <div key={index} className="flex flex-col items-center group perspective-1000">
-                      {/* Holographic Medal */}
-                      <div className="relative mb-3 transform transition-transform duration-300 group-hover:scale-110">
-                        {/* Hologram Glow Effect */}
-                        <div className="absolute inset-0 blur-xl bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-purple-500/30 opacity-60 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+                    <div key={index} className="flex flex-col items-center group">
+                      {/* Hexagonal Medal Badge */}
+                      <div className="relative mb-3">
+                        {/* Hologram Glow */}
+                        <div className="absolute inset-0 bg-orange-400/20 blur-lg group-hover:bg-orange-400/40 transition-all animate-pulse"></div>
                         
-                        <svg width="100" height="140" viewBox="0 0 100 140" className="relative drop-shadow-2xl">
+                        <svg width="90" height="100" viewBox="0 0 90 100" className="relative drop-shadow-2xl">
                           <defs>
-                            {/* Holographic Gradient */}
-                            <linearGradient id={`holoGrad${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#06b6d4">
-                                <animate attributeName="stop-color" values="#06b6d4; #3b82f6; #8b5cf6; #06b6d4" dur="3s" repeatCount="indefinite"/>
+                            {/* Holographic Orange Gradient */}
+                            <linearGradient id={`holoOrange${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#fb923c">
+                                <animate attributeName="stop-color" values="#fb923c; #f59e0b; #fbbf24; #fb923c" dur="3s" repeatCount="indefinite"/>
                               </stop>
-                              <stop offset="50%" stopColor="#3b82f6">
-                                <animate attributeName="stop-color" values="#3b82f6; #8b5cf6; #06b6d4; #3b82f6" dur="3s" repeatCount="indefinite"/>
+                              <stop offset="50%" stopColor="#f59e0b">
+                                <animate attributeName="stop-color" values="#f59e0b; #fbbf24; #fb923c; #f59e0b" dur="3s" repeatCount="indefinite"/>
                               </stop>
-                              <stop offset="100%" stopColor="#8b5cf6">
-                                <animate attributeName="stop-color" values="#8b5cf6; #06b6d4; #3b82f6; #8b5cf6" dur="3s" repeatCount="indefinite"/>
+                              <stop offset="100%" stopColor="#fbbf24">
+                                <animate attributeName="stop-color" values="#fbbf24; #fb923c; #f59e0b; #fbbf24" dur="3s" repeatCount="indefinite"/>
                               </stop>
                             </linearGradient>
                             
-                            {/* Ribbon Bar Gradient */}
-                            <linearGradient id={`barGrad${index}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                              <stop offset="0%" stopColor="#fb923c" />
-                              <stop offset="50%" stopColor="#f59e0b" />
-                              <stop offset="100%" stopColor="#ea580c" />
-                            </linearGradient>
-                            
-                            {/* Realistic Gold */}
-                            <radialGradient id={`goldReal${index}`} cx="40%" cy="30%">
+                            {/* Gold Frame Gradient */}
+                            <radialGradient id={`goldFrame${index}`} cx="45%" cy="35%">
                               <stop offset="0%" stopColor="#fef3c7" />
-                              <stop offset="30%" stopColor="#fde047" />
-                              <stop offset="50%" stopColor="#facc15" />
-                              <stop offset="70%" stopColor="#eab308" />
-                              <stop offset="100%" stopColor="#ca8a04" />
+                              <stop offset="30%" stopColor="#fbbf24" />
+                              <stop offset="60%" stopColor="#d97706" />
+                              <stop offset="100%" stopColor="#92400e" />
                             </radialGradient>
                             
-                            {/* Realistic Silver */}
-                            <radialGradient id={`silverReal${index}`} cx="45%" cy="35%">
-                              <stop offset="0%" stopColor="#ffffff" />
-                              <stop offset="30%" stopColor="#e2e8f0" />
-                              <stop offset="60%" stopColor="#cbd5e1" />
-                              <stop offset="100%" stopColor="#94a3b8" />
-                            </radialGradient>
-                            
-                            {/* Hologram Shimmer */}
-                            <linearGradient id={`shimmer${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                              <stop offset="0%" stopColor="transparent" />
-                              <stop offset="50%" stopColor="rgba(255,255,255,0.6)" />
-                              <stop offset="100%" stopColor="transparent" />
-                              <animateTransform
-                                attributeName="gradientTransform"
-                                type="translate"
-                                from="-1 0"
-                                to="1 0"
-                                dur="2s"
-                                repeatCount="indefinite"
-                              />
-                            </linearGradient>
+                            {/* Shadow Filter */}
+                            <filter id={`hexShadow${index}`}>
+                              <feDropShadow dx="0" dy="3" stdDeviation="4" floodColor="#fb923c" floodOpacity="0.6"/>
+                            </filter>
                           </defs>
                           
-                          {/* Ribbon Bar */}
-                          <rect 
-                            x="25" 
-                            y="8" 
-                            width="50" 
-                            height="14" 
-                            rx="2"
-                            fill={`url(#barGrad${index})`}
-                            stroke="#78350f"
-                            strokeWidth="1.5"
-                          />
-                          <rect 
-                            x="25" 
-                            y="8" 
-                            width="50" 
-                            height="7" 
-                            rx="2"
-                            fill={`url(#shimmer${index})`}
-                            opacity="0.4"
-                          />
-                          
-                          {/* Metal Hook */}
-                          <path
-                            d="M 43 22 L 46 32 L 50 37 L 54 32 L 57 22"
+                          {/* Outer Hexagon Frame (Gold) */}
+                          <polygon
+                            points="45,8 75,25 75,60 45,77 15,60 15,25"
                             fill="none"
-                            stroke={`url(#silverReal${index})`}
+                            stroke={`url(#goldFrame${index})`}
                             strokeWidth="4"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                            filter={`url(#hexShadow${index})`}
                           />
                           
-                          {/* Medal Body */}
-                          <g transform="translate(50, 85)">
-                            {/* Outer Cross - Gold with depth */}
-                            <path d="M -7 -38 L 7 -38 L 9 -16 L -9 -16 Z" fill={`url(#goldReal${index})`} stroke="#b45309" strokeWidth="1.5"/>
-                            <path d="M 16 -9 L 38 -7 L 38 7 L 16 9 Z" fill={`url(#goldReal${index})`} stroke="#b45309" strokeWidth="1.5"/>
-                            <path d="M -7 16 L 7 16 L 9 38 L -9 38 Z" fill={`url(#goldReal${index})`} stroke="#b45309" strokeWidth="1.5"/>
-                            <path d="M -16 -9 L -38 -7 L -38 7 L -16 9 Z" fill={`url(#goldReal${index})`} stroke="#b45309" strokeWidth="1.5"/>
-                            
-                            {/* Center Square Frame */}
-                            <rect x="-16" y="-16" width="32" height="32" fill={`url(#goldReal${index})`} stroke="#b45309" strokeWidth="1.5"/>
-                            
-                            {/* Holographic Circle */}
-                            <circle cx="0" cy="0" r="18" fill={`url(#holoGrad${index})`} stroke="#0891b2" strokeWidth="2" opacity="0.9"/>
-                            
-                            {/* Hologram scan lines */}
-                            {[-12, -6, 0, 6, 12].map((y, i) => (
-                              <line key={i} x1="-15" y1={y} x2="15" y2={y} stroke="#06b6d4" strokeWidth="0.5" opacity="0.3">
-                                <animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.5s" begin={`${i * 0.2}s`} repeatCount="indefinite"/>
-                              </line>
-                            ))}
-                            
-                            {/* Republic Cog Symbol */}
-                            <circle cx="0" cy="0" r="12" fill="none" stroke="#0c4a6e" strokeWidth="2"/>
-                            
-                            {/* Cog Teeth */}
-                            {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-                              const rad = (angle * Math.PI) / 180;
-                              const x1 = Math.cos(rad) * 12;
-                              const y1 = Math.sin(rad) * 12;
-                              const x2 = Math.cos(rad) * 15;
-                              const y2 = Math.sin(rad) * 15;
-                              return (
-                                <line
-                                  key={i}
-                                  x1={x1}
-                                  y1={y1}
-                                  x2={x2}
-                                  y2={y2}
-                                  stroke="#0c4a6e"
-                                  strokeWidth="2.5"
-                                  strokeLinecap="square"
-                                />
-                              );
-                            })}
-                            
-                            {/* Center */}
-                            <circle cx="0" cy="0" r="5" fill="#0c4a6e"/>
-                            <circle cx="0" cy="0" r="2" fill="#0891b2"/>
-                            
-                            {/* Hologram highlight */}
-                            <ellipse
-                              cx="-6"
-                              cy="-6"
-                              rx="4"
-                              ry="7"
-                              fill="white"
+                          {/* Inner Hexagon (Holographic) */}
+                          <polygon
+                            points="45,15 70,30 70,55 45,70 20,55 20,30"
+                            fill={`url(#holoOrange${index})`}
+                            stroke="#fb923c"
+                            strokeWidth="2"
+                            opacity="0.9"
+                          />
+                          
+                          {/* Hologram Scan Lines */}
+                          {[28, 35, 42, 49, 56].map((y, i) => (
+                            <line 
+                              key={i} 
+                              x1="22" 
+                              y1={y} 
+                              x2="68" 
+                              y2={y} 
+                              stroke="#fbbf24" 
+                              strokeWidth="0.5" 
                               opacity="0.4"
-                              transform="rotate(-35 -6 -6)"
-                            />
-                          </g>
+                            >
+                              <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" begin={`${i * 0.3}s`} repeatCount="indefinite"/>
+                            </line>
+                          ))}
+                          
+                          {/* Republic Symbol - Cog */}
+                          <circle 
+                            cx="45" 
+                            cy="42.5" 
+                            r="16" 
+                            fill="none"
+                            stroke="#1f2937"
+                            strokeWidth="2.5"
+                          />
+                          
+                          {/* Cog Teeth */}
+                          {[0, 60, 120, 180, 240, 300].map((angle, i) => {
+                            const rad = (angle * Math.PI) / 180;
+                            const innerR = 16;
+                            const outerR = 19;
+                            const x = 45;
+                            const y = 42.5;
+                            return (
+                              <rect
+                                key={i}
+                                x={x - 1.5}
+                                y={y - outerR}
+                                width="3"
+                                height={outerR - innerR}
+                                fill="#1f2937"
+                                transform={`rotate(${angle} ${x} ${y})`}
+                              />
+                            );
+                          })}
+                          
+                          {/* Center Circle */}
+                          <circle cx="45" cy="42.5" r="8" fill="#1f2937"/>
+                          <circle cx="45" cy="42.5" r="3" fill="#fb923c"/>
+                          
+                          {/* Hologram Highlight */}
+                          <ellipse
+                            cx="38"
+                            cy="35"
+                            rx="6"
+                            ry="10"
+                            fill="white"
+                            opacity="0.3"
+                            transform="rotate(-30 38 35)"
+                          />
+                          
+                          {/* Corner Accents */}
+                          <line x1="45" y1="8" x2="45" y2="15" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
+                          <line x1="75" y1="25" x2="70" y2="30" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
+                          <line x1="75" y1="60" x2="70" y2="55" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
+                          <line x1="45" y1="77" x2="45" y2="70" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
+                          <line x1="15" y1="60" x2="20" y2="55" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
+                          <line x1="15" y1="25" x2="20" y2="30" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/>
                         </svg>
                       </div>
                       
-                      {/* Achievement Name with glow */}
-                      <p className="text-orange-200 text-xs text-center leading-tight font-medium px-1 line-clamp-3 group-hover:text-cyan-300 transition-colors">
+                      {/* Achievement Name */}
+                      <p className="text-orange-200 text-xs text-center leading-tight font-medium px-1 line-clamp-3 group-hover:text-orange-300 transition-colors">
                         {achievement}
                       </p>
                     </div>
