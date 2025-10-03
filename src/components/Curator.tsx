@@ -12,13 +12,21 @@ export const Curator = () => {
   const [isAnswering, setIsAnswering] = useState(false);
   const [messageKey, setMessageKey] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const appearTimer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
     
-    return () => clearTimeout(appearTimer);
+    const messageTimer = setTimeout(() => {
+      setShowMessage(true);
+    }, 1300);
+    
+    return () => {
+      clearTimeout(appearTimer);
+      clearTimeout(messageTimer);
+    };
   }, []);
 
   const greetings = [
@@ -178,14 +186,16 @@ export const Curator = () => {
       {/* Messages and Questions Container */}
       <div className="flex flex-col gap-4 max-w-md mt-16">
         {/* Speech Bubble */}
-        <div key={messageKey} className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-slide-from-right">
-          <p className="text-cyan-100 text-base font-medium leading-relaxed">
-            {currentMessage}
-          </p>
-          {/* Triangle pointer to the right */}
-          <div className="absolute bottom-4 -right-3 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[12px] border-l-cyan-900"></div>
-          <div className="absolute bottom-4 -right-3.5 w-0 h-0 border-t-[13px] border-t-transparent border-b-[13px] border-b-transparent border-l-[13px] border-l-cyan-400"></div>
-        </div>
+        {showMessage && (
+          <div key={messageKey} className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-slide-from-right">
+            <p className="text-cyan-100 text-base font-medium leading-relaxed">
+              {currentMessage}
+            </p>
+            {/* Triangle pointer to the right */}
+            <div className="absolute bottom-4 -right-3 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[12px] border-l-cyan-900"></div>
+            <div className="absolute bottom-4 -right-3.5 w-0 h-0 border-t-[13px] border-t-transparent border-b-[13px] border-b-transparent border-l-[13px] border-l-cyan-400"></div>
+          </div>
+        )}
 
         {/* Quick Questions */}
         {showQuestions && (
