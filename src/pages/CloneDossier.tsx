@@ -582,9 +582,9 @@ const CloneDossier = () => {
                       </div>
                       
                       {/* Achievement Name Badge */}
-                      <div className="mt-2 w-full max-w-[100px]">
-                        <div className="bg-gradient-to-br from-blue-500/20 via-cyan-400/30 to-blue-600/20 backdrop-blur-sm border border-blue-400/50 rounded-md px-3 py-1.5">
-                          <p className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-cyan-300 to-blue-200 text-[10px] text-center leading-tight font-bold line-clamp-2">
+                      <div className="mt-3 w-full px-1">
+                        <div className="bg-gradient-to-br from-blue-500/30 via-cyan-400/40 to-blue-600/30 backdrop-blur-sm border border-cyan-400/60 rounded-lg px-2 py-2 min-h-[44px] flex items-center justify-center">
+                          <p className="text-cyan-200 text-[11px] text-center leading-[1.3] font-semibold">
                             {achievement}
                           </p>
                         </div>
