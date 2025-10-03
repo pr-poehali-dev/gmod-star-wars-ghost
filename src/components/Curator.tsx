@@ -9,6 +9,7 @@ export const Curator = () => {
   const [isReawakened, setIsReawakened] = useState(false);
   const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [isAnswering, setIsAnswering] = useState(false);
 
   const greetings = [
     "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
@@ -70,6 +71,8 @@ export const Curator = () => {
   };
 
   const handleCharacterClick = () => {
+    if (isAnswering) return;
+    
     if (isMinimized) {
       setIsMinimized(false);
       setIsReawakened(true);
@@ -96,6 +99,7 @@ export const Curator = () => {
     
     setShowQuestions(false);
     setShowThankYou(false);
+    setIsAnswering(true);
     setCurrentMessage(messages[0]);
 
     const intervalId = setInterval(() => {
@@ -109,10 +113,12 @@ export const Curator = () => {
             setIsReawakened(false);
             setUsedQuestions([]);
             setShowThankYou(false);
+            setIsAnswering(false);
           }, 2000);
         }
       } else {
         clearInterval(intervalId);
+        setIsAnswering(false);
         if (questionId === 'guide') {
           setTimeout(() => setShowThankYou(true), 1000);
         } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing') {
