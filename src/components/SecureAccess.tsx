@@ -30,10 +30,8 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
       setAttempts(0);
       setShowError(false);
       
-      // Scroll to top after successful unlock
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 100);
+      // Instantly scroll to top
+      window.scrollTo({ top: 0 });
     } else {
       const newAttempts = attempts + 1;
       setAttempts(newAttempts);
