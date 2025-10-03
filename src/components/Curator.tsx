@@ -81,7 +81,7 @@ export const Curator = () => {
     return (
       <button
         onClick={handleCharacterClick}
-        className="fixed right-12 bottom-12 z-50 relative group"
+        className="fixed right-8 top-1/2 -translate-y-1/2 z-50 relative group"
       >
         <div className="relative">
           <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl"></div>
