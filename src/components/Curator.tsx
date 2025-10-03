@@ -1,11 +1,18 @@
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Curator = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showQuestions, setShowQuestions] = useState(false);
   const [currentMessage, setCurrentMessage] = useState("Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.");
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  useEffect(() => {
+    const dismissed = sessionStorage.getItem('curatorDismissed');
+    if (dismissed === 'true') {
+      setIsDismissed(true);
+    }
+  }, []);
 
   const greetings = [
     "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
@@ -34,14 +41,6 @@ export const Curator = () => {
   };
 
   const handleCharacterClick = () => {
-    if (isMinimized) {
-      setIsMinimized(false);
-      setCurrentMessageIndex(0);
-      setCurrentMessage(greetings[0]);
-      setShowQuestions(false);
-      return;
-    }
-
     if (currentMessageIndex < greetings.length - 1) {
       const nextIndex = currentMessageIndex + 1;
       setCurrentMessageIndex(nextIndex);
@@ -65,7 +64,8 @@ export const Curator = () => {
         
         if (questionId === 'self' && messageIndex === messages.length - 1) {
           setTimeout(() => {
-            setIsMinimized(true);
+            sessionStorage.setItem('curatorDismissed', 'true');
+            setIsDismissed(true);
           }, 2000);
         }
       } else {
@@ -77,33 +77,8 @@ export const Curator = () => {
     }, 2500);
   };
 
-  if (isMinimized) {
-    return (
-      <button
-        onClick={handleCharacterClick}
-        className="fixed top-[280px] z-50"
-        style={{ right: '2rem' }}
-      >
-        <div className="relative">
-          <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl"></div>
-          <div className="relative w-20 h-20 bg-gradient-to-b from-gray-900 to-black border-2 border-cyan-500/40 rounded-full flex items-center justify-center shadow-2xl">
-            <img
-              src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
-              alt="Куратор CT-7891"
-              className="w-16 h-16 object-cover rounded-full opacity-40"
-              style={{
-                filter: 'brightness(0.8) contrast(0.9) saturate(0.5)',
-                mixBlendMode: 'screen'
-              }}
-            />
-          </div>
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full border-2 border-gray-900 animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.8)]"></div>
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-900 border border-cyan-500/40 rounded-full px-2 py-0.5">
-            <span className="text-cyan-500/60 font-orbitron font-bold text-[10px]">SLEEP</span>
-          </div>
-        </div>
-      </button>
-    );
+  if (isDismissed) {
+    return null;
   }
 
   return (
