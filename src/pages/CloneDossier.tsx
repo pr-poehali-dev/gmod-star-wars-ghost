@@ -461,9 +461,93 @@ const CloneDossier = () => {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {clone.achievements.map((achievement, index) => (
-                    <div key={index} className="p-4 bg-gray-800 rounded-lg text-center">
-                      <Icon name="Medal" size={32} className="mx-auto mb-2 text-orange-400" />
-                      <p className="text-orange-200 font-semibold">{achievement}</p>
+                    <div key={index} className="relative p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/50 transition-all group">
+                      {/* Star Wars Style Medal SVG */}
+                      <div className="relative mx-auto mb-4 w-16 h-20">
+                        <svg viewBox="0 0 64 80" className="w-full h-full drop-shadow-lg">
+                          {/* Medal Ribbon */}
+                          <defs>
+                            <linearGradient id={`ribbon-gradient-${index}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                              <stop offset="0%" stopColor="#fb923c" />
+                              <stop offset="50%" stopColor="#f59e0b" />
+                              <stop offset="100%" stopColor="#d97706" />
+                            </linearGradient>
+                            <linearGradient id={`medal-gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#fbbf24" />
+                              <stop offset="50%" stopColor="#f59e0b" />
+                              <stop offset="100%" stopColor="#d97706" />
+                            </linearGradient>
+                            <filter id={`glow-${index}`}>
+                              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                              <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                              </feMerge>
+                            </filter>
+                          </defs>
+                          
+                          {/* Left Ribbon */}
+                          <path 
+                            d="M 20 0 L 26 0 L 26 30 L 32 24 L 26 18 L 26 0 L 20 0 Z" 
+                            fill={`url(#ribbon-gradient-${index})`}
+                            stroke="#92400e"
+                            strokeWidth="0.5"
+                          />
+                          {/* Right Ribbon */}
+                          <path 
+                            d="M 38 0 L 44 0 L 44 30 L 38 24 L 32 24 L 38 18 Z" 
+                            fill={`url(#ribbon-gradient-${index})`}
+                            stroke="#92400e"
+                            strokeWidth="0.5"
+                          />
+                          
+                          {/* Medal Circle with Glow */}
+                          <circle 
+                            cx="32" 
+                            cy="50" 
+                            r="22" 
+                            fill={`url(#medal-gradient-${index})`}
+                            stroke="#92400e"
+                            strokeWidth="1.5"
+                            filter={`url(#glow-${index})`}
+                            className="group-hover:animate-pulse"
+                          />
+                          
+                          {/* Inner Circle */}
+                          <circle 
+                            cx="32" 
+                            cy="50" 
+                            r="18" 
+                            fill="none"
+                            stroke="#fbbf24"
+                            strokeWidth="1"
+                            opacity="0.6"
+                          />
+                          
+                          {/* Star in Center */}
+                          <path
+                            d="M 32 38 L 34.5 44 L 41 44.5 L 36 49 L 37.5 55.5 L 32 52 L 26.5 55.5 L 28 49 L 23 44.5 L 29.5 44 Z"
+                            fill="#1a1a1a"
+                            stroke="#fbbf24"
+                            strokeWidth="0.5"
+                          />
+                          
+                          {/* Republic Cog Details */}
+                          <circle cx="32" cy="50" r="8" fill="none" stroke="#1a1a1a" strokeWidth="1.5"/>
+                          <circle cx="32" cy="50" r="3" fill="#1a1a1a"/>
+                        </svg>
+                        
+                        {/* Glow Effect */}
+                        <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-xl scale-75 group-hover:scale-100 transition-transform"></div>
+                      </div>
+                      
+                      {/* Achievement Text */}
+                      <p className="text-orange-200 font-semibold text-sm leading-tight">{achievement}</p>
+                      
+                      {/* Rank Badge */}
+                      <div className="absolute top-2 right-2 w-6 h-6 bg-orange-400/20 rounded-full flex items-center justify-center border border-orange-400/30">
+                        <span className="text-orange-400 text-xs font-bold">{index + 1}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
