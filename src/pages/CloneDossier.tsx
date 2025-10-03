@@ -463,11 +463,8 @@ const CloneDossier = () => {
                   {clone.achievements.map((achievement, index) => (
                     <div key={index} className="flex flex-col items-center group">
                       {/* Medal with Bar */}
-                      <div className="relative mb-3">
-                        {/* Hologram Glow */}
-                        <div className="absolute inset-0 bg-orange-400/20 blur-xl group-hover:bg-orange-400/40 transition-all"></div>
-                        
-                        <svg width="80" height="120" viewBox="0 0 80 120" className="relative drop-shadow-2xl">
+                      <div className="relative transition-transform group-hover:scale-105 duration-300">
+                        <svg width="80" height="110" viewBox="0 0 80 110" className="drop-shadow-2xl">
                           <defs>
                             {/* Holographic Gradient */}
                             <linearGradient id={`holoOrange${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -520,32 +517,32 @@ const CloneDossier = () => {
                             opacity="0.2"
                           />
                           
-                          {/* Suspension Clip */}
+                          {/* Suspension Ribbon */}
                           <path
-                            d="M 35 17 Q 35 20, 37 22 L 40 26 L 43 22 Q 45 20, 45 17"
-                            fill="none"
-                            stroke={`url(#metalGrad${index})`}
-                            strokeWidth="3"
-                            strokeLinecap="round"
+                            d="M 37 17 L 37 28 L 40 32 L 43 28 L 43 17"
+                            fill={`url(#metalGrad${index})`}
+                            stroke="#525252"
+                            strokeWidth="1"
                           />
                           
-                          {/* Medal Body - Hexagon */}
-                          <g transform="translate(40, 75)">
-                            {/* Outer Hexagon Border (Metal) */}
-                            <polygon
-                              points="0,-32 28,-16 28,16 0,32 -28,16 -28,-16"
-                              fill="none"
-                              stroke={`url(#metalGrad${index})`}
-                              strokeWidth="3"
+                          {/* Medal Body - Star Circle */}
+                          <g transform="translate(40, 68)">
+                            {/* Star Background */}
+                            <path
+                              d="M 0,-30 L 8,-10 L 28,-10 L 12,2 L 18,22 L 0,10 L -18,22 L -12,2 L -28,-10 L -8,-10 Z"
+                              fill={`url(#metalGrad${index})`}
+                              stroke="#525252"
+                              strokeWidth="2"
                             />
                             
-                            {/* Inner Hexagon (Holographic) */}
-                            <polygon
-                              points="0,-27 23,-13.5 23,13.5 0,27 -23,13.5 -23,-13.5"
+                            {/* Inner Circle (Holographic) */}
+                            <circle
+                              cx="0"
+                              cy="0"
+                              r="24"
                               fill={`url(#holoOrange${index})`}
                               stroke="#fb923c"
-                              strokeWidth="1.5"
-                              opacity="0.95"
+                              strokeWidth="2"
                             />
                             
                             {/* Hologram Scan Lines */}
@@ -567,38 +564,27 @@ const CloneDossier = () => {
                             {/* Republic Emblem Image */}
                             <image 
                               href="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
-                              x="-18" 
-                              y="-18" 
-                              width="36" 
-                              height="36"
+                              x="-16" 
+                              y="-16" 
+                              width="32" 
+                              height="32"
                               opacity="0.9"
                               style={{filter: 'brightness(0) saturate(100%) invert(8%) sepia(12%) saturate(1476%) hue-rotate(181deg) brightness(95%) contrast(92%)'}}
                             />
                             
-                            {/* Hologram glow around emblem */}
-                            <circle cx="0" cy="0" r="20" fill="none" stroke="#fb923c" strokeWidth="0.5" opacity="0.3">
-                              <animate attributeName="r" values="20;22;20" dur="2s" repeatCount="indefinite"/>
-                              <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
+                            {/* Hologram glow */}
+                            <circle cx="0" cy="0" r="18" fill="none" stroke="#fb923c" strokeWidth="0.5" opacity="0.4">
+                              <animate attributeName="r" values="18;20;18" dur="2s" repeatCount="indefinite"/>
+                              <animate attributeName="opacity" values="0.3;0.5;0.3" dur="2s" repeatCount="indefinite"/>
                             </circle>
-                            
-                            {/* Hologram Highlight */}
-                            <ellipse
-                              cx="-8"
-                              cy="-8"
-                              rx="5"
-                              ry="9"
-                              fill="white"
-                              opacity="0.35"
-                              transform="rotate(-30 -8 -8)"
-                            />
                           </g>
                         </svg>
                       </div>
                       
                       {/* Achievement Name Badge */}
-                      <div className="relative -mt-6">
+                      <div className="mt-2 w-full max-w-[100px]">
                         <div className="bg-gradient-to-br from-blue-500/20 via-cyan-400/30 to-blue-600/20 backdrop-blur-sm border border-blue-400/50 rounded-md px-3 py-1.5">
-                          <p className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-cyan-300 to-blue-200 text-xs text-center leading-tight font-bold line-clamp-2">
+                          <p className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-cyan-300 to-blue-200 text-[10px] text-center leading-tight font-bold line-clamp-2">
                             {achievement}
                           </p>
                         </div>
