@@ -15,8 +15,8 @@ export const Curator = () => {
   ];
 
   const questions = [
-    { id: 'self', text: 'Сам разберусь', icon: 'X' },
-    { id: 'guide', text: 'Расскажи что тут и где', icon: 'Info' }
+    { id: 'guide', text: 'Расскажи что тут и где', icon: 'Info' },
+    { id: 'self', text: 'Сам разберусь', icon: 'X' }
   ];
 
   const responses: Record<string, string[]> = {
