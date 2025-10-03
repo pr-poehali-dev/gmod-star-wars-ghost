@@ -238,6 +238,11 @@
       0 0 15px currentColor;
   }
 
+  /* Shimmer Animation */
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
   /* Holographic Effect */
   .holographic {
     position: relative;
@@ -440,5 +445,14 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
