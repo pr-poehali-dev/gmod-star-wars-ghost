@@ -36,9 +36,8 @@ export const Curator = () => {
   const handleCharacterClick = () => {
     if (isMinimized) {
       setIsMinimized(false);
-      setCurrentMessageIndex(0);
-      setCurrentMessage(greetings[0]);
-      setShowQuestions(false);
+      setCurrentMessage("Чем могу помочь?");
+      setShowQuestions(true);
       return;
     }
 
