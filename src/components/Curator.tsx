@@ -80,9 +80,9 @@ export const Curator = () => {
   };
 
   return (
-    <div className="fixed right-12 bottom-0 z-50 flex items-center gap-6 pb-8">
+    <div className="fixed right-12 bottom-0 z-50 flex items-start gap-6 pb-8">
       {/* Messages and Questions Container */}
-      <div className="flex flex-col gap-4 max-w-md">
+      <div className="flex flex-col gap-4 max-w-md mt-16">
         {/* Speech Bubble */}
         <div className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-fade-in">
           <p className="text-cyan-100 text-base font-medium leading-relaxed">
@@ -148,7 +148,7 @@ export const Curator = () => {
             <img
               src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
               alt="Куратор CT-7891"
-              className="w-72 h-auto object-contain hover:scale-105 transition-transform duration-300 relative z-10"
+              className="w-72 h-auto object-contain relative z-10"
               style={{
                 filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(-10deg) drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 80px rgba(0, 182, 212, 0.5))',
                 opacity: 0.95,
@@ -162,8 +162,7 @@ export const Curator = () => {
             <span className="text-cyan-400 font-orbitron font-bold text-xs whitespace-nowrap">CT-7891</span>
           </div>
           
-          {/* Animated glow effect */}
-          <div className="absolute inset-0 border-2 border-cyan-400/0 rounded-lg group-hover:border-cyan-400/50 transition-all duration-300 pointer-events-none"></div>
+
         </div>
       </button>
     </div>
