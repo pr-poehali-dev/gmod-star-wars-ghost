@@ -462,104 +462,140 @@ const CloneDossier = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                   {clone.achievements.map((achievement, index) => (
                     <div key={index} className="flex flex-col items-center group">
-                      {/* Medal with Ribbon */}
+                      {/* Medal with Bar and Suspension */}
                       <div className="relative mb-3">
-                        <svg width="80" height="110" viewBox="0 0 80 110" className="drop-shadow-xl">
+                        <svg width="90" height="130" viewBox="0 0 90 130" className="drop-shadow-2xl filter">
                           <defs>
-                            {/* Metallic Gradient for Medal */}
-                            <radialGradient id={`metalGrad${index}`} cx="50%" cy="40%">
-                              <stop offset="0%" stopColor="#fbbf24" />
-                              <stop offset="30%" stopColor="#f59e0b" />
+                            {/* Metallic Gold Gradient */}
+                            <radialGradient id={`goldGrad${index}`} cx="45%" cy="35%">
+                              <stop offset="0%" stopColor="#fef3c7" />
+                              <stop offset="30%" stopColor="#fbbf24" />
                               <stop offset="60%" stopColor="#d97706" />
-                              <stop offset="100%" stopColor="#b45309" />
+                              <stop offset="100%" stopColor="#92400e" />
                             </radialGradient>
                             
-                            {/* Ribbon Gradient */}
-                            <linearGradient id={`ribbonGrad${index}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                              <stop offset="0%" stopColor="#fb923c" />
-                              <stop offset="50%" stopColor="#f97316" />
-                              <stop offset="100%" stopColor="#ea580c" />
+                            {/* Bar Gradient */}
+                            <linearGradient id={`barGrad${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" stopColor="#92400e" />
+                              <stop offset="20%" stopColor="#fb923c" />
+                              <stop offset="50%" stopColor="#fbbf24" />
+                              <stop offset="80%" stopColor="#fb923c" />
+                              <stop offset="100%" stopColor="#92400e" />
                             </linearGradient>
                             
-                            {/* Shadow Filter */}
-                            <filter id={`shadow${index}`} x="-50%" y="-50%" width="200%" height="200%">
-                              <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-                              <feOffset dx="0" dy="3" result="offsetblur"/>
-                              <feComponentTransfer>
-                                <feFuncA type="linear" slope="0.3"/>
-                              </feComponentTransfer>
-                              <feMerge>
-                                <feMergeNode/>
-                                <feMergeNode in="SourceGraphic"/>
-                              </feMerge>
-                            </filter>
+                            {/* Silver Metal Gradient */}
+                            <radialGradient id={`silverGrad${index}`} cx="50%" cy="40%">
+                              <stop offset="0%" stopColor="#f3f4f6" />
+                              <stop offset="40%" stopColor="#9ca3af" />
+                              <stop offset="100%" stopColor="#4b5563" />
+                            </radialGradient>
                           </defs>
                           
-                          {/* Left Ribbon */}
-                          <path 
-                            d="M 28 0 L 34 0 L 34 45 L 40 38 L 34 32 L 34 0" 
-                            fill={`url(#ribbonGrad${index})`}
-                            stroke="#92400e"
-                            strokeWidth="0.5"
-                            className="group-hover:opacity-90 transition-opacity"
-                          />
-                          
-                          {/* Right Ribbon */}
-                          <path 
-                            d="M 46 0 L 52 0 L 52 45 L 46 38 L 40 38 L 46 32 L 46 0" 
-                            fill={`url(#ribbonGrad${index})`}
-                            stroke="#92400e"
-                            strokeWidth="0.5"
-                            className="group-hover:opacity-90 transition-opacity"
-                          />
-                          
-                          {/* Medal Body - Outer Circle */}
-                          <circle 
-                            cx="40" 
-                            cy="70" 
-                            r="28" 
-                            fill={`url(#metalGrad${index})`}
-                            stroke="#92400e"
-                            strokeWidth="2"
-                            filter={`url(#shadow${index})`}
-                            className="group-hover:scale-105 transition-transform origin-center"
-                            style={{transformOrigin: '40px 70px'}}
-                          />
-                          
-                          {/* Inner Ring */}
-                          <circle 
-                            cx="40" 
-                            cy="70" 
-                            r="23" 
-                            fill="none"
-                            stroke="#fbbf24"
-                            strokeWidth="1.5"
-                            opacity="0.6"
-                          />
-                          
-                          {/* Star */}
-                          <path
-                            d="M 40 52 L 43 62 L 53 63 L 45 70 L 47 80 L 40 75 L 33 80 L 35 70 L 27 63 L 37 62 Z"
-                            fill="#78350f"
-                            stroke="#fbbf24"
+                          {/* Top Bar (Ribbon Bar) */}
+                          <rect 
+                            x="20" 
+                            y="5" 
+                            width="50" 
+                            height="12" 
+                            rx="1"
+                            fill={`url(#barGrad${index})`}
+                            stroke="#78350f"
                             strokeWidth="1"
-                            opacity="0.8"
                           />
                           
-                          {/* Center Detail */}
-                          <circle cx="40" cy="70" r="8" fill="none" stroke="#78350f" strokeWidth="1.5"/>
-                          <circle cx="40" cy="70" r="4" fill="#78350f"/>
-                          
-                          {/* Shine Effect */}
-                          <ellipse
-                            cx="35"
-                            cy="62"
-                            rx="8"
-                            ry="12"
-                            fill="white"
-                            opacity="0.15"
-                            transform="rotate(-30 35 62)"
+                          {/* Suspension Hook */}
+                          <path
+                            d="M 35 17 Q 35 20, 38 22 L 42 25 Q 45 27, 48 25 L 52 22 Q 55 20, 55 17"
+                            fill="none"
+                            stroke={`url(#silverGrad${index})`}
+                            strokeWidth="3"
+                            strokeLinecap="round"
                           />
+                          
+                          {/* Star Badge Frame */}
+                          <g transform="translate(45, 70)">
+                            {/* Outer Star Points (8-pointed) */}
+                            {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                              const rad = (angle * Math.PI) / 180;
+                              const longR = 32;
+                              const shortR = 20;
+                              const nextAngle = ((angle + 45) * Math.PI) / 180;
+                              return (
+                                <path
+                                  key={i}
+                                  d={`M 0 0 L ${Math.cos(rad) * longR} ${Math.sin(rad) * longR} L ${Math.cos(nextAngle) * shortR} ${Math.sin(nextAngle) * shortR} Z`}
+                                  fill={`url(#goldGrad${index})`}
+                                  stroke="#92400e"
+                                  strokeWidth="0.5"
+                                />
+                              );
+                            })}
+                            
+                            {/* Center Circle (Silver) */}
+                            <circle 
+                              cx="0" 
+                              cy="0" 
+                              r="22" 
+                              fill={`url(#silverGrad${index})`}
+                              stroke="#4b5563"
+                              strokeWidth="1.5"
+                            />
+                            
+                            {/* Republic Symbol - Cog Wheel */}
+                            <circle 
+                              cx="0" 
+                              cy="0" 
+                              r="16" 
+                              fill="none"
+                              stroke="#1f2937"
+                              strokeWidth="2"
+                            />
+                            
+                            {/* Cog Teeth */}
+                            {[0, 60, 120, 180, 240, 300].map((angle, i) => {
+                              const rad = (angle * Math.PI) / 180;
+                              const innerR = 16;
+                              const outerR = 19;
+                              return (
+                                <rect
+                                  key={i}
+                                  x={-1.5}
+                                  y={-outerR}
+                                  width="3"
+                                  height={outerR - innerR}
+                                  fill="#1f2937"
+                                  transform={`rotate(${angle})`}
+                                />
+                              );
+                            })}
+                            
+                            {/* Inner Circle */}
+                            <circle 
+                              cx="0" 
+                              cy="0" 
+                              r="8" 
+                              fill="#1f2937"
+                            />
+                            
+                            {/* Center Dot */}
+                            <circle 
+                              cx="0" 
+                              cy="0" 
+                              r="3" 
+                              fill="#4b5563"
+                            />
+                            
+                            {/* Shine Effect */}
+                            <ellipse
+                              cx="-8"
+                              cy="-8"
+                              rx="6"
+                              ry="10"
+                              fill="white"
+                              opacity="0.2"
+                              transform="rotate(-30 -8 -8)"
+                            />
+                          </g>
                         </svg>
                       </div>
                       
