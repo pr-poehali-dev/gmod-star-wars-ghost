@@ -459,95 +459,63 @@ const CloneDossier = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {clone.achievements.map((achievement, index) => (
-                    <div key={index} className="relative p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/50 transition-all group">
-                      {/* Star Wars Style Medal SVG */}
-                      <div className="relative mx-auto mb-4 w-16 h-20">
-                        <svg viewBox="0 0 64 80" className="w-full h-full drop-shadow-lg">
-                          {/* Medal Ribbon */}
+                    <div key={index} className="relative p-4 bg-gray-800/50 rounded-lg border border-orange-400/30 hover:bg-gray-800 transition-all group">
+                      {/* Hexagonal Medal Badge */}
+                      <div className="relative mx-auto mb-3 w-20 h-20">
+                        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-2xl">
                           <defs>
-                            <linearGradient id={`ribbon-gradient-${index}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                              <stop offset="0%" stopColor="#fb923c" />
-                              <stop offset="50%" stopColor="#f59e0b" />
-                              <stop offset="100%" stopColor="#d97706" />
+                            <linearGradient id={`hex-gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#fb923c" stopOpacity="0.9" />
+                              <stop offset="100%" stopColor="#d97706" stopOpacity="0.9" />
                             </linearGradient>
-                            <linearGradient id={`medal-gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#fbbf24" />
-                              <stop offset="50%" stopColor="#f59e0b" />
-                              <stop offset="100%" stopColor="#d97706" />
-                            </linearGradient>
-                            <filter id={`glow-${index}`}>
-                              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                              <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                              </feMerge>
+                            <filter id={`shadow-${index}`}>
+                              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#fb923c" floodOpacity="0.5"/>
                             </filter>
                           </defs>
                           
-                          {/* Left Ribbon */}
-                          <path 
-                            d="M 20 0 L 26 0 L 26 30 L 32 24 L 26 18 L 26 0 L 20 0 Z" 
-                            fill={`url(#ribbon-gradient-${index})`}
-                            stroke="#92400e"
-                            strokeWidth="0.5"
-                          />
-                          {/* Right Ribbon */}
-                          <path 
-                            d="M 38 0 L 44 0 L 44 30 L 38 24 L 32 24 L 38 18 Z" 
-                            fill={`url(#ribbon-gradient-${index})`}
-                            stroke="#92400e"
-                            strokeWidth="0.5"
+                          {/* Outer Hexagon */}
+                          <polygon
+                            points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
+                            fill="#1f2937"
+                            stroke={`url(#hex-gradient-${index})`}
+                            strokeWidth="3"
+                            filter={`url(#shadow-${index})`}
                           />
                           
-                          {/* Medal Circle with Glow */}
-                          <circle 
-                            cx="32" 
-                            cy="50" 
-                            r="22" 
-                            fill={`url(#medal-gradient-${index})`}
-                            stroke="#92400e"
-                            strokeWidth="1.5"
-                            filter={`url(#glow-${index})`}
-                            className="group-hover:animate-pulse"
-                          />
-                          
-                          {/* Inner Circle */}
-                          <circle 
-                            cx="32" 
-                            cy="50" 
-                            r="18" 
+                          {/* Inner Hexagon */}
+                          <polygon
+                            points="50,15 80,32.5 80,67.5 50,85 20,67.5 20,32.5"
                             fill="none"
-                            stroke="#fbbf24"
-                            strokeWidth="1"
-                            opacity="0.6"
+                            stroke="#fb923c"
+                            strokeWidth="1.5"
+                            opacity="0.4"
                           />
                           
-                          {/* Star in Center */}
+                          {/* Center Star */}
                           <path
-                            d="M 32 38 L 34.5 44 L 41 44.5 L 36 49 L 37.5 55.5 L 32 52 L 26.5 55.5 L 28 49 L 23 44.5 L 29.5 44 Z"
-                            fill="#1a1a1a"
-                            stroke="#fbbf24"
-                            strokeWidth="0.5"
+                            d="M 50 30 L 55 45 L 70 47 L 58 57 L 62 72 L 50 64 L 38 72 L 42 57 L 30 47 L 45 45 Z"
+                            fill="#fb923c"
+                            opacity="0.8"
+                            className="group-hover:opacity-100 transition-opacity"
                           />
                           
-                          {/* Republic Cog Details */}
-                          <circle cx="32" cy="50" r="8" fill="none" stroke="#1a1a1a" strokeWidth="1.5"/>
-                          <circle cx="32" cy="50" r="3" fill="#1a1a1a"/>
+                          {/* Republic Symbol Lines */}
+                          <circle cx="50" cy="50" r="12" fill="none" stroke="#fb923c" strokeWidth="1" opacity="0.3"/>
+                          <line x1="50" y1="38" x2="50" y2="62" stroke="#fb923c" strokeWidth="1" opacity="0.3"/>
+                          <line x1="38" y1="50" x2="62" y2="50" stroke="#fb923c" strokeWidth="1" opacity="0.3"/>
                         </svg>
                         
-                        {/* Glow Effect */}
-                        <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-xl scale-75 group-hover:scale-100 transition-transform"></div>
+                        {/* Glow */}
+                        <div className="absolute inset-0 bg-orange-400/10 blur-lg group-hover:bg-orange-400/20 transition-all"></div>
                       </div>
                       
-                      {/* Achievement Text */}
-                      <p className="text-orange-200 font-semibold text-sm leading-tight">{achievement}</p>
+                      {/* Achievement Title */}
+                      <p className="text-orange-200 font-semibold text-sm text-center leading-tight px-2">{achievement}</p>
                       
-                      {/* Rank Badge */}
-                      <div className="absolute top-2 right-2 w-6 h-6 bg-orange-400/20 rounded-full flex items-center justify-center border border-orange-400/30">
-                        <span className="text-orange-400 text-xs font-bold">{index + 1}</span>
-                      </div>
+                      {/* Bottom Accent Line */}
+                      <div className="mt-3 mx-auto w-12 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-50"></div>
                     </div>
                   ))}
                 </div>
