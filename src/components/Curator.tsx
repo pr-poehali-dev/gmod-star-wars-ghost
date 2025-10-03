@@ -175,7 +175,7 @@ export const Curator = () => {
             <img
               src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
               alt="Куратор CT-7891"
-              className="w-72 h-auto object-contain relative z-10"
+              className="w-72 h-auto object-contain relative z-10 scale-x-[-1]"
               style={{
                 filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(-10deg) drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 80px rgba(0, 182, 212, 0.5))',
                 opacity: 0.75,
