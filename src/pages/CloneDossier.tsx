@@ -461,132 +461,91 @@ const CloneDossier = () => {
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                   {clone.achievements.map((achievement, index) => (
-                    <div key={index} className="flex flex-col items-center group">
-                      {/* Medal with Bar */}
+                    <div key={index} className="group">
                       <div className="relative transition-transform group-hover:scale-105 duration-300">
-                        <svg width="80" height="110" viewBox="0 0 80 110" className="drop-shadow-2xl">
-                          <defs>
-                            {/* Holographic Gradient */}
-                            <linearGradient id={`holoOrange${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#fb923c">
-                                <animate attributeName="stop-color" values="#fb923c; #fbbf24; #f59e0b; #fb923c" dur="3s" repeatCount="indefinite"/>
-                              </stop>
-                              <stop offset="50%" stopColor="#f59e0b">
-                                <animate attributeName="stop-color" values="#f59e0b; #fb923c; #fbbf24; #f59e0b" dur="3s" repeatCount="indefinite"/>
-                              </stop>
-                              <stop offset="100%" stopColor="#fbbf24">
-                                <animate attributeName="stop-color" values="#fbbf24; #f59e0b; #fb923c; #fbbf24" dur="3s" repeatCount="indefinite"/>
-                              </stop>
-                            </linearGradient>
-                            
-                            {/* Bar Gradient */}
-                            <linearGradient id={`barGrad${index}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                              <stop offset="0%" stopColor="#fb923c" />
-                              <stop offset="50%" stopColor="#f59e0b" />
-                              <stop offset="100%" stopColor="#ea580c" />
-                            </linearGradient>
-                            
-                            {/* Metal Gradient */}
-                            <radialGradient id={`metalGrad${index}`} cx="50%" cy="40%">
-                              <stop offset="0%" stopColor="#e2e8f0" />
-                              <stop offset="50%" stopColor="#94a3b8" />
-                              <stop offset="100%" stopColor="#475569" />
-                            </radialGradient>
-                          </defs>
+                        {/* Unified Card */}
+                        <div className="bg-gradient-to-br from-blue-500/30 via-cyan-400/40 to-blue-600/30 backdrop-blur-sm border border-cyan-400/60 rounded-lg overflow-hidden">
+                          {/* Medal SVG */}
+                          <div className="flex justify-center pt-4 pb-2">
+                            <svg width="70" height="70" viewBox="0 0 70 70" className="drop-shadow-xl">
+                              <defs>
+                                {/* Holographic Blue Gradient */}
+                                <linearGradient id={`holoBlue${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                                  <stop offset="0%" stopColor="#7dd3fc">
+                                    <animate attributeName="stop-color" values="#7dd3fc; #38bdf8; #0ea5e9; #7dd3fc" dur="3s" repeatCount="indefinite"/>
+                                  </stop>
+                                  <stop offset="50%" stopColor="#38bdf8">
+                                    <animate attributeName="stop-color" values="#38bdf8; #0ea5e9; #7dd3fc; #38bdf8" dur="3s" repeatCount="indefinite"/>
+                                  </stop>
+                                  <stop offset="100%" stopColor="#0ea5e9">
+                                    <animate attributeName="stop-color" values="#0ea5e9; #7dd3fc; #38bdf8; #0ea5e9" dur="3s" repeatCount="indefinite"/>
+                                  </stop>
+                                </linearGradient>
+                              </defs>
+                              
+                              {/* Medal Body - Star Circle */}
+                              <g transform="translate(35, 35)">
+                                {/* Star Background */}
+                                <path
+                                  d="M 0,-28 L 7,-9 L 26,-9 L 11,2 L 17,21 L 0,9 L -17,21 L -11,2 L -26,-9 L -7,-9 Z"
+                                  fill={`url(#holoBlue${index})`}
+                                  stroke="#38bdf8"
+                                  strokeWidth="2"
+                                  opacity="0.9"
+                                />
+                                
+                                {/* Inner Circle (Holographic) */}
+                                <circle
+                                  cx="0"
+                                  cy="0"
+                                  r="22"
+                                  fill={`url(#holoBlue${index})`}
+                                  stroke="#7dd3fc"
+                                  strokeWidth="2"
+                                />
+                                
+                                {/* Hologram Scan Lines */}
+                                {[-12, -6, 0, 6, 12].map((y, i) => (
+                                  <line 
+                                    key={i} 
+                                    x1="-18" 
+                                    y1={y} 
+                                    x2="18" 
+                                    y2={y} 
+                                    stroke="#e0f2fe" 
+                                    strokeWidth="0.5" 
+                                    opacity="0.4"
+                                  >
+                                    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" begin={`${i * 0.3}s`} repeatCount="indefinite"/>
+                                  </line>
+                                ))}
+                                
+                                {/* Republic Emblem Image */}
+                                <image 
+                                  href="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
+                                  x="-14" 
+                                  y="-14" 
+                                  width="28" 
+                                  height="28"
+                                  opacity="0.9"
+                                  style={{filter: 'brightness(0) saturate(100%) invert(8%) sepia(12%) saturate(1476%) hue-rotate(181deg) brightness(95%) contrast(92%)'}}
+                                />
+                                
+                                {/* Hologram glow */}
+                                <circle cx="0" cy="0" r="16" fill="none" stroke="#7dd3fc" strokeWidth="0.5" opacity="0.5">
+                                  <animate attributeName="r" values="16;18;16" dur="2s" repeatCount="indefinite"/>
+                                  <animate attributeName="opacity" values="0.4;0.6;0.4" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                              </g>
+                            </svg>
+                          </div>
                           
-                          {/* Top Bar (Ribbon Bar) */}
-                          <rect 
-                            x="15" 
-                            y="5" 
-                            width="50" 
-                            height="12" 
-                            rx="1.5"
-                            fill={`url(#barGrad${index})`}
-                            stroke="#92400e"
-                            strokeWidth="1.5"
-                          />
-                          
-                          {/* Bar Shine */}
-                          <rect 
-                            x="15" 
-                            y="5" 
-                            width="50" 
-                            height="5" 
-                            rx="1.5"
-                            fill="white"
-                            opacity="0.2"
-                          />
-                          
-                          {/* Suspension Ribbon */}
-                          <path
-                            d="M 37 17 L 37 28 L 40 32 L 43 28 L 43 17"
-                            fill={`url(#metalGrad${index})`}
-                            stroke="#525252"
-                            strokeWidth="1"
-                          />
-                          
-                          {/* Medal Body - Star Circle */}
-                          <g transform="translate(40, 68)">
-                            {/* Star Background */}
-                            <path
-                              d="M 0,-30 L 8,-10 L 28,-10 L 12,2 L 18,22 L 0,10 L -18,22 L -12,2 L -28,-10 L -8,-10 Z"
-                              fill={`url(#metalGrad${index})`}
-                              stroke="#525252"
-                              strokeWidth="2"
-                            />
-                            
-                            {/* Inner Circle (Holographic) */}
-                            <circle
-                              cx="0"
-                              cy="0"
-                              r="24"
-                              fill={`url(#holoOrange${index})`}
-                              stroke="#fb923c"
-                              strokeWidth="2"
-                            />
-                            
-                            {/* Hologram Scan Lines */}
-                            {[-15, -8, 0, 8, 15].map((y, i) => (
-                              <line 
-                                key={i} 
-                                x1="-20" 
-                                y1={y} 
-                                x2="20" 
-                                y2={y} 
-                                stroke="#fbbf24" 
-                                strokeWidth="0.5" 
-                                opacity="0.3"
-                              >
-                                <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" begin={`${i * 0.3}s`} repeatCount="indefinite"/>
-                              </line>
-                            ))}
-                            
-                            {/* Republic Emblem Image */}
-                            <image 
-                              href="https://cdn.poehali.dev/files/b41cc154-960e-487e-bc47-03469d7602e4.png" 
-                              x="-16" 
-                              y="-16" 
-                              width="32" 
-                              height="32"
-                              opacity="0.9"
-                              style={{filter: 'brightness(0) saturate(100%) invert(8%) sepia(12%) saturate(1476%) hue-rotate(181deg) brightness(95%) contrast(92%)'}}
-                            />
-                            
-                            {/* Hologram glow */}
-                            <circle cx="0" cy="0" r="18" fill="none" stroke="#fb923c" strokeWidth="0.5" opacity="0.4">
-                              <animate attributeName="r" values="18;20;18" dur="2s" repeatCount="indefinite"/>
-                              <animate attributeName="opacity" values="0.3;0.5;0.3" dur="2s" repeatCount="indefinite"/>
-                            </circle>
-                          </g>
-                        </svg>
-                      </div>
-                      
-                      {/* Achievement Name Badge */}
-                      <div className="mt-3 w-full px-1">
-                        <div className="bg-gradient-to-br from-blue-500/30 via-cyan-400/40 to-blue-600/30 backdrop-blur-sm border border-cyan-400/60 rounded-lg px-2 py-2 min-h-[44px] flex items-center justify-center">
-                          <p className="text-cyan-200 text-[11px] text-center leading-[1.3] font-semibold">
-                            {achievement}
-                          </p>
+                          {/* Achievement Name */}
+                          <div className="px-3 pb-3">
+                            <p className="text-cyan-200 text-[11px] text-center leading-[1.3] font-semibold">
+                              {achievement}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
