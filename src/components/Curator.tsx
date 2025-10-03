@@ -1,5 +1,5 @@
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Curator = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
@@ -11,6 +11,14 @@ export const Curator = () => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [isAnswering, setIsAnswering] = useState(false);
   const [messageKey, setMessageKey] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
 
   const greetings = [
     "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
@@ -227,7 +235,9 @@ export const Curator = () => {
       {/* Clone Character with Hologram Scanlines Effect */}
       <button
         onClick={handleCharacterClick}
-        className="relative group flex-shrink-0"
+        className={`relative group flex-shrink-0 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
       >
         {/* Halo-style Frame */}
         <div className="relative p-6 bg-gradient-to-b from-gray-900/80 to-black/90 backdrop-blur-md border-2 border-cyan-500/60 rounded-lg shadow-2xl">
