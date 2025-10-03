@@ -80,9 +80,9 @@ export const Curator = () => {
   };
 
   return (
-    <div className="fixed right-12 bottom-0 z-50 flex items-end gap-6 pb-8">
+    <div className="fixed right-12 bottom-0 z-50 flex items-center gap-6 pb-8">
       {/* Messages and Questions Container */}
-      <div className="flex flex-col gap-4 max-w-md mb-20">
+      <div className="flex flex-col gap-4 max-w-md">
         {/* Speech Bubble */}
         <div className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-fade-in">
           <p className="text-cyan-100 text-base font-medium leading-relaxed">
@@ -118,19 +118,22 @@ export const Curator = () => {
         )}
       </div>
 
-      {/* Clone Character with Hologram Effect */}
+      {/* Clone Character with Hologram Scanlines Effect */}
       <button
         onClick={handleCharacterClick}
         className="relative group flex-shrink-0"
       >
-        <img
-          src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
-          alt="Куратор CT-7891"
-          className="w-80 h-auto object-contain hover:scale-105 transition-transform duration-300"
-          style={{
-            filter: 'brightness(1.1) contrast(1.05) drop-shadow(0 0 25px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 50px rgba(0, 182, 212, 0.3))'
-          }}
-        />
+        <div className="hologram-effect relative">
+          <img
+            src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
+            alt="Куратор CT-7891"
+            className="w-80 h-auto object-contain hover:scale-105 transition-transform duration-300 relative z-10"
+            style={{
+              filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(-10deg) drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 80px rgba(0, 182, 212, 0.5))',
+              opacity: 0.95
+            }}
+          />
+        </div>
         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-900/90 border-2 border-cyan-400 rounded-full px-4 py-1.5 shadow-xl backdrop-blur-sm z-20">
           <span className="text-cyan-400 font-orbitron font-bold text-sm whitespace-nowrap">CT-7891</span>
         </div>

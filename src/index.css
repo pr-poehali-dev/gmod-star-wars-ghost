@@ -457,104 +457,63 @@
   }
 }
 
-/* Hologram Glitch Effect */
-.hologram-glitch {
+/* Hologram Scanlines Effect */
+.hologram-effect {
   position: relative;
-  animation: hologramFlicker 3s infinite;
+  overflow: hidden;
 }
 
-.hologram-glitch::before,
-.hologram-glitch::after {
+.hologram-effect::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: inherit;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 255, 0.1) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 255, 255, 0.1) 3px
+  );
   pointer-events: none;
-  z-index: 1;
+  z-index: 10;
+  animation: scanlines 8s linear infinite;
 }
 
-.hologram-glitch::before {
-  animation: glitchShift1 2s infinite;
-  filter: hue-rotate(90deg) brightness(1.5);
-  mix-blend-mode: screen;
+.hologram-effect::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 11;
+  animation: scan-line 3s linear infinite;
 }
 
-.hologram-glitch::after {
-  animation: glitchShift2 2.5s infinite;
-  filter: hue-rotate(180deg) brightness(1.3);
-  mix-blend-mode: screen;
-}
-
-@keyframes hologramFlicker {
-  0%,
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
   100% {
-    opacity: 1;
-  }
-  5%,
-  10% {
-    opacity: 0.85;
-  }
-  15% {
-    opacity: 0.95;
-  }
-  20% {
-    opacity: 1;
-  }
-  45%,
-  50% {
-    opacity: 0.9;
+    transform: translateY(4px);
   }
 }
 
-@keyframes glitchShift1 {
-  0%,
+@keyframes scan-line {
+  0% {
+    top: -100%;
+  }
   100% {
-    opacity: 0;
-    transform: translate(0, 0);
-  }
-  10% {
-    opacity: 0.6;
-    transform: translate(-4px, 3px);
-  }
-  12% {
-    opacity: 0;
-    transform: translate(0, 0);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translate(3px, -2px);
-  }
-  52% {
-    opacity: 0;
-  }
-}
-
-@keyframes glitchShift2 {
-  0%,
-  100% {
-    opacity: 0;
-    transform: translate(0, 0);
-  }
-  15% {
-    opacity: 0.5;
-    transform: translate(4px, -3px);
-  }
-  17% {
-    opacity: 0;
-    transform: translate(0, 0);
-  }
-  55% {
-    opacity: 0.4;
-    transform: translate(-3px, 2px);
-  }
-  57% {
-    opacity: 0;
+    top: 100%;
   }
 }
