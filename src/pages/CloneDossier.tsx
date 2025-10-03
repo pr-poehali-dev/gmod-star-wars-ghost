@@ -401,29 +401,12 @@ const CloneDossier = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 gap-3">
-                  {clone.equipment.map((item, index) => {
-                    const getWeaponIcon = (weapon: string): string => {
-                      const lower = weapon.toLowerCase();
-                      if (lower.includes('топор') || lower.includes('vibro-топор')) return 'Axe';
-                      if (lower.includes('щит')) return 'Shield';
-                      if (lower.includes('dc-15') || lower.includes('z-6')) return 'Rifle';
-                      if (lower.includes('dc-17') || lower.includes('westar')) return 'Gun';
-                      if (lower.includes('вестерн') || lower.includes('вестарн')) return 'Crosshair';
-                      if (lower.includes('вибромеч') || lower.includes('меч')) return 'Sword';
-                      if (lower.includes('jetpack')) return 'Rocket';
-                      if (lower.includes('термо') || lower.includes('детонатор')) return 'Bomb';
-                      if (lower.includes('пилот')) return 'Plane';
-                      if (lower.includes('дп-24')) return 'Zap';
-                      return 'Crosshair';
-                    };
-                    
-                    return (
-                      <div key={index} className="flex items-center p-3 bg-gray-800 rounded-lg">
-                        <Icon name={getWeaponIcon(item)} size={16} className="mr-3 text-orange-400" />
-                        <span className="text-orange-200">{item}</span>
-                      </div>
-                    );
-                  })}
+                  {clone.equipment.map((item, index) => (
+                    <div key={index} className="flex items-center p-3 bg-gray-800 rounded-lg">
+                      <Icon name="CircleDot" size={16} className="mr-3 text-orange-400" />
+                      <span className="text-orange-200">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
