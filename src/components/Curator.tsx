@@ -15,7 +15,7 @@ export const Curator = () => {
   ];
 
   const questions = [
-    { id: 'guide', text: 'Расскажи что тут и где', icon: 'Info' },
+    { id: 'guide', text: 'Что тут есть?', icon: 'Info' },
     { id: 'self', text: 'Сам разберусь', icon: 'X' }
   ];
 
