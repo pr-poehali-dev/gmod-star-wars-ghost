@@ -459,30 +459,52 @@ const CloneDossier = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  {clone.achievements.map((achievement, index) => (
-                    <div key={index} className="relative flex items-center gap-4 p-4 bg-gradient-to-r from-gray-900 to-gray-800 rounded-lg border-l-4 border-orange-400 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-400/20 transition-all group">
-                      {/* Left Icon Badge */}
-                      <div className="flex-shrink-0 relative">
-                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-400/50">
-                          <Icon name="Award" size={28} className="text-black" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {clone.achievements.map((achievement, index) => {
+                    const icons = ['Crosshair', 'Shield', 'Sword', 'Zap', 'Target'];
+                    const colors = ['orange', 'blue', 'purple', 'yellow', 'red'];
+                    const iconName = icons[index % icons.length];
+                    const color = colors[index % colors.length];
+                    
+                    return (
+                      <div key={index} className="relative group">
+                        <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="relative p-5 bg-gray-800/80 backdrop-blur rounded-lg border border-gray-700 hover:border-orange-400/50 transition-all h-full flex flex-col">
+                          {/* Top Badge */}
+                          <div className="flex items-center justify-between mb-3">
+                            <div className={`px-2 py-1 bg-${color}-400/10 border border-${color}-400/30 rounded text-xs font-mono text-${color}-400`}>
+                              OP-{String(index + 1).padStart(2, '0')}
+                            </div>
+                            <div className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse"></div>
+                          </div>
+                          
+                          {/* Center Icon */}
+                          <div className="flex-1 flex items-center justify-center py-4">
+                            <div className="relative">
+                              <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-${color}-400/20 to-${color}-600/10 flex items-center justify-center border-2 border-${color}-400/30 group-hover:border-${color}-400/60 transition-all group-hover:scale-110`}>
+                                <Icon name={iconName} size={36} className={`text-${color}-400`} />
+                              </div>
+                              {/* Corner Decorations */}
+                              <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-orange-400/50"></div>
+                              <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-orange-400/50"></div>
+                              <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-orange-400/50"></div>
+                              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-orange-400/50"></div>
+                            </div>
+                          </div>
+                          
+                          {/* Achievement Text */}
+                          <div className="text-center">
+                            <p className="text-orange-200 font-semibold text-sm leading-tight mb-1">{achievement}</p>
+                            <div className="flex items-center justify-center gap-1 mt-2">
+                              <div className="h-px w-6 bg-gradient-to-r from-transparent to-orange-400/50"></div>
+                              <Icon name="Star" size={10} className="text-orange-400/50" />
+                              <div className="h-px w-6 bg-gradient-to-l from-transparent to-orange-400/50"></div>
+                            </div>
+                          </div>
                         </div>
-                        {/* Pulse Ring */}
-                        <div className="absolute inset-0 rounded-full border-2 border-orange-400 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"></div>
                       </div>
-                      
-                      {/* Achievement Content */}
-                      <div className="flex-1">
-                        <p className="text-orange-200 font-semibold text-base leading-tight">{achievement}</p>
-                        <p className="text-orange-400/60 text-xs mt-1 font-mono">БОЕВАЯ ОПЕРАЦИЯ</p>
-                      </div>
-                      
-                      {/* Right Number Badge */}
-                      <div className="flex-shrink-0 w-8 h-8 rounded bg-orange-400/10 border border-orange-400/30 flex items-center justify-center">
-                        <span className="text-orange-400 font-bold text-sm">{index + 1}</span>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>
