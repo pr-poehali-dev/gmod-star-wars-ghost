@@ -459,52 +459,35 @@ const CloneDossier = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {clone.achievements.map((achievement, index) => {
-                    const icons = ['Crosshair', 'Shield', 'Sword', 'Zap', 'Target'];
-                    const colors = ['orange', 'blue', 'purple', 'yellow', 'red'];
-                    const iconName = icons[index % icons.length];
-                    const color = colors[index % colors.length];
-                    
-                    return (
-                      <div key={index} className="relative group">
-                        <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="relative p-5 bg-gray-800/80 backdrop-blur rounded-lg border border-gray-700 hover:border-orange-400/50 transition-all h-full flex flex-col">
-                          {/* Top Badge */}
-                          <div className="flex items-center justify-between mb-3">
-                            <div className={`px-2 py-1 bg-${color}-400/10 border border-${color}-400/30 rounded text-xs font-mono text-${color}-400`}>
-                              OP-{String(index + 1).padStart(2, '0')}
-                            </div>
-                            <div className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse"></div>
-                          </div>
-                          
-                          {/* Center Icon */}
-                          <div className="flex-1 flex items-center justify-center py-4">
-                            <div className="relative">
-                              <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-${color}-400/20 to-${color}-600/10 flex items-center justify-center border-2 border-${color}-400/30 group-hover:border-${color}-400/60 transition-all group-hover:scale-110`}>
-                                <Icon name={iconName} size={36} className={`text-${color}-400`} />
-                              </div>
-                              {/* Corner Decorations */}
-                              <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-orange-400/50"></div>
-                              <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-orange-400/50"></div>
-                              <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-orange-400/50"></div>
-                              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-orange-400/50"></div>
-                            </div>
-                          </div>
-                          
-                          {/* Achievement Text */}
-                          <div className="text-center">
-                            <p className="text-orange-200 font-semibold text-sm leading-tight mb-1">{achievement}</p>
-                            <div className="flex items-center justify-center gap-1 mt-2">
-                              <div className="h-px w-6 bg-gradient-to-r from-transparent to-orange-400/50"></div>
-                              <Icon name="Star" size={10} className="text-orange-400/50" />
-                              <div className="h-px w-6 bg-gradient-to-l from-transparent to-orange-400/50"></div>
-                            </div>
-                          </div>
+                <div className="space-y-2">
+                  {clone.achievements.map((achievement, index) => (
+                    <div key={index} className="group relative overflow-hidden">
+                      {/* Animated Background on Hover */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-orange-400/0 via-orange-400/10 to-orange-400/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                      
+                      <div className="relative flex items-center gap-3 p-3 bg-gray-800/30 hover:bg-gray-800/50 rounded border border-orange-400/20 group-hover:border-orange-400/40 transition-all">
+                        {/* Left Star */}
+                        <div className="flex-shrink-0">
+                          <svg width="24" height="24" viewBox="0 0 24 24" className="text-orange-400">
+                            <path
+                              fill="currentColor"
+                              d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"
+                            />
+                          </svg>
+                        </div>
+                        
+                        {/* Text Content */}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-orange-200 font-orbitron font-medium truncate">{achievement}</p>
+                        </div>
+                        
+                        {/* Right Arrow */}
+                        <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <Icon name="ChevronRight" size={20} className="text-orange-400" />
                         </div>
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
