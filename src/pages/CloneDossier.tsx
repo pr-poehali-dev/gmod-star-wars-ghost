@@ -81,8 +81,19 @@ const CloneDossier = () => {
   return (
     <div className="min-h-screen bg-black text-orange-200">
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-900 to-black py-8 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="relative bg-gradient-to-r from-gray-900 to-black py-8 px-4 md:px-8 overflow-hidden">
+        {/* Background Logo */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none"
+          style={{
+            backgroundImage: 'url(https://cdn.poehali.dev/files/872551b5-ae60-4fea-9c61-8b06b3d8cdec.png)',
+            backgroundSize: '400px 400px',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        
+        <div className="max-w-6xl mx-auto relative z-10">
           <Link to="/" className="inline-flex items-center text-orange-400 hover:text-orange-300 mb-6">
             <Icon name="ArrowLeft" size={20} className="mr-2" />
             Вернуться к отряду
