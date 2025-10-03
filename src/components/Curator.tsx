@@ -15,10 +15,7 @@ export const Curator = () => {
   const [isAnswering, setIsAnswering] = useState(false);
   const [messageKey, setMessageKey] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [showMessage, setShowMessage] = useState(() => {
-    const saved = localStorage.getItem('curatorMinimized');
-    return saved === 'true';
-  });
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const wasMinimized = localStorage.getItem('curatorMinimized') === 'true';
