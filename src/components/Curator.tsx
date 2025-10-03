@@ -115,8 +115,8 @@ export const Curator = () => {
         clearInterval(intervalId);
         if (questionId === 'guide') {
           setTimeout(() => setShowThankYou(true), 1000);
-        } else if (questionId !== 'self' && questionId !== 'thankyou') {
-          setTimeout(() => setShowThankYou(true), 1000);
+        } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing') {
+          setTimeout(() => setShowQuestions(true), 1000);
         }
       }
     }, 2500);
