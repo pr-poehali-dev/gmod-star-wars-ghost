@@ -5,18 +5,8 @@ import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
 import { SecureAccess } from "@/components/SecureAccess";
 import { Curator } from "@/components/Curator";
-import { useEffect } from "react";
 
 const Index = () => {
-  useEffect(() => {
-    // Mark that user visited main page - curator should be minimized on return
-    const hasVisited = localStorage.getItem('curatorVisited');
-    if (hasVisited) {
-      localStorage.setItem('curatorMinimized', 'true');
-    } else {
-      localStorage.setItem('curatorVisited', 'true');
-    }
-  }, []);
   const clones = [
     {
       id: "CT-01-1044",
