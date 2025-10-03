@@ -165,7 +165,7 @@ export const Curator = () => {
       {/* Messages and Questions Container */}
       <div className="flex flex-col gap-4 max-w-md mt-16">
         {/* Speech Bubble */}
-        <div className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-fade-in">
+        <div className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-slide-from-right">
           <p className="text-cyan-100 text-base font-medium leading-relaxed">
             {currentMessage}
           </p>
@@ -176,7 +176,7 @@ export const Curator = () => {
 
         {/* Quick Questions */}
         {showQuestions && (
-          <div className="flex flex-col gap-3 animate-fade-in">
+          <div className="flex flex-col gap-3 animate-slide-from-right">
             <div className="bg-cyan-900/70 backdrop-blur-sm border-2 border-cyan-400/60 rounded-xl px-4 py-2 shadow-xl">
               <p className="text-cyan-100 text-sm font-semibold flex items-center gap-2">
                 <Icon name="MessageSquare" size={14} />
@@ -208,7 +208,7 @@ export const Curator = () => {
 
         {/* Thank You Button */}
         {showThankYou && (
-          <div className="flex flex-col gap-3 animate-fade-in">
+          <div className="flex flex-col gap-3 animate-slide-from-right">
             <button
               onClick={() => handleQuestionClick('thankyou')}
               className="flex items-center justify-center gap-2 bg-gray-800/90 backdrop-blur-sm border-2 border-cyan-700/50 rounded-lg px-4 py-3 text-sm text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500 transition-all shadow-lg"
