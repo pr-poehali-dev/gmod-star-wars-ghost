@@ -146,7 +146,8 @@ export const Curator = () => {
               className="w-16 h-16 object-cover rounded-full opacity-40"
               style={{
                 filter: 'brightness(0.8) contrast(0.9) saturate(0.5)',
-                mixBlendMode: 'screen'
+                mixBlendMode: 'screen',
+                transform: 'scaleX(-1)'
               }}
             />
           </div>
