@@ -539,7 +539,7 @@ const CloneDossier = () => {
                             width="50" 
                             height="7" 
                             rx="2"
-                            fill="url(#shimmer" + index + ")"
+                            fill={`url(#shimmer${index})`}
                             opacity="0.4"
                           />
                           
