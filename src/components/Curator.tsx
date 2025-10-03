@@ -123,21 +123,47 @@ export const Curator = () => {
         onClick={handleCharacterClick}
         className="relative group flex-shrink-0"
       >
-        <div className="hologram-effect relative">
-          <img
-            src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
-            alt="Куратор CT-7891"
-            className="w-80 h-auto object-contain hover:scale-105 transition-transform duration-300 relative z-10"
-            style={{
-              filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(-10deg) drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 80px rgba(0, 182, 212, 0.5))',
-              opacity: 0.95
-            }}
-          />
+        {/* Halo-style Frame */}
+        <div className="relative p-6 bg-gradient-to-b from-gray-900/80 to-black/90 backdrop-blur-md border-2 border-cyan-500/60 rounded-lg shadow-2xl">
+          {/* Corner decorations */}
+          <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-cyan-400"></div>
+          <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-cyan-400"></div>
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-cyan-400"></div>
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-cyan-400"></div>
+          
+          {/* Side accent lines */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-20 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-20 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          
+          {/* Top status bar */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-900 border-2 border-cyan-400 rounded-full px-4 py-1">
+            <span className="text-cyan-400 font-orbitron font-bold text-xs whitespace-nowrap flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              ACTIVE
+            </span>
+          </div>
+          
+          {/* Hologram container */}
+          <div className="hologram-effect relative">
+            <img
+              src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
+              alt="Куратор CT-7891"
+              className="w-72 h-auto object-contain hover:scale-105 transition-transform duration-300 relative z-10"
+              style={{
+                filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(-10deg) drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 80px rgba(0, 182, 212, 0.5))',
+                opacity: 0.95
+              }}
+            />
+          </div>
+          
+          {/* Bottom info bar */}
+          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gray-900 border-2 border-cyan-400 rounded-full px-4 py-1">
+            <span className="text-cyan-400 font-orbitron font-bold text-xs whitespace-nowrap">CT-7891</span>
+          </div>
+          
+          {/* Animated glow effect */}
+          <div className="absolute inset-0 border-2 border-cyan-400/0 rounded-lg group-hover:border-cyan-400/50 transition-all duration-300 pointer-events-none"></div>
         </div>
-        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-900/90 border-2 border-cyan-400 rounded-full px-4 py-1.5 shadow-xl backdrop-blur-sm z-20">
-          <span className="text-cyan-400 font-orbitron font-bold text-sm whitespace-nowrap">CT-7891</span>
-        </div>
-        <div className="absolute top-8 right-12 w-5 h-5 bg-green-400 rounded-full border-2 border-gray-900 animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.8)] z-20"></div>
       </button>
     </div>
   );
