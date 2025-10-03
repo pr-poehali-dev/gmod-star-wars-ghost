@@ -94,7 +94,7 @@ const MandoDossier = () => {
             <img 
               src="https://cdn.poehali.dev/files/b54488bd-b7d7-4ac6-a413-2a816e9dc8ef.PNG" 
               alt="Schnee Mhokar"
-              className="w-64 h-80 object-cover object-[center_25%] rounded-lg border-2 border-green-400"
+              className="w-64 h-80 object-cover object-[center_35%] rounded-lg border-2 border-green-400"
             />
             <div className="flex-1">
               <div className="flex items-center gap-4 mb-4">
