@@ -285,49 +285,49 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
-      <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-cyan-500 rounded-xl p-6 max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-orbitron font-bold text-cyan-400">МОРСКОЙ БОЙ</h2>
+    <div className="fixed left-8 bottom-24 z-40 animate-slide-from-left">
+      <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-cyan-500 rounded-xl p-4 w-[480px] shadow-2xl">
+        <div className="flex justify-between items-center mb-3">
+          <h2 className="text-lg font-orbitron font-bold text-cyan-400">МОРСКОЙ БОЙ</h2>
           <button onClick={onClose} className="text-cyan-400 hover:text-cyan-300">
-            <Icon name="X" size={28} />
+            <Icon name="X" size={20} />
           </button>
         </div>
 
-        <div className="bg-cyan-900/30 border border-cyan-500/50 rounded-lg p-4 mb-6">
-          <p className="text-cyan-200 text-center font-medium">{curatorMessage}</p>
+        <div className="bg-cyan-900/30 border border-cyan-500/50 rounded-lg p-2 mb-3">
+          <p className="text-cyan-200 text-center text-sm">{curatorMessage}</p>
         </div>
 
         {phase === 'setup' && (
-          <div className="text-center mb-4">
+          <div className="text-center mb-3">
             <button
               onClick={autoPlaceShips}
-              className="bg-cyan-700 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+              className="bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-1 rounded-lg text-sm font-semibold transition-colors"
             >
               Авто-расстановка
             </button>
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-3">
           <div>
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-xl font-orbitron text-green-400">Твоё поле</h3>
-              <div className="text-green-400 font-mono">Кораблей: {playerShipsLeft}</div>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-xs font-orbitron text-green-400">Твоё поле</h3>
+              <div className="text-green-400 font-mono text-xs">Кораблей: {playerShipsLeft}</div>
             </div>
-            <div className="inline-grid grid-cols-10 gap-1 bg-gray-800 p-2 rounded-lg">
+            <div className="inline-grid grid-cols-10 gap-0.5 bg-gray-800 p-1 rounded">
               {playerBoard.map((row, y) =>
                 row.map((cell, x) => (
                   <button
                     key={`player-${x}-${y}`}
                     onClick={() => handlePlayerCellClick(x, y)}
                     disabled={phase !== 'setup'}
-                    className={`w-8 h-8 border border-gray-600 rounded transition-colors ${getCellColor(cell, true)} ${
+                    className={`w-5 h-5 border border-gray-600 rounded-sm transition-colors ${getCellColor(cell, true)} ${
                       phase === 'setup' ? 'cursor-pointer' : 'cursor-not-allowed'
                     }`}
                   >
-                    {cell === 'hit' && <Icon name="X" size={16} className="text-white" />}
-                    {cell === 'miss' && <div className="w-2 h-2 bg-white rounded-full mx-auto" />}
+                    {cell === 'hit' && <Icon name="X" size={12} className="text-white" />}
+                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-white rounded-full mx-auto" />}
                   </button>
                 ))
               )}
@@ -335,23 +335,23 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
           </div>
 
           <div>
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-xl font-orbitron text-red-400">Поле куратора</h3>
-              <div className="text-red-400 font-mono">Кораблей: {enemyShipsLeft}</div>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-xs font-orbitron text-red-400">Поле куратора</h3>
+              <div className="text-red-400 font-mono text-xs">Кораблей: {enemyShipsLeft}</div>
             </div>
-            <div className="inline-grid grid-cols-10 gap-1 bg-gray-800 p-2 rounded-lg">
+            <div className="inline-grid grid-cols-10 gap-0.5 bg-gray-800 p-1 rounded">
               {enemyBoard.map((row, y) =>
                 row.map((cell, x) => (
                   <button
                     key={`enemy-${x}-${y}`}
                     onClick={() => handleEnemyCellClick(x, y)}
                     disabled={phase !== 'playing' || !isPlayerTurn || cell !== 'empty'}
-                    className={`w-8 h-8 border border-gray-600 rounded transition-colors ${getCellColor(cell, false)} ${
+                    className={`w-5 h-5 border border-gray-600 rounded-sm transition-colors ${getCellColor(cell, false)} ${
                       phase === 'playing' && isPlayerTurn && cell === 'empty' ? 'cursor-crosshair' : 'cursor-not-allowed'
                     }`}
                   >
-                    {cell === 'hit' && <Icon name="X" size={16} className="text-white" />}
-                    {cell === 'miss' && <div className="w-2 h-2 bg-white rounded-full mx-auto" />}
+                    {cell === 'hit' && <Icon name="X" size={12} className="text-white" />}
+                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-white rounded-full mx-auto" />}
                   </button>
                 ))
               )}
@@ -360,20 +360,20 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
         </div>
 
         {phase === 'finished' && (
-          <div className="mt-6 text-center">
+          <div className="mt-3 text-center">
             <button
               onClick={resetGame}
-              className="bg-cyan-700 hover:bg-cyan-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+              className="bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
             >
               Реванш
             </button>
           </div>
         )}
 
-        <div className="mt-6 text-center">
+        <div className="mt-3 text-center">
           <button
             onClick={onClose}
-            className="text-cyan-400 hover:text-cyan-300 font-semibold"
+            className="text-cyan-400 hover:text-cyan-300 text-sm font-semibold"
           >
             Сдаться
           </button>
