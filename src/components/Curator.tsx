@@ -116,7 +116,7 @@ export const Curator = () => {
   };
 
   const handleCharacterClick = () => {
-    if (isAnswering) return;
+    if (isAnswering || showGame) return;
     
     if (isMinimized) {
       setIsMinimized(false);
@@ -240,7 +240,7 @@ export const Curator = () => {
         )}
 
         {/* Quick Questions */}
-        {(showQuestions || showDossierReturn) && (
+        {!showGame && (showQuestions || showDossierReturn) && (
           <div className="flex flex-col gap-3 animate-slide-from-right">
             <div className="bg-cyan-900/70 backdrop-blur-sm border-2 border-cyan-400/60 rounded-xl px-4 py-2 shadow-xl">
               <p className="text-cyan-100 text-sm font-semibold flex items-center gap-2">
@@ -272,7 +272,7 @@ export const Curator = () => {
         )}
 
         {/* Thank You Button */}
-        {showThankYou && (
+        {!showGame && showThankYou && (
           <div className="flex flex-col gap-3 animate-slide-from-right">
             <button
               onClick={() => handleQuestionClick('thankyou')}
