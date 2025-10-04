@@ -45,7 +45,7 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
     setEnemyShipsBoard(enemyShips);
     
     onMessage('Расставь свои корабли, солдат.');
-  }, [onMessage]);
+  }, []);
 
   const placeShipsRandomly = (): Cell[][] => {
     const board: Cell[][] = Array(10).fill(null).map(() => Array(10).fill('empty'));
