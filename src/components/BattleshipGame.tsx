@@ -10,16 +10,48 @@ interface Ship {
 }
 
 const SHIPS: Ship[] = [
-  { size: 4, name: 'Линкор' },
+  { size: 4, name: 'Звёздный разрушитель' },
   { size: 3, name: 'Крейсер' },
   { size: 3, name: 'Крейсер' },
-  { size: 2, name: 'Эсминец' },
-  { size: 2, name: 'Эсминец' },
-  { size: 2, name: 'Эсминец' },
-  { size: 1, name: 'Катер' },
-  { size: 1, name: 'Катер' },
-  { size: 1, name: 'Катер' },
-  { size: 1, name: 'Катер' },
+  { size: 2, name: 'Истребитель' },
+  { size: 2, name: 'Истребитель' },
+  { size: 2, name: 'Истребитель' },
+  { size: 1, name: 'Перехватчик' },
+  { size: 1, name: 'Перехватчик' },
+  { size: 1, name: 'Перехватчик' },
+  { size: 1, name: 'Перехватчик' },
+];
+
+const PLAYER_HIT_MESSAGES = [
+  'Попал... повезло, солдат.',
+  'Неплохой выстрел, новобранец.',
+  'Точное попадание! Для новичка.',
+  'Хм... может ты и научишься.',
+  'Попал. Продолжай в том же духе.',
+];
+
+const PLAYER_MISS_MESSAGES = [
+  'Промах, новобранец! Смотри как надо.',
+  'Мимо. Работай над прицелом.',
+  'Промахнулся. Типичный новобранец.',
+  'Не туда стреляешь, солдат.',
+  'Промах. Учись прицеливаться.',
+];
+
+const ENEMY_HIT_MESSAGES = [
+  'Вот так работают профессионалы!',
+  'Попал. Это опыт, солдат.',
+  'Точное попадание! Так и надо.',
+  'Видел? Вот как стреляют ветераны.',
+  'Попал в цель. Учись.',
+];
+
+const ENEMY_MISS_MESSAGES = [
+  'Промахнулся... Твой ход, солдат.',
+  'Мимо. Везёт тебе, новобранец.',
+  'Не попал... бывает.',
+  'Промах. Твоя очередь.',
+  'Не в этот раз. Стреляй.',
 ];
 
 export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, onMessage: (msg: string) => void }) => {
@@ -133,7 +165,8 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
     setEnemyBoard(newEnemyBoard);
     
     if (isHit) {
-      onMessage('Попал... повезло, солдат.');
+      const randomMsg = PLAYER_HIT_MESSAGES[Math.floor(Math.random() * PLAYER_HIT_MESSAGES.length)];
+      onMessage(randomMsg);
       const shipsLeft = countShips(newEnemyBoard, enemyShipsBoard);
       setEnemyShipsLeft(shipsLeft);
       
@@ -143,7 +176,8 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
         return;
       }
     } else {
-      onMessage('Промах, новобранец! Смотри как надо.');
+      const randomMsg = PLAYER_MISS_MESSAGES[Math.floor(Math.random() * PLAYER_MISS_MESSAGES.length)];
+      onMessage(randomMsg);
     }
     
     setIsPlayerTurn(false);
@@ -181,7 +215,8 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
     setPlayerBoard(newPlayerBoard);
     
     if (isHit) {
-      onMessage('Вот так работают профессионалы!');
+      const randomMsg = ENEMY_HIT_MESSAGES[Math.floor(Math.random() * ENEMY_HIT_MESSAGES.length)];
+      onMessage(randomMsg);
       setLastHit({ x, y });
       setHuntMode(true);
       
@@ -194,7 +229,8 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
         return;
       }
     } else {
-      onMessage('Промахнулся... Твой ход, солдат.');
+      const randomMsg = ENEMY_MISS_MESSAGES[Math.floor(Math.random() * ENEMY_MISS_MESSAGES.length)];
+      onMessage(randomMsg);
     }
     
     setIsPlayerTurn(true);
@@ -280,17 +316,17 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
   };
 
   const getCellColor = (cell: Cell, isPlayer: boolean) => {
-    if (cell === 'hit') return 'bg-red-500';
-    if (cell === 'miss') return 'bg-blue-400';
-    if (cell === 'ship' && isPlayer) return 'bg-green-500';
-    return 'bg-gray-700 hover:bg-gray-600';
+    if (cell === 'hit') return 'bg-orange-500';
+    if (cell === 'miss') return 'bg-cyan-500/30';
+    if (cell === 'ship' && isPlayer) return 'bg-gradient-to-br from-blue-500 to-purple-600';
+    return 'bg-gray-800/50 hover:bg-gray-700/70 border-cyan-500/20';
   };
 
   return (
     <div className="fixed left-8 bottom-24 z-40 animate-slide-from-left">
-      <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-cyan-500 rounded-xl p-4 w-[480px] shadow-2xl">
+      <div className="bg-gradient-to-br from-gray-950 via-blue-950/30 to-black border-2 border-purple-500/60 rounded-xl p-4 w-[480px] shadow-2xl shadow-purple-500/20">
         <div className="flex justify-between items-center mb-3">
-          <h2 className="text-lg font-orbitron font-bold text-cyan-400">МОРСКОЙ БОЙ</h2>
+          <h2 className="text-lg font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">ЗВЁЗДНЫЙ БОЙ</h2>
           <button onClick={onClose} className="text-cyan-400 hover:text-cyan-300">
             <Icon name="X" size={20} />
           </button>
@@ -324,8 +360,9 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
                       phase === 'setup' ? 'cursor-pointer' : 'cursor-not-allowed'
                     }`}
                   >
-                    {cell === 'hit' && <Icon name="X" size={12} className="text-white" />}
-                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-white rounded-full mx-auto" />}
+                    {cell === 'hit' && <Icon name="Flame" size={12} className="text-orange-300" />}
+                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-cyan-300 rounded-full mx-auto animate-pulse" />}
+                    {cell === 'ship' && <Icon name="Rocket" size={10} className="text-white" />}
                   </button>
                 ))
               )}
@@ -348,8 +385,8 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
                       phase === 'playing' && isPlayerTurn && cell === 'empty' ? 'cursor-crosshair' : 'cursor-not-allowed'
                     }`}
                   >
-                    {cell === 'hit' && <Icon name="X" size={12} className="text-white" />}
-                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-white rounded-full mx-auto" />}
+                    {cell === 'hit' && <Icon name="Flame" size={12} className="text-orange-300" />}
+                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-cyan-300 rounded-full mx-auto animate-pulse" />}
                   </button>
                 ))
               )}
