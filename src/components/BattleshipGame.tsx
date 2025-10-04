@@ -324,12 +324,14 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
 
   return (
     <div className="fixed left-8 bottom-24 z-40 animate-slide-from-left">
-      <div className="bg-gradient-to-br from-gray-950 via-blue-950/30 to-black border-2 border-purple-500/60 rounded-xl p-4 w-[480px] shadow-2xl shadow-purple-500/20">
-        <div className="flex justify-between items-center mb-3">
-          <h2 className="text-lg font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">ЗВЁЗДНЫЙ БОЙ</h2>
+      <div className="bg-gradient-to-br from-gray-900 to-black border-4 border-cyan-500/80 rounded-2xl p-5 w-[480px] shadow-2xl shadow-cyan-500/30 relative">
+        <div className="absolute top-3 right-3">
           <button onClick={onClose} className="text-cyan-400 hover:text-cyan-300">
             <Icon name="X" size={20} />
           </button>
+        </div>
+        <div className="text-center mb-3">
+          <h2 className="text-lg font-orbitron font-bold text-cyan-400">ЗВЁЗДНЫЙ БОЙ</h2>
         </div>
 
         {phase === 'setup' && (
