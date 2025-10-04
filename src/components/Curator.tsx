@@ -1,5 +1,6 @@
 import Icon from "@/components/ui/icon";
 import { useState, useEffect } from "react";
+import { BattleshipGame } from "./BattleshipGame";
 
 export const Curator = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
@@ -14,6 +15,7 @@ export const Curator = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [showDossierReturn, setShowDossierReturn] = useState(false);
+  const [showGame, setShowGame] = useState(false);
 
   useEffect(() => {
     const fromDossier = localStorage.getItem('fromDossier');
@@ -92,8 +94,8 @@ export const Curator = () => {
       'Есть секретная кнопка к досье наставника.'
     ],
     game: [
-      'Боец, вы больны? Тут как бы не место для игрушек.',
-      'Советую проверится у медиков на всякий случай.'
+      'Ладно, солдат. Морской бой.',
+      'Приготовься к поражению.'
     ],
     thankyou: [
       'Рад помочь, солдат.',
@@ -156,8 +158,8 @@ export const Curator = () => {
         setCurrentMessage(messages[messageIndex]);
         setMessageKey(prev => prev + 1);
         
-        if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing' || questionId === 'game' || questionId === 'dossier_no') && messageIndex === messages.length - 1) {
-          const finalDelay = questionId === 'game' ? 3000 : 2000;
+        if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing' || questionId === 'dossier_no') && messageIndex === messages.length - 1) {
+          const finalDelay = 2000;
           setTimeout(() => {
             setIsMinimized(true);
             setIsReawakened(false);
@@ -165,6 +167,12 @@ export const Curator = () => {
             setShowThankYou(false);
             setIsAnswering(false);
           }, finalDelay);
+        }
+        
+        if (questionId === 'game' && messageIndex === messages.length - 1) {
+          setTimeout(() => {
+            setShowGame(true);
+          }, 1500);
         }
         
         if (questionId === 'dossier_yes' && messageIndex === messages.length - 1) {
@@ -178,7 +186,7 @@ export const Curator = () => {
         setIsAnswering(false);
         if (questionId === 'guide') {
           setTimeout(() => setShowThankYou(true), 1000);
-        } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing' && questionId !== 'game' && questionId !== 'dossier_no' && questionId !== 'dossier_yes') {
+        } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing' && questionId !== 'dossier_no' && questionId !== 'dossier_yes') {
           setTimeout(() => setShowQuestions(true), 1000);
         }
       }
@@ -324,6 +332,14 @@ export const Curator = () => {
           </div>
         </div>
       </button>
+      {showGame && <BattleshipGame onClose={() => {
+        setShowGame(false);
+        setIsMinimized(true);
+        setIsReawakened(false);
+        setUsedQuestions([]);
+        setShowThankYou(false);
+        setIsAnswering(false);
+      }} />}
     </div>
   );
 };
