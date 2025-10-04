@@ -332,14 +332,20 @@ export const Curator = () => {
           </div>
         </div>
       </button>
-      {showGame && <BattleshipGame onClose={() => {
-        setShowGame(false);
-        setIsMinimized(true);
-        setIsReawakened(false);
-        setUsedQuestions([]);
-        setShowThankYou(false);
-        setIsAnswering(false);
-      }} />}
+      {showGame && <BattleshipGame 
+        onClose={() => {
+          setShowGame(false);
+          setIsMinimized(true);
+          setIsReawakened(false);
+          setUsedQuestions([]);
+          setShowThankYou(false);
+          setIsAnswering(false);
+        }}
+        onMessage={(msg) => {
+          setCurrentMessage(msg);
+          setMessageKey(prev => prev + 1);
+        }}
+      />}
     </div>
   );
 };

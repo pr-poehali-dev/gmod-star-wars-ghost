@@ -22,7 +22,7 @@ const SHIPS: Ship[] = [
   { size: 1, name: 'Катер' },
 ];
 
-export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
+export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, onMessage: (msg: string) => void }) => {
   const [playerBoard, setPlayerBoard] = useState<Cell[][]>([]);
   const [enemyBoard, setEnemyBoard] = useState<Cell[][]>([]);
   const [enemyShipsBoard, setEnemyShipsBoard] = useState<Cell[][]>([]);
@@ -43,7 +43,9 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
     
     const enemyShips = placeShipsRandomly();
     setEnemyShipsBoard(enemyShips);
-  }, []);
+    
+    onMessage('Расставь свои корабли, солдат.');
+  }, [onMessage]);
 
   const placeShipsRandomly = (): Cell[][] => {
     const board: Cell[][] = Array(10).fill(null).map(() => Array(10).fill('empty'));
@@ -113,10 +115,10 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
       
       if (currentShipIndex < SHIPS.length - 1) {
         setCurrentShipIndex(currentShipIndex + 1);
-        setCuratorMessage(`Расставь ${SHIPS[currentShipIndex + 1].name.toLowerCase()}, солдат.`);
+        onMessage(`Расставь ${SHIPS[currentShipIndex + 1].name.toLowerCase()}, солдат.`);
       } else {
         setPhase('playing');
-        setCuratorMessage('Начинаем, новобранец. Твой ход.');
+        onMessage('Начинаем, новобранец. Твой ход.');
       }
     }
   };
@@ -131,17 +133,17 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
     setEnemyBoard(newEnemyBoard);
     
     if (isHit) {
-      setCuratorMessage('Попал... повезло, солдат.');
+      onMessage('Попал... повезло, солдат.');
       const shipsLeft = countShips(newEnemyBoard, enemyShipsBoard);
       setEnemyShipsLeft(shipsLeft);
       
       if (shipsLeft === 0) {
         setPhase('finished');
-        setCuratorMessage('Везунчик... В следующий раз не прокатит. Реванш?');
+        onMessage('Везунчик... В следующий раз не прокатит. Реванш?');
         return;
       }
     } else {
-      setCuratorMessage('Промах, новобранец! Смотри как надо.');
+      onMessage('Промах, новобранец! Смотри как надо.');
     }
     
     setIsPlayerTurn(false);
@@ -179,7 +181,7 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
     setPlayerBoard(newPlayerBoard);
     
     if (isHit) {
-      setCuratorMessage('Вот так работают профессионалы!');
+      onMessage('Вот так работают профессионалы!');
       setLastHit({ x, y });
       setHuntMode(true);
       
@@ -188,11 +190,11 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
       
       if (shipsLeft === 0) {
         setPhase('finished');
-        setCuratorMessage('Вот так, солдат. Тренируйся ещё.');
+        onMessage('Вот так, солдат. Тренируйся ещё.');
         return;
       }
     } else {
-      setCuratorMessage('Промахнулся... Твой ход, солдат.');
+      onMessage('Промахнулся... Твой ход, солдат.');
     }
     
     setIsPlayerTurn(true);
@@ -259,7 +261,7 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
     setPlayerBoard(newBoard);
     setCurrentShipIndex(SHIPS.length);
     setPhase('playing');
-    setCuratorMessage('Начинаем, новобранец. Твой ход.');
+    onMessage('Начинаем, новобранец. Твой ход.');
   };
 
   const resetGame = () => {
@@ -270,7 +272,7 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
     setPhase('setup');
     setCurrentShipIndex(0);
     setIsPlayerTurn(true);
-    setCuratorMessage('Расставь свои корабли, солдат.');
+    onMessage('Расставь свои корабли, солдат.');
     setPlayerShipsLeft(10);
     setEnemyShipsLeft(10);
     setLastHit(null);
@@ -292,10 +294,6 @@ export const BattleshipGame = ({ onClose }: { onClose: () => void }) => {
           <button onClick={onClose} className="text-cyan-400 hover:text-cyan-300">
             <Icon name="X" size={20} />
           </button>
-        </div>
-
-        <div className="bg-cyan-900/30 border border-cyan-500/50 rounded-lg p-2 mb-3">
-          <p className="text-cyan-200 text-center text-sm">{curatorMessage}</p>
         </div>
 
         {phase === 'setup' && (
