@@ -318,8 +318,8 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
   const getCellColor = (cell: Cell, isPlayer: boolean) => {
     if (cell === 'hit') return 'bg-orange-500';
     if (cell === 'miss') return 'bg-cyan-500/30';
-    if (cell === 'ship' && isPlayer) return 'bg-gradient-to-br from-blue-500 to-purple-600';
-    return 'bg-gray-800/50 hover:bg-gray-700/70 border-cyan-500/20';
+    if (cell === 'ship' && isPlayer) return 'bg-black';
+    return 'bg-black hover:bg-gray-900';
   };
 
   return (
@@ -331,7 +331,7 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
           </button>
         </div>
         <div className="text-center mb-3">
-          <h2 className="text-lg font-orbitron font-bold text-cyan-400">ЗВЁЗДНЫЙ БОЙ</h2>
+          <h2 className="text-lg font-mono font-bold text-white">ЗВЁЗДНЫЙ БОЙ</h2>
         </div>
 
         {phase === 'setup' && (
@@ -348,23 +348,23 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
         <div className="grid grid-cols-2 gap-3">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xs font-orbitron text-green-400">Твоё поле</h3>
-              <div className="text-green-400 font-mono text-xs">Кораблей: {playerShipsLeft}</div>
+              <h3 className="text-xs font-mono text-white">Твоё поле</h3>
+              <div className="text-white font-mono text-xs">Кораблей: {playerShipsLeft}</div>
             </div>
-            <div className="inline-grid grid-cols-10 gap-0.5 bg-gray-800 p-1 rounded">
+            <div className="inline-grid grid-cols-10 gap-[1px] bg-white p-[2px] rounded">
               {playerBoard.map((row, y) =>
                 row.map((cell, x) => (
                   <button
                     key={`player-${x}-${y}`}
                     onClick={() => handlePlayerCellClick(x, y)}
                     disabled={phase !== 'setup'}
-                    className={`w-5 h-5 border border-gray-600 rounded-sm transition-colors ${getCellColor(cell, true)} ${
+                    className={`w-5 h-5 transition-colors ${getCellColor(cell, true)} ${
                       phase === 'setup' ? 'cursor-pointer' : 'cursor-not-allowed'
                     }`}
                   >
                     {cell === 'hit' && <Icon name="Flame" size={12} className="text-orange-300" />}
                     {cell === 'miss' && <div className="w-1.5 h-1.5 bg-cyan-300 rounded-full mx-auto animate-pulse" />}
-                    {cell === 'ship' && <Icon name="Rocket" size={10} className="text-white" />}
+                    {cell === 'ship' && <div className="text-[8px]">🚀</div>}
                   </button>
                 ))
               )}
@@ -373,17 +373,17 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
 
           <div>
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xs font-orbitron text-red-400">Поле куратора</h3>
-              <div className="text-red-400 font-mono text-xs">Кораблей: {enemyShipsLeft}</div>
+              <h3 className="text-xs font-mono text-white">Поле куратора</h3>
+              <div className="text-white font-mono text-xs">Кораблей: {enemyShipsLeft}</div>
             </div>
-            <div className="inline-grid grid-cols-10 gap-0.5 bg-gray-800 p-1 rounded">
+            <div className="inline-grid grid-cols-10 gap-[1px] bg-white p-[2px] rounded">
               {enemyBoard.map((row, y) =>
                 row.map((cell, x) => (
                   <button
                     key={`enemy-${x}-${y}`}
                     onClick={() => handleEnemyCellClick(x, y)}
                     disabled={phase !== 'playing' || !isPlayerTurn || cell !== 'empty'}
-                    className={`w-5 h-5 border border-gray-600 rounded-sm transition-colors ${getCellColor(cell, false)} ${
+                    className={`w-5 h-5 transition-colors ${getCellColor(cell, false)} ${
                       phase === 'playing' && isPlayerTurn && cell === 'empty' ? 'cursor-crosshair' : 'cursor-not-allowed'
                     }`}
                   >
