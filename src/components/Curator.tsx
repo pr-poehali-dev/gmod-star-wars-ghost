@@ -13,20 +13,33 @@ export const Curator = () => {
   const [messageKey, setMessageKey] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [showDossierReturn, setShowDossierReturn] = useState(false);
 
   useEffect(() => {
-    const appearTimer = setTimeout(() => {
+    const fromDossier = localStorage.getItem('fromDossier');
+    
+    if (fromDossier === 'true') {
+      localStorage.removeItem('fromDossier');
+      setIsMinimized(false);
+      setIsReawakened(true);
+      setCurrentMessage("Нужна ли помощь?");
+      setShowDossierReturn(true);
       setIsVisible(true);
-    }, 300);
-    
-    const messageTimer = setTimeout(() => {
       setShowMessage(true);
-    }, 1300);
-    
-    return () => {
-      clearTimeout(appearTimer);
-      clearTimeout(messageTimer);
-    };
+    } else {
+      const appearTimer = setTimeout(() => {
+        setIsVisible(true);
+      }, 300);
+      
+      const messageTimer = setTimeout(() => {
+        setShowMessage(true);
+      }, 1300);
+      
+      return () => {
+        clearTimeout(appearTimer);
+        clearTimeout(messageTimer);
+      };
+    }
   }, []);
 
   const greetings = [
@@ -48,7 +61,12 @@ export const Curator = () => {
     { id: 'nothing', text: 'Спасибо, ничем', icon: 'ThumbsUp' }
   ];
 
-  const questions = isReawakened ? reawakeQuestions : initialQuestions;
+  const dossierReturnQuestions = [
+    { id: 'dossier_yes', text: 'Пожалуй да', icon: 'CheckCircle' },
+    { id: 'dossier_no', text: 'Нет, спасибо', icon: 'X' }
+  ];
+
+  const questions = showDossierReturn ? dossierReturnQuestions : (isReawakened ? reawakeQuestions : initialQuestions);
 
   const responses: Record<string, string[]> = {
     self: [
@@ -84,6 +102,14 @@ export const Curator = () => {
     nothing: [
       'Понял, солдат.',
       'Буду на связи.'
+    ],
+    dossier_yes: [
+      'Слушаю вас, солдат.',
+      'Выберите интересующую тему.'
+    ],
+    dossier_no: [
+      'Понял, солдат.',
+      'Буду на связи.'
     ]
   };
 
@@ -117,6 +143,7 @@ export const Curator = () => {
     
     setShowQuestions(false);
     setShowThankYou(false);
+    setShowDossierReturn(false);
     setIsAnswering(true);
     setCurrentMessage(messages[0]);
     setMessageKey(prev => prev + 1);
@@ -129,7 +156,7 @@ export const Curator = () => {
         setCurrentMessage(messages[messageIndex]);
         setMessageKey(prev => prev + 1);
         
-        if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing' || questionId === 'game') && messageIndex === messages.length - 1) {
+        if ((questionId === 'self' || questionId === 'thankyou' || questionId === 'nothing' || questionId === 'game' || questionId === 'dossier_no') && messageIndex === messages.length - 1) {
           const finalDelay = questionId === 'game' ? 3000 : 2000;
           setTimeout(() => {
             setIsMinimized(true);
@@ -139,12 +166,19 @@ export const Curator = () => {
             setIsAnswering(false);
           }, finalDelay);
         }
+        
+        if (questionId === 'dossier_yes' && messageIndex === messages.length - 1) {
+          setTimeout(() => {
+            setShowQuestions(true);
+            setIsReawakened(true);
+          }, 1500);
+        }
       } else {
         clearInterval(intervalId);
         setIsAnswering(false);
         if (questionId === 'guide') {
           setTimeout(() => setShowThankYou(true), 1000);
-        } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing' && questionId !== 'game') {
+        } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing' && questionId !== 'game' && questionId !== 'dossier_no' && questionId !== 'dossier_yes') {
           setTimeout(() => setShowQuestions(true), 1000);
         }
       }
@@ -198,7 +232,7 @@ export const Curator = () => {
         )}
 
         {/* Quick Questions */}
-        {showQuestions && (
+        {(showQuestions || showDossierReturn) && (
           <div className="flex flex-col gap-3 animate-slide-from-right">
             <div className="bg-cyan-900/70 backdrop-blur-sm border-2 border-cyan-400/60 rounded-xl px-4 py-2 shadow-xl">
               <p className="text-cyan-100 text-sm font-semibold flex items-center gap-2">
