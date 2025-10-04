@@ -358,13 +358,13 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
                     key={`player-${x}-${y}`}
                     onClick={() => handlePlayerCellClick(x, y)}
                     disabled={phase !== 'setup'}
-                    className={`w-5 h-5 transition-colors ${getCellColor(cell, true)} ${
+                    className={`w-6 h-6 flex items-center justify-center transition-colors ${getCellColor(cell, true)} ${
                       phase === 'setup' ? 'cursor-pointer' : 'cursor-not-allowed'
                     }`}
                   >
-                    {cell === 'hit' && <Icon name="Flame" size={12} className="text-orange-300" />}
-                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-cyan-300 rounded-full mx-auto animate-pulse" />}
-                    {cell === 'ship' && <div className="text-[8px]">🚀</div>}
+                    {cell === 'hit' && <Icon name="Flame" size={14} className="text-orange-300" />}
+                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-cyan-300 rounded-full" />}
+                    {cell === 'ship' && <Icon name="Plane" size={12} className="text-cyan-400" />}
                   </button>
                 ))
               )}
@@ -383,12 +383,12 @@ export const BattleshipGame = ({ onClose, onMessage }: { onClose: () => void, on
                     key={`enemy-${x}-${y}`}
                     onClick={() => handleEnemyCellClick(x, y)}
                     disabled={phase !== 'playing' || !isPlayerTurn || cell !== 'empty'}
-                    className={`w-5 h-5 transition-colors ${getCellColor(cell, false)} ${
+                    className={`w-6 h-6 flex items-center justify-center transition-colors ${getCellColor(cell, false)} ${
                       phase === 'playing' && isPlayerTurn && cell === 'empty' ? 'cursor-crosshair' : 'cursor-not-allowed'
                     }`}
                   >
-                    {cell === 'hit' && <Icon name="Flame" size={12} className="text-orange-300" />}
-                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-cyan-300 rounded-full mx-auto animate-pulse" />}
+                    {cell === 'hit' && <Icon name="Flame" size={14} className="text-orange-300" />}
+                    {cell === 'miss' && <div className="w-1.5 h-1.5 bg-cyan-300 rounded-full" />}
                   </button>
                 ))
               )}
