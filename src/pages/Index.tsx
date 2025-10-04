@@ -7,9 +7,6 @@ import { SecureAccess } from "@/components/SecureAccess";
 import { Curator } from "@/components/Curator";
 
 const Index = () => {
-  const handleDossierClick = () => {
-    localStorage.setItem('curatorMinimized', 'true');
-  };
   const clones = [
     {
       id: "CT-01-1044",
@@ -372,7 +369,7 @@ const Index = () => {
                     <div className="space-y-3">
                       <h4 className="text-orange-200 font-orbitron font-bold">Schnee Mhokar</h4>
                       <p className="text-green-400 text-sm">Мандалорец</p>
-                      <Link to="/mando" onClick={handleDossierClick}>
+                      <Link to="/mando">
                         <Button 
                           className="w-full bg-green-400 text-black hover:bg-green-500 font-orbitron text-sm"
                         >
@@ -466,7 +463,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <Link to={`/clone/${clone.id}`} onClick={handleDossierClick}>
+                <Link to={`/clone/${clone.id}`}>
                   <Button className="w-full bg-orange-400 text-black hover:bg-orange-400/80 font-orbitron">
                     ДОСЬЕ
                   </Button>
