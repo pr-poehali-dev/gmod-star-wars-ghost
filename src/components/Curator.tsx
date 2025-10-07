@@ -365,13 +365,11 @@ export const Curator = () => {
           </div>
           
           {/* Bottom info bar */}
-          <div className={`absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gray-900 border-2 rounded-full px-4 py-1 ${
-            isHacked ? 'border-red-400' : 'border-cyan-400'
-          }`}>
-            <span className={`font-orbitron font-bold text-xs whitespace-nowrap ${
-              isHacked ? 'text-red-400' : 'text-cyan-400'
-            }`}>CT-7891</span>
-          </div>
+          {!isHacked && (
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gray-900 border-2 border-cyan-400 rounded-full px-4 py-1">
+              <span className="text-cyan-400 font-orbitron font-bold text-xs whitespace-nowrap">CT-7891</span>
+            </div>
+          )}
         </div>
       </button>
     </div>

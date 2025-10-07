@@ -536,6 +536,7 @@
 /* Glitch Content Effect for Hacked State */
 .glitch-content {
   position: relative;
+  filter: hue-rotate(180deg) saturate(1.3);
 }
 
 .glitch-content * {
@@ -564,6 +565,23 @@
   pointer-events: none;
   z-index: 9999;
   animation: scanlines 8s linear infinite;
+}
+
+.glitch-content::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(239, 68, 68, 0.05) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 9998;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
 }
 
 @keyframes textGlitch {
