@@ -2,10 +2,8 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 
 interface AuthContextType {
   isUnlocked: boolean;
-  isHacked: boolean;
   unlock: () => void;
   lock: () => void;
-  setHacked: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -19,26 +17,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const saved = localStorage.getItem('ghostSquad_unlocked');
     return saved === 'true';
   });
-  
-  const [isHacked, setIsHackedState] = useState(() => {
-    const saved = localStorage.getItem('ghostSquad_hacked');
-    return saved === 'true';
-  });
 
   useEffect(() => {
     localStorage.setItem('ghostSquad_unlocked', String(isUnlocked));
   }, [isUnlocked]);
 
-  useEffect(() => {
-    localStorage.setItem('ghostSquad_hacked', String(isHacked));
-  }, [isHacked]);
-
   const unlock = () => setIsUnlocked(true);
   const lock = () => setIsUnlocked(false);
-  const setHacked = () => setIsHackedState(true);
 
   return (
-    <AuthContext.Provider value={{ isUnlocked, isHacked, unlock, lock, setHacked }}>
+    <AuthContext.Provider value={{ isUnlocked, unlock, lock }}>
       {children}
     </AuthContext.Provider>
   );
