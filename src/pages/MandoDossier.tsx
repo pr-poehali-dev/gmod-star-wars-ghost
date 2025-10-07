@@ -330,45 +330,103 @@ const MandoDossier = () => {
                     
                     {/* Access Denied Message - appears after 3 clicks */}
                     {showDeniedMessage && (
-                      <div className="absolute inset-0 flex items-center justify-center z-30 bg-black/60 backdrop-blur-md animate-fade-in rounded-xl">
-                        <div className="relative bg-gradient-to-br from-red-900/95 via-red-800/95 to-red-900/95 border-4 border-red-500 rounded-xl p-8 shadow-2xl max-w-md mx-4">
-                          <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-transparent to-red-600/20 animate-pulse rounded-xl"></div>
+                      <div className="absolute inset-0 flex items-center justify-center z-30 bg-black/80 backdrop-blur-lg animate-fade-in rounded-xl">
+                        <div className="relative max-w-lg mx-4">
+                          {/* Outer glowing rings */}
+                          <div className="absolute inset-0 border-2 border-red-500/30 rounded-2xl animate-ping" style={{animationDuration: '2s'}}></div>
+                          <div className="absolute inset-0 border border-orange-500/20 rounded-2xl animate-ping" style={{animationDuration: '3s', animationDelay: '0.5s'}}></div>
                           
-                          <div className="relative z-10 text-center space-y-6">
-                            <div className="flex justify-center">
-                              <div className="relative">
-                                <div className="absolute inset-0 w-24 h-24 border-4 border-red-500 rounded-full animate-ping"></div>
-                                <div className="w-24 h-24 bg-red-500/30 rounded-full flex items-center justify-center">
-                                  <Icon name="ShieldX" size={48} className="text-red-300 animate-pulse" />
+                          {/* Main card */}
+                          <div className="relative bg-gradient-to-br from-gray-950 via-red-950/40 to-gray-950 border-2 border-red-500/60 rounded-2xl p-8 shadow-[0_0_50px_rgba(239,68,68,0.3)]">
+                            {/* Animated scan lines */}
+                            <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                              <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-red-500/40 to-transparent animate-pulse" 
+                                   style={{top: '25%', animationDuration: '2s'}}></div>
+                              <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent animate-pulse" 
+                                   style={{top: '75%', animationDuration: '2.5s', animationDelay: '0.5s'}}></div>
+                            </div>
+                            
+                            {/* Diagonal stripes background */}
+                            <div className="absolute inset-0 opacity-10 rounded-2xl overflow-hidden">
+                              <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-transparent to-orange-500/20"></div>
+                              <div className="absolute inset-0" style={{
+                                backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(239, 68, 68, 0.1) 10px, rgba(239, 68, 68, 0.1) 20px)'
+                              }}></div>
+                            </div>
+                            
+                            <div className="relative z-10 space-y-6">
+                              {/* Icon with hexagon */}
+                              <div className="flex justify-center">
+                                <div className="relative">
+                                  {/* Hexagon background */}
+                                  <div className="absolute inset-0 w-28 h-28 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                                    <svg viewBox="0 0 100 100" className="w-full h-full text-red-500/20 animate-pulse">
+                                      <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="currentColor" stroke="#ef4444" strokeWidth="1.5"/>
+                                    </svg>
+                                  </div>
+                                  
+                                  {/* Icon */}
+                                  <div className="relative w-28 h-28 flex items-center justify-center">
+                                    <Icon name="ShieldAlert" size={64} className="text-red-500 drop-shadow-[0_0_15px_rgba(239,68,68,0.8)] animate-pulse" />
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              {/* Main text */}
+                              <div className="text-center space-y-4">
+                                <div className="space-y-2">
+                                  <h3 className="text-4xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-400 to-red-400 tracking-widest animate-pulse">
+                                    ДОСТУП ЗАПРЕЩЁН
+                                  </h3>
+                                  <div className="flex items-center justify-center gap-2">
+                                    <div className="h-px w-12 bg-gradient-to-r from-transparent to-red-500"></div>
+                                    <Icon name="Lock" size={16} className="text-red-500" />
+                                    <div className="h-px w-12 bg-gradient-to-l from-transparent to-red-500"></div>
+                                  </div>
+                                </div>
+                                
+                                <div className="bg-red-950/30 border border-red-500/30 rounded-lg p-4 backdrop-blur-sm">
+                                  <p className="text-red-200/90 font-medium leading-relaxed">
+                                    Информация о клане Mhokar находится под защитой протокола безопасности высшего уровня
+                                  </p>
+                                </div>
+                                
+                                <div className="flex items-center justify-center gap-3 text-red-400/70 text-sm font-mono">
+                                  <Icon name="AlertTriangle" size={16} />
+                                  <span>Требуется разрешение Совета Мандалора</span>
+                                  <Icon name="AlertTriangle" size={16} />
+                                </div>
+                              </div>
+                              
+                              {/* Bottom code */}
+                              <div className="space-y-2">
+                                <div className="h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent"></div>
+                                <div className="flex items-center justify-between text-xs font-mono text-red-500/50 px-2">
+                                  <span>ERROR_403</span>
+                                  <span>MANDALORE_PROTOCOL</span>
+                                  <span>LEVEL_10</span>
                                 </div>
                               </div>
                             </div>
                             
-                            <div className="space-y-3">
-                              <h3 className="text-3xl font-orbitron font-black text-red-300 tracking-wider">
-                                ДОСТУП ЗАПРЕЩЁН
-                              </h3>
-                              <div className="h-px bg-gradient-to-r from-transparent via-red-400 to-transparent"></div>
-                              <p className="text-red-200 font-medium text-lg leading-relaxed">
-                                Информация о клане Mhokar находится под защитой протокола безопасности высшего уровня.
-                              </p>
-                              <p className="text-red-300/80 text-sm font-mono">
-                                Требуется разрешение Совета Мандалора
-                              </p>
+                            {/* Corner accents */}
+                            <div className="absolute top-3 left-3">
+                              <div className="w-6 h-6 border-l-2 border-t-2 border-red-500"></div>
+                              <div className="absolute top-0 left-0 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                             </div>
-                            
-                            <div className="space-y-2">
-                              <div className="h-px bg-gradient-to-r from-transparent via-red-400/60 to-transparent"></div>
-                              <div className="text-xs font-mono text-red-400/60 tracking-widest">
-                                SECURITY_PROTOCOL: MANDALORE_ALPHA
-                              </div>
+                            <div className="absolute top-3 right-3">
+                              <div className="w-6 h-6 border-r-2 border-t-2 border-red-500"></div>
+                              <div className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                            </div>
+                            <div className="absolute bottom-3 left-3">
+                              <div className="w-6 h-6 border-l-2 border-b-2 border-red-500"></div>
+                              <div className="absolute bottom-0 left-0 w-2 h-2 bg-red-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                            </div>
+                            <div className="absolute bottom-3 right-3">
+                              <div className="w-6 h-6 border-r-2 border-b-2 border-red-500"></div>
+                              <div className="absolute bottom-0 right-0 w-2 h-2 bg-red-500 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
                             </div>
                           </div>
-                          
-                          <div className="absolute top-2 left-2 w-8 h-8 border-l-4 border-t-4 border-red-400"></div>
-                          <div className="absolute top-2 right-2 w-8 h-8 border-r-4 border-t-4 border-red-400"></div>
-                          <div className="absolute bottom-2 left-2 w-8 h-8 border-l-4 border-b-4 border-red-400"></div>
-                          <div className="absolute bottom-2 right-2 w-8 h-8 border-r-4 border-b-4 border-red-400"></div>
                         </div>
                       </div>
                     )}
