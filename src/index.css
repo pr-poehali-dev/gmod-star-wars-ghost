@@ -607,3 +607,79 @@
     filter: contrast(1.3) brightness(0.8) hue-rotate(5deg);
   }
 }
+
+.partial-access-content section:nth-child(3),
+.partial-access-content section:nth-child(4),
+.partial-access-content section:nth-child(5) {
+  position: relative;
+}
+
+.partial-access-content section:nth-child(3)::before,
+.partial-access-content section:nth-child(4)::before,
+.partial-access-content section:nth-child(5)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.85) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  backdrop-filter: blur(8px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.partial-access-content section:nth-child(3)::after,
+.partial-access-content section:nth-child(4)::after,
+.partial-access-content section:nth-child(5)::after {
+  content: "ДАННЫЕ ПОВРЕЖДЕНЫ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: #ef4444;
+  text-shadow:
+    0 0 10px rgba(239, 68, 68, 0.8),
+    0 0 20px rgba(239, 68, 68, 0.6),
+    0 0 30px rgba(239, 68, 68, 0.4);
+  letter-spacing: 0.3em;
+  animation: corruptedDataFlicker 2s infinite;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@keyframes corruptedDataFlicker {
+  0%,
+  45%,
+  55%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 10px rgba(239, 68, 68, 0.8),
+      0 0 20px rgba(239, 68, 68, 0.6),
+      0 0 30px rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    opacity: 0.7;
+    text-shadow:
+      0 0 5px rgba(239, 68, 68, 0.5),
+      0 0 10px rgba(239, 68, 68, 0.3);
+  }
+  48%,
+  52% {
+    transform: translate(-50%, -50%) translate(2px, 0);
+  }
+}
+
+.partial-access-content section:nth-child(3) *,
+.partial-access-content section:nth-child(4) *,
+.partial-access-content section:nth-child(5) * {
+  filter: blur(3px);
+  opacity: 0.4;
+}
