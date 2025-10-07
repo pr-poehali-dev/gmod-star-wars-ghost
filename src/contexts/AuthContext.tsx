@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface AuthContextType {
   isUnlocked: boolean;
@@ -13,14 +13,7 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [isUnlocked, setIsUnlocked] = useState(() => {
-    const saved = localStorage.getItem('ghostSquad_unlocked');
-    return saved === 'true';
-  });
-
-  useEffect(() => {
-    localStorage.setItem('ghostSquad_unlocked', String(isUnlocked));
-  }, [isUnlocked]);
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
   const unlock = () => setIsUnlocked(true);
   const lock = () => setIsUnlocked(false);

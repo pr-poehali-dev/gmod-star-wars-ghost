@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -15,7 +15,6 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
   const [isBlocked, setIsBlocked] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showBlocked, setShowBlocked] = useState(false);
-
   
   const correctPassword = 'ShadowGhost';
   const maxAttempts = 3;
@@ -31,6 +30,7 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
       setAttempts(0);
       setShowError(false);
       
+      // Instantly scroll to top
       window.scrollTo({ top: 0 });
     } else {
       const newAttempts = attempts + 1;
@@ -43,11 +43,10 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
         setShowBlocked(true);
       }
       
+      // Hide error after 3 seconds
       setTimeout(() => setShowError(false), 3000);
     }
   };
-
-
 
   if (isUnlocked) {
     return <>{children}</>;
