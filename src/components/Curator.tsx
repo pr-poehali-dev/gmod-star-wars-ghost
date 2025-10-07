@@ -351,7 +351,7 @@ export const Curator = () => {
             <img
               src={isHacked ? 'https://cdn.poehali.dev/files/31995d0c-fa9d-42c1-9c5e-1cd74f290a0e.png' : 'https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png'}
               alt="Куратор CT-7891"
-              className="w-72 h-auto object-contain relative z-10 scale-x-[-1]"
+              className={`w-72 h-auto object-contain relative z-10 ${isHacked ? '' : 'scale-x-[-1]'}`}
               style={isHacked ? {
                 filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(10deg) drop-shadow(0 0 40px rgba(239, 68, 68, 0.8)) drop-shadow(0 0 80px rgba(220, 38, 38, 0.5))',
                 opacity: 0.75,
