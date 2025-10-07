@@ -536,7 +536,6 @@
 /* Glitch Content Effect for Hacked State */
 .glitch-content {
   position: relative;
-  filter: hue-rotate(-60deg) saturate(1.5) brightness(0.95);
 }
 
 .glitch-content * {
