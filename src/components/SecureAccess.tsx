@@ -88,22 +88,17 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
       <div className="glitch-content">
         <div className="relative">
           <div className="sticky top-0 z-50 bg-red-900/95 border-b-4 border-red-500 backdrop-blur-sm">
-            <div className="max-w-7xl mx-auto px-4 py-4">
+            <div className="max-w-7xl mx-auto px-4 py-2">
               <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <Icon name="AlertTriangle" size={24} className="text-red-400 animate-pulse" />
-                  <div>
-                    <h3 className="text-red-400 font-orbitron font-bold text-sm md:text-base">
-                      ЧАСТИЧНЫЙ ДОСТУП К ДАННЫМ
-                    </h3>
-                    <p className="text-red-300 text-xs font-mono">
-                      Защита системы повреждена · Некоторые данные искажены
-                    </p>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <Icon name="AlertTriangle" size={20} className="text-red-400 animate-pulse" />
+                  <h3 className="text-red-400 font-orbitron font-bold text-xs md:text-sm">
+                    ЧАСТИЧНЫЙ ДОСТУП К ДАННЫМ
+                  </h3>
                 </div>
-                <div className="hidden md:flex items-center gap-2 bg-red-950/50 border border-red-500/30 rounded-lg px-4 py-2">
-                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-xs font-mono">СИСТЕМА ВЗЛОМАНА</span>
+                <div className="flex items-center gap-2 bg-red-950/50 border border-red-500/30 rounded px-2 py-1">
+                  <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></div>
+                  <span className="text-red-400 text-[10px] md:text-xs font-mono">ВЗЛОМАНО</span>
                 </div>
               </div>
             </div>
