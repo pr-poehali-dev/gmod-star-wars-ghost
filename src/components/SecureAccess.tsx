@@ -184,43 +184,22 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-400/5 to-transparent opacity-40 animate-pulse"></div>
           
           <CardHeader className="relative text-center pb-6 pt-8">
-            {/* Container with both symbols */}
-            <div className="flex items-center justify-center gap-8 mb-6">
-              {/* Imperial Symbol with orbital rings */}
-              <div className="relative">
-                <div className="absolute inset-0 blur-2xl bg-orange-400/40 rounded-full"></div>
-                <div className="relative bg-gradient-to-b from-gray-800 to-black rounded-full p-6 w-32 h-32 flex items-center justify-center border-2 border-orange-400/30">
-                  <img 
-                    src="https://cdn.poehali.dev/files/d15904df-e78a-40aa-ae8d-fe43a334cca5.png" 
-                    alt="Эмблема Галактической Республики" 
-                    className="w-20 h-20 brightness-0 invert sepia saturate-[10] hue-rotate-[15deg] brightness-[1.2] drop-shadow-[0_0_10px_rgba(251,146,60,0.8)]"
-                    style={{filter: 'brightness(0) saturate(100%) invert(70%) sepia(87%) saturate(2476%) hue-rotate(4deg) brightness(102%) contrast(104%)'}}
-                  />
-                </div>
-                
-                {/* Rotating orbital rings */}
-                <div className="absolute inset-0 border-2 border-orange-400/30 rounded-full animate-spin" style={{animationDuration: '10s'}}></div>
-                <div className="absolute inset-4 border border-orange-300/20 rounded-full animate-spin" style={{animationDuration: '8s', animationDirection: 'reverse'}}></div>
-                <div className="absolute inset-8 border border-orange-500/10 rounded-full animate-spin" style={{animationDuration: '6s'}}></div>
+            {/* Imperial Symbol with orbital rings */}
+            <div className="relative mb-6">
+              <div className="absolute inset-0 blur-2xl bg-orange-400/40 rounded-full"></div>
+              <div className="relative bg-gradient-to-b from-gray-800 to-black rounded-full p-6 mx-auto w-32 h-32 flex items-center justify-center border-2 border-orange-400/30">
+                <img 
+                  src="https://cdn.poehali.dev/files/d15904df-e78a-40aa-ae8d-fe43a334cca5.png" 
+                  alt="Эмблема Галактической Республики" 
+                  className="w-20 h-20 brightness-0 invert sepia saturate-[10] hue-rotate-[15deg] brightness-[1.2] drop-shadow-[0_0_10px_rgba(251,146,60,0.8)]"
+                  style={{filter: 'brightness(0) saturate(100%) invert(70%) sepia(87%) saturate(2476%) hue-rotate(4deg) brightness(102%) contrast(104%)'}}
+                />
               </div>
               
-              {/* Small Hack Window */}
-              <div className="flex flex-col items-center">
-                <div className="relative group cursor-pointer">
-                  <div className="absolute inset-0 blur-lg bg-red-500/30 rounded-full animate-pulse"></div>
-                  <div className="relative bg-gradient-to-b from-gray-900 to-black rounded-full w-16 h-16 flex items-center justify-center border-2 border-red-500/60 hover:border-red-400 transition-all">
-                    <Icon name="ShieldAlert" size={28} className="text-red-500 group-hover:text-red-400 transition-colors" />
-                  </div>
-                  
-                  {/* Pulsing ring */}
-                  <div className="absolute inset-0 border border-red-500/40 rounded-full animate-ping"></div>
-                </div>
-                
-                {/* Label */}
-                <div className="mt-2 text-red-400 font-orbitron font-bold text-xs tracking-wider">
-                  Взломать
-                </div>
-              </div>
+              {/* Rotating orbital rings */}
+              <div className="absolute inset-0 border-2 border-orange-400/30 rounded-full animate-spin" style={{animationDuration: '10s'}}></div>
+              <div className="absolute inset-4 border border-orange-300/20 rounded-full animate-spin" style={{animationDuration: '8s', animationDirection: 'reverse'}}></div>
+              <div className="absolute inset-8 border border-orange-500/10 rounded-full animate-spin" style={{animationDuration: '6s'}}></div>
             </div>
             
             {/* Holographic Title */}
@@ -388,6 +367,26 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
           </div>
         </CardContent>
         </Card>
+        
+        {/* Small Hack Window - Below Authorization */}
+        <div className="flex justify-center mt-6">
+          <div className="flex flex-col items-center">
+            <div className="relative group cursor-pointer">
+              <div className="absolute inset-0 blur-lg bg-red-500/30 rounded-full animate-pulse"></div>
+              <div className="relative bg-gradient-to-b from-gray-900 to-black rounded-full w-16 h-16 flex items-center justify-center border-2 border-red-500/60 hover:border-red-400 transition-all">
+                <Icon name="ShieldAlert" size={28} className="text-red-500 group-hover:text-red-400 transition-colors" />
+              </div>
+              
+              {/* Pulsing ring */}
+              <div className="absolute inset-0 border border-red-500/40 rounded-full animate-ping"></div>
+            </div>
+            
+            {/* Label */}
+            <div className="mt-2 text-red-400 font-orbitron font-bold text-xs tracking-wider">
+              Взломать
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
