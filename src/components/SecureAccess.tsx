@@ -58,7 +58,7 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
   useEffect(() => {
     if (!isHacking) return;
     
-    const duration = 60000;
+    const duration = 10000;
     const interval = 100;
     const increment = (interval / duration) * 100;
     
