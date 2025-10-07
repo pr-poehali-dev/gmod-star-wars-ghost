@@ -3,10 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const MandoDossier = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [clickCount, setClickCount] = useState(0);
+  const [showDeniedMessage, setShowDeniedMessage] = useState(false);
 
   useEffect(() => {
     // Создаем звуковой эффект предупреждения
@@ -48,6 +50,21 @@ const MandoDossier = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleClanClick = () => {
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+    
+    playAccessDeniedSound();
+    
+    if (newCount === 3) {
+      setShowDeniedMessage(true);
+      setTimeout(() => {
+        setShowDeniedMessage(false);
+        setClickCount(0);
+      }, 4000);
+    }
+  };
 
   const playAccessDeniedSound = () => {
     try {
@@ -212,7 +229,7 @@ const MandoDossier = () => {
               </CardHeader>
               <CardContent 
                 className="flex items-center justify-center min-h-[280px] relative overflow-hidden cursor-pointer"
-                onClick={playAccessDeniedSound}
+                onClick={handleClanClick}
               >
                 {/* Animated Background Particles */}
                 <div className="absolute inset-0">
@@ -310,6 +327,52 @@ const MandoDossier = () => {
                         ERROR_CODE: MND_CLAN_403
                       </div>
                     </div>
+                    
+                    {/* Access Denied Message - appears after 3 clicks */}
+                    {showDeniedMessage && (
+                      <div className="absolute inset-0 flex items-center justify-center z-30 bg-black/60 backdrop-blur-md animate-fade-in rounded-xl">
+                        <div className="relative bg-gradient-to-br from-red-900/95 via-red-800/95 to-red-900/95 border-4 border-red-500 rounded-xl p-8 shadow-2xl max-w-md mx-4">
+                          <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-transparent to-red-600/20 animate-pulse rounded-xl"></div>
+                          
+                          <div className="relative z-10 text-center space-y-6">
+                            <div className="flex justify-center">
+                              <div className="relative">
+                                <div className="absolute inset-0 w-24 h-24 border-4 border-red-500 rounded-full animate-ping"></div>
+                                <div className="w-24 h-24 bg-red-500/30 rounded-full flex items-center justify-center">
+                                  <Icon name="ShieldX" size={48} className="text-red-300 animate-pulse" />
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div className="space-y-3">
+                              <h3 className="text-3xl font-orbitron font-black text-red-300 tracking-wider">
+                                ДОСТУП ЗАПРЕЩЁН
+                              </h3>
+                              <div className="h-px bg-gradient-to-r from-transparent via-red-400 to-transparent"></div>
+                              <p className="text-red-200 font-medium text-lg leading-relaxed">
+                                Информация о клане Mhokar находится под защитой протокола безопасности высшего уровня.
+                              </p>
+                              <p className="text-red-300/80 text-sm font-mono">
+                                Требуется разрешение Совета Мандалора
+                              </p>
+                            </div>
+                            
+                            <div className="space-y-2">
+                              <div className="h-px bg-gradient-to-r from-transparent via-red-400/60 to-transparent"></div>
+                              <div className="text-xs font-mono text-red-400/60 tracking-widest">
+                                SECURITY_PROTOCOL: MANDALORE_ALPHA
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="absolute top-2 left-2 w-8 h-8 border-l-4 border-t-4 border-red-400"></div>
+                          <div className="absolute top-2 right-2 w-8 h-8 border-r-4 border-t-4 border-red-400"></div>
+                          <div className="absolute bottom-2 left-2 w-8 h-8 border-l-4 border-b-4 border-red-400"></div>
+                          <div className="absolute bottom-2 right-2 w-8 h-8 border-r-4 border-b-4 border-red-400"></div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                     
                     {/* Enhanced Corner Decorations */}
                     <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-red-500/60 animate-pulse"></div>
