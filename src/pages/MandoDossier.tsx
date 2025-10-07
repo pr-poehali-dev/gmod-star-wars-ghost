@@ -372,7 +372,6 @@ const MandoDossier = () => {
                         </div>
                       </div>
                     )}
-                  </div>
                     
                     {/* Enhanced Corner Decorations */}
                     <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-red-500/60 animate-pulse"></div>
