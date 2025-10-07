@@ -4,8 +4,6 @@ interface AuthContextType {
   isUnlocked: boolean;
   unlock: () => void;
   lock: () => void;
-  isFirstVisit: boolean;
-  markVisited: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -19,11 +17,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const saved = localStorage.getItem('ghostSquad_unlocked');
     return saved === 'true';
   });
-  
-  const [isFirstVisit, setIsFirstVisit] = useState(() => {
-    const visited = localStorage.getItem('ghostSquad_curatorShown');
-    return visited !== 'true';
-  });
 
   useEffect(() => {
     localStorage.setItem('ghostSquad_unlocked', String(isUnlocked));
@@ -31,14 +24,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const unlock = () => setIsUnlocked(true);
   const lock = () => setIsUnlocked(false);
-  
-  const markVisited = () => {
-    setIsFirstVisit(false);
-    localStorage.setItem('ghostSquad_curatorShown', 'true');
-  };
 
   return (
-    <AuthContext.Provider value={{ isUnlocked, unlock, lock, isFirstVisit, markVisited }}>
+    <AuthContext.Provider value={{ isUnlocked, unlock, lock }}>
       {children}
     </AuthContext.Provider>
   );

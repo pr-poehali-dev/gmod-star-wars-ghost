@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 
 export const Curator = () => {
-  const { isFirstVisit, markVisited } = useAuth();
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showQuestions, setShowQuestions] = useState(false);
-  const [currentMessage, setCurrentMessage] = useState("Приветствую, солдат! Я CT-7891.");
+  const [currentMessage, setCurrentMessage] = useState("Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.");
   const [isMinimized, setIsMinimized] = useState(false);
   const [isReawakened, setIsReawakened] = useState(false);
   const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
@@ -16,7 +15,6 @@ export const Curator = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [showDossierReturn, setShowDossierReturn] = useState(false);
-  const [autoPlaying, setAutoPlaying] = useState(false);
 
   useEffect(() => {
     const fromDossier = localStorage.getItem('fromDossier');
@@ -29,52 +27,24 @@ export const Curator = () => {
       setShowDossierReturn(true);
       setIsVisible(true);
       setShowMessage(true);
-    } else if (isFirstVisit) {
+    } else {
       const appearTimer = setTimeout(() => {
         setIsVisible(true);
       }, 300);
       
       const messageTimer = setTimeout(() => {
         setShowMessage(true);
-        setAutoPlaying(true);
-        playGreetingSequence();
       }, 1300);
       
       return () => {
         clearTimeout(appearTimer);
         clearTimeout(messageTimer);
       };
-    } else {
-      setIsMinimized(true);
     }
-  }, [isFirstVisit]);
-  
-  const playGreetingSequence = () => {
-    let index = 0;
-    const delay = 2500;
-    
-    const intervalId = setInterval(() => {
-      index++;
-      if (index < greetings.length) {
-        setCurrentMessageIndex(index);
-        setCurrentMessage(greetings[index]);
-        setMessageKey(prev => prev + 1);
-        
-        if (index === greetings.length - 1) {
-          setTimeout(() => {
-            setShowQuestions(true);
-            setAutoPlaying(false);
-            markVisited();
-          }, delay);
-        }
-      } else {
-        clearInterval(intervalId);
-      }
-    }, delay);
-  };
+  }, []);
 
   const greetings = [
-    "Приветствую, солдат! Я CT-7891.",
+    "Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.",
     "Я куратор базы данных отряда «Призрак».",
     "Помогу разобраться тебе тут.",
     "Выбери вопрос ниже, чтобы узнать больше."
@@ -141,7 +111,7 @@ export const Curator = () => {
   };
 
   const handleCharacterClick = () => {
-    if (isAnswering || autoPlaying) return;
+    if (isAnswering) return;
     
     if (isMinimized) {
       setIsMinimized(false);
@@ -150,10 +120,19 @@ export const Curator = () => {
       setShowQuestions(true);
       return;
     }
+
+    if (currentMessageIndex < greetings.length - 1) {
+      const nextIndex = currentMessageIndex + 1;
+      setCurrentMessageIndex(nextIndex);
+      setCurrentMessage(greetings[nextIndex]);
+      setMessageKey(prev => prev + 1);
+    } else if (currentMessageIndex === greetings.length - 1 && !showQuestions) {
+      setShowQuestions(true);
+    }
   };
 
   const handleQuestionClick = (questionId: string) => {
-    if (usedQuestions.includes(questionId) || isAnswering) return;
+    if (usedQuestions.includes(questionId)) return;
     
     const messages = responses[questionId];
     setUsedQuestions([...usedQuestions, questionId]);
@@ -163,7 +142,6 @@ export const Curator = () => {
     setShowThankYou(false);
     setShowDossierReturn(false);
     setIsAnswering(true);
-    setAutoPlaying(true);
     setCurrentMessage(messages[0]);
     setMessageKey(prev => prev + 1);
 
@@ -183,7 +161,6 @@ export const Curator = () => {
             setUsedQuestions([]);
             setShowThankYou(false);
             setIsAnswering(false);
-            setAutoPlaying(false);
           }, finalDelay);
         }
         
@@ -191,13 +168,11 @@ export const Curator = () => {
           setTimeout(() => {
             setShowQuestions(true);
             setIsReawakened(true);
-            setAutoPlaying(false);
           }, 1500);
         }
       } else {
         clearInterval(intervalId);
         setIsAnswering(false);
-        setAutoPlaying(false);
         if (questionId === 'guide') {
           setTimeout(() => setShowThankYou(true), 1000);
         } else if (questionId !== 'self' && questionId !== 'thankyou' && questionId !== 'nothing' && questionId !== 'dossier_no' && questionId !== 'dossier_yes') {
@@ -275,9 +250,9 @@ export const Curator = () => {
                   <button
                     key={q.id}
                     onClick={() => handleQuestionClick(q.id)}
-                    disabled={isUsed || isAnswering}
+                    disabled={isUsed}
                     className={`flex items-center gap-2 backdrop-blur-sm border-2 rounded-lg px-3 py-2.5 text-sm transition-all shadow-lg ${
-                      isUsed || isAnswering
+                      isUsed
                         ? 'bg-gray-800/40 border-gray-700/30 text-gray-500 cursor-not-allowed opacity-50'
                         : 'bg-gray-800/90 border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500'
                     }`}
@@ -296,12 +271,7 @@ export const Curator = () => {
           <div className="flex flex-col gap-3 animate-slide-from-right">
             <button
               onClick={() => handleQuestionClick('thankyou')}
-              disabled={isAnswering}
-              className={`flex items-center justify-center gap-2 bg-gray-800/90 backdrop-blur-sm border-2 rounded-lg px-4 py-3 text-sm transition-all shadow-lg ${
-                isAnswering 
-                  ? 'border-gray-700/30 text-gray-500 cursor-not-allowed opacity-50'
-                  : 'border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500'
-              }`}
+              className="flex items-center justify-center gap-2 bg-gray-800/90 backdrop-blur-sm border-2 rounded-lg px-4 py-3 text-sm transition-all shadow-lg border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500"
             >
               <Icon name="ThumbsUp" size={16} />
               <span>Спасибо, дальше я сам</span>
@@ -311,7 +281,7 @@ export const Curator = () => {
       </div>
 
       {/* Clone Character with Hologram Scanlines Effect */}
-      <div
+      <button
         onClick={handleCharacterClick}
         className={`relative group flex-shrink-0 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -356,7 +326,7 @@ export const Curator = () => {
             <span className="text-cyan-400 font-orbitron font-bold text-xs whitespace-nowrap">CT-7891</span>
           </div>
         </div>
-      </div>
+      </button>
     </div>
   );
 };
