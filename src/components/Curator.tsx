@@ -1,6 +1,5 @@
 import Icon from "@/components/ui/icon";
 import { useState, useEffect } from "react";
-import { BattleshipGame } from "./BattleshipGame";
 
 export const Curator = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
@@ -15,7 +14,6 @@ export const Curator = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [showDossierReturn, setShowDossierReturn] = useState(false);
-  const [showGame, setShowGame] = useState(false);
 
   useEffect(() => {
     const fromDossier = localStorage.getItem('fromDossier');
@@ -59,7 +57,6 @@ export const Curator = () => {
   const reawakeQuestions = [
     { id: 'ghosts', text: 'Кто такие призраки?', icon: 'Users' },
     { id: 'info', text: 'Что мне надо знать о призраках?', icon: 'BookOpen' },
-    { id: 'game', text: 'Поиграем?', icon: 'Gamepad2' },
     { id: 'nothing', text: 'Спасибо, ничем', icon: 'ThumbsUp' }
   ];
 
@@ -93,10 +90,7 @@ export const Curator = () => {
       'Используй «Получить доступ» для входа.',
       'Есть секретная кнопка к досье наставника.'
     ],
-    game: [
-      'Ладно, солдат. Морской бой.',
-      'Приготовься к поражению.'
-    ],
+
     thankyou: [
       'Рад помочь, солдат.',
       'Если что — я буду рядом.'
@@ -116,7 +110,7 @@ export const Curator = () => {
   };
 
   const handleCharacterClick = () => {
-    if (isAnswering || showGame) return;
+    if (isAnswering) return;
     
     if (isMinimized) {
       setIsMinimized(false);
@@ -150,7 +144,7 @@ export const Curator = () => {
     setCurrentMessage(messages[0]);
     setMessageKey(prev => prev + 1);
 
-    const delay = questionId === 'game' ? 3500 : 2500;
+    const delay = 2500;
     
     const intervalId = setInterval(() => {
       messageIndex++;
@@ -167,12 +161,6 @@ export const Curator = () => {
             setShowThankYou(false);
             setIsAnswering(false);
           }, finalDelay);
-        }
-        
-        if (questionId === 'game' && messageIndex === messages.length - 1) {
-          setTimeout(() => {
-            setShowGame(true);
-          }, 1500);
         }
         
         if (questionId === 'dossier_yes' && messageIndex === messages.length - 1) {
@@ -240,7 +228,7 @@ export const Curator = () => {
         )}
 
         {/* Quick Questions */}
-        {!showGame && (showQuestions || showDossierReturn) && (
+        {(showQuestions || showDossierReturn) && (
           <div className="flex flex-col gap-3 animate-slide-from-right">
             <div className="bg-cyan-900/70 backdrop-blur-sm border-2 border-cyan-400/60 rounded-xl px-4 py-2 shadow-xl">
               <p className="text-cyan-100 text-sm font-semibold flex items-center gap-2">
@@ -272,7 +260,7 @@ export const Curator = () => {
         )}
 
         {/* Thank You Button */}
-        {!showGame && showThankYou && (
+        {showThankYou && (
           <div className="flex flex-col gap-3 animate-slide-from-right">
             <button
               onClick={() => handleQuestionClick('thankyou')}
@@ -332,20 +320,6 @@ export const Curator = () => {
           </div>
         </div>
       </button>
-      {showGame && <BattleshipGame 
-        onClose={() => {
-          setShowGame(false);
-          setIsMinimized(true);
-          setIsReawakened(false);
-          setUsedQuestions([]);
-          setShowThankYou(false);
-          setIsAnswering(false);
-        }}
-        onMessage={(msg) => {
-          setCurrentMessage(msg);
-          setMessageKey(prev => prev + 1);
-        }}
-      />}
     </div>
   );
 };
