@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -9,12 +9,14 @@ interface SecureAccessProps {
 }
 
 export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
-  const { isUnlocked, unlock } = useAuth();
+  const { isUnlocked, isHacked, unlock, setHacked } = useAuth();
   const [password, setPassword] = useState('');
   const [attempts, setAttempts] = useState(0);
   const [isBlocked, setIsBlocked] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showBlocked, setShowBlocked] = useState(false);
+  const [isHacking, setIsHacking] = useState(false);
+  const [hackProgress, setHackProgress] = useState(0);
   
   const correctPassword = 'ShadowGhost';
   const maxAttempts = 3;
@@ -30,7 +32,6 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
       setAttempts(0);
       setShowError(false);
       
-      // Instantly scroll to top
       window.scrollTo({ top: 0 });
     } else {
       const newAttempts = attempts + 1;
@@ -43,13 +44,47 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
         setShowBlocked(true);
       }
       
-      // Hide error after 3 seconds
       setTimeout(() => setShowError(false), 3000);
     }
   };
 
+  const handleHackStart = () => {
+    if (isHacking) return;
+    
+    setIsHacking(true);
+    setHackProgress(0);
+  };
+
+  useEffect(() => {
+    if (!isHacking) return;
+    
+    const duration = 60000;
+    const interval = 100;
+    const increment = (interval / duration) * 100;
+    
+    const timer = setInterval(() => {
+      setHackProgress(prev => {
+        const next = prev + increment;
+        if (next >= 100) {
+          clearInterval(timer);
+          setIsHacking(false);
+          setHacked();
+          window.scrollTo({ top: 0 });
+          return 100;
+        }
+        return next;
+      });
+    }, interval);
+    
+    return () => clearInterval(timer);
+  }, [isHacking, setHacked]);
+
   if (isUnlocked) {
     return <>{children}</>;
+  }
+
+  if (isHacked) {
+    return <div className="glitch-content">{children}</div>;
   }
 
   if (showBlocked) {
@@ -371,15 +406,19 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
         {/* Small Hack Window - Below Authorization */}
         <div className="flex justify-center mt-6">
           <div className="flex flex-col items-center">
-            <div className="relative group cursor-pointer">
+            <button 
+              onClick={handleHackStart}
+              disabled={isHacking}
+              className="relative group cursor-pointer disabled:cursor-not-allowed"
+            >
               <div className="absolute inset-0 blur-lg bg-red-500/30 rounded-full animate-pulse"></div>
-              <div className="relative bg-gradient-to-b from-gray-900 to-black rounded-full w-16 h-16 flex items-center justify-center border-2 border-red-500/60 hover:border-red-400 transition-all">
+              <div className="relative bg-gradient-to-b from-gray-900 to-black rounded-full w-16 h-16 flex items-center justify-center border-2 border-red-500/60 hover:border-red-400 transition-all disabled:opacity-50">
                 <Icon name="ShieldAlert" size={28} className="text-red-500 group-hover:text-red-400 transition-colors" />
               </div>
               
               {/* Pulsing ring */}
               <div className="absolute inset-0 border border-red-500/40 rounded-full animate-ping"></div>
-            </div>
+            </button>
             
             {/* Label */}
             <div className="mt-2 text-red-400 font-orbitron font-bold text-xs tracking-wider">
@@ -387,6 +426,76 @@ export const SecureAccess: React.FC<SecureAccessProps> = ({ children }) => {
             </div>
           </div>
         </div>
+        
+        {/* Hacking Progress */}
+        {isHacking && (
+          <div className="mt-6 bg-black/95 border-2 border-red-500 rounded-lg p-6 relative overflow-hidden">
+            {/* Animated background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 via-red-400/5 to-red-500/10 animate-pulse"></div>
+            
+            {/* Scan lines */}
+            <div className="absolute inset-0">
+              <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-red-500/60 to-transparent animate-pulse" 
+                   style={{top: '30%', animationDuration: '1.5s'}}></div>
+              <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-red-400/40 to-transparent animate-pulse" 
+                   style={{top: '70%', animationDuration: '2s', animationDelay: '0.5s'}}></div>
+            </div>
+            
+            <div className="relative space-y-6">
+              {/* Title */}
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <Icon name="Terminal" size={24} className="text-red-400 animate-pulse" />
+                  <h3 className="text-2xl font-orbitron font-black text-red-400">
+                    ВЗЛОМ СИСТЕМЫ
+                  </h3>
+                  <Icon name="Terminal" size={24} className="text-red-400 animate-pulse" />
+                </div>
+                <p className="text-red-300 text-sm font-mono">
+                  Проникновение в защищённую базу данных...
+                </p>
+              </div>
+              
+              {/* Progress Bar */}
+              <div className="space-y-3">
+                <div className="relative h-8 bg-black/60 border-2 border-red-500/50 rounded-lg overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-400 transition-all duration-100"
+                    style={{ width: `${hackProgress}%` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-white font-orbitron font-bold text-sm drop-shadow-[0_0_5px_rgba(0,0,0,0.8)]">
+                      {Math.floor(hackProgress)}%
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Status messages */}
+                <div className="bg-black/80 border border-red-500/30 rounded-lg p-4 font-mono text-xs space-y-1">
+                  <div className="text-red-400 animate-pulse">
+                    {hackProgress < 20 && <span>[SCANNING] &gt; Поиск уязвимостей в системе...</span>}
+                    {hackProgress >= 20 && hackProgress < 40 && <span>[BREACH] &gt; Обход протоколов безопасности...</span>}
+                    {hackProgress >= 40 && hackProgress < 60 && <span>[ACCESS] &gt; Взлом шифрования данных...</span>}
+                    {hackProgress >= 60 && hackProgress < 80 && <span>[DECRYPT] &gt; Извлечение секретных файлов...</span>}
+                    {hackProgress >= 80 && hackProgress < 100 && <span>[FINALIZE] &gt; Завершение операции...</span>}
+                  </div>
+                  <div className="text-red-500/70">
+                    [TIME] &gt; {Math.floor((100 - hackProgress) * 0.6)}s remaining
+                  </div>
+                </div>
+              </div>
+              
+              {/* Warning */}
+              <div className="flex items-center justify-center gap-2 text-red-400/80 text-xs">
+                <Icon name="AlertTriangle" size={16} />
+                <span className="font-mono">UNAUTHORIZED ACCESS DETECTED</span>
+                <Icon name="AlertTriangle" size={16} />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

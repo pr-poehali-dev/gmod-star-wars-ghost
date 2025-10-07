@@ -532,3 +532,78 @@
 .animate-slide-from-right {
   animation: slideFromRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Glitch Content Effect for Hacked State */
+.glitch-content {
+  position: relative;
+}
+
+.glitch-content * {
+  animation: textGlitch 0.3s infinite;
+}
+
+.glitch-content img {
+  filter: contrast(1.2) brightness(0.9) hue-rotate(10deg);
+  animation: imageGlitch 0.5s infinite;
+}
+
+.glitch-content::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 0.03) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 3px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanlines 8s linear infinite;
+}
+
+@keyframes textGlitch {
+  0%,
+  90%,
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  92% {
+    transform: translate(-2px, 1px);
+    opacity: 0.8;
+  }
+  94% {
+    transform: translate(2px, -1px);
+    opacity: 0.9;
+  }
+  96% {
+    transform: translate(-1px, 2px);
+    opacity: 0.85;
+  }
+}
+
+@keyframes imageGlitch {
+  0%,
+  85%,
+  100% {
+    transform: translate(0);
+    filter: contrast(1.2) brightness(0.9) hue-rotate(10deg);
+  }
+  88% {
+    transform: translate(-3px, 0);
+    filter: contrast(1.5) brightness(0.7) hue-rotate(-5deg);
+  }
+  92% {
+    transform: translate(3px, 0);
+    filter: contrast(1) brightness(1.1) hue-rotate(15deg);
+  }
+  96% {
+    transform: translate(0, -2px);
+    filter: contrast(1.3) brightness(0.8) hue-rotate(5deg);
+  }
+}
