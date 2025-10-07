@@ -1,7 +1,9 @@
 import Icon from "@/components/ui/icon";
 import { useState, useEffect } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const Curator = () => {
+  const { isHacked } = useAuth();
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showQuestions, setShowQuestions] = useState(false);
   const [currentMessage, setCurrentMessage] = useState("Приветствую, солдат! Я CT-7891. Кликни на меня для продолжения.");
@@ -182,6 +184,11 @@ export const Curator = () => {
   };
 
   if (isMinimized) {
+    const minimizedBorderColor = isHacked ? 'border-red-500/40' : 'border-cyan-500/40';
+    const minimizedGlowColor = isHacked ? 'bg-red-500/20' : 'bg-cyan-500/20';
+    const minimizedTextColor = isHacked ? 'text-red-500/60' : 'text-cyan-500/60';
+    const minimizedImage = isHacked ? 'https://cdn.poehali.dev/files/31995d0c-fa9d-42c1-9c5e-1cd74f290a0e.png' : 'https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png';
+    
     return (
       <button
         onClick={handleCharacterClick}
@@ -189,10 +196,10 @@ export const Curator = () => {
         style={{ right: '2rem' }}
       >
         <div className="relative">
-          <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl"></div>
-          <div className="relative w-20 h-20 bg-gradient-to-b from-gray-900 to-black border-2 border-cyan-500/40 rounded-full flex items-center justify-center shadow-2xl">
+          <div className={`absolute inset-0 ${minimizedGlowColor} rounded-full blur-xl`}></div>
+          <div className={`relative w-20 h-20 bg-gradient-to-b from-gray-900 to-black border-2 ${minimizedBorderColor} rounded-full flex items-center justify-center shadow-2xl`}>
             <img
-              src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
+              src={minimizedImage}
               alt="Куратор CT-7891"
               className="w-16 h-16 object-cover rounded-full opacity-40"
               style={{
@@ -203,8 +210,8 @@ export const Curator = () => {
             />
           </div>
           <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full border-2 border-gray-900 animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.8)]"></div>
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-900 border border-cyan-500/40 rounded-full px-2 py-0.5">
-            <span className="text-cyan-500/60 font-orbitron font-bold text-[10px]">SLEEP</span>
+          <div className={`absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gray-900 border ${minimizedBorderColor} rounded-full px-2 py-0.5`}>
+            <span className={`${minimizedTextColor} font-orbitron font-bold text-[10px]`}>SLEEP</span>
           </div>
         </div>
       </button>
@@ -217,21 +224,34 @@ export const Curator = () => {
       <div className="flex flex-col gap-4 max-w-md mt-16">
         {/* Speech Bubble */}
         {showMessage && (
-          <div key={messageKey} className="relative bg-cyan-900/90 backdrop-blur-sm border-2 border-cyan-400 rounded-2xl px-5 py-4 shadow-2xl animate-slide-from-right">
-            <p className="text-cyan-100 text-base font-medium leading-relaxed">
+          <div key={messageKey} className={`relative backdrop-blur-sm border-2 rounded-2xl px-5 py-4 shadow-2xl animate-slide-from-right ${
+            isHacked ? 'bg-red-900/90 border-red-400' : 'bg-cyan-900/90 border-cyan-400'
+          }`}>
+            <p className={`text-base font-medium leading-relaxed ${
+              isHacked ? 'text-red-100' : 'text-cyan-100'
+            }`}>
               {currentMessage}
             </p>
             {/* Triangle pointer to the right */}
-            <div className="absolute bottom-4 -right-3 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[12px] border-l-cyan-900"></div>
-            <div className="absolute bottom-4 -right-3.5 w-0 h-0 border-t-[13px] border-t-transparent border-b-[13px] border-b-transparent border-l-[13px] border-l-cyan-400"></div>
+            <div className={`absolute bottom-4 -right-3 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[12px] ${
+              isHacked ? 'border-l-red-900' : 'border-l-cyan-900'
+            }`}></div>
+            <div className={`absolute bottom-4 -right-3.5 w-0 h-0 border-t-[13px] border-t-transparent border-b-[13px] border-b-transparent border-l-[13px] ${
+              isHacked ? 'border-l-red-400' : 'border-l-cyan-400'
+            }`}></div>
           </div>
         )}
+
 
         {/* Quick Questions */}
         {(showQuestions || showDossierReturn) && (
           <div className="flex flex-col gap-3 animate-slide-from-right">
-            <div className="bg-cyan-900/70 backdrop-blur-sm border-2 border-cyan-400/60 rounded-xl px-4 py-2 shadow-xl">
-              <p className="text-cyan-100 text-sm font-semibold flex items-center gap-2">
+            <div className={`backdrop-blur-sm border-2 rounded-xl px-4 py-2 shadow-xl ${
+              isHacked ? 'bg-red-900/70 border-red-400/60' : 'bg-cyan-900/70 border-cyan-400/60'
+            }`}>
+              <p className={`text-sm font-semibold flex items-center gap-2 ${
+                isHacked ? 'text-red-100' : 'text-cyan-100'
+              }`}>
                 <Icon name="MessageSquare" size={14} />
                 Выбери вопрос:
               </p>
@@ -247,7 +267,9 @@ export const Curator = () => {
                     className={`flex items-center gap-2 backdrop-blur-sm border-2 rounded-lg px-3 py-2.5 text-sm transition-all shadow-lg ${
                       isUsed 
                         ? 'bg-gray-800/40 border-gray-700/30 text-gray-500 cursor-not-allowed opacity-50'
-                        : 'bg-gray-800/90 border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500'
+                        : isHacked
+                          ? 'bg-gray-800/90 border-red-700/50 text-red-300 hover:bg-red-900/40 hover:border-red-500'
+                          : 'bg-gray-800/90 border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500'
                     }`}
                   >
                     <Icon name={q.icon as any} size={16} />
@@ -264,7 +286,11 @@ export const Curator = () => {
           <div className="flex flex-col gap-3 animate-slide-from-right">
             <button
               onClick={() => handleQuestionClick('thankyou')}
-              className="flex items-center justify-center gap-2 bg-gray-800/90 backdrop-blur-sm border-2 border-cyan-700/50 rounded-lg px-4 py-3 text-sm text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500 transition-all shadow-lg"
+              className={`flex items-center justify-center gap-2 bg-gray-800/90 backdrop-blur-sm border-2 rounded-lg px-4 py-3 text-sm transition-all shadow-lg ${
+                isHacked 
+                  ? 'border-red-700/50 text-red-300 hover:bg-red-900/40 hover:border-red-500'
+                  : 'border-cyan-700/50 text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-500'
+              }`}
             >
               <Icon name="ThumbsUp" size={16} />
               <span>Спасибо, дальше я сам</span>
@@ -281,32 +307,56 @@ export const Curator = () => {
         }`}
       >
         {/* Halo-style Frame */}
-        <div className="relative p-6 bg-gradient-to-b from-gray-900/80 to-black/90 backdrop-blur-md border-2 border-cyan-500/60 rounded-lg shadow-2xl">
+        <div className={`relative p-6 bg-gradient-to-b from-gray-900/80 to-black/90 backdrop-blur-md border-2 rounded-lg shadow-2xl ${
+          isHacked ? 'border-red-500/60' : 'border-cyan-500/60'
+        }`}>
           {/* Corner decorations */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-cyan-400"></div>
-          <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-cyan-400"></div>
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-cyan-400"></div>
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-cyan-400"></div>
+          <div className={`absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 ${
+            isHacked ? 'border-red-400' : 'border-cyan-400'
+          }`}></div>
+          <div className={`absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 ${
+            isHacked ? 'border-red-400' : 'border-cyan-400'
+          }`}></div>
+          <div className={`absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 ${
+            isHacked ? 'border-red-400' : 'border-cyan-400'
+          }`}></div>
+          <div className={`absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 ${
+            isHacked ? 'border-red-400' : 'border-cyan-400'
+          }`}></div>
           
           {/* Side accent lines */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-20 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-20 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 h-20 bg-gradient-to-b from-transparent to-transparent ${
+            isHacked ? 'via-red-400' : 'via-cyan-400'
+          }`}></div>
+          <div className={`absolute right-0 top-1/2 -translate-y-1/2 w-1 h-20 bg-gradient-to-b from-transparent to-transparent ${
+            isHacked ? 'via-red-400' : 'via-cyan-400'
+          }`}></div>
           
           {/* Top status bar */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-900 border-2 border-cyan-400 rounded-full px-4 py-1">
-            <span className="text-cyan-400 font-orbitron font-bold text-xs whitespace-nowrap flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              ACTIVE
+          <div className={`absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-900 border-2 rounded-full px-4 py-1 ${
+            isHacked ? 'border-red-400' : 'border-cyan-400'
+          }`}>
+            <span className={`font-orbitron font-bold text-xs whitespace-nowrap flex items-center gap-2 ${
+              isHacked ? 'text-red-400' : 'text-cyan-400'
+            }`}>
+              <div className={`w-2 h-2 rounded-full animate-pulse ${
+                isHacked ? 'bg-red-400' : 'bg-green-400'
+              }`}></div>
+              {isHacked ? 'CORRUPTED' : 'ACTIVE'}
             </span>
           </div>
           
           {/* Hologram container */}
           <div className="hologram-effect relative bg-black/40 rounded-md">
             <img
-              src="https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png"
+              src={isHacked ? 'https://cdn.poehali.dev/files/31995d0c-fa9d-42c1-9c5e-1cd74f290a0e.png' : 'https://cdn.poehali.dev/files/48425f21-2751-4146-82ab-a880aee60fc9.png'}
               alt="Куратор CT-7891"
               className="w-72 h-auto object-contain relative z-10 scale-x-[-1]"
-              style={{
+              style={isHacked ? {
+                filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(10deg) drop-shadow(0 0 40px rgba(239, 68, 68, 0.8)) drop-shadow(0 0 80px rgba(220, 38, 38, 0.5))',
+                opacity: 0.75,
+                mixBlendMode: 'screen'
+              } : {
                 filter: 'brightness(1.3) contrast(1.1) saturate(1.5) hue-rotate(-10deg) drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 80px rgba(0, 182, 212, 0.5))',
                 opacity: 0.75,
                 mixBlendMode: 'screen'
@@ -315,8 +365,12 @@ export const Curator = () => {
           </div>
           
           {/* Bottom info bar */}
-          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gray-900 border-2 border-cyan-400 rounded-full px-4 py-1">
-            <span className="text-cyan-400 font-orbitron font-bold text-xs whitespace-nowrap">CT-7891</span>
+          <div className={`absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gray-900 border-2 rounded-full px-4 py-1 ${
+            isHacked ? 'border-red-400' : 'border-cyan-400'
+          }`}>
+            <span className={`font-orbitron font-bold text-xs whitespace-nowrap ${
+              isHacked ? 'text-red-400' : 'text-cyan-400'
+            }`}>CT-7891</span>
           </div>
         </div>
       </button>
