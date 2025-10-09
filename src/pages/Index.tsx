@@ -17,7 +17,8 @@ const Index = () => {
       specialization: "Командование",
       kills: 147,
       missions: 89,
-      stats: { accuracy: 85, stealth: 72, endurance: 88, tactics: 94, leadership: 91 }
+      stats: { accuracy: 85, stealth: 72, endurance: 88, tactics: 94, leadership: 91 },
+      isUnknown: false
     },
     {
       id: "CT-07-2114", 
@@ -28,7 +29,8 @@ const Index = () => {
       specialization: "Пилот",
       kills: 203,
       missions: 76,
-      stats: { accuracy: 96, stealth: 89, endurance: 78, tactics: 82, leadership: 74 }
+      stats: { accuracy: 96, stealth: 89, endurance: 78, tactics: 82, leadership: 74 },
+      isUnknown: false
     },
     {
       id: "CT-04-5536",
@@ -39,7 +41,44 @@ const Index = () => {
       specialization: "Отсутствует",
       kills: 58,
       missions: 92,
-      stats: { accuracy: 75, stealth: 68, endurance: 92, tactics: 76, leadership: 83 }
+      stats: { accuracy: 75, stealth: 68, endurance: 92, tactics: 76, leadership: 83 },
+      isUnknown: false
+    },
+    {
+      id: "CT-??-????",
+      name: "Позывной: Неизвестный",
+      rank: "?",
+      description: "?",
+      image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
+      specialization: "?",
+      kills: "?",
+      missions: "?",
+      stats: { accuracy: 0, stealth: 0, endurance: 0, tactics: 0, leadership: 0 },
+      isUnknown: true
+    },
+    {
+      id: "CT-??-????",
+      name: "Позывной: Неизвестный",
+      rank: "?",
+      description: "?",
+      image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
+      specialization: "?",
+      kills: "?",
+      missions: "?",
+      stats: { accuracy: 0, stealth: 0, endurance: 0, tactics: 0, leadership: 0 },
+      isUnknown: true
+    },
+    {
+      id: "CT-??-????",
+      name: "Позывной: Неизвестный",
+      rank: "?",
+      description: "?",
+      image: "https://cdn.poehali.dev/files/f5f129a7-2aee-4280-88f2-37724a7b0a77.jpg",
+      specialization: "?",
+      kills: "?",
+      missions: "?",
+      stats: { accuracy: 0, stealth: 0, endurance: 0, tactics: 0, leadership: 0 },
+      isUnknown: true
     }
   ];
 
@@ -423,85 +462,61 @@ const Index = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {clones.map((clone, index) => (
-            <Card key={clone.id} className={`bg-gray-900 border-orange-400 hover-scale animate-scale-in`} 
+            <Card key={`${clone.id}-${index}`} className={`${clone.isUnknown ? 'bg-gray-900/50 border-orange-400/50' : 'bg-gray-900 border-orange-400'} hover-scale animate-scale-in`} 
                   style={{animationDelay: `${index * 0.1}s`}}>
               <CardHeader>
                 <div className="relative">
                   <img 
                     src={clone.image} 
                     alt={clone.name}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
+                    className={`w-full h-48 object-cover rounded-lg mb-4 ${clone.isUnknown ? 'opacity-30 grayscale' : ''}`}
                   />
-                  <Badge className="absolute top-4  right-2 bg-orange-400 text-black">
+                  <Badge className={`absolute top-4 right-2 ${clone.isUnknown ? 'bg-orange-400/50 text-gray-300' : 'bg-orange-400 text-black'}`}>
                     {clone.rank}
                   </Badge>
                 </div>
-                <CardTitle className="text-orange-200 font-orbitron text-xl">
+                <CardTitle className={`font-orbitron text-xl ${clone.isUnknown ? 'text-orange-400/70' : 'text-orange-200'}`}>
                   {clone.name}
                 </CardTitle>
-                <CardDescription className="text-orange-400 font-mono">
+                <CardDescription className={`font-mono ${clone.isUnknown ? 'text-orange-400/50' : 'text-orange-400'}`}>
                   {clone.id}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-orange-300 text-sm">
+                <p className={`text-sm ${clone.isUnknown ? 'text-orange-300/50' : 'text-orange-300'}`}>
                   {clone.description}
                 </p>
                 
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-orange-400">Специализация:</span>
-                    <span className="text-orange-400">{clone.specialization}</span>
+                    <span className={clone.isUnknown ? 'text-orange-400/50' : 'text-orange-400'}>Специализация:</span>
+                    <span className={clone.isUnknown ? 'text-orange-400/50' : 'text-orange-400'}>{clone.specialization}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-orange-400">Подтвержденные цели:</span>
-                    <span className="text-orange-400">{clone.kills}</span>
+                    <span className={clone.isUnknown ? 'text-orange-400/50' : 'text-orange-400'}>Подтвержденные цели:</span>
+                    <span className={clone.isUnknown ? 'text-orange-400/50' : 'text-orange-400'}>{clone.kills}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-orange-400">Миссии:</span>
-                    <span className="text-orange-400">{clone.missions}</span>
+                    <span className={clone.isUnknown ? 'text-orange-400/50' : 'text-orange-400'}>Миссии:</span>
+                    <span className={clone.isUnknown ? 'text-orange-400/50' : 'text-orange-400'}>{clone.missions}</span>
                   </div>
                 </div>
                 
-                <Link to={`/clone/${clone.id}`}>
-                  <Button className="w-full bg-orange-400 text-black hover:bg-orange-400/80 font-orbitron">
-                    ДОСЬЕ
+                {!clone.isUnknown && (
+                  <Link to={`/clone/${clone.id}`}>
+                    <Button className="w-full bg-orange-400 text-black hover:bg-orange-400/80 font-orbitron">
+                      ДОСЬЕ
+                    </Button>
+                  </Link>
+                )}
+                {clone.isUnknown && (
+                  <Button disabled className="w-full bg-orange-400/30 text-gray-500 font-orbitron cursor-not-allowed">
+                    ДАННЫЕ ЗАСЕКРЕЧЕНЫ
                   </Button>
-                </Link>
+                )}
               </CardContent>
             </Card>
           ))}
-          
-          {/* Empty Cards */}
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-            <CardContent className="h-full flex items-center justify-center min-h-[400px]">
-              <div className="text-center space-y-4">
-                <Icon name="UserPlus" size={48} className="mx-auto text-orange-400/50" />
-                <p className="text-orange-400/50 font-orbitron">СЛОТ СВОБОДЕН</p>
-                <p className="text-orange-300/50 text-sm">Ожидание нового бойца</p>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </section>
       </SecureAccess>
