@@ -132,7 +132,6 @@ const Index = () => {
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black text-orange-400 mb-6 tracking-wider">
               ПРИЗРАК
             </h1>
-            <div className="text-xs text-orange-400/30 font-mono">v2.0</div>
           </div>
           
           {/* Simplified Subtitle */}
