@@ -420,32 +420,74 @@ const Index = () => {
                 </CardContent>
               </Card>
               
-              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
+              {/* Unknown Character 1 */}
+              <Card className="bg-gray-900/50 border-orange-400/50 hover-scale">
+                <CardContent className="p-4">
                   <div className="text-center space-y-4">
-                    <Icon name="Users" size={32} className="mx-auto text-orange-400/50" />
-                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
-                    <p className="text-orange-300/50 text-sm">Ожидание связи</p>
+                    <div className="w-32 h-48 mx-auto rounded-lg border-2 border-orange-400/50 bg-gray-800/50 flex items-center justify-center">
+                      <span className="text-orange-400/50 font-orbitron text-sm">НЕТ ДАННЫХ</span>
+                    </div>
+                    <div className="bg-orange-900/30 border border-orange-400/50 rounded-lg p-3">
+                      <span className="text-orange-400/50 font-semibold text-sm">?</span>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-orange-400/70 font-orbitron font-bold">Неизвестный</h4>
+                      <p className="text-orange-400/50 text-sm">?</p>
+                      <Button 
+                        disabled
+                        className="w-full bg-orange-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
+                      >
+                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
               
-              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
+              {/* Unknown Character 2 */}
+              <Card className="bg-gray-900/50 border-orange-400/50 hover-scale">
+                <CardContent className="p-4">
                   <div className="text-center space-y-4">
-                    <Icon name="Users" size={32} className="mx-auto text-orange-400/50" />
-                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
-                    <p className="text-orange-300/50 text-sm">Ожидание связи</p>
+                    <div className="w-32 h-48 mx-auto rounded-lg border-2 border-orange-400/50 bg-gray-800/50 flex items-center justify-center">
+                      <span className="text-orange-400/50 font-orbitron text-sm">НЕТ ДАННЫХ</span>
+                    </div>
+                    <div className="bg-orange-900/30 border border-orange-400/50 rounded-lg p-3">
+                      <span className="text-orange-400/50 font-semibold text-sm">?</span>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-orange-400/70 font-orbitron font-bold">Неизвестный</h4>
+                      <p className="text-orange-400/50 text-sm">?</p>
+                      <Button 
+                        disabled
+                        className="w-full bg-orange-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
+                      >
+                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
               
-              <Card className="bg-gray-900/30 border-orange-400/30 border-dashed hover-scale">
-                <CardContent className="h-full flex items-center justify-center min-h-[200px]">
+              {/* Unknown Character 3 */}
+              <Card className="bg-gray-900/50 border-orange-400/50 hover-scale">
+                <CardContent className="p-4">
                   <div className="text-center space-y-4">
-                    <Icon name="Users" size={32} className="mx-auto text-orange-400/50" />
-                    <p className="text-orange-400/50 font-orbitron text-sm">СЛОТ ОТНОШЕНИЙ</p>
-                    <p className="text-orange-300/50 text-sm">Ожидание связи</p>
+                    <div className="w-32 h-48 mx-auto rounded-lg border-2 border-orange-400/50 bg-gray-800/50 flex items-center justify-center">
+                      <span className="text-orange-400/50 font-orbitron text-sm">НЕТ ДАННЫХ</span>
+                    </div>
+                    <div className="bg-orange-900/30 border border-orange-400/50 rounded-lg p-3">
+                      <span className="text-orange-400/50 font-semibold text-sm">?</span>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-orange-400/70 font-orbitron font-bold">Неизвестный</h4>
+                      <p className="text-orange-400/50 text-sm">?</p>
+                      <Button 
+                        disabled
+                        className="w-full bg-orange-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
+                      >
+                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
