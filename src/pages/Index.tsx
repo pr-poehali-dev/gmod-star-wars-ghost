@@ -392,7 +392,7 @@ const Index = () => {
             </div>
             
             {/* Character Cards */}
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {/* Mandalorian Card */}
               <Card className="bg-gray-900 border-green-400 hover-scale">
                 <CardContent className="p-4">
@@ -488,6 +488,32 @@ const Index = () => {
                     <div className="space-y-3">
                       <h4 className="text-orange-200 font-orbitron font-bold">Shanny</h4>
                       <p className="text-teal-400 text-sm">Заместитель Директора SOB</p>
+                      <Button 
+                        disabled
+                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
+                      >
+                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              {/* RC Chaplin Card */}
+              <Card className="bg-gray-900 border-teal-400 hover-scale">
+                <CardContent className="p-4">
+                  <div className="text-center space-y-4">
+                    <img 
+                      src="https://cdn.poehali.dev/files/b6931e30-361b-46fb-9f09-3df96a19bbdd.jpg" 
+                      alt="RC Chaplin" 
+                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
+                    />
+                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
+                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-orange-200 font-orbitron font-bold">RC Chaplin</h4>
+                      <p className="text-teal-400 text-sm">Клон-коммандо</p>
                       <Button 
                         disabled
                         className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
