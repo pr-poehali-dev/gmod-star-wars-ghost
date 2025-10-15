@@ -473,22 +473,24 @@ const Index = () => {
                 </CardContent>
               </Card>
               
-              {/* Unknown Character 3 */}
-              <Card className="bg-gray-900/50 border-orange-400/50 hover-scale">
+              {/* Shanny Card */}
+              <Card className="bg-gray-900 border-teal-400 hover-scale">
                 <CardContent className="p-4">
                   <div className="text-center space-y-4">
-                    <div className="w-32 h-48 mx-auto rounded-lg border-2 border-orange-400/50 bg-gray-800/50 flex items-center justify-center">
-                      <span className="text-orange-400/50 font-orbitron text-sm">НЕТ ДАННЫХ</span>
-                    </div>
-                    <div className="bg-orange-900/30 border border-orange-400/50 rounded-lg p-3">
-                      <span className="text-orange-400/50 font-semibold text-sm">?</span>
+                    <img 
+                      src="https://cdn.poehali.dev/files/a81c694b-05e7-42ff-9ad5-6e80e561cb74.jpg" 
+                      alt="Shanny" 
+                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
+                    />
+                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
+                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
                     </div>
                     <div className="space-y-3">
-                      <h4 className="text-orange-400/70 font-orbitron font-bold">Неизвестный</h4>
-                      <p className="text-orange-400/50 text-sm">?</p>
+                      <h4 className="text-orange-200 font-orbitron font-bold">Shanny</h4>
+                      <p className="text-teal-400 text-sm">Наёмница</p>
                       <Button 
                         disabled
-                        className="w-full bg-orange-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
+                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
                       >
                         ДАННЫЕ ЗАСЕКРЕЧЕНЫ
                       </Button>
