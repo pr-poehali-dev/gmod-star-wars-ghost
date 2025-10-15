@@ -420,6 +420,32 @@ const Index = () => {
                 </CardContent>
               </Card>
               
+              {/* Shanny Card */}
+              <Card className="bg-gray-900 border-teal-400 hover-scale">
+                <CardContent className="p-4">
+                  <div className="text-center space-y-4">
+                    <img 
+                      src="https://cdn.poehali.dev/files/a81c694b-05e7-42ff-9ad5-6e80e561cb74.jpg" 
+                      alt="Shanny" 
+                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
+                    />
+                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
+                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-orange-200 font-orbitron font-bold">Shanny</h4>
+                      <p className="text-teal-400 text-sm">Заместитель Директора SOB</p>
+                      <Button 
+                        disabled
+                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
+                      >
+                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
               {/* RC **47 Schutze Card */}
               <Card className="bg-gray-900 border-teal-400 hover-scale">
                 <CardContent className="p-4">
@@ -434,6 +460,32 @@ const Index = () => {
                     </div>
                     <div className="space-y-3">
                       <h4 className="text-orange-200 font-orbitron font-bold">RC **47 Schutze</h4>
+                      <p className="text-teal-400 text-sm">Клон-коммандо</p>
+                      <Button 
+                        disabled
+                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
+                      >
+                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              {/* RC Chaplin Card */}
+              <Card className="bg-gray-900 border-teal-400 hover-scale">
+                <CardContent className="p-4">
+                  <div className="text-center space-y-4">
+                    <img 
+                      src="https://cdn.poehali.dev/files/b6931e30-361b-46fb-9f09-3df96a19bbdd.jpg" 
+                      alt="RC Chaplin" 
+                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
+                    />
+                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
+                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-orange-200 font-orbitron font-bold">RC **89 Chaplin</h4>
                       <p className="text-teal-400 text-sm">Клон-коммандо</p>
                       <Button 
                         disabled
@@ -462,58 +514,6 @@ const Index = () => {
                     <div className="space-y-3">
                       <h4 className="text-orange-200 font-orbitron font-bold">CT-7891</h4>
                       <p className="text-teal-400 text-sm">Куратор</p>
-                      <Button 
-                        disabled
-                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
-                      >
-                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              {/* Shanny Card */}
-              <Card className="bg-gray-900 border-teal-400 hover-scale">
-                <CardContent className="p-4">
-                  <div className="text-center space-y-4">
-                    <img 
-                      src="https://cdn.poehali.dev/files/a81c694b-05e7-42ff-9ad5-6e80e561cb74.jpg" 
-                      alt="Shanny" 
-                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
-                    />
-                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
-                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="text-orange-200 font-orbitron font-bold">Shanny</h4>
-                      <p className="text-teal-400 text-sm">Заместитель Директора SOB</p>
-                      <Button 
-                        disabled
-                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
-                      >
-                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              {/* RC Chaplin Card */}
-              <Card className="bg-gray-900 border-teal-400 hover-scale">
-                <CardContent className="p-4">
-                  <div className="text-center space-y-4">
-                    <img 
-                      src="https://cdn.poehali.dev/files/b6931e30-361b-46fb-9f09-3df96a19bbdd.jpg" 
-                      alt="RC Chaplin" 
-                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
-                    />
-                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
-                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="text-orange-200 font-orbitron font-bold">RC **89 Chaplin</h4>
-                      <p className="text-teal-400 text-sm">Клон-коммандо</p>
                       <Button 
                         disabled
                         className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
