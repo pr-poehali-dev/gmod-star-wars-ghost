@@ -512,7 +512,7 @@ const Index = () => {
                       <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
                     </div>
                     <div className="space-y-3">
-                      <h4 className="text-orange-200 font-orbitron font-bold">RC Chaplin</h4>
+                      <h4 className="text-orange-200 font-orbitron font-bold">RC **89 Chaplin</h4>
                       <p className="text-teal-400 text-sm">Клон-коммандо</p>
                       <Button 
                         disabled
