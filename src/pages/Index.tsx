@@ -533,7 +533,7 @@ const Index = () => {
                       src="https://cdn.poehali.dev/files/04a06d08-2ed1-4501-b94f-d5b4ad41addd.jpg" 
                       alt="Sharp CT-03-1210" 
                       className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
-                      style={{ objectPosition: 'center 20%' }}
+                      style={{ objectPosition: 'center 10%' }}
                     />
                     <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
                       <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
