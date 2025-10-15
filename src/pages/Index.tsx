@@ -551,6 +551,32 @@ const Index = () => {
                   </div>
                 </CardContent>
               </Card>
+              
+              {/* Keller Card */}
+              <Card className="bg-gray-900 border-teal-400 hover-scale">
+                <CardContent className="p-4">
+                  <div className="text-center space-y-4">
+                    <img 
+                      src="https://cdn.poehali.dev/files/96bc8b27-a526-413c-a3ab-31cacd9f5992.jpg" 
+                      alt="Keller CT-01-1138" 
+                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
+                    />
+                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
+                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-orange-200 font-orbitron font-bold">CT-01-1138 | Keller</h4>
+                      <p className="text-teal-400 text-sm">Клон-штурмовик</p>
+                      <Button 
+                        disabled
+                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
+                      >
+                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
