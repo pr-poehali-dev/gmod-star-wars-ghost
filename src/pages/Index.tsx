@@ -459,7 +459,7 @@ const Index = () => {
                     </div>
                     <div className="space-y-3">
                       <h4 className="text-orange-200 font-orbitron font-bold">CT-7891</h4>
-                      <p className="text-teal-400 text-sm">Куратор базы данных</p>
+                      <p className="text-teal-400 text-sm">Куратор</p>
                       <Button 
                         disabled
                         className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
