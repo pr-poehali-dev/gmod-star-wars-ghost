@@ -610,18 +610,22 @@ const CloneDossier = () => {
                     <Icon name="Award" size={24} className="mr-2" />
                     Награждения
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="p-6 bg-gray-800/50 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/40 transition-all">
-                      <Icon name="Star" size={36} className="mx-auto mb-3 text-orange-300" />
-                      <p className="text-orange-200 font-semibold">Звезда Храбрости</p>
+                      <Icon name="Medal" size={36} className="mx-auto mb-3 text-orange-300" />
+                      <p className="text-orange-200 font-semibold">Медаль Чести Коммандос</p>
                     </div>
                     <div className="p-6 bg-gray-800/50 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/40 transition-all">
                       <Icon name="Award" size={36} className="mx-auto mb-3 text-orange-300" />
-                      <p className="text-orange-200 font-semibold">Орден Отличия</p>
+                      <p className="text-orange-200 font-semibold">Медаль Республиканской Храбрости</p>
                     </div>
                     <div className="p-6 bg-gray-800/50 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/40 transition-all">
-                      <Icon name="Medal" size={36} className="mx-auto mb-3 text-orange-300" />
-                      <p className="text-orange-200 font-semibold">Медаль За Доблесть</p>
+                      <Icon name="Shield" size={36} className="mx-auto mb-3 text-orange-300" />
+                      <p className="text-orange-200 font-semibold">Знак Неустрашимого</p>
+                    </div>
+                    <div className="p-6 bg-gray-800/50 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/40 transition-all">
+                      <Icon name="Sparkles" size={36} className="mx-auto mb-3 text-orange-300" />
+                      <p className="text-orange-200 font-semibold">Знак Доблесть Пустоты</p>
                     </div>
                   </div>
                 </div>
