@@ -603,6 +603,28 @@ const CloneDossier = () => {
                     </div>
                   ))}
                 </div>
+                
+                {/* Awards Section */}
+                <div className="border-t border-orange-400/30 pt-8 mt-8">
+                  <h3 className="text-orange-400 text-xl font-semibold mb-6 flex items-center justify-center">
+                    <Icon name="Award" size={24} className="mr-2" />
+                    Награждения
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="p-6 bg-gray-800/50 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/40 transition-all">
+                      <Icon name="Star" size={36} className="mx-auto mb-3 text-orange-300" />
+                      <p className="text-orange-200 font-semibold">Звезда Храбрости</p>
+                    </div>
+                    <div className="p-6 bg-gray-800/50 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/40 transition-all">
+                      <Icon name="Award" size={36} className="mx-auto mb-3 text-orange-300" />
+                      <p className="text-orange-200 font-semibold">Орден Отличия</p>
+                    </div>
+                    <div className="p-6 bg-gray-800/50 rounded-lg text-center border border-orange-400/20 hover:border-orange-400/40 transition-all">
+                      <Icon name="Medal" size={36} className="mx-auto mb-3 text-orange-300" />
+                      <p className="text-orange-200 font-semibold">Медаль За Доблесть</p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
