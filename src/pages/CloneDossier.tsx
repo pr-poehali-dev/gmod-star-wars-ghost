@@ -84,7 +84,7 @@ const CloneDossier = () => {
       <div className="relative bg-gradient-to-r from-gray-900 to-black py-8 px-4 md:px-8 overflow-hidden">
         {/* Background Logo */}
         <div 
-          className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none"
+          className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none"
           style={{
             backgroundImage: 'url(https://cdn.poehali.dev/files/872551b5-ae60-4fea-9c61-8b06b3d8cdec.png)',
             backgroundSize: '400px 400px',
