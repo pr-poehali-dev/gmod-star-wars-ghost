@@ -24,7 +24,7 @@ const DossierFooter = () => {
           
           <div className="inline-flex items-center gap-3 bg-gray-900/50 backdrop-blur-sm border border-orange-400/30 rounded-full px-6 py-3 mb-8">
             <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-            <span className="text-orange-300 font-orbitron font-semibold tracking-wide">Отряд "Призрак" - ЭРК В.А.Р.</span>
+            <span className="text-orange-300 font-orbitron font-semibold tracking-wide">Отряд "Призрак" - ARC В.А.Р.</span>
             <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
           </div>
         </div>
