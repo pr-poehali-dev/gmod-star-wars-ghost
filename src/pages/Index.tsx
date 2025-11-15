@@ -446,58 +446,6 @@ const Index = () => {
                 </CardContent>
               </Card>
               
-              {/* RC **47 Schutze Card */}
-              <Card className="bg-gray-900 border-teal-400 hover-scale">
-                <CardContent className="p-4">
-                  <div className="text-center space-y-4">
-                    <img 
-                      src="https://cdn.poehali.dev/files/5f1f65a6-46b3-497c-926d-6ef5740fd463.jpg" 
-                      alt="RC **47 Schutze" 
-                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
-                    />
-                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
-                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="text-orange-200 font-orbitron font-bold">RC **47 Schutze</h4>
-                      <p className="text-teal-400 text-sm">Клон-коммандо</p>
-                      <Button 
-                        disabled
-                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
-                      >
-                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              {/* RC Chaplin Card */}
-              <Card className="bg-gray-900 border-teal-400 hover-scale">
-                <CardContent className="p-4">
-                  <div className="text-center space-y-4">
-                    <img 
-                      src="https://cdn.poehali.dev/files/b6931e30-361b-46fb-9f09-3df96a19bbdd.jpg" 
-                      alt="RC Chaplin" 
-                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
-                    />
-                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
-                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="text-orange-200 font-orbitron font-bold">RC **89 Chaplin</h4>
-                      <p className="text-teal-400 text-sm">Клон-коммандо</p>
-                      <Button 
-                        disabled
-                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
-                      >
-                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
               {/* Curator Card */}
               <Card className="bg-gray-900 border-teal-400 hover-scale">
                 <CardContent className="p-4">
@@ -514,59 +462,6 @@ const Index = () => {
                     <div className="space-y-3">
                       <h4 className="text-orange-200 font-orbitron font-bold">CT-7891</h4>
                       <p className="text-teal-400 text-sm">Куратор</p>
-                      <Button 
-                        disabled
-                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
-                      >
-                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              {/* Sharp Card */}
-              <Card className="bg-gray-900 border-teal-400 hover-scale">
-                <CardContent className="p-4">
-                  <div className="text-center space-y-4">
-                    <img 
-                      src="https://cdn.poehali.dev/files/04a06d08-2ed1-4501-b94f-d5b4ad41addd.jpg" 
-                      alt="Sharp CT-03-1210" 
-                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
-                      style={{ objectPosition: 'center 10%' }}
-                    />
-                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
-                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="text-orange-200 font-orbitron font-bold">CT-03-1210 | Sharp</h4>
-                      <p className="text-teal-400 text-sm">MAJ</p>
-                      <Button 
-                        disabled
-                        className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
-                      >
-                        ДАННЫЕ ЗАСЕКРЕЧЕНЫ
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              {/* Keller Card */}
-              <Card className="bg-gray-900 border-teal-400 hover-scale">
-                <CardContent className="p-4">
-                  <div className="text-center space-y-4">
-                    <img 
-                      src="https://cdn.poehali.dev/files/96bc8b27-a526-413c-a3ab-31cacd9f5992.jpg" 
-                      alt="Keller CT-01-1138" 
-                      className="w-32 h-48 mx-auto object-cover rounded-lg border-2 border-teal-400"
-                    />
-                    <div className="bg-teal-900/30 border border-teal-400 rounded-lg p-3">
-                      <span className="text-teal-400 font-semibold text-sm">ДРУЖБА</span>
-                    </div>
-                    <div className="space-y-3">
-                      <h4 className="text-orange-200 font-orbitron font-bold">CT-01-1138 | Keller</h4>
-                      <p className="text-teal-400 text-sm">Клон-штурмовик</p>
                       <Button 
                         disabled
                         className="w-full bg-teal-400/30 text-gray-500 font-orbitron text-sm cursor-not-allowed"
