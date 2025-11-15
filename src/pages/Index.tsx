@@ -237,7 +237,7 @@ const Index = () => {
               
               {/* 69th COR Entry Subsection */}
               <div className="mt-12 pt-8 border-t border-orange-400/30">
-                <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-orange-400 mb-6">
+                <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-orange-400 mb-6 text-center">
                   ВСТУПЛЕНИЕ В 69TH
                 </h3>
                 <div className="space-y-4">
