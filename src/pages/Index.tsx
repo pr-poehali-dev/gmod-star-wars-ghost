@@ -150,7 +150,7 @@ const Index = () => {
                   <span className="text-orange-300 font-orbitron font-bold text-sm tracking-wider">ЭРК</span>
                 </div>
                 <div className="bg-orange-400/20 border border-orange-400/40 rounded-full px-4 py-2">
-                  <span className="text-orange-300 font-orbitron font-bold text-sm tracking-wider">БСО</span>
+                  <span className="text-orange-300 font-orbitron font-bold text-sm tracking-wider">69th COR</span>
                 </div>
               </div>
             </div>
